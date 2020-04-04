@@ -7,8 +7,8 @@ const path = require("path");
 app.use(express.static("public"));
 
 //Constant to use ESJ files
-const esj = require("esj");
-app.set("view engine", "esj");
+const ejs = require("ejs");
+app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
   res.render("index");
