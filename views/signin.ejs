@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!--Importing the Header Layout element-->
+ <%-include('layouts/header'); -%>
+
+  <body>
+
+
+
+
+    <!--Importing Navbar from Layout element-->
+ <%-include('layouts/navbar'); -%>
+
+ <!-- Form to Sign in start here-->
+
+    <div class="section-signin">
+     <h1><form action="/index/store" method="POST"><!--When submitting the form the browser will make a POST request to the /signin/store endpoint.Check Index.js-->
+      <img class="logo" src="img/trackMyRidelogo2.JPG"><br>
+        <input
+          type="text"
+          class="form-control"
+          name="email"
+          id="email"
+          placeholder="Email address"
+        /><br>
+        <input
+          type="password"
+          class="form-control"
+          name="password1"
+          id="password1"
+          placeholder="New password"
+        /><br>
+        <input
+          type="password"
+          name="password2"
+          class="form-control"
+          id="password2"
+         placeholder="Confirm new password"
+        /><br>
+        
+        <input type="checkbox" class="form-group" name="terms-checkbox" id="terms" value="#" /><br>
+        <label for="terms">Accept Terms and Conditions</label><br>
+        <a href="#"><i class="terms-conditions" name="terms-link"><strong>Terms and Conditions</strong></a><br>
+         <button id="btn" type="submit">Register</button>
+      </form></h1>
+     
+     <!--Importing the Video Background Layout element-->
+ <%-include('layouts/videobackground'); -%>
+    
+     
+     
+     
+     
+     
+     
+       
+       
+    </div>
+    <!--Importing the Footer Layout element-->
+       <%-include('layouts/footer'); -%>
+    
+       <!--Importing the Script Layout element-->
+        <%-include('layouts/scripts'); -%>
+  </body>
+</html>
