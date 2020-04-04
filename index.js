@@ -13,6 +13,9 @@ const mongoose = require("mongoose");
 //Body-Parse parses incoming request bodies in a middleware and make the form data available under req.body property.
 const bodyParser = require("body-parser");
 
+//Importing User model
+const UserCredentials = require("./models/User.js");
+
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -43,7 +46,14 @@ app.get("/about", (req, res) => {
 });
 
 //#############################################################################################//
-app.post("/sign/store", (req, res) => {
+app.post("/index/store", (req, res) => {
   console.log(req.body);
-  res.redirect("/");
+
+  //model creates a new doc with browser data
+  UserCredentials.create(req.body, (error, blogspot) => {
+    res.redirect("/");
+  });
 });
+
+//########################################################/
+//To save username inside the database
