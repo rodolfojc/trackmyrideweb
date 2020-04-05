@@ -20,9 +20,13 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//Connection with Mongo
+//Connection with Mongo 
+//db = trackMyRide
+//user = admin
+//password = Pass1234!
 
-mongoose.connect("mongodb://localhost/my_database", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://admin:Pass1234!@cluster0-ii2az.mongodb.net/trackMyRide", { useNewUrlParser: true });
+
 
 app.set("view engine", "ejs");
 
