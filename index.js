@@ -79,5 +79,9 @@ app.post("/index/store", async (req, res) => {
   });
 });
 
+
+app.get("/bikeinfo", (req, res) => {
+  res.render("bikeinfo");
+});
 //########################################################/
 //To save username inside the database
