@@ -204,3 +204,36 @@
 .section-signin button:hover {
   color: red;
 }
+
+.home-route {
+  background-color: white;
+  color: white;
+  text-align: center;
+  z-index: 1;
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+  border-radius: 1000px;
+  padding: 30px;
+  background-image: linear-gradient(#432a61, white, white);
+  font-size: 15px;
+  font-family: "Source Code Pro";
+  opacity: 0.8;
+  box-shadow: 0 10px 20px;
+  text-transform: uppercase;
+}
+.home-route a:hover {
+  color: rgb(98, 235, 19);
+}
+
+.password-rec a {
+  color: black;
+  font-size: 15px;
+  font-family: Arial;
+}
+
+.password-rec a:hover {
+  color: red;
+}
+
