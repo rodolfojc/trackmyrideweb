@@ -33,6 +33,7 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+
 app.listen(3000, () => {
   console.log("App listening on port 3000");
 });
@@ -81,3 +82,8 @@ app.post("/index/store", async (req, res) => {
 
 //########################################################/
 //To save username inside the database
+
+//to display the map for any kind of user
+app.get("/consultmap", (req, res) => {
+  res.render("map");
+});

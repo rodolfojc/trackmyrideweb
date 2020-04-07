@@ -204,3 +204,20 @@
 .section-signin button:hover {
   color: red;
 }
+
+/* Map features */
+/* #mapid { 
+  width:900px; 
+  height:480px;
+
+  
+ }
+
+ body {
+  padding: 0;
+  margin: 0;
+} */
+html, body, #mapid {
+  height: 100%;
+  width: 100vw;
+}
