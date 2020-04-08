@@ -237,3 +237,80 @@
   color: red;
 }
 
+
+
+/* CSS for Sign In page   */
+.terms-conditions strong {
+  font-size: 25px;
+}
+.section-reportbike label {
+  font-size: small;
+}
+.section-reportbike h1 {
+  border-radius: 70px;
+  padding: 60px;
+  position: fixed;
+  right: 0;
+  left: 40%;
+  top: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+  text-align: center;
+  box-shadow: 0 10px 20px;
+
+  background-image: linear-gradient(#432a61, #5b4876, white);
+
+  z-index: 1;
+}
+
+.section-reportbike input {
+  border-radius: 10px;
+  font-family: "Play";
+  padding: 10px;
+  background-color: rgb(214, 212, 216);
+  outline: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fixed-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(41, 0, 59, 0.8);
+}
+
+.list-option {
+  float: right;
+}
+
+.fixed-nav-bar li {
+  display: inline-block;
+  color: white;
+  margin-right: 10px;
+  line-height: 0px;
+  font-family: "Source Code Pro";
+}
+
+.fixed-nav-bar a {
+  color: white;
+}
+
+#nav-bar :hover {
+  color: rgb(99, 236, 99);
+}
+
+.section-reportbike button {
+  border-radius: 20px;
+  padding: 10px;
+  width: auto;
+  box-shadow: 0 10px 20px;
+}
+
+.section-reportbike button:hover {
+  color: red;
+}

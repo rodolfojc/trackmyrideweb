@@ -84,4 +84,11 @@ app.get("/bikeinfo", (req, res) => {
   res.render("bikeinfo");
 });
 //########################################################/
-//To save username inside the database
+//To search bike info
+
+
+app.get("/reportbike", (req, res) => {
+  res.render("reportbike");
+});
+//########################################################/
+//To report a bike or an incident
