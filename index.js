@@ -1,5 +1,6 @@
 const express = require("express");
 const axios = require ('axios');
+const GeoJSON = require('geojson');
 
 const app = express();
 //Path is a module to help us to get the directory path
@@ -87,3 +88,7 @@ app.post("/index/store", async (req, res) => {
 app.get("/consultmap", (req, res) => {
   res.render("map");
 });
+
+
+
+        
