@@ -97,6 +97,7 @@ var geoJson = {
     //add multiple locations to the map using geoJson
    // L.geoJSON(geoJson).addTo(mymap);
 
+   var popup = L.popup();
    
     //Create a personalized marker
    var geojsonMarkerOptions = {
@@ -108,11 +109,24 @@ var geoJson = {
     fillOpacity: 0.8
 };
 
-    //add multiple locations with personalised marker using geoJson
+function onEachFeature(feature, layer){
+    if (feature.properties && feature.properties.id) {
+        layer.bindPopup(feature.properties.id);
+    }
+
+}
+
+    
     L.geoJSON(geoJson, {
+        //add multiple locations with personalised marker using geoJson
         pointToLayer: function(feature, latlng){
             return L.circleMarker(latlng, geojsonMarkerOptions);
-           }
+           },
+
+        onEachFeature: onEachFeature,
+           
+           
+        
     }).addTo(mymap);
 
    // Layer groups for filters
