@@ -32,3 +32,47 @@
   height: 100%;
   opacity: 0.3;
 }
+
+.content-holder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#up-content {
+  background-color: yellow;
+  height: 500%;
+  width: 100%;
+}
+
+#midle-content {
+  background-color: blue;
+  height: 500%;
+  width: 100%;
+}
+
+#bottom-content {
+  background-color: green;
+  height: 500%;
+  width: 100%;
+}
+
+#bottom-content {
+  display: flex;
+  justify-content: center;
+}
+
+#btn-update {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+
+  margin-right: 50px;
+}
+
+#btn-add {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
