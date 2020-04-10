@@ -73,6 +73,8 @@
   margin-top: 30px;
   height: 100px;
   width: 300px;
+  color: white;
+  background-image: linear-gradient(#432a61, #523d6b, white);
 }
 
 #btn-add {
@@ -81,13 +83,16 @@
   margin-top: 30px;
   height: 100px;
   width: 300px;
+  color: white;
+  background-image: linear-gradient(#432a61, #523d6b, white);
 }
 
 #midle-content {
   background-color: whitesmoke;
-  height: 500%;
+  height: 400%;
   width: 100%;
   display: flex;
+  padding-right: 227px;
 }
 
 #midle-content-left {
@@ -99,10 +104,16 @@
 #midle-content-right {
   background-color: whitesmoke;
   height: 100%;
-  width: 50%;
+  width: 230%;
 }
 .list {
-  padding-left: 445px;
+  padding-left: 347px;
   font-size: x-large;
   font-family: monospace;
+}
+
+.list2 {
+  font-family: monospace;
+  padding-right: 40px;
+  font-size: x-large;
 }
