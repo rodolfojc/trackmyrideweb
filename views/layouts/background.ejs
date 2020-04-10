@@ -1,55 +1,100 @@
-<div class="mb-container">
-  <div class="box1"></div>
-  <div class="box2">
-    <div class="box-container">
-      <div class="box3-1">
-        <div class="button-form">
-          <div id="test0">
-            <button id="btn-0" type="button"><i class="fa fa-home"></i></button>
+<!--Author: Yuri Braga 2017141-->
+
+<div id="mb-container">
+  <div id="box-margin-left"></div>
+  <!-- Content starts here  -->
+  <div id="content">
+    <div class="content-holder">
+      <!-- Content at the top part of the screen -->
+      <div id="up-content">
+        <div
+          id="carouselExampleIndicators"
+          class="carousel slide"
+          data-ride="carousel"
+        >
+          <ol class="carousel-indicators">
+            <li
+              data-target="#carouselExampleIndicators"
+              data-slide-to="0"
+              class="active"
+            ></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" id="inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="img/bike.png" alt="First slide" />
+            </div>
+            <div class="carousel-item">
+              <img
+                class="d-block w-100"
+                src="img/bike.png"
+                alt="Second slide"
+              />
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="img/bike.png" alt="Third slide" />
+            </div>
           </div>
-          <div id="test"><button id="btn0" type="button">Test</button></div>
-          <button id="btn1" type="button">UPDATE</button>
-          <button id="btn2" type="button">ADD NEW</button>
-          <div id="test2"><button id="btn4" type="button">Test</button></div>
-          <div id="test3">
-            <button id="btn5" type="button">
-              <i class="fa fa-refresh"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="box3-2">
-        <div class="box-3-2-container">
-          <div class="minibox1">
-            <ul>
-              <li>Serial:</li>
-              <li>Brand:</li>
-              <li>Color:</li>
-              <li>Type:</li>
-              <li>Status:</li>
-              <li>Lock:</li>
-            </ul>
-          </div>
-          <div class="minibox2"></div>
-        </div>
-      </div>
-      <div class="box3-3">
-        <div class="gallery">
-          <div id="triangulo-para-esquerda"></div>
-          <a target="_blank" href="bike.png">
-            <img
-              id="img"
-              src="img/bike.png"
-              alt="Cinque Terre"
-              width="200"
-              height="200"
-            />
+          <a
+            class="carousel-control-prev"
+            href="#carouselExampleIndicators"
+            role="button"
+            data-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
           </a>
-          <div id="triangulo-para-direita"></div>
+          <a
+            class="carousel-control-next"
+            href="#carouselExampleIndicators"
+            role="button"
+            data-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Content at the second part of the screen -->
+      <div id="midle-content">
+        <div id="midle-content-left">
+          <div class="list">
+            <span><p>Serial:</p></span>
+            <span><p>Brand:</p></span>
+            <span><p>Color:</p></span>
+            <span><p>Type:</p></span>
+            <span><p>Status:</p></span>
+            <span><p>Lock:</p></span>
+          </div>
+        </div>
+        <div id="midle-content-right"></div>
+      </div>
+
+      <!-- Content at the third part of the screen -->
+      <div id="bottom-content">
+        <div>
+          <button
+            id="btn-update"
+            type="button"
+            class="btn btn-primary btn-lg btn-block"
+          >
+            UPDATE
+          </button>
+        </div>
+
+        <div>
+          <button
+            id="btn-add"
+            type="button"
+            class="btn btn-secondary btn-lg btn-block"
+          >
+            ADD NEW
+          </button>
         </div>
       </div>
     </div>
   </div>
-  <div class="box3"></div>
-  <div class="color-overlay2"></div>
+  <div id="box-margin-right"></div>
 </div>

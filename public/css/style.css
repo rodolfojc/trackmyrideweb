@@ -8,6 +8,10 @@
   overflow: hidden;
 }
 
+body {
+  margin: 0;
+}
+
 .map-route {
   background-color: white;
   color: white;
@@ -203,4 +207,14 @@
 
 .section-signin button:hover {
   color: red;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(41, 0, 59, 0.8);
 }
