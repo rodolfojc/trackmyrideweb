@@ -20,7 +20,7 @@
 }
 
 #content {
-  background-color: white;
+  background-color: whitesmoke;
   width: 1200px;
   height: 100%;
 
@@ -43,55 +43,21 @@
 }
 
 #up-content {
-  background-color: yellow;
-  height: 500%;
-  width: 100%;
-  
+  background-color: whitesmoke;
+  height: 80%;
+  width: 80%;
+  justify-content: center;
+  display: table-caption;
+  padding-top: 50px;
 }
 
-.gallery{
-  display:flex;
+#inner {
+  border-radius: 50px;
+  height: 577px;
 }
-
-.gallery img{
-
-  width:400px; 
-  height:200px;
-  border-radius:30px;
-
-
-  margin-left: 352px;
-  margin-top: 100px;
-
-
-}
-
-#left-button{
-   width: 0;
-    height: 0;
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent;
-    border-right: 25px solid #ABA8B2;
-    margin-top: 163px;
-    margin-right: 28px;
-}
-
-
-
-#right-button{
-    width: 0;
-    height: 0;
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent;
-    border-left: 25px solid #4C4B63;
-}
-
-
-
-
 
 #bottom-content {
-  background-color: green;
+  background-color: whitesmoke;
   height: 500%;
   width: 100%;
 }
@@ -102,42 +68,41 @@
 }
 
 #btn-update {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
-  margin-right: 50px;
+  border-radius: 20px;
+  margin-right: 20px;
   margin-top: 30px;
+  height: 100px;
+  width: 300px;
 }
 
 #btn-add {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
+  border-radius: 20px;
+  margin-left: 20px;
   margin-top: 30px;
+  height: 100px;
+  width: 300px;
 }
 
 #midle-content {
-  background-color: blue;
+  background-color: whitesmoke;
   height: 500%;
   width: 100%;
   display: flex;
 }
 
 #midle-content-left {
-  background-color: pink;
+  background-color: whitesmoke;
   height: 100%;
   width: 50%;
 }
 
 #midle-content-right {
-  background-color: purple;
+  background-color: whitesmoke;
   height: 100%;
   width: 50%;
 }
-.list{
-    padding-left: 445px;
-    font-size: x-large;
-    font-family: monospace;
-}
-
+.list {
+  padding-left: 445px;
+  font-size: x-large;
+  font-family: monospace;
 }
