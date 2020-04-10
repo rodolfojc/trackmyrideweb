@@ -94,6 +94,8 @@ var geoJson = {
 ]
 }
 
+   
+
     //add multiple locations to the map using geoJson
    // L.geoJSON(geoJson).addTo(mymap);
 
@@ -109,31 +111,39 @@ var geoJson = {
     fillOpacity: 0.8
 };
 
-function onEachFeature(feature, layer){
-    if (feature.properties && feature.properties.id) {
-        layer.bindPopup(feature.properties.id);
-    }
+//new layer, could be used for nightime map
+var difflayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(mymap);    
 
+//Add a pop up on each marker
+function onEachFeature(feature, layer){
+    layer.bindPopup('Name: '+ feature.properties.name +'<br> Stands: '+feature.properties.numberOfStands);
 }
 
     
-    L.geoJSON(geoJson, {
+    var mapWithMarkers = L.geoJSON(geoJson, {
         //add multiple locations with personalised marker using geoJson
         pointToLayer: function(feature, latlng){
             return L.circleMarker(latlng, geojsonMarkerOptions);
            },
 
         onEachFeature: onEachFeature,
-           
-           
-        
     }).addTo(mymap);
 
-   // Layer groups for filters
-//new layer, could be used for nightime map
-var difflayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-}).addTo(mymap);
+
+    //When button is clicked, toggle the markers
+    $(document).on('click', '#showRacks', function() {
+        //If markers are visible, hide it
+        if(mymap.hasLayer(mapWithMarkers)){
+            mymap.removeLayer(mapWithMarkers);
+        }else{
+            //If markers are hidden, show them
+            mapWithMarkers.addTo(mymap);
+        }
+    });
+
+    // Layer groups for filters
 
 //add layer to the map
     mymap.addLayer(layer);
