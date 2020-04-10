@@ -1,3 +1,5 @@
+/* Author: Yuri Braga 2017141 */
+
 #mb-container {
   background: linear-gradient(#432a61, #5b4876, white);
   display: flex;
@@ -44,13 +46,49 @@
   background-color: yellow;
   height: 500%;
   width: 100%;
+  
 }
 
-#midle-content {
-  background-color: blue;
-  height: 500%;
-  width: 100%;
+.gallery{
+  display:flex;
 }
+
+.gallery img{
+
+  width:400px; 
+  height:200px;
+  border-radius:30px;
+
+
+  margin-left: 352px;
+  margin-top: 100px;
+
+
+}
+
+#left-button{
+   width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-right: 25px solid #ABA8B2;
+    margin-top: 163px;
+    margin-right: 28px;
+}
+
+
+
+#right-button{
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 25px solid #4C4B63;
+}
+
+
+
+
 
 #bottom-content {
   background-color: green;
@@ -67,12 +105,39 @@
   height: 150px;
   width: 150px;
   border-radius: 50%;
-
   margin-right: 50px;
+  margin-top: 30px;
 }
 
 #btn-add {
   height: 150px;
   width: 150px;
   border-radius: 50%;
+  margin-top: 30px;
+}
+
+#midle-content {
+  background-color: blue;
+  height: 500%;
+  width: 100%;
+  display: flex;
+}
+
+#midle-content-left {
+  background-color: pink;
+  height: 100%;
+  width: 50%;
+}
+
+#midle-content-right {
+  background-color: purple;
+  height: 100%;
+  width: 50%;
+}
+.list{
+    padding-left: 445px;
+    font-size: x-large;
+    font-family: monospace;
+}
+
 }
