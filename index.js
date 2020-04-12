@@ -1,6 +1,8 @@
 const express = require("express");
+
 const axios = require ('axios');
 const GeoJSON = require('geojson');
+
 
 const app = express();
 //Path is a module to help us to get the directory path
@@ -22,9 +24,10 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-mongoose.connect("mongodb+srv://admin:Pass1234!@cluster0-ii2az.mongodb.net/trackMyRide", { useNewUrlParser: true });
-
+mongoose.connect(
+  "mongodb+srv://admin:Pass1234!@cluster0-ii2az.mongodb.net/trackMyRide",
+  { useNewUrlParser: true }
+);
 
 app.set("view engine", "ejs");
 
@@ -41,9 +44,13 @@ app.listen(3000, () => {
 
 app.get("/sign", (req, res) => {
   //res.sendFile(path.resolve(__dirname, "public/pages/signin.html"));
-  
+
   // after sign in, save token
   res.render("signin");
+});
+
+app.get("/managebike", (req, res) => {
+  res.render("managebike");
 });
 
 app.get("/about", (req, res) => {
@@ -57,23 +64,22 @@ app.post("/index/store", async (req, res) => {
   // Axios
   const { email, password } = req.body;
   console.log(req.body);
-  
-  try{
+
+  try {
     const response = await axios({
-       method: "post",
-       url: "http://34.247.183.192:3000/signup",
-       headers: {}, 
+      method: "post",
+      url: "http://34.247.183.192:3000/signup",
+      headers: {},
       data: {
         email,
-        password 
-      }
-  });
+        password,
+      },
+    });
     console.log(response);
-  }catch (err) {
-    console.log(err.message)
+  } catch (err) {
+    console.log(err.message);
   }
   //
-
 
   //model creates a new doc with browser data
   UserCredentials.create(req.body, (error, blogspot) => {
