@@ -1,5 +1,10 @@
 const express = require("express");
+<<<<<<< HEAD
 const axios = require("axios");
+=======
+const axios = require ('axios');
+const GeoJSON = require('geojson');
+>>>>>>> mongo-cloud
 
 const app = express();
 //Path is a module to help us to get the directory path
@@ -34,6 +39,7 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+
 app.listen(3000, () => {
   console.log("App listening on port 3000");
 });
@@ -50,7 +56,7 @@ app.get("/managebike", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "about.html"));
+  res.render("about");
 });
 
 //#############################################################################################//
@@ -85,3 +91,12 @@ app.post("/index/store", async (req, res) => {
 
 //########################################################/
 //To save username inside the database
+
+//to display the map for any kind of user
+app.get("/consultmap", (req, res) => {
+  res.render("map");
+});
+
+
+
+        
