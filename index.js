@@ -4,7 +4,7 @@ const axios = require("axios");
 const GeoJSON = require("geojson");
 
 const app = express();
-//Path is a module to help us to get the directory path
+//Path is a module to help us to get the directory path...
 const path = require("path");
 //To be able to serve static files such CSS and fonts.
 
