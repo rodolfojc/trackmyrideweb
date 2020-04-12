@@ -1,10 +1,7 @@
 const express = require("express");
-<<<<<<< HEAD
-const axios = require("axios");
-=======
 const axios = require ('axios');
 const GeoJSON = require('geojson');
->>>>>>> mongo-cloud
+
 
 const app = express();
 //Path is a module to help us to get the directory path
