@@ -1,0 +1,167 @@
+/* Author: Yuri Braga 2017141 */
+
+/* Media Queries: Tablet Landscape */
+@media screen and (max-width: 1060px) {
+  #primary {
+    width: 67%;
+  }
+  #secondary {
+    width: 30%;
+    margin-left: 3%;
+  }
+}
+
+/* Media Queries: Tabled Portrait */
+@media screen and (max-width: 768px) {
+  #primary {
+    width: 100%;
+  }
+  #secondary {
+    width: 100%;
+    margin: 0;
+    border: none;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+#mb-container {
+  background: linear-gradient(#432a61, #5b4876, white);
+  display: flex;
+  top: 0;
+  left: 0;
+
+  height: 1000px;
+
+  justify-content: space-between;
+}
+
+#box-margin-left {
+  background-image: linear-gradient(#432a61, #5b4876, white);
+  width: 0%;
+  height: 100%;
+
+  left: 0px;
+}
+
+#content {
+  background-color: whitesmoke;
+  width: 1200px;
+  height: 100%;
+
+  opacity: 0.9;
+  left: 0px;
+}
+
+#box-margin-right {
+  background-image: linear-gradient(#432a61, #5b4876, white);
+  width: 0%;
+  height: 100%;
+  opacity: 0.3;
+}
+
+.content-holder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#up-content {
+  background-color: whitesmoke;
+  height: 80%;
+  width: 80%;
+  justify-content: center;
+  display: table-caption;
+  padding-top: 50px;
+}
+
+#inner {
+  border-radius: 50px;
+  height: 577px;
+}
+
+#bottom-content {
+  background-color: whitesmoke;
+  height: 500%;
+  width: 100%;
+}
+
+#bottom-content {
+  display: flex;
+  justify-content: center;
+}
+
+#btn-update {
+  border-radius: 20px;
+  margin-right: 20px;
+  margin-top: 30px;
+  height: 100px;
+  width: 300px;
+  color: white;
+  background-image: linear-gradient(#432a61, #523d6b, white);
+}
+
+#btn-add {
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-top: 30px;
+  height: 100px;
+  width: 300px;
+  color: white;
+  background-image: linear-gradient(#432a61, #523d6b, white);
+}
+
+#midle-content {
+  background-color: whitesmoke;
+  height: 400%;
+  width: 100%;
+  display: flex;
+  padding-right: 227px;
+}
+
+#midle-content-left {
+  background-color: whitesmoke;
+  height: 100%;
+  width: 50%;
+}
+
+#midle-content-right {
+  background-color: whitesmoke;
+  height: 100%;
+  width: 230%;
+}
+.list {
+  padding-left: 347px;
+  font-size: x-large;
+  font-family: monospace;
+}
+
+.list2 {
+  font-family: monospace;
+  padding-right: 40px;
+  font-size: x-large;
+}
+
+html {
+  font-size: 100%;
+}
+
+@media (min-width: 640px) {
+  body {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 960px) {
+  body {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1100px) {
+  body {
+    font-size: 1.5rem;
+  }
+}

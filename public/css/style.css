@@ -8,6 +8,10 @@
   overflow: hidden;
 }
 
+body {
+  margin: 0;
+}
+
 .map-route {
   background-color: white;
   color: white;
@@ -205,6 +209,17 @@
   color: red;
 }
 
+<<<<<<< HEAD
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(41, 0, 59, 0.8);
+}
+=======
 /* Map features */
 /* #mapid { 
   width:900px; 
@@ -221,3 +236,4 @@ html, body, #mapid {
   height: 100%;
   width: 100vw;
 }
+>>>>>>> mongo-cloud
