@@ -8,10 +8,6 @@
   overflow: hidden;
 }
 
-body {
-  margin: 0;
-}
-
 .map-route {
   background-color: white;
   color: white;
@@ -209,7 +205,6 @@ body {
   color: red;
 }
 
-
 /* Map features */
 /* #mapid { 
   width:900px; 
@@ -221,20 +216,8 @@ body {
  body {
   padding: 0;
   margin: 0;
-} 
+} */
 html, body, #mapid {
   height: 100%;
   width: 100vw;
 }
-*/
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 9999;
-  width: 100%;
-  height: 50px;
-  background-color: rgba(41, 0, 59, 0.8);
-}
-
