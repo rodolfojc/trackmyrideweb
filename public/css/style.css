@@ -209,7 +209,6 @@ body {
   color: red;
 }
 
-<<<<<<< HEAD
 .footer {
   position: fixed;
   bottom: 0;
@@ -219,7 +218,7 @@ body {
   height: 50px;
   background-color: rgba(41, 0, 59, 0.8);
 }
-=======
+
 /* Map features */
 /* #mapid { 
   width:900px; 
@@ -232,8 +231,9 @@ body {
   padding: 0;
   margin: 0;
 } */
-html, body, #mapid {
+html,
+body,
+#mapid {
   height: 100%;
   width: 100vw;
 }
->>>>>>> mongo-cloud
