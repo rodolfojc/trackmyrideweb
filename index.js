@@ -50,7 +50,7 @@ app.get("/managebike", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "about.html"));
+  res.render("about");
 });
 
 //#############################################################################################//
