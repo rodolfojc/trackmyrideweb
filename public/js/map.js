@@ -134,8 +134,8 @@ var geoJson = {
 var rackMarker = L.icon({
     iconUrl: 'img/bikelogo.png',
     iconSize:     [40, 60], // size of the icon
-    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    iconAnchor:   [20, 55], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 
 //new layer, could be used for nightime map
@@ -146,6 +146,10 @@ var difflayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 //Add a pop up on each marker
 function onEachFeature(feature, layer){
     layer.bindPopup('Name: '+ feature.properties.name +'<br> Stands: '+feature.properties.numberOfStands);
+    layer.on('click', function (e) {
+          
+        console.log(feature.properties.id + ' ' + e.latlng.lat + ', ' + e.latlng.lng + 'from geoJSON ');
+  });
 }
 
     
@@ -192,6 +196,23 @@ function onEachFeature(feature, layer){
             //If markers are hidden, show them
             mapWithHotspotsMarkers.addTo(mymap);
         }
+    });
+
+    
+    //Get the location from a leaflet marker
+    marker.on('click', function(ev){
+        var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
+        console.log(latlng.lat + ', ' + latlng.lng + 'from marker ');
+      });
+
+    //Get the location clicked on the map
+    mymap.on('click', function(e) {
+        console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+    });
+
+    //When button is clicked, grab the location
+    $(document).on('click', '#grabPosition', function() {
+       
     });
 
     // Layer groups for filters
