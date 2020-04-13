@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+<nav class="fixed-nav-bar" id="nav-bar">
+    <!-- Fixed navigation bar content-->
+    <ul class="list-option">
+        <li class="nav-item">
+            <a class="nav-link" href="/welcome">HOME</a>
+        </li>
+    </ul>
+</nav>
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,8 +55,10 @@
 </head>
 
 <body>
+    <div style="text-align:center">
+        <h3>Report Form</h3>
+    </div>
 
-    <h3>Report Form</h3>
 
     <div class="container">
         <form action="/action_page.php">
@@ -56,14 +66,6 @@
             <label for="lname">Username</label>
             <input type="text" id="uname" name="username" placeholder="Your username..">
 
-            <!-- <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-            
-            <label for="lname">E-mail</label>
-            <input type="text" id="email" name="email" placeholder="name@mail.ie">-->
 
             <label for="report">What do you want to report?</label>
             <select id="report" name="area">
@@ -79,27 +81,6 @@
             <br/>
             <br/>
 
-            <!--<input type="text" id="address" name="address" placeholder="Street, PostCode, Area ">
-            
-            <label for="area">Dublin Area</label>
-            <select id="area" name="area">
-      <option value="Dublin01">D01</option>
-      <option value="Dublin02">D02</option>
-      <option value="Dublin03">D03</option>
-      <option value="Dublin04">D04</option>
-      <option value="Dublin05">D05</option>
-      <option value="Dublin06">D06</option>
-      <option value="Dublin07">D07</option>
-      <option value="Dublin08">D08</option>
-      <option value="Dublin09">D09</option>
-      <option value="Dublin10">D10</option>
-      <option value="Dublin11">D11</option>
-      <option value="Dublin12">D12</option>
-      <option value="Dublin13">D13</option>
-      <option value="Dublin14">D14</option>
-      <option value="Dublin15">D15</option>
-            </select>
--->
 
             <lable for="event">When did the event happen? </lable>
             <br/>
