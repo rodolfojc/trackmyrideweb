@@ -142,7 +142,7 @@
   position: fixed;
   right: 0;
   left: 40%;
-  top: 5%;
+  top: 18%;
   margin-left: auto;
   margin-right: auto;
   display: table;
@@ -233,6 +233,15 @@ body,
 #mapid {
   height: 100%;
   width: 100vw;
+}
+
+
+.home-button {
+  border-radius: 30px;
+  height: 44px;
+  width: 230px;
+  background-color: rgb(214, 212, 216);
+  font-family: monospace;
 }
 
 /* CSS for info bike  */
@@ -329,3 +338,4 @@ body,
 .home-route a:hover {
   color: rgb(98, 235, 19);
 }
+
