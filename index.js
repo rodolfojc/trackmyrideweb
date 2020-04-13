@@ -44,14 +44,19 @@ app.get("/sign", (req, res) => {
     // after sign in, save token
     res.render("signin");
 });
+// Welcome Page
+app.get("/home", (req, res) => {
+    res.render("home");
+});
 
 app.get("/managebike", (req, res) => {
     res.render("managebike");
 });
 
 app.get("/about", (req, res) => {
-    res.render("about");
-})
+        res.render("about");
+    })
+    // Report Page
 app.get("/reportForm", (req, res) => {
         res.render("reportForm");
     })
