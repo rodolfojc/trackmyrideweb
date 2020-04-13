@@ -8,10 +8,6 @@
   overflow: hidden;
 }
 
-body {
-  margin: 0;
-}
-
 .map-route {
   background-color: white;
   color: white;
@@ -224,6 +220,7 @@ body {
   width:900px; 
   height:480px;
 
+
   
  }
 
@@ -237,3 +234,4 @@ body,
   height: 100%;
   width: 100vw;
 }
+
