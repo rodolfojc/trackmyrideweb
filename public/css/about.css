@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+#btn-update {
+  border-radius: 20px;
+  margin-right: 20px;
+  margin-top: 30px;
+  height: 100px;
+  width: 300px;
+  color: white;
+  background-image: linear-gradient(grey, lightgrey, whitesmoke);
+}
+
+#btn-add {
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-top: 30px;
+  height: 100px;
+  width: 300px;
+  color: white;
+  background-image: linear-gradient(grey, lightgrey, whitesmoke);
+}
+
+#bottom-content {
+  display: flex;
+  justify-content: center;
+}

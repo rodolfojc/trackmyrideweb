@@ -1,9 +1,13 @@
 const express = require("express");
-const axios = require ('axios');
-const GeoJSON = require('geojson');
+
+
+const axios = require("axios");
+const GeoJSON = require("geojson");
+
+
 
 const app = express();
-//Path is a module to help us to get the directory path
+//Path is a module to help us to get the directory path...
 const path = require("path");
 //To be able to serve static files such CSS and fonts.
 
@@ -22,30 +26,80 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-mongoose.connect("mongodb+srv://admin:Pass1234!@cluster0-ii2az.mongodb.net/trackMyRide", { useNewUrlParser: true });
-
+mongoose.connect(
+    "mongodb+srv://admin:Pass1234!@cluster0-ii2az.mongodb.net/trackMyRide", { useNewUrlParser: true }
+);
 
 app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("index");
+    res.render("index");
 });
 
-
 app.listen(3000, () => {
-  console.log("App listening on port 3000");
+    console.log("App listening on port 3000");
 });
 
 app.get("/sign", (req, res) => {
-  //res.sendFile(path.resolve(__dirname, "public/pages/signin.html"));
-  
-  // after sign in, save token
-  res.render("signin");
+
+    //res.sendFile(path.resolve(__dirname, "public/pages/signin.html"));
+
+    // after sign in, save token
+    res.render("signin");
+});
+// Welcome Page
+app.get("/home", (req, res) => {
+    res.render("home");
 });
 
+app.get("/managebike", (req, res) => {
+    res.render("managebike");
+});
+
+app.get("/about", (req, res) => {
+        res.render("about");
+    })
+    // Report Page
+app.get("/reportForm", (req, res) => {
+        res.render("reportForm");
+    })
+    //#############################################################################################/w
+//app.post("/index/store", async(req, res) => {
+//    console.log(req.body);
+//
+//    // Axios
+//    const { email, password } = req.body;
+//    console.log(req.body);
+//
+//    try {
+//        const response = await axios({
+//            method: "post",
+//            url: "http://34.247.183.192:3000/signup",
+//            headers: {},
+//            data: {
+//                email,
+//                password,
+//            },
+//        });
+//        console.log(response);
+//    } catch (err) {
+//        console.log(err.message);
+//    }
+//    //
+//
+//    //model creates a new doc with browser data
+//    UserCredentials.create(req.body, (error, blogspot) => {
+//        res.redirect("/");
+//    });
+//
+//  //res.sendFile(path.resolve(__dirname, "public/pages/signin.html"));
+//  
+//  // after sign in, save token
+//  res.render("signin");
+//});
+//
 app.get("/about", (req, res) => {
   res.sendFile(path.resolve(__dirname, "about.html"));
 });
@@ -79,6 +133,7 @@ app.post("/index/store", async (req, res) => {
   UserCredentials.create(req.body, (error, blogspot) => {
     res.redirect("/");
   });
+
 });
 
 //########################################################/
@@ -86,9 +141,7 @@ app.post("/index/store", async (req, res) => {
 
 //to display the map for any kind of user
 app.get("/consultmap", (req, res) => {
+
   res.render("map");
 });
 
-
-
-        
