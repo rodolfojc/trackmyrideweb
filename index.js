@@ -145,3 +145,8 @@ app.get("/consultmap", (req, res) => {
   res.render("map");
 });
 
+app.get("/bikeinfo", (req, res) => {
+  res.render("bikeinfo");
+});
+//########################################################/
+//To search bike info
