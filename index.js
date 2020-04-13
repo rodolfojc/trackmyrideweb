@@ -1,10 +1,13 @@
 const express = require("express");
-const GeoJSON = require('geojson');
 
-const axios = require ('axios');
+
+const axios = require("axios");
+const GeoJSON = require("geojson");
+
+
 
 const app = express();
-//Path is a module to help us to get the directory path
+//Path is a module to help us to get the directory path...
 const path = require("path");
 //To be able to serve static files such CSS and fonts.
 
@@ -34,7 +37,6 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
     res.render("index");
 });
-
 
 app.listen(3000, () => {
     console.log("App listening on port 3000");
@@ -139,5 +141,7 @@ app.post("/index/store", async (req, res) => {
 
 //to display the map for any kind of user
 app.get("/consultmap", (req, res) => {
-    res.render("map");
+
+  res.render("map");
 });
+
