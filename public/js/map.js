@@ -27,11 +27,11 @@ var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 //add layer to the map
 mymap.addLayer(layer);
 
-//pin a specific location
-var marker = L.marker([53.347557, -6.259317]).addTo(mymap);
+//pin a specific location - JUST FOR TESTE, DELETE IT IN THE END
+//var marker = L.marker([53.347557, -6.259317]).addTo(mymap);
 
-//add pop up to the marker
-marker.bindPopup("<b>numberOfStands: 8</b><br>type: Sheffield Stand").openPopup();
+//add pop up to the marker - JUST FOR TESTE, DELETE IT IN THE END
+//marker.bindPopup("<b>numberOfStands: 8</b><br>type: Sheffield Stand").openPopup();
 
 // var geoJson = geoJSON2();
 var geoJson = {
@@ -199,11 +199,11 @@ function onEachFeature(feature, layer){
     });
 
     
-    //Get the location from a leaflet marker
-    marker.on('click', function(ev){
-        var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
-        console.log(latlng.lat + ', ' + latlng.lng + 'from marker ');
-      });
+    //Get the location from a leaflet marker - JUST FOR TESTE, DELETE IT IN THE END
+    // marker.on('click', function(ev){
+    //     var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
+    //     console.log(latlng.lat + ', ' + latlng.lng + 'from marker ');
+    //   });
 
     //Get the location clicked on the map
     mymap.on('click', function(e) {
