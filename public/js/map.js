@@ -255,9 +255,9 @@ L.control.layers({
     
     $('.chat').on('hide.bs.collapse',function(){
         mymap.invalidateSize();
-        $('#chatToggle').text("Show Chat");
+        $('#chatToggle').text("Report Rack");
     });
     $('.chat').on('show.bs.collapse',function(){
         mymap.invalidateSize();
-        $('#chatToggle').text("Hide Chat");
+        $('#chatToggle').text("Hide Report Rack");
     });
