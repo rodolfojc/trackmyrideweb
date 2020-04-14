@@ -253,3 +253,11 @@ L.control.layers({
 
     
     
+    $('.chat').on('hide.bs.collapse',function(){
+        mymap.invalidateSize();
+        $('#chatToggle').text("Show Chat");
+    });
+    $('.chat').on('show.bs.collapse',function(){
+        mymap.invalidateSize();
+        $('#chatToggle').text("Hide Chat");
+    });
