@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--Importing the Header Layout element-->
+  <%-include('layouts/login2_header'); -%>
+
+  <div class="login">
+    <p class="main-txt" style="font-family: pacifico;color: white;font-size: 23px;margin-left: 45px;">
+      Track My Ride
+      <i id="bike-icon" class="material-icons"  >directions_bike</i></p>
+    
+      <form>
+      <!--When submitting the form the browser will make a POST request to the /signin/store endpoint.Check Index.js-->
+       <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/consultmap">Consult Map</button>
+
+       <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/bikeinfo">Consult Bike Info</button>
+      <!-- <span class="link-password" -->
+        <!-- ><a href="#">Forgotten your username or password?</a> -->
+        <!-- <br /> -->
+        <!-- <br /> -->
+        <!-- <a href="/">Already a member? Login</a></span -->
+      <!-- > -->
+    <!-- </form> -->
+  </div>
+
+  <body>
+    <%-include('layouts/navbar'); -%> <%-include('layouts/login2_scripts'); -%>
+  </body>
+</html>
