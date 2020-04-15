@@ -236,8 +236,12 @@ body
 } */
 /* after navbar */
 
-
-
+#mapid{
+  position: relative
+}
+body{ 
+  padding-top: -50px;
+}
 
 /* .fill {
   flex: 1 1 auto;
@@ -246,9 +250,10 @@ body
 
 #content {
   width: 100%;
+  padding: 20px;
   min-height: 100vh;
   transition: all 0.3s;
-  position: relative;
+  position: absolute;
   top: 0;
   right: 0;
   flex-grow: 1;

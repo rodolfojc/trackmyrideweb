@@ -148,6 +148,13 @@ var rackMarker = L.icon({
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 
+const fontAwesomeIcon = L.divIcon({
+    html: '<i class="fas fa-flag fa-2x"></i>',
+    // iconSize: [300, 300],
+    className: 'myDivIcon',
+    iconAnchor:   [5, 20]
+});
+
 //new layer, could be used for nightime map
 var difflayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
@@ -167,7 +174,7 @@ function onEachFeature(feature, layer){
         //add multiple locations with personalised marker using geoJson
         pointToLayer: function(feature, latlng){
            return L.marker(latlng, {
-               icon: rackMarker
+               icon: fontAwesomeIcon
            });
            
             // return L.circleMarker(latlng, geojsonMarkerOptions);
