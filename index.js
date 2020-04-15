@@ -65,16 +65,12 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 
-
-
-
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// app.get("/", (req, res) => {
+// res.render("index");
+// });
 
 app.listen(3005, () => {
   console.log("App listening on port 3005");
-
 });
 
 //Routes for all pages #####################################################################
