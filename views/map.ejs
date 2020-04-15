@@ -6,22 +6,24 @@
   <%-include('layouts/header'); -%>
 
   <body>
-    <div id="mapFilters">
-      <button id = "showRacks">See Racks</button>
-      <button id = "showHotspots">See Hotsposts</button>
-    </div>
-    
-    
-    <div id="mapid">
-      
-        <script src="js/map.js"></script>
-    </div>
 
-    
+    <div class="wrapper">
 
-    
-       <!-- Bottom navbar with form -->
-       <form class="form-inline">
+ <!-- Sidebar  -->
+ <nav id="sidebar">
+  <div id="dismiss">
+    <i class="fas fa-arrow-left"></i>
+</div>
+  
+  <div class="sidebar-header">
+      <h3>Report Incident</h3>
+  </div>
+
+  <ul class="list-unstyled components">
+      <p>Fill the form</p>
+      <li class="active">
+          <a href="#" data-toggle="collapse" aria-expanded="false">Select a rack</a>
+           <form >
           <div class="form-group mx-sm-3 mb-2">
           <label for="lat" class="sr-only">Latitude</label>
           <input type="number" class="form-control" id="lat" placeholder="lat">
@@ -32,19 +34,74 @@
         </div>
         <button type="submit" class="btn btn-primary mb-2" id="grabPosition">Report event</button>
       </form>
-<!--Importing the Video background element-->
-   <!-- <%-include('layouts/videobackground'); -%> -->
 
-     
-     
-     
-     
+      </li>
+      
+  
+</nav>
+
+   
+<!-- Content -->
+
+ <!-- Top Navbar -->
+ <!-- <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-0" > -->
+  <div id="content"> 
+  <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-0 static-top " >
+ <a href="#" class="navbar-brand" ><i class="fas fa-bicycle"></i></a>
+ <div class="d-flex bg-secondary"></div>
+ <div class="p-2 mr-auto">
+   <button class="btn btn-success p-1" id= "showRacks">Racks</button>
+ <button class="btn btn-success p-1" id= "showHotspots">Hotspots</button>
+ </div>
+
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+   <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+ <ul class="navbar-nav text-right">
+     <li class="nav-item active">
+         <a class="nav-link" href="#">Home </a>
+       </li>
+     <li>
+       <a class="flex-fill text-right text-light nav-link" data-toggle="collapse" href="#" data-target=".chat" id="chatToggle">Report Rack</a>
+     </li>
+ 
+   </ul>
+</div>
+</nav>
+  
+      <div id="mapid" style="min-width: 100%; min-height: 100vh">
       </div>
     </div>
+
+  </div>
+
+
+ 
+
+   
+
+
+        <!-- Form hidden
+        <div class="container-fluid h-100 d-flex flex-column">
+          <div class="row h-100 map-container flex-fill" id="mapid">
+          </div>
+        </div>
+       -->
+      
+         
     <!--Importing the Scripts from Layout-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <%-include('layouts/scripts'); -%>
+
+      <!-- jQuery CDN - Slim version (=without AJAX) -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <!-- Popper.JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+      <!-- Bootstrap JS -->
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+      <!-- jQuery Custom Scroller CDN -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script type="text/javascript" src="js/map.js"></script>
+<!-- <script src="js/map.js"></script>  -->
+<%-include('layouts/scripts'); -%>
   </body>
 </html>

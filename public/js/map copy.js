@@ -20,17 +20,7 @@
 
 // Main properties of a map
 //set the map in Dublin City Centre
-// var mymap = L.map('mapid').setView([53.347557, -6.259317], 13);
-
-
-var mymap = L.map('mapid', { 
-    zoomControl: false //Remove default zoom control from the left side
-}).setView([53.347557, -6.259317], 13);
-
-//Create new zoom control on the right side of the map    
-L.control.zoom({
-position:'topright'
-}).addTo(mymap);
+var mymap = L.map('mapid').setView([53.347557, -6.259317], 13);
     
 //main map layer
 var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
@@ -277,14 +267,8 @@ L.control.layers({
             theme: "minimal"
         });
 
-        $('#dismiss, .overlay').on('click', function () {
-            $('#sidebar').removeClass('active');
-            $('.overlay').removeClass('active');
-        });
-
         $('#chatToggle').on('click', function () {
-            $('#sidebar').addClass('active');
-            $('.overlay').addClass('active');
+            $('#sidebar, #content').toggleClass('active');
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
