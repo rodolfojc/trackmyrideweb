@@ -22,6 +22,36 @@ const UserCredentials = require("./models/User.js");
 //Importing Bike model
 const Bike = require("./models/Bike.js");
 
+//Routing imports##################################################################
+
+const homeController = require("./controllers/login");
+
+const signinController = require("./controllers/signIn");
+
+const welcomeController = require("./controllers/home");
+
+const manageBikeController = require("./controllers/managebike");
+
+const consultMapController = require("./controllers/consultmap");
+
+const bikeInfoController = require("./controllers/bikeinfo");
+
+const reportFormController = require("./controllers/reportform");
+
+const consultPageController = require("./controllers/consult");
+
+//###################################################################################
+
+//Creating a customer middleware
+// const validateMiddleWare = (req, res, next) => {
+// if (req.email == null || req.password == null) {
+// return res.redirect("/sigIn2");
+// }
+// next();
+// };
+//
+// app.use("/index/store", validateMiddleWare);
+
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,74 +65,71 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// app.get("/", (req, res) => {
+// res.render("index");
+// });
 
 app.listen(3005, () => {
   console.log("App listening on port 3005");
 });
 
-app.get("/sign", (req, res) => {
-  //res.sendFile(path.resolve(__dirname, "public/pages/signin.html"));
+//Routes for all pages #####################################################################
 
-  // after sign in, save token
-  res.render("signin");
-});
-// Welcome Page
-app.get("/home", (req, res) => {
-  res.render("home");
-});
+app.get("/sign", signinController);
 
-app.get("/managebike", (req, res) => {
-  res.render("managebike");
-});
+app.get("/home", welcomeController);
 
-app.get("/about", (req, res) => {
-  res.render("about");
-});
-// Report Page
-app.get("/reportForm", (req, res) => {
-  res.render("reportForm");
-});
-//#############################################################################################/w
-//app.post("/index/store", async(req, res) => {
-//    console.log(req.body);
+app.get("/managebike", manageBikeController);
+
+app.get("/consultmap", consultMapController);
+
+app.get("/", homeController);
+
+app.get("/bikeinfo", bikeInfoController);
+
+app.get("/reportForm", reportFormController);
+
+app.get("/consult", consultPageController);
+
+// Finish Routes#############################################################################
+
+// app.post("/index/store", async (req, res) => {
+// console.log(req.body);
 //
-//    // Axios
-//    const { email, password } = req.body;
-//    console.log(req.body);
+// Axios
+// const { email, password } = req.body;
+// console.log(req.body);
 //
-//    try {
-//        const response = await axios({
-//            method: "post",
-//            url: "http://34.247.183.192:3000/signup",
-//            headers: {},
-//            data: {
-//                email,
-//                password,
-//            },
-//        });
-//        console.log(response);
-//    } catch (err) {
-//        console.log(err.message);
-//    }
-//    //
+// try {
+// const response = await axios({
+// method: "post",
+// url: "http://34.247.183.192:3000/signup",
+// headers: {},
+// data: {
+// email,
+// password,
+// },
+// });
+// console.log(response);
+// } catch (err) {
+// console.log(err.message);
+// }
+
 //
-//    //model creates a new doc with browser data
-//    UserCredentials.create(req.body, (error, blogspot) => {
-//        res.redirect("/");
-//    });
+// model creates a new doc with browser data
+// UserCredentials.create(req.body, (error, blogspot) => {
+// res.redirect("/");
+// });
 //
-//  //res.sendFile(path.resolve(__dirname, "public/pages/signin.html"));
+// res.sendFile(path.resolve(__dirname, "public/pages/signin2.html"));
 //
-//  // after sign in, save token
-//  res.render("signin");
-//});
-//
-app.get("/about", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "about.html"));
-});
+// after sign in, save token
+// res.render("home");
+// });
+
+// app.get("/about", (req, res) => {
+// res.sendFile(path.resolve(__dirname, "about.html"));
+// });
 
 //#############################################################################################//
 app.post("/index/store", async (req, res) => {
@@ -136,17 +163,3 @@ app.post("/index/store", async (req, res) => {
 
 //########################################################/
 //To save username inside the database
-
-//to display the map for any kind of user
-app.get("/consultmap", (req, res) => {
-  res.render("map");
-});
-
-
-
-app.get("/bikeinfo", (req, res) => {
-  res.render("bikeinfo");
-});
-//########################################################/
-//To search bike info
-
