@@ -162,7 +162,9 @@ var difflayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 
 //Add a pop up on each marker
 function onEachFeature(feature, layer){
-    layer.bindPopup('Name: '+ feature.properties.name +'<br> Stands: '+feature.properties.numberOfStands);
+    layer.bindPopup('Name: '+ feature.properties.name +'<br> Stands: '+feature.properties.numberOfStands +
+   '<button class="btn btn-outline-info btn-sm" id="chatToggle">Report</button>'
+    );
     layer.on('click', function (e) {
           
         console.log(feature.properties.id + ' ' + e.latlng.lat + ', ' + e.latlng.lng + 'from geoJSON ');
@@ -289,10 +291,12 @@ L.control.layers({
             $('.overlay').removeClass('active');
         });
 
-        $('#chatToggle').on('click', function () {
+        $("div").on("click", '#chatToggle', function () {
             $('#sidebar').addClass('active');
             $('.overlay').addClass('active');
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
     });
+
+   
