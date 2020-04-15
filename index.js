@@ -39,8 +39,8 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.listen(3000, () => {
-  console.log("App listening on port 3000");
+app.listen(3005, () => {
+  console.log("App listening on port 3005");
 });
 
 app.get("/sign", (req, res) => {
