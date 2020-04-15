@@ -236,3 +236,9 @@ input:focus {
 .link-terms {
   margin-top: 10px;
 }
+
+#btn-consult {
+  height: 71px;
+  margin-top: 25px;
+  border-radius: 20px;
+}

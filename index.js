@@ -22,11 +22,25 @@ const UserCredentials = require("./models/User.js");
 //Importing Bike model
 const Bike = require("./models/Bike.js");
 
-//Routing imports
+//Routing imports##################################################################
 
 const homeController = require("./controllers/login");
 
 const signinController = require("./controllers/signIn");
+
+const welcomeController = require("./controllers/home");
+
+const manageBikeController = require("./controllers/managebike");
+
+const consultMapController = require("./controllers/consultmap");
+
+const bikeInfoController = require("./controllers/bikeinfo");
+
+const reportFormController = require("./controllers/reportform");
+
+const consultPageController = require("./controllers/consult");
+
+//###################################################################################
 
 //Creating a customer middleware
 // const validateMiddleWare = (req, res, next) => {
@@ -51,40 +65,30 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 
-// app.get("/", (req, res) => {
-// res.render("login2");
-// });
-
-app.get("/", homeController);
-
 app.listen(3000, () => {
   console.log("App listening on port 3000");
 });
 
+//Routes for all pages #####################################################################
+
 app.get("/sign", signinController);
-// app.get("/sign", (req, res) => {
-//res.sendFile(path.resolve(__dirname, "public/pages/signin.html"));
 
-// after sign in, save token
-// res.render("signIn2");
-// });
-// Welcome Page
-app.get("/home", (req, res) => {
-  res.render("home");
-});
+app.get("/home", welcomeController);
 
-app.get("/managebike", (req, res) => {
-  res.render("managebike");
-});
+app.get("/managebike", manageBikeController);
 
-app.get("/about", (req, res) => {
-  res.render("about");
-});
-// Report Page
-app.get("/reportForm", (req, res) => {
-  res.render("reportForm");
-});
-//#############################################################################################/w
+app.get("/consultmap", consultMapController);
+
+app.get("/", homeController);
+
+app.get("/bikeinfo", bikeInfoController);
+
+app.get("/reportForm", reportFormController);
+
+app.get("/consult", consultPageController);
+
+// Finish Routes#############################################################################
+
 // app.post("/index/store", async (req, res) => {
 // console.log(req.body);
 //
@@ -155,14 +159,3 @@ app.post("/index/store", async (req, res) => {
 
 //########################################################/
 //To save username inside the database
-
-//to display the map for any kind of user
-app.get("/consultmap", (req, res) => {
-  res.render("map");
-});
-
-app.get("/bikeinfo", (req, res) => {
-  res.render("bikeinfo");
-});
-//########################################################/
-//To search bike info
