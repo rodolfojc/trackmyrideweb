@@ -20,7 +20,17 @@
 
 // Main properties of a map
 //set the map in Dublin City Centre
-var mymap = L.map('mapid').setView([53.347557, -6.259317], 13);
+// var mymap = L.map('mapid').setView([53.347557, -6.259317], 13);
+
+
+var mymap = L.map('mapid', { 
+    zoomControl: false //Remove default zoom control from the left side
+}).setView([53.347557, -6.259317], 13);
+
+//Create new zoom control on the right side of the map    
+L.control.zoom({
+position:'topright'
+}).addTo(mymap);
     
 //main map layer
 var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
