@@ -329,3 +329,20 @@ body,
 .home-route a:hover {
   color: rgb(98, 235, 19);
 }
+
+#container 
+  { 
+       position: relative;
+  }
+#body, #head 
+  {
+        position: absolute;
+   }
+#body 
+  {
+       top: 100px; 
+  }
+#head 
+  {
+       top: 0px; 
+  }
