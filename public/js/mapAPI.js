@@ -1,22 +1,13 @@
-// const axios =  require('axios');
 
-// const geoJSON2 = async () => {
-//     let response = null;
-
-//     try{
-//         response = await axios({
-//         method: "GET",
-//         url: "http://34.247.183.192:3000/getracks",
-//         headers: {}, 
-//         data: {}
-//       });
-//         //console.log(response);
-//       }catch (err) {
-//         console.log(err.message)
-//       }
-
-//     return response;
-// };
+const xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://cors-anywhere.herokuapp.com/http://34.247.183.192:3000/getracks', true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.responseType = 'json';
+xhr.onload = function() {
+    if (xhr.status !== 200) return
+    L.geoJSON(xhr.response).addTo(mymap);
+};
+// xhr.send();
 
 // Main properties of a map
 //set the map in Dublin City Centre
@@ -33,86 +24,87 @@ mymap.addLayer(layer);
 //add pop up to the marker - JUST FOR TESTE, DELETE IT IN THE END
 //marker.bindPopup("<b>numberOfStands: 8</b><br>type: Sheffield Stand").openPopup();
 
-// var geoJson = geoJSON2();
-var geoJson = {
-    type: "FeatureCollection",
-    features: 
-    [
-        {
-            type: "Feature",
-            geometry: 
-            {
-            type: "Point",
-            coordinates: 
-            [
-            -6.243576,
-            53.346026
-            ]
-            },
-            properties: 
-            {
-            checked: true,
-            id: "557990",
-            name: "Lime Street",
-            notes: "",
-            numberOfStands: 40,
-            source: "DublinBikes",
-            thefts: [ ],
-            type: "DublinBikes",
-            verified: true
-            }
-            },
-            {
-            type: "Feature",
-            geometry: 
-            {
-            type: "Point",
-            coordinates: 
-            [
-            -6.260177,
-            53.330662
-            ]
-            },
-            properties: 
-            {
-            checked: true,
-            id: "c6da28",
-            name: "Charlemont Street",
-            notes: "",
-            numberOfStands: 40,
-            source: "DublinBikes",
-            thefts: [ ],
-            type: "DublinBikes",
-            verified: true
-            }
-            },
-            {
-            type: "Feature",
-            geometry: 
-            {
-            type: "Point",
-            coordinates: 
-            [
-            -6.310015,
-            53.342113
-            ]
-            },
-            properties: 
-            {
-            checked: true,
-            id: "91cc6b",
-            name: "Kilmainham Gaol",
-            notes: "",
-            numberOfStands: 40,
-            source: "DublinBikes",
-            thefts: [ ],
-            type: "DublinBikes",
-            verified: true
-            }
-            },
+var geoJson = xhr.send();
+
+// var geoJson = {
+//     type: "FeatureCollection",
+//     features: 
+//     [
+//         {
+//             type: "Feature",
+//             geometry: 
+//             {
+//             type: "Point",
+//             coordinates: 
+//             [
+//             -6.243576,
+//             53.346026
+//             ]
+//             },
+//             properties: 
+//             {
+//             checked: true,
+//             id: "557990",
+//             name: "Lime Street",
+//             notes: "",
+//             numberOfStands: 40,
+//             source: "DublinBikes",
+//             thefts: [ ],
+//             type: "DublinBikes",
+//             verified: true
+//             }
+//             },
+//             {
+//             type: "Feature",
+//             geometry: 
+//             {
+//             type: "Point",
+//             coordinates: 
+//             [
+//             -6.260177,
+//             53.330662
+//             ]
+//             },
+//             properties: 
+//             {
+//             checked: true,
+//             id: "c6da28",
+//             name: "Charlemont Street",
+//             notes: "",
+//             numberOfStands: 40,
+//             source: "DublinBikes",
+//             thefts: [ ],
+//             type: "DublinBikes",
+//             verified: true
+//             }
+//             },
+//             {
+//             type: "Feature",
+//             geometry: 
+//             {
+//             type: "Point",
+//             coordinates: 
+//             [
+//             -6.310015,
+//             53.342113
+//             ]
+//             },
+//             properties: 
+//             {
+//             checked: true,
+//             id: "91cc6b",
+//             name: "Kilmainham Gaol",
+//             notes: "",
+//             numberOfStands: 40,
+//             source: "DublinBikes",
+//             thefts: [ ],
+//             type: "DublinBikes",
+//             verified: true
+//             }
+//             },
             
-]
-}
+// ]
+// }
 
    
 
