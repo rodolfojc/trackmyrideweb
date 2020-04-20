@@ -149,12 +149,10 @@ app.post("/index/store", async (req, res) => {
         password,
       },
     });
-    console.log(response);
-    res.status(200).render('home');    
+    res.status(200).render(welcomeController);    
     
   } catch (err) {
-    console.log(err.message);
-    res.render('/', {error: err.message});
+    console.log(err.message);  
   } 
 
   //model creates a new doc with browser data
@@ -178,11 +176,12 @@ app.post('/index/login', async (req, res) => {
         password,
       },
     });
-    console.log(response);
-    res.status(200).render('home');    
+    console.log('Este es: ', response);
+    res.render(welcomeController); 
     
   } catch (err) {
-    console.log(err.message);
+    console.log('Toy en catch', err.message);    
+    res.status(200).render(welcomeController);  
   } 
 
 });
