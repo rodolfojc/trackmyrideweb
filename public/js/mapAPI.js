@@ -1,12 +1,28 @@
 
-const xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://cors-anywhere.herokuapp.com/http://34.247.183.192:3000/getracks', true);
-xhr.setRequestHeader('Content-Type', 'application/json');
-xhr.responseType = 'json';
-xhr.onload = function() {
-    if (xhr.status !== 200) return
-    L.geoJSON(xhr.response).addTo(mymap);
+var APIUrl = 'https://cors-anywhere.herokuapp.com/http://34.247.183.192:3000/getracks';
+var geoJson = '';
+
+function getRacks() {
+    
+    $.getJSONuncached = function (url) {
+      console.log("Executed");
+      return $.ajax({
+        url: url,
+        type: "GET",
+        cache: false,
+        success: function (JSONdata) {                     
+            geoJson = JSONdata;          
+        },        
+      });
+    };
+    $.getJSONuncached(APIUrl);      
 };
+
+$(document).ready(function () {
+    getRacks();
+});
+
+
 // xhr.send();
 
 // Main properties of a map
@@ -24,7 +40,7 @@ mymap.addLayer(layer);
 //add pop up to the marker - JUST FOR TESTE, DELETE IT IN THE END
 //marker.bindPopup("<b>numberOfStands: 8</b><br>type: Sheffield Stand").openPopup();
 
-var geoJson = xhr.send();
+// var geoJson = xhr.send();
 
 // var geoJson = {
 //     type: "FeatureCollection",
