@@ -161,7 +161,7 @@ app.post("/index/store", async (req, res) => {
   
 });
 
-app.post('/index/login', async (req, res) => {
+app.post('/login', async (req, res) => {
   // Axios
   const { email, password } = req.body;
   console.log(req.body);
@@ -175,13 +175,12 @@ app.post('/index/login', async (req, res) => {
         email,
         password,
       },
-    });
-    console.log('Este es: ', response);
-    res.render(welcomeController); 
+    });    
+    res.render('home', {token: response.token}); 
     
   } catch (err) {
-    console.log('Toy en catch', err.message);    
-    res.status(200).render(welcomeController);  
+    //alert(response);
+    res.render('login2', {errors: 'Invalid email or password'});   
   } 
 
 });
