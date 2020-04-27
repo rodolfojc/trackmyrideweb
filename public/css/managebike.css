@@ -146,10 +146,9 @@ img {
   font-size: large;
 }
 
-.close strong {
-  font-size: xx-large;
+.close a {
+  text-decoration: none !important;
 }
-
 #update-btn {
   width: 50%;
   margin-top: 10%;
