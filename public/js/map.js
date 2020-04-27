@@ -148,6 +148,13 @@ var rackMarker = L.icon({
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 
+const fontAwesomeIcon = L.divIcon({
+    html: '<i class="fas fa-flag fa-2x"></i>',
+    // iconSize: [300, 300],
+    className: 'myDivIcon',
+    iconAnchor:   [5, 20]
+});
+
 //new layer, could be used for nightime map
 var difflayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
@@ -155,7 +162,9 @@ var difflayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 
 //Add a pop up on each marker
 function onEachFeature(feature, layer){
-    layer.bindPopup('Name: '+ feature.properties.name +'<br> Stands: '+feature.properties.numberOfStands);
+    layer.bindPopup('Name: '+ feature.properties.name +'<br> Stands: '+feature.properties.numberOfStands +
+   '<button class="btn btn-outline-info btn-sm" id="chatToggle">Report</button>'
+    );
     layer.on('click', function (e) {
           
         console.log(feature.properties.id + ' ' + e.latlng.lat + ', ' + e.latlng.lng + 'from geoJSON ');
@@ -167,7 +176,7 @@ function onEachFeature(feature, layer){
         //add multiple locations with personalised marker using geoJson
         pointToLayer: function(feature, latlng){
            return L.marker(latlng, {
-               icon: rackMarker
+               icon: fontAwesomeIcon
            });
            
             // return L.circleMarker(latlng, geojsonMarkerOptions);
@@ -282,10 +291,12 @@ L.control.layers({
             $('.overlay').removeClass('active');
         });
 
-        $('#chatToggle').on('click', function () {
+        $("div").on("click", '#chatToggle', function () {
             $('#sidebar').addClass('active');
             $('.overlay').addClass('active');
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
     });
+
+   
