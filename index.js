@@ -1,3 +1,4 @@
+const dotenv = require('dotenv').config();
 const express = require("express");
 
 const axios = require("axios");
@@ -57,7 +58,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect(
-  "mongodb+srv://admin:Pass1234!@cluster0-ii2az.mongodb.net/trackMyRide",
+  process.env.DB_CONNECT,
   { useNewUrlParser: true }
 );
 
