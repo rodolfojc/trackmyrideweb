@@ -353,7 +353,7 @@ body
   height: 35px;
   line-height: 35px;
   text-align: center;
-  /* background: black; */
+  background: black;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -462,12 +462,12 @@ a.download {
   zoom: 1;
 }
 
-/a.article,
+a.article,
 a.article:hover {
   background: #6d7fcc !important;
   color: #fff !important;
 
-
+}
 /* ---------------------------------------------------
     FONT AWESOME STYLE
 ----------------------------------------------------- */

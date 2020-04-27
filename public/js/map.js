@@ -23,9 +23,72 @@
 // var mymap = L.map('mapid').setView([53.347557, -6.259317], 13);
 
 
+var APIUrl = 'https://cors-anywhere.herokuapp.com/http://34.247.183.192:3000/getracks';
+var geoJson;
+
+// function getRacks() {
+    
+//     $.getJSONuncached = function (url) {
+//       console.log("Executed");
+//       return $.ajax({
+//         url: url,
+//         type: "GET",
+//         cache: false,
+//         success: function (JSONdata) {                     
+//             geoJson = JSONdata;    
+//             console.log("Inside function" + geoJson);   
+//             return geoJson;   
+//         },        
+//       });
+//     };
+//     $.getJSONuncached(APIUrl);   
+//     console.log("Return" + geoJson); 
+   
+      
+// };
+// var mymap = L.map('mapid', { 
+//     zoomControl: false //Remove default zoom control from the left side
+// }).setView([53.347557, -6.259317], 13);
+
+
+// var counties = $.ajax({
+//     url: "https://cors-anywhere.herokuapp.com/http://34.247.183.192:3000/getracks",
+//     dataType: "json",
+//     success: console.log("County data successfully loaded." ),
+//     error: function(xhr) {
+//         alert(xhr.statusText)
+//     }
+// })
+// $.when(counties).done(function() {
+    
+//     var mapWithRackMarkers = L.geoJSON(counties.responseJSON, {
+//         //add multiple locations with personalised marker using geoJson
+//         pointToLayer: function(feature, latlng){
+//            return L.marker(latlng, {
+//                icon: fontAwesomeIcon
+//            });
+           
+//             // return L.circleMarker(latlng, geojsonMarkerOptions);
+//            },
+
+//         onEachFeature: onEachFeature,
+//     }).addTo(mymap);
+//    console.log(counties.responseJSON) 
+// });
+
+
+
+// $(document).ready(function () {
+
+// console.log(counties);
+   
+// });
+
 var mymap = L.map('mapid', { 
-    zoomControl: false //Remove default zoom control from the left side
-}).setView([53.347557, -6.259317], 13);
+        zoomControl: false //Remove default zoom control from the left side
+    }).setView([53.347557, -6.259317], 13);
+
+
 
 //Create new zoom control on the right side of the map    
 L.control.zoom({
@@ -292,6 +355,7 @@ L.control.layers({
         });
 
         $("div").on("click", '#chatToggle', function () {
+        
             $('#sidebar').addClass('active');
             $('.overlay').addClass('active');
             $('.collapse.in').toggleClass('in');
