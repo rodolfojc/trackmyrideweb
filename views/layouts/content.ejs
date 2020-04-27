@@ -2,43 +2,70 @@
 
 <!--This View is the About main content.-->
 
-<div class="container">      
-    <div id="midle-content-left">
-
-         
-                  
-      <div class="col-auto">
-        <label class="sr-only" for="inlineFormInput">Serial</label>
-        <input type="text" class="form-control mb-2" name ="serial" placeholder="Serial">
-      </div>
-      <div class="col-auto">
-        <label class="sr-only" for="inlineFormInput">Brand</label>
-        <input type="text" class="form-control mb-2" name ="brand" placeholder="Brand">
-                        </div>
-      <div class="col-auto">
-        <label class="sr-only" for="inlineFormInput">Color</label>
-        <input type="text" class="form-control mb-2" name="color" placeholder="Color">
-      </div>
-      <div class="col-auto">
-        <label class="sr-only" for="inlineFormInput">Type</label>
-        <input type="text" class="form-control mb-2" name = "type" placeholder="Type">
-      </div>
-      <div class="col-auto">
-        <label class="sr-only" for="inlineFormInput">Status</label>
-        <input type="text" class="form-control mb-2" name = "status" placeholder="Status">
-      </div>
-      <div class="col-auto">
-        <label for="inlineFormInput">Locker</label>
-        <select name="locker">
-          <option value="true">Yes</option>
-          <option value="false">No</option>         
-        </select>
-      </div><br>      
-      <div class="col-auto">
-        <button type="submit" class="btn btn-primary mb-2">Update</button>
-        <button type="submit" class="btn btn-primary mb-2">Add new bike</button>
-      </div>
-      </div>                 
-
+<div class="container">
+  <div id="midle-content-left">
+    <form action="/addBike" method="post">
+       <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">Serial</label>
+      <input
+        type="text"
+        class="form-control mb-2"
+        name="serial"
+        placeholder="Serial"
+      />
     </div>
- 
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">Brand</label>
+      <input
+        type="text"
+        class="form-control mb-2"
+        name="brand"
+        placeholder="Brand"
+      />
+    </div>
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">Color</label>
+      <input
+        type="text"
+        class="form-control mb-2"
+        name="color"
+        placeholder="Color"
+      />
+    </div>
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">Type</label>
+      <input
+        type="text"
+        class="form-control mb-2"
+        name="type"
+        placeholder="Type"
+      />
+    </div>
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">Status</label>
+      <input
+        type="text"
+        class="form-control mb-2"
+        name="status"
+        placeholder="Status"
+      />
+    </div>
+    <div class="col-auto">
+      <label for="inlineFormInput">Locker</label>
+      <select name="locker">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+    </div>
+    <br />
+    <div class="col-auto">
+      <button id="btn1" type="submit" class="btn btn-primary mb-2">
+        Update
+      </button>
+      <button id="btn2" type="submit" class="btn btn-primary mb-2">
+        Add new bike
+      </button>
+    </form>
+    </div>
+  </div>
+</div>
