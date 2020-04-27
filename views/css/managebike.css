@@ -247,3 +247,19 @@ img {
     display: flex;
   }
 }
+
+@media (max-height: 800px) {
+  .masthead {
+    width: auto;
+    margin-left: 220px;
+    margin-right: 220px;
+    bottom: 20px;
+    margin-bottom: auto;
+  }
+}
+
+@media (max-height: 800px) {
+  #midle-content-left {
+    margin-top: -60px;
+  }
+}
