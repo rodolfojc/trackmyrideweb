@@ -41,6 +41,9 @@ const reportFormController = require("./controllers/reportform");
 
 const consultPageController = require("./controllers/consult");
 
+const newUserController = require("./controllers/newUser");
+
+const welcomeScreenController = require("./controllers/welcomeScreen");
 //###################################################################################
 
 //Creating a customer middleware
@@ -66,10 +69,6 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 
-// app.get("/", (req, res) => {
-// res.render("index");
-// });
-
 app.listen(3005, () => {
   console.log("App listening on port 3005");
 });
@@ -91,6 +90,8 @@ app.get("/bikeinfo", bikeInfoController);
 app.get("/reportForm", reportFormController);
 
 app.get("/consult", consultPageController);
+
+app.get("/welcomescreen", welcomeScreenController);
 
 // Finish Routes#############################################################################
 
