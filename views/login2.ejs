@@ -14,14 +14,16 @@
       <p class="main-txt" style=" font-family:pacifico;
       color: white;
       font-size: 23px;
-      margin-left: 45px;" >Track My Ride<span id="bike"><i id="bike-icon" class="material-icons">directions_bike</i></span></p>
-      <form action="/index/login" method="post">
+
+    
+      margin-left: 45px;" >Track My Ride<i id="bike-icon" class="material-icons">directions_bike</i></p>
+      <form action="login" method="POST">
+
         <input
           type="text"
-          name="username"
-          placeholder="Username"
-          required="required"
-          
+          name="email"
+          placeholder="Username (email)"
+          required="required"          
         />
         <input
           type="password"
@@ -29,6 +31,9 @@
           placeholder="Password"
           required="required"
         />
+        <% if (locals.errors) { %>
+          <p style="color: red;">Invalid Email or Password, try again!</p>
+        <% }%>
         <button type="submit" class="btn btn-primary btn-block btn-large">
           LogIn
         </button>
