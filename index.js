@@ -142,7 +142,7 @@ app.post("/index/store", async (req, res) => {
 
   try {
     const response = await axios({
-      method: "post",
+      method: "POST",
       url: "http://34.247.183.192:3000/signup",
       headers: {},
       data: {
@@ -150,16 +150,40 @@ app.post("/index/store", async (req, res) => {
         password,
       },
     });
-    console.log(response);
+    res.status(200).render(welcomeController);    
+    
   } catch (err) {
-    console.log(err.message);
-  }
-  //
+    console.log(err.message);  
+  } 
 
   //model creates a new doc with browser data
-  UserCredentials.create(req.body, (error, blogspot) => {
-    res.redirect("/");
-  });
+  // UserCredentials.create(req.body, (error, blogspot) => {
+  //   res.redirect("/");
+  
+});
+
+app.post('/login', async (req, res) => {
+  // Axios
+  const { email, password } = req.body;
+  console.log(req.body);
+  
+  try {
+    const response = await axios({
+      method: "POST",
+      url: "http://34.247.183.192:3000/signin",
+      headers: {"Content-Type": "application/json"},
+      data: {
+        email,
+        password,
+      },
+    });    
+    res.render('home', {token: response.token}); 
+    
+  } catch (err) {
+    //alert(response);
+    res.render('login2', {errors: 'Invalid email or password'});   
+  } 
+
 });
 
 //########################################################/

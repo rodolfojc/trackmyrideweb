@@ -2,55 +2,43 @@
 
 <!--This View is the About main content.-->
 
-<div class="container">
-      
+<div class="container">      
     <div id="midle-content-left">
-            <div class="list">
-              <ul class="list-group">
-                <li class="list-group-item">Serial: </li>
-                <li class="list-group-item">Brand: </li>
-                <li class="list-group-item">Color: </li>
-                <li class="list-group-item">Type: </li>
-                <li class="list-group-item">Status: </li>
-                <li class="list-group-item">Lock:</li>
-              </ul>
-            </div>
-            </div>
-          
-          
-        
-            <div id="midle-content-right">
-              <div class="list2">
-              <ul class="list-group">
-                <li class="list-group-item">....INPUT...</li></ul>
-                <li class="list-group-item">...INPUT...</li></ul>
-                <li class="list-group-item">...INPUT...</li></ul>
-                <li class="list-group-item">...INPUT...</li></ul>
-                <li class="list-group-item">...INPUT...</li></ul>
-                <li class="list-group-item">...INPUT...</li></ul>
-              </ul>
-              </div>
-         </div> 
-        
+
+         
                   
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInput">Serial</label>
+        <input type="text" class="form-control mb-2" name ="serial" placeholder="Serial">
+      </div>
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInput">Brand</label>
+        <input type="text" class="form-control mb-2" name ="brand" placeholder="Brand">
+                        </div>
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInput">Color</label>
+        <input type="text" class="form-control mb-2" name="color" placeholder="Color">
+      </div>
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInput">Type</label>
+        <input type="text" class="form-control mb-2" name = "type" placeholder="Type">
+      </div>
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInput">Status</label>
+        <input type="text" class="form-control mb-2" name = "status" placeholder="Status">
+      </div>
+      <div class="col-auto">
+        <label for="inlineFormInput">Locker</label>
+        <select name="locker">
+          <option value="true">Yes</option>
+          <option value="false">No</option>         
+        </select>
+      </div><br>      
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-2">Update</button>
+        <button type="submit" class="btn btn-primary mb-2">Add new bike</button>
+      </div>
+      </div>                 
+
     </div>
-    <div id="bottom-content">
-      <div>
-        <button
-          id="btn-update"
-          type="button"
-          class="btn btn-primary btn-lg btn-block"
-        >
-          UPDATE
-        </button>
-      </div>
-      <div class="btn2">
-        <button
-          id="btn-add"
-          type="button"
-          class="btn btn-secondary btn-lg btn-block"
-        >
-          ADD NEW
-        </button>
-      </div>
-  </div>
+ 
