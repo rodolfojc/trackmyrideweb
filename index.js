@@ -3,6 +3,7 @@ const express = require("express");
 
 const axios = require("axios");
 const GeoJSON = require("geojson");
+const expressSession = require("express-session");
 
 const app = express();
 //Path is a module to help us to get the directory path...
@@ -59,7 +60,11 @@ const addbikeController = require("./controllers/addbike");
 // app.use("/index/store", validateMiddleWare);
 
 app.use(bodyParser.json());
-
+app.use(expressSession({
+  secret: 'TrackMyRide',
+  resave: true,
+  saveUninitialized: true
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect(
@@ -180,7 +185,10 @@ app.post("/login", async (req, res) => {
         password,
       },
     });
+    req.session = response.token;
+    console.log(response.token);
     res.render("home", { token: response.token });
+    
   } catch (err) {
     //alert(response);
     res.render("login2", { errors: "Invalid email or password" });
