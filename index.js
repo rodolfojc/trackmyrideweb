@@ -43,6 +43,8 @@ const consultPageController = require("./controllers/consult");
 const newUserController = require("./controllers/newUser");
 
 const welcomeScreenController = require("./controllers/welcomeScreen");
+
+const addbikeController = require("./controllers/addbike");
 //###################################################################################
 
 //Creating a customer middleware
@@ -91,6 +93,8 @@ app.get("/reportForm", reportFormController);
 app.get("/consult", consultPageController);
 
 app.get("/welcomescreen", welcomeScreenController);
+
+app.post("/addBike", addbikeController);
 
 // Finish Routes#############################################################################
 
@@ -150,40 +154,36 @@ app.post("/index/store", async (req, res) => {
         password,
       },
     });
-    res.status(200).render(welcomeController);    
-    
+    res.status(200).render(welcomeController);
   } catch (err) {
-    console.log(err.message);  
-  } 
+    console.log(err.message);
+  }
 
   //model creates a new doc with browser data
   // UserCredentials.create(req.body, (error, blogspot) => {
   //   res.redirect("/");
-  
 });
 
-app.post('/login', async (req, res) => {
+app.post("/login", async (req, res) => {
   // Axios
   const { email, password } = req.body;
   console.log(req.body);
-  
+
   try {
     const response = await axios({
       method: "POST",
       url: "http://34.247.183.192:3000/signin",
-      headers: {"Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json" },
       data: {
         email,
         password,
       },
-    });    
-    res.render('home', {token: response.token}); 
-    
+    });
+    res.render("home", { token: response.token });
   } catch (err) {
     //alert(response);
-    res.render('login2', {errors: 'Invalid email or password'});   
-  } 
-
+    res.render("login2", { errors: "Invalid email or password" });
+  }
 });
 
 //########################################################/

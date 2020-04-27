@@ -10,6 +10,6 @@ const BikeSchema = new Schema({
   lock: String,
 });
 
-const Bike = mongoose.model("Bikes", BikeSchema);
+const Bike = mongoose.model("bikes", BikeSchema);
 
 module.exports = Bike;
