@@ -44,6 +44,8 @@ const consultPageController = require("./controllers/consult");
 const newUserController = require("./controllers/newUser");
 
 const welcomeScreenController = require("./controllers/welcomeScreen");
+
+const incidentsController = require("./controllers/incidentsCtrl");
 //###################################################################################
 
 //Creating a customer middleware
@@ -92,6 +94,8 @@ app.get("/reportForm", reportFormController);
 app.get("/consult", consultPageController);
 
 app.get("/welcomescreen", welcomeScreenController);
+
+app.post("/incident", incidentsController);
 
 // Finish Routes#############################################################################
 

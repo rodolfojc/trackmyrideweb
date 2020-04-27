@@ -328,13 +328,14 @@ body
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
+    https://bootstrapious.com/tutorial/sidebar/index3.html
 ----------------------------------------------------- */
 
 #sidebar {
-  width: 250px;
+  width: 350px;
   position: fixed;
   top: 0;
-  left: -250px;
+  left: -350px;
   height: 100vh;
   z-index: 999;
   background: black;

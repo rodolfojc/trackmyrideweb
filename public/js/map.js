@@ -25,7 +25,8 @@
 
 var APIUrl = 'https://cors-anywhere.herokuapp.com/http://34.247.183.192:3000/getracks';
 var geoJson;
-
+var lt;
+var ln;
 // function getRacks() {
     
 //     $.getJSONuncached = function (url) {
@@ -229,8 +230,10 @@ function onEachFeature(feature, layer){
    '<button class="btn btn-outline-info btn-sm" id="chatToggle">Report</button>'
     );
     layer.on('click', function (e) {
-          
-        console.log(feature.properties.id + ' ' + e.latlng.lat + ', ' + e.latlng.lng + 'from geoJSON ');
+    lt = e.latlng.lat;
+    ln = e.latlng.lng;
+        console.log(feature.properties.id + ' ' + lt + ', ' + ln + 'from geoJSON ');
+        
   });
 }
 
@@ -293,9 +296,9 @@ function onEachFeature(feature, layer){
     });
 
     //When button is clicked, grab the location
-    $(document).on('click', '#grabPosition', function() {
+    // $(document).on('click', '#grabPosition', function() {
        
-    });
+    // });
 
     // Layer groups for filters
 
@@ -360,7 +363,12 @@ L.control.layers({
             $('.overlay').addClass('active');
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-        });
+            $('#lat').val(lt); 
+            $('#lon').val(ln); 
+            $('#incident').val("Theft");
+
+
+               });
     });
 
    

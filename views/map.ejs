@@ -9,7 +9,7 @@
 
     <div class="wrapper">
 
- <!-- Sidebar  -->
+ <!-- Sidebar Report -->
  <nav id="sidebar">
   <div id="dismiss">
     <i class="fas fa-arrow-left"></i>
@@ -20,19 +20,65 @@
   </div>
 
   <ul class="list-unstyled components">
-      <p>Fill the form</p>
-      <li class="active">
-          <a href="#" data-toggle="collapse" aria-expanded="false">Select a rack</a>
-           <form >
-          <div class="form-group mx-sm-3 mb-2">
-          <label for="lat" class="sr-only">Latitude</label>
-          <input type="number" class="form-control" id="lat" placeholder="lat">
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-          <label for="lon" class="sr-only">Longitude</label>
-          <input type="number" class="form-control" id="lon" placeholder="lon">
-        </div>
-        <button type="submit" class="btn btn-primary mb-2" id="grabPosition">Report event</button>
+           <form action="/incident" method="POST" role="form" >
+             <!-- Latitude -->
+            <div class="form-group row mx-sm-3 mb-2">
+              <label for="lat" class="col-sm-3 col-form-label">Latitude</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="lat" name="latitude" readOnly >
+              </div>
+            </div>
+            <!-- Longitude -->
+            <div class="form-group row mx-sm-3 mb-2">
+              <label for="longitude" class="col-sm-3 col-form-label">Longitude</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="lon" name="longitude" readOnly >
+              </div>
+            </div>
+             <!-- Report type -->
+             <div class="form-group row mx-sm-3 mb-2">
+              <label for="incident" class="col-sm-3 col-form-label">Incident</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="incident" name="incident" readOnly >
+              </div>
+            </div>
+            <!-- User -->
+            <div class="form-group row mx-sm-3 mb-2">
+              <label for="email" class="col-sm-3 col-form-label">Email</label>
+              <div class="col-sm-9">
+                <input type="email" class="form-control" id="email" >
+              </div>
+            </div>
+           
+            <!-- Incident Date -->
+            <div class="form-group row mx-sm-3 mb-2">
+              <label for="date" class="col-sm-3 col-form-label">Date</label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" id="date" >
+              </div>
+            </div>
+            <!-- Incident Period -->
+            <div class="form-group row mx-sm-3 mb-2">
+              <label for="time" class="col-sm-3 col-form-label">Time</label>
+              <div class="col-sm-9">
+                <select id="time" name="time">
+                  <option value="morning">Morning</option>
+                  <option value="afternoon">Afternoon</option>
+                  <option value="evening">Evening</option>      
+              </select>
+                <!-- <input type="date" class="form-control" id="incident"disabled > -->
+              </div>
+            </div>
+             <!-- Description -->
+             <div class="form-group row mx-sm-3 mb-2">
+              <label for="description" class="col-sm-3 col-form-label">Description</label>
+              <div class="col-sm-9">
+                <textarea id="description" name="description" placeholder="Write something.." style="height:200px "></textarea>
+              </div>
+            </div>
+
+                  
+        <button type="submit" class="btn btn-success mb-3" id="grabPosition" >Report event</button>
       </form>
 
       </li>
@@ -77,6 +123,7 @@
 
   </div>
 </div>
+<!-- Overlay a grey layer on the map -->
 <div class="overlay"></div>    
     </div>
 
