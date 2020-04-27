@@ -207,8 +207,8 @@ img {
 
 @media (max-height: 800px) {
   #update-btn {
-    width: 50%;
-    height: 20px;
+    width: auto;
+    height: auto;
     margin-top: 13%;
     padding-top: 5%;
     padding-bottom: 8%;
@@ -229,7 +229,7 @@ img {
     border-radius: 20px;
     margin-bottom: 100px;
     position: relative;
-    z-index: 9;
+    z-index: 999;
   }
 }
 

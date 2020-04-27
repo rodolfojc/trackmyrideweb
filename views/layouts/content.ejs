@@ -3,16 +3,24 @@
 <!--This View is the About main content.-->
 
 <div class="container">
+  
   <div id="midle-content-left">
-    <form action="/addBike" method="post">
+
+    <form action="submit">
+      
        <div class="col-auto">
-      <label class="sr-only" for="inlineFormInput">Serial</label>
-      <input
+
+        <% for (var i =0; i< bike.length; i++) { %>
+     
+      <label class="sr-only" for="inlineFormInput" > Serial:   </label>
+
+       <input
         type="text"
         class="form-control mb-2"
         name="serial"
-        placeholder="Serial"
-      />
+        placeholder="<%= bike[i].serial %>"
+      /> 
+      
     </div>
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Brand</label>
@@ -20,7 +28,7 @@
         type="text"
         class="form-control mb-2"
         name="brand"
-        placeholder="Brand"
+        placeholder="<%= bike[i].brand %>"
       />
     </div>
     <div class="col-auto">
@@ -29,7 +37,7 @@
         type="text"
         class="form-control mb-2"
         name="color"
-        placeholder="Color"
+        placeholder="<%= bike[i].color %>"
       />
     </div>
     <div class="col-auto">
@@ -38,7 +46,7 @@
         type="text"
         class="form-control mb-2"
         name="type"
-        placeholder="Type"
+        placeholder="<%= bike[i].type %>"
       />
     </div>
     <div class="col-auto">
@@ -47,7 +55,7 @@
         type="text"
         class="form-control mb-2"
         name="status"
-        placeholder="Status"
+        placeholder="<%= bike[i].status %>"
       />
     </div>
     <div class="col-auto">
@@ -59,13 +67,44 @@
     </div>
     <br />
     <div class="col-auto">
-      <button id="btn1" type="submit" class="btn btn-primary mb-2">
-        Update
-      </button>
-      <button id="btn2" type="#" class="btn btn-primary mb-2">
+      
+      <!-- <button id="btn2" name="post" foraction="/addbike" type="submit" class="btn btn-primary mb-2">
         Add new bike
-      </button>
-    </form>
-    </div>
+      </button> -->
+      <a class="update" href="/addbike">
+        <button
+          id="btn1"
+          type="button"
+          class="btn btn-primary mb-2s"
+          data-toggle="modal"
+          data-target="#myModal"
+        >
+          ADD NEW BIKE
+        </button>
+      </a>
+    
+      <a class="update" href="/put/<%= bike[i].id %>">
+        <button
+          id="btn1"
+          type="button"
+          class="btn btn-primary mb-2s"
+          data-toggle="modal"
+          data-target="#myModal"
+        >
+          UPDATE
+        </button>
+      </a>
+    
+    
   </div>
+  
+    </form>
+    
+  <% } %>
+    
+   
+    </div>
+    
+  </div>
+  
 </div>

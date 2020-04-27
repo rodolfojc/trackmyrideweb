@@ -1,8 +1,11 @@
-const ManageBikePage = require("../models/User.js");
+const ManageBikePage = require("../models/Bike.js");
 
 module.exports = async (req, res) => {
-  const manageBikepage = await ManageBikePage.find({});
+  const bike = await ManageBikePage.find({});
+  isfalse = 2;
   res.render("managebike", {
-    manageBikepage,
+    bike: bike,
+    isfalse: isfalse,
   });
+  console.log(bike);
 };

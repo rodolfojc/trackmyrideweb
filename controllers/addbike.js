@@ -6,7 +6,7 @@ const bikeModel = require("../models/Bike.js");
 //Function to create a new Bike
 
 module.exports = async (req, res) => {
-  console.log(req.body);
+  console.log("add bikE METHOD: " + req.body);
   bikeModel.create(req.body, (error, bikes) => {
     res.redirect("/managebike");
   });
