@@ -1,4 +1,4 @@
-const dotenv = require('dotenv').config();
+const dotenv = require("dotenv").config();
 const express = require("express");
 
 const axios = require("axios");
@@ -21,7 +21,7 @@ const bodyParser = require("body-parser");
 const UserCredentials = require("./models/User.js");
 
 //Importing Bike model
-const Bike = require("./models/Bike.js");
+const bikeModel = require("./models/Bike.js");
 
 //Routing imports##################################################################
 
@@ -45,7 +45,11 @@ const newUserController = require("./controllers/newUser");
 
 const welcomeScreenController = require("./controllers/welcomeScreen");
 
+
 const incidentsController = require("./controllers/incidentsCtrl");
+
+const addbikeController = require("./controllers/addbike");
+
 //###################################################################################
 
 //Creating a customer middleware
@@ -62,14 +66,11 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect(
-  process.env.DB_CONNECT,
-  { useNewUrlParser: true }
-);
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
 
 app.set("view engine", "ejs");
 
-app.use(express.static("public"));
+app.use(express.static("views"));
 
 app.listen(3005, () => {
   console.log("App listening on port 3005");
@@ -95,7 +96,11 @@ app.get("/consult", consultPageController);
 
 app.get("/welcomescreen", welcomeScreenController);
 
+
 app.post("/incident", incidentsController);
+
+app.post("/addBike", addbikeController);
+
 
 // Finish Routes#############################################################################
 
@@ -139,7 +144,7 @@ app.post("/incident", incidentsController);
 
 //#############################################################################################//
 app.post("/index/store", async (req, res) => {
-  console.log(req.body);
+  console.log("teste store: " + req.body);
 
   // Axios
   const { email, password } = req.body;
@@ -155,41 +160,93 @@ app.post("/index/store", async (req, res) => {
         password,
       },
     });
-    res.status(200).render(welcomeController);    
-    
+    res.status(200).render(welcomeController);
   } catch (err) {
-    console.log(err.message);  
-  } 
+    console.log(err.message);
+  }
 
   //model creates a new doc with browser data
   // UserCredentials.create(req.body, (error, blogspot) => {
   //   res.redirect("/");
-  
 });
 
-app.post('/login', async (req, res) => {
+app.post("/login", async (req, res) => {
   // Axios
   const { email, password } = req.body;
   console.log(req.body);
-  
+
   try {
     const response = await axios({
       method: "POST",
       url: "http://34.247.183.192:3000/signin",
-      headers: {"Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json" },
       data: {
         email,
         password,
       },
-    });    
-    res.render('home', {token: response.token}); 
-    
+    });
+    res.render("home", { token: response.token });
   } catch (err) {
     //alert(response);
-    res.render('login2', {errors: 'Invalid email or password'});   
-  } 
-
+    res.render("login2", { errors: "Invalid email or password" });
+  }
 });
 
 //########################################################/
 //To save username inside the database
+
+// app.route("/put/id:").get((req, res) => {
+//   var id = req.params.id;
+//   console.log("Test to get ID ===>: " + id);
+
+//   bikeModel
+//     .findById(id, (err, bike) => {
+//       console.log("Return from DB: ==> : " + bike);
+//       var isfalse = 3;
+
+//       res.render("managebike", {
+//         bike: bike,
+//         isfalse: isfalse,
+//       });
+//       console.log("Return from DB:==> " + bike);
+//     })
+//     .post((req, res) => {
+//       var id = req.params.id;
+//       console.log("UPDATE ID: ==> " + id);
+//       console.log("What will be updated: ==> " + req.params);
+
+//       bikeModel.findByIdAndUpdate(id, req.body, { new: true }, (err) => {
+//         console.log(req.body);
+//         if (err) return res.send(500, err);
+//         return res.redirect("managebike");
+//       });
+//     });
+// });
+
+app.route("/put/:id").get((req, res) => {
+  var id = req.params.id;
+  console.log("1 ---    Numero do meu ID: " + id);
+
+  bikeModel.findById(id, (err, bike) => {
+    console.log("2- Retorno da minha DB: " + bike);
+    var isfalse = 1;
+
+    res.render("managebike", {
+      bike: bike,
+      isfalse: isfalse,
+    });
+    console.log("2- Retorno da minha DB: " + bike);
+  });
+});
+// })
+// .post((req, res) => {
+//   var id = req.params.id;
+//   console.log("Id do UPDATE :" + id);
+//   console.log("corpo do update" + req.params);
+
+//   bikeModel.findByIdAndUpdate(id, req.body, { new: true }, (err) => {
+//     console.log(req.body);
+//     if (err) return res.send(500, err);
+//     return res.redirect("welcomescreen");
+//   });
+// });
