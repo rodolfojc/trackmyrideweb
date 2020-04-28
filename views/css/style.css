@@ -326,11 +326,17 @@ body
 
 
 
+
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
     https://bootstrapious.com/tutorial/sidebar/index3.html
 ----------------------------------------------------- */
 
+#rackId{ 
+  /* selected rack */
+ display:none
+}
 #sidebar {
   width: 350px;
   position: fixed;

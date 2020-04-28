@@ -27,6 +27,7 @@ var APIUrl = 'https://cors-anywhere.herokuapp.com/http://34.247.183.192:3000/get
 var geoJson;
 var lt;
 var ln;
+var id;
 // function getRacks() {
     
 //     $.getJSONuncached = function (url) {
@@ -232,7 +233,8 @@ function onEachFeature(feature, layer){
     layer.on('click', function (e) {
     lt = e.latlng.lat;
     ln = e.latlng.lng;
-        console.log(feature.properties.id + ' ' + lt + ', ' + ln + 'from geoJSON ');
+    rackId = feature.properties.id;
+        console.log(rackId + ' ' + lt + ', ' + ln);
         
   });
 }
@@ -365,6 +367,8 @@ L.control.layers({
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             $('#lat').val(lt); 
             $('#lon').val(ln); 
+            $('#rackId').val(rackId); 
+
             $('#incident').val("Theft");
 
 

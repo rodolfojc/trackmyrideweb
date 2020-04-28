@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const IncidentSchema = new Schema({
+  rackId:String,  
   latitude: 
       String
       ,
