@@ -50,6 +50,7 @@ const incidentsController = require("./controllers/incidentsCtrl");
 
 const addbikeController = require("./controllers/addbike");
 
+const theftController = require("./controllers/theftCtrl");
 //###################################################################################
 
 //Creating a customer middleware
@@ -100,6 +101,10 @@ app.get("/welcomescreen", welcomeScreenController);
 app.post("/incident", incidentsController);
 
 app.post("/addBike", addbikeController);
+
+app.put("/incrementRack/:id", theftController); //Testing the route to increment theft on a rack
+
+
 
 
 // Finish Routes#############################################################################

@@ -20,9 +20,9 @@
   </div>
 
   <ul class="list-unstyled components">
-           <form action="/incident" method="POST" role="form" >
+           <form action="/incident" method="POST" role="form" id="incidentForm">
             <!-- Map id - hidden -->
-            <input type="text" class="form-control" id="rackId" name="id" aria-disabled="true" >
+            <input type="text" class="form-control" id="rackId" name="rackId">
              <!-- Latitude -->
             <div class="form-group row mx-sm-3 mb-2">
               <label for="lat" class="col-sm-3 col-form-label">Latitude</label>
@@ -48,7 +48,7 @@
             <div class="form-group row mx-sm-3 mb-2">
               <label for="email" class="col-sm-3 col-form-label">Email</label>
               <div class="col-sm-9">
-                <input type="email" class="form-control" id="email" >
+                <input type="email" class="form-control" id="email" name="email" >
               </div>
             </div>
            
@@ -56,7 +56,7 @@
             <div class="form-group row mx-sm-3 mb-2">
               <label for="date" class="col-sm-3 col-form-label">Date</label>
               <div class="col-sm-9">
-                <input type="date" class="form-control" id="date" >
+                <input type="date" class="form-control" id="date" name="date" >
               </div>
             </div>
             <!-- Incident Period -->

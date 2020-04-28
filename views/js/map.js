@@ -298,8 +298,9 @@ function onEachFeature(feature, layer){
     });
 
     //When button is clicked, grab the location
-    // $(document).on('click', '#grabPosition', function() {
-       
+    // $("button").on('click', '#grabPosition', function() {
+    //    console.log("Grab position clicked");
+
     // });
 
     // Layer groups for filters
@@ -365,14 +366,23 @@ L.control.layers({
             $('.overlay').addClass('active');
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            $('#lat').val(lt); 
-            $('#lon').val(ln); 
-            $('#rackId').val(rackId); 
-
+            $('#lat').val(lt); //set latitude of clicked rack 
+            $('#lon').val(ln);  //set longitude of clicked rack 
+            $('#rackId').val(rackId);  //set id of clicked rack 
             $('#incident').val("Theft");
+            
+             });
+         
 
 
-               });
     });
-
-   
+    // Submit form to add incident to the database
+    $("#incidentForm").on("submit", function(){
+       addRack();
+        return true;
+      })
+    
+      function addRack() {
+         
+        console.log("clicked");
+        }

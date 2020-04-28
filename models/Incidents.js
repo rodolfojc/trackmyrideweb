@@ -2,20 +2,23 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const IncidentSchema = new Schema({
-  rackId:String,  
-  latitude: 
-      String
-      ,
+
+  rackId: String,  
+  latitude: String,
   longitude: String,
-//   rackID: String,
-  user: String,
+  email: String,
   incident: String,
   date: String,
   time: String,
   description: String,
+//   theft: [{
+//     quantity: Number,
+//   }
+      
+//   ],
 });
 
-const incident = mongoose.model("Incident", IncidentSchema);
+const incident = mongoose.model("incidentNew", IncidentSchema);
 
 module.exports = incident;
 
