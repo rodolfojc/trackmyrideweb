@@ -150,3 +150,7 @@ app.get("/bikeinfo", (req, res) => {
 });
 //########################################################/
 //To search bike info
+
+app.get("/gdpr", (req, res) => {
+  res.render("gdpr");
+});
