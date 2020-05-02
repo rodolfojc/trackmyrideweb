@@ -6,13 +6,14 @@ const Theft = require("../models/Theft.js");
 module.exports = async (req,res) =>{
     //Get the new data from browser
      const newIncident = new incident(req.body);
+     const rack = newIncident.rackId;
      try {
          //Save the data
          await Promise.all([
             newIncident.save(),
-            Theft.findOneAndUpdate({rackId : "3333"}, {$inc: { quantity: 1}}, {new: true })
+            Theft.findOneAndUpdate({rackId : rack}, {$inc: { quantity: 1}}, {new: true })
           ]).then( () => {
-            console.log( "saved" );
+            console.log( rack );
           });
          
         //  newIncident.save();

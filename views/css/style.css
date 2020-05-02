@@ -375,6 +375,7 @@ body
   color: #7386D5;
 }
 
+/* Overlay layer */
 .overlay {
   display: none;
   position: fixed;
@@ -385,10 +386,60 @@ body
   opacity: 0;
   transition: all 0.5s ease-in-out;
 }
+/* Active overlay layer */
 .overlay.active {
   display: block;
   opacity: 10;
 }
+
+
+/* Message on the overlay hidden */
+#clickMap{
+  display: none;
+}
+/* Change date for number of stands in the form */
+#date.hide{
+  display: none;
+}
+#number.hide{
+  display: none;
+}
+#date.active{
+  display: block;
+}
+#number.active{
+  display: block;
+}
+
+#newRackForm.active{
+  display: block;
+}
+#incidentForm.active{
+  display: block;
+}
+
+#newRackForm{
+  display: none;
+}
+#incidentForm{
+  display: none;
+}
+
+
+/* Message on the overlay active */
+#clickMap.active{
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+
+
 
 #sidebar .sidebar-header {
   padding: 20px;

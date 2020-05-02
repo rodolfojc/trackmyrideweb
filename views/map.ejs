@@ -11,16 +11,18 @@
 
  <!-- Sidebar Report -->
  <nav id="sidebar">
-  <div id="dismiss">
-    <i class="fas fa-arrow-left"></i>
-</div>
+    <div id="dismiss">
+      <i class="fas fa-arrow-left"></i>
+    </div>
   
-  <div class="sidebar-header">
-      <h3>Report Incident</h3>
-  </div>
+    <div class="sidebar-header">
+      <h3><span>Report Incident</span></h3>
+    </div>
 
+ 
   <ul class="list-unstyled components">
-           <form action="/incident" method="POST" role="form" id="incidentForm">
+          <!-- Report Incident Form -->
+           <form action="/incident" method="POST" role="form" id="incidentForm" >
             <!-- Map id - hidden -->
             <input type="text" class="form-control" id="rackId" name="rackId">
              <!-- Latitude -->
@@ -39,7 +41,7 @@
             </div>
              <!-- Report type -->
              <div class="form-group row mx-sm-3 mb-2">
-              <label for="incident" class="col-sm-3 col-form-label">Incident</label>
+              <label for="incident" class="col-sm-3 col-form-label" id="inc"><span>Incident</span></label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="incident" name="incident" readOnly >
               </div>
@@ -54,9 +56,10 @@
            
             <!-- Incident Date -->
             <div class="form-group row mx-sm-3 mb-2">
-              <label for="date" class="col-sm-3 col-form-label">Date</label>
+              <label for="date" class="col-sm-3 col-form-label" id="dt"><span>Date</span></label>
               <div class="col-sm-9">
                 <input type="date" class="form-control" id="date" name="date" >
+                <input type="number" class="form-control" id="number" name="number" >
               </div>
             </div>
             <!-- Incident Period -->
@@ -82,8 +85,80 @@
                   
         <button type="submit" class="btn btn-success mb-3" id="grabPosition" >Report event</button>
       </form>
+    </ul>
 
-      </li>
+    <!-- Add new Rack Form -->
+    <ul class="list-unstyled components">
+      <!-- Report Incident Form -->
+       <form action="/newRack" method="POST" role="form" id="newRackForm">
+        <!-- Map id - hidden -->
+        <input type="text" class="form-control" id="rackId" name="rackId">
+         <!-- Latitude -->
+        <div class="form-group row mx-sm-3 mb-2">
+          <label for="lat" class="col-sm-3 col-form-label">Latitude</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="lat" name="latitude" readOnly >
+          </div>
+        </div>
+        <!-- Longitude -->
+        <div class="form-group row mx-sm-3 mb-2">
+          <label for="longitude" class="col-sm-3 col-form-label">Longitude</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="lon" name="longitude" readOnly >
+          </div>
+        </div>
+         <!-- Report type -->
+         <div class="form-group row mx-sm-3 mb-2">
+          <label for="incident" class="col-sm-3 col-form-label" id="inc"><span>Incident</span></label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="incident" name="incident" readOnly >
+          </div>
+        </div>
+        <!-- User -->
+        <div class="form-group row mx-sm-3 mb-2">
+          <label for="email" class="col-sm-3 col-form-label">Email</label>
+          <div class="col-sm-9">
+            <input type="email" class="form-control" id="email" name="email" >
+          </div>
+        </div>
+       
+        <!-- Incident Date -->
+        <div class="form-group row mx-sm-3 mb-2">
+          <label for="date" class="col-sm-3 col-form-label" id="dt"><span>Date</span></label>
+          <div class="col-sm-9">
+            <input type="date" class="form-control" id="date" name="date" >
+            <input type="number" class="form-control" id="number" name="number" >
+          </div>
+        </div>
+        <!-- Incident Period -->
+        <div class="form-group row mx-sm-3 mb-2">
+          <label for="time" class="col-sm-3 col-form-label">Time</label>
+          <div class="col-sm-9">
+            <select id="time" name="time">
+              <option value="morning">Morning</option>
+              <option value="afternoon">Afternoon</option>
+              <option value="evening">Evening</option>      
+          </select>
+            <!-- <input type="date" class="form-control" id="incident"disabled > -->
+          </div>
+        </div>
+         <!-- Description -->
+         <div class="form-group row mx-sm-3 mb-2">
+          <label for="description" class="col-sm-3 col-form-label">Description</label>
+          <div class="col-sm-9">
+            <textarea id="description" name="description" placeholder="Write something.." style="height:200px "></textarea>
+          </div>
+        </div>
+
+              
+    <button type="submit" class="btn btn-success mb-3" id="grabPosition" >Report event</button>
+  </form>
+
+
+
+
+</ul>
+
       
   
 </nav>
@@ -106,15 +181,14 @@
    <span class="navbar-toggler-icon"></span>
 </button>
 <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
- <ul class="navbar-nav text-right">
+  <ul class="navbar-nav text-right">
      <li class="nav-item active">
-         <a class="nav-link" href="#">Home </a>
-       </li>
+        <a class="nav-link" href="#">Home </a>
+      </li>
      <li>
-       <a class="flex-fill text-right text-light nav-link" data-toggle="collapse" href="#" data-target=".chat" id="chatToggle">Report Rack</a>
+      <a class="flex-fill text-right text-light nav-link" data-toggle="collapse" href="#" data-target=".chat" id="newRack">Add Rack to Map</a>
      </li>
- 
-   </ul>
+  </ul>
 </div>
 </nav>
 <div >
@@ -126,7 +200,9 @@
   </div>
 </div>
 <!-- Overlay a grey layer on the map -->
-<div class="overlay"></div>    
+<div class="overlay">
+  <div id="clickMap" >Pin location on the map</div>
+</div>    
     </div>
 
 

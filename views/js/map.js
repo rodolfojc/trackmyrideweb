@@ -355,15 +355,20 @@ L.control.layers({
             theme: "minimal"
         });
 
-        $('#dismiss, .overlay').on('click', function () {
-            $('#sidebar').removeClass('active');
-            $('.overlay').removeClass('active');
-        });
-
+        //Report incident is clicked inside the popup
         $("div").on("click", '#chatToggle', function () {
+
+            $('#newRackForm').removeClass('active');
+            $('#incidentForm').addClass('active');
+            $('.sidebar-header span').text('Report Incident');
         
-            $('#sidebar').addClass('active');
+            // $('#number').addClass('hide');
+            // $('#date').addClass('active');
+            // $('#inc span').text('Incident');
+            // $('#date').addClass('active');
+            $('#sidebar').addClass('active'); //display side panel
             $('.overlay').addClass('active');
+            $('#clickMap').removeClass('active'); //hide pin on map message
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             $('#lat').val(lt); //set latitude of clicked rack 
@@ -371,7 +376,56 @@ L.control.layers({
             $('#rackId').val(rackId);  //set id of clicked rack 
             $('#incident').val("Theft");
             
-             });
+         });
+
+         //Apply/Remove grey layer over the map
+         $('#dismiss, .overlay').on('click', function () {
+            $('#sidebar').removeClass('active');
+            $('.overlay').removeClass('active');
+        });
+
+        //Allow user to pick a point in the map
+        $("div").on("click", '#newRack', function () {
+
+            //hide all hotspot
+            //hide all racks
+            
+            $('.overlay').addClass('active'); //add overlay
+            $('#clickMap').addClass('active'); //display pin on map message
+            $('#mapid').css('cursor', 'crosshair'); //change cursor
+
+
+                    mymap.on('click', function(e) {
+                        $('.sidebar-header span').text('Add new Rack');
+                        // $('#incident').val("");
+                        // $('#dt span').text('Stands');
+                        // $('#date').removeClass('active');
+                        // $('#date').addClass('hide');
+                        // $('#number').addClass('active');
+                        $('#newRackForm').addClass('active');
+                        $('#incidentForm').removeClass('active');
+                        $('#sidebar').addClass('active'); //display side form
+                        $('a[aria-expanded=true]').attr('aria-expanded', 'false');//tag element as expdanded
+                        $('#lat').val(e.latlng.lat); //set latitude of clicked spot
+                        $('#lon').val(e.latlng.lng);  //set longitude of clicked spot
+                    });
+
+        
+                
+                // $('.collapse.in').toggleClass('in');
+                //dont allow to pick an existing rack location
+        
+                //add marker and popup with button
+                //confirm button get lat and long
+                
+        
+        
+            // $('#rackId').val(rackId);  //set id of clicked rack 
+            // $('#incident').val("Theft");
+            
+         });
+
+
          
 
 
