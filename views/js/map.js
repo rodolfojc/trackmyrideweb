@@ -297,12 +297,6 @@ function onEachFeature(feature, layer){
         console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
     });
 
-    //When button is clicked, grab the location
-    // $("button").on('click', '#grabPosition', function() {
-    //    console.log("Grab position clicked");
-
-    // });
-
     // Layer groups for filters
 
 //add layer to the map
@@ -361,11 +355,7 @@ L.control.layers({
             $('#newRackForm').removeClass('active');
             $('#incidentForm').addClass('active');
             $('.sidebar-header span').text('Report Incident');
-        
-            // $('#number').addClass('hide');
-            // $('#date').addClass('active');
-            // $('#inc span').text('Incident');
-            // $('#date').addClass('active');
+         
             $('#sidebar').addClass('active'); //display side panel
             $('.overlay').addClass('active');
             $('#clickMap').removeClass('active'); //hide pin on map message
@@ -387,28 +377,22 @@ L.control.layers({
         //Allow user to pick a point in the map
         $("div").on("click", '#newRack', function () {
 
-            //hide all hotspot
-            //hide all racks
-            
+            mymap.removeLayer(mapWithRackMarkers);   //hide all racks
+            mymap.removeLayer(mapWithHotspotsMarkers); //hide all hotspot
             $('.overlay').addClass('active'); //add overlay
             $('#clickMap').addClass('active'); //display pin on map message
             $('#mapid').css('cursor', 'crosshair'); //change cursor
 
-
-                    mymap.on('click', function(e) {
-                        $('.sidebar-header span').text('Add new Rack');
-                        // $('#incident').val("");
-                        // $('#dt span').text('Stands');
-                        // $('#date').removeClass('active');
-                        // $('#date').addClass('hide');
-                        // $('#number').addClass('active');
-                        $('#newRackForm').addClass('active');
-                        $('#incidentForm').removeClass('active');
-                        $('#sidebar').addClass('active'); //display side form
-                        $('a[aria-expanded=true]').attr('aria-expanded', 'false');//tag element as expdanded
-                        $('#lat').val(e.latlng.lat); //set latitude of clicked spot
-                        $('#lon').val(e.latlng.lng);  //set longitude of clicked spot
-                    });
+            
+            mymap.on('click', function(e) {
+                $('.sidebar-header span').text('Add new Rack');//Form title
+                $('#newLat').val(e.latlng.lat); //set latitude of clicked spot
+                $('#newLon').val(e.latlng.lng);  //set longitude of clicked spot
+                $('#newRackForm').addClass('active');//display rack form
+                $('#incidentForm').removeClass('active');//hide incident form
+                $('#sidebar').addClass('active'); //display side bar
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');//tag element as expdanded
+            });
 
         
                 

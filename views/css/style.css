@@ -333,10 +333,11 @@ body
     https://bootstrapious.com/tutorial/sidebar/index3.html
 ----------------------------------------------------- */
 
-#rackId{ 
+#rackId, #newRackId{ 
   /* selected rack */
  display:none
 }
+
 #sidebar {
   width: 350px;
   position: fixed;
@@ -397,19 +398,7 @@ body
 #clickMap{
   display: none;
 }
-/* Change date for number of stands in the form */
-#date.hide{
-  display: none;
-}
-#number.hide{
-  display: none;
-}
-#date.active{
-  display: block;
-}
-#number.active{
-  display: block;
-}
+
 
 #newRackForm.active{
   display: block;
