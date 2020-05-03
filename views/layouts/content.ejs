@@ -4,7 +4,7 @@
 
 <div class="container">
   <div id="midle-content-left">
-    <form action="/addBike" method="post">
+    <form action="/addBike" method="POST">
        <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Serial</label>
       <input
@@ -12,6 +12,12 @@
         class="form-control mb-2"
         name="serial"
         placeholder="Serial"
+      />
+      <input
+        type="hidden"
+        class="form-control mb-2"
+        name=""
+        value=""
       />
     </div>
     <div class="col-auto">

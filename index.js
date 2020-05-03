@@ -185,9 +185,9 @@ app.post("/login", async (req, res) => {
         password,
       },
     });
-    req.session = response.token;
-    console.log(response.token);
-    res.render("home", { token: response.token });
+    console.log(response);
+    req.session.userId = response.data.userId;
+    res.render("home", { userId: response.data.userId });
     
   } catch (err) {
     //alert(response);
