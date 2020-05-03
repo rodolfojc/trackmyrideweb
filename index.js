@@ -50,7 +50,9 @@ const incidentsController = require("./controllers/incidentsCtrl");
 
 const addbikeController = require("./controllers/addbike");
 
-const theftController = require("./controllers/theftCtrl");
+const theftController = require("./controllers/theftCtrl"); //DELETE IF NOT IN USE
+
+const newRackController = require("./controllers/newRackCtrl");
 //###################################################################################
 
 //Creating a customer middleware
@@ -97,13 +99,13 @@ app.get("/consult", consultPageController);
 
 app.get("/welcomescreen", welcomeScreenController);
 
-
-app.post("/incident", incidentsController);
+app.post("/incident", incidentsController); //New incident to the map
 
 app.post("/addBike", addbikeController);
 
-app.put("/incrementRack/:id", theftController); //Testing the route to increment theft on a rack
+app.put("/incrementRack/:id", theftController); //DELETE IF NOT IN USE Testing the route to increment theft on a rack
 
+app.post("/addNewRack", newRackController ); //New rack
 
 
 

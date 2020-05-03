@@ -10,7 +10,8 @@ module.exports = async (req,res) =>{
      try {
          //Save the data
          await Promise.all([
-            newIncident.save(),
+            newIncident.save(), //add incident to the list
+            // Increment one incident on the rack
             Theft.findOneAndUpdate({rackId : rack}, {$inc: { quantity: 1}}, {new: true })
           ]).then( () => {
             console.log( rack );

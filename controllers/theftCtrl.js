@@ -1,3 +1,5 @@
+//DELETE IF NOT IN USE
+
 const Theft = require('../models/Theft.js') //Accessing Schema
 
 module.exports = async (req, res) => {
