@@ -17,13 +17,8 @@ module.exports = async (req,res) =>{
             console.log( rack );
           });
          
-        //  newIncident.save();
-        //  console.log(req.body);
-        //  console.log("saved");
-        //  Theft.findOneAndUpdate({rackId : "3333"}, {$inc: { quantity: 1}}, {new: true });
-        
          //Refresh the page 
-         return res.redirect('/');
+         return res.redirect('/consultmap');
         // return res.send(theft.req.body);
          
         } catch (err) {

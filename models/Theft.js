@@ -5,21 +5,21 @@ const TheftSchema = new Schema({
   rackId: {
       type: String, 
   },
+
   quantity: {
       type: Number,
       default: 0,
       },
 
-// quantity:  Number,
-
  
     testField :{
         type: String, 
+        default:"added by user"
     }
 
 });
 
-module.exports = mongoose.model('theft', TheftSchema );
+module.exports = mongoose.model('theft', TheftSchema, 'thefts' );
 // theft = mongoose.model('theft', TheftSchema );
 
 // module.exports = findOneAndUpdate({rackId : id}, {$inc: { quantity: 1}}, {new: true },function(err, response) {

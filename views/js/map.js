@@ -386,8 +386,9 @@ L.control.layers({
             
             mymap.on('click', function(e) {
                 $('.sidebar-header span').text('Add new Rack');//Form title
-                //ADD FAKE RACK ID. CHANGE IT TO RANDOM
-                $('#newRackId').val("123456"); 
+                //CREATE IF TO CHECK IF ID EXISTS
+                let randomRackId = Math.floor((Math.random() * 1000000) + 1);
+                $('#newRackId').val(randomRackId); 
                 // ----------------------------------
                 $('#newLat').val(e.latlng.lat); //set latitude of clicked spot
                 $('#newLon').val(e.latlng.lng);  //set longitude of clicked spot
