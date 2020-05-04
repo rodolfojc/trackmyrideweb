@@ -4,6 +4,7 @@ const Theft = require("../models/Theft.js");
 
 //Request to the server
 module.exports = async (req,res) =>{
+    console.log(req.session.userId);
     //Get the new data from browser
      const newIncident = new incident(req.body);
      const rack = newIncident.rackId;

@@ -54,17 +54,6 @@ const addbikeController = require("./controllers/addbike");
 const theftController = require("./controllers/theftCtrl"); //DELETE IF NOT IN USE
 
 const newRackController = require("./controllers/newRackCtrl");
-//###################################################################################
-
-//Creating a customer middleware
-// const validateMiddleWare = (req, res, next) => {
-// if (req.email == null || req.password == null) {
-// return res.redirect("/sigIn2");
-// }
-// next();
-// };
-//
-// app.use("/index/store", validateMiddleWare);
 
 app.use(bodyParser.json());
 app.use(expressSession({
@@ -155,7 +144,7 @@ app.post("/addNewRack", newRackController ); //New rack
 // });
 
 //#############################################################################################//
-app.post("/index/store", async (req, res) => {
+app.post("/signin", async (req, res) => {
   console.log("teste store: " + req.body);
 
   // Axios
@@ -172,14 +161,12 @@ app.post("/index/store", async (req, res) => {
         password,
       },
     });
-    res.status(200).render(welcomeController);
+    console.log(response.data.userId);
+    res.render("home", { userId: response.data.userId });
   } catch (err) {
     console.log(err.message);
   }
-
-  //model creates a new doc with browser data
-  // UserCredentials.create(req.body, (error, blogspot) => {
-  //   res.redirect("/");
+  
 });
 
 app.post("/login", async (req, res) => {
