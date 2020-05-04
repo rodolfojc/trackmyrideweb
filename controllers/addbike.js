@@ -1,18 +1,13 @@
-//Author: Yuri Braga
-//Route to add a new bike
-// Importing DB Bikes#
 const axios = require("axios");
-//const bikeModel = require("../models/Bike.js");
-
-//Function to create a new Bike
 
 module.exports = async (req, res) => {
-  // console.log(req.body);
+  
+  // Check the userId Logged
   console.log(req.session.userId);
-  // userId = req.session.userId;
+  
+  // Getting value from the form 
   let {serial, brand, color, type, status, locker, userId} = req.body;
-  //userId = req.session.userId;
-
+  
   try {
     const response = await axios({
       method: "POST",
