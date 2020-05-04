@@ -161,6 +161,7 @@ app.post("/signin", async (req, res) => {
         password,
       },
     });
+    console.log(response.data.userId);
     res.render("home", { userId: response.data.userId });
   } catch (err) {
     console.log(err.message);
