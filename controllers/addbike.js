@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 module.exports = async (req, res) => {
-  
+ 
   // Check the userId Logged
   console.log(req.session.userId);
   

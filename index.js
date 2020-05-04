@@ -1,4 +1,4 @@
-const dotenv = require('dotenv').config();
+const dotenv = require("dotenv").config();
 const express = require("express");
 
 const axios = require("axios");
@@ -22,7 +22,7 @@ const bodyParser = require("body-parser");
 const UserCredentials = require("./models/User.js");
 
 //Importing Bike model
-const Bike = require("./models/Bike.js");
+const bikeModel = require("./models/Bike.js");
 
 //Routing imports##################################################################
 
@@ -46,7 +46,14 @@ const newUserController = require("./controllers/newUser");
 
 const welcomeScreenController = require("./controllers/welcomeScreen");
 
+
+const incidentsController = require("./controllers/incidentsCtrl");
+
 const addbikeController = require("./controllers/addbike");
+
+const theftController = require("./controllers/theftCtrl"); //DELETE IF NOT IN USE
+
+const newRackController = require("./controllers/newRackCtrl");
 //###################################################################################
 
 //Creating a customer middleware
@@ -67,14 +74,11 @@ app.use(expressSession({
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect(
-  process.env.DB_CONNECT,
-  { useNewUrlParser: true }
-);
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
 
 app.set("view engine", "ejs");
 
-app.use(express.static("public"));
+app.use(express.static("views"));
 
 app.listen(3005, () => {
   console.log("App listening on port 3005");
@@ -100,7 +104,15 @@ app.get("/consult", consultPageController);
 
 app.get("/welcomescreen", welcomeScreenController);
 
+app.post("/incident", incidentsController); //New incident to the map
+
 app.post("/addBike", addbikeController);
+
+app.put("/incrementRack/:id", theftController); //DELETE IF NOT IN USE Testing the route to increment theft on a rack
+
+app.post("/addNewRack", newRackController ); //New rack
+
+
 
 // Finish Routes#############################################################################
 
@@ -144,7 +156,7 @@ app.post("/addBike", addbikeController);
 
 //#############################################################################################//
 app.post("/index/store", async (req, res) => {
-  console.log(req.body);
+  console.log("teste store: " + req.body);
 
   // Axios
   const { email, password } = req.body;
@@ -197,3 +209,59 @@ app.post("/login", async (req, res) => {
 
 //########################################################/
 //To save username inside the database
+
+// app.route("/put/id:").get((req, res) => {
+//   var id = req.params.id;
+//   console.log("Test to get ID ===>: " + id);
+
+//   bikeModel
+//     .findById(id, (err, bike) => {
+//       console.log("Return from DB: ==> : " + bike);
+//       var isfalse = 3;
+
+//       res.render("managebike", {
+//         bike: bike,
+//         isfalse: isfalse,
+//       });
+//       console.log("Return from DB:==> " + bike);
+//     })
+//     .post((req, res) => {
+//       var id = req.params.id;
+//       console.log("UPDATE ID: ==> " + id);
+//       console.log("What will be updated: ==> " + req.params);
+
+//       bikeModel.findByIdAndUpdate(id, req.body, { new: true }, (err) => {
+//         console.log(req.body);
+//         if (err) return res.send(500, err);
+//         return res.redirect("managebike");
+//       });
+//     });
+// });
+
+app.route("/put/:id").get((req, res) => {
+  var id = req.params.id;
+  console.log("1 ---    Numero do meu ID: " + id);
+
+  bikeModel.findById(id, (err, bike) => {
+    console.log("2- Retorno da minha DB: " + bike);
+    var isfalse = 1;
+
+    res.render("managebike", {
+      bike: bike,
+      isfalse: isfalse,
+    });
+    console.log("2- Retorno da minha DB: " + bike);
+  });
+});
+// })
+// .post((req, res) => {
+//   var id = req.params.id;
+//   console.log("Id do UPDATE :" + id);
+//   console.log("corpo do update" + req.params);
+
+//   bikeModel.findByIdAndUpdate(id, req.body, { new: true }, (err) => {
+//     console.log(req.body);
+//     if (err) return res.send(500, err);
+//     return res.redirect("welcomescreen");
+//   });
+// });

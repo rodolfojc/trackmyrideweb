@@ -1,0 +1,72 @@
+<!--This Modal will pop up when user wants to update a bike-->
+
+<!--Modal Section-->
+<div class="container">
+  <div class="parent-modal" id=<%= isfalse===2? "hidden":"displayed" %>>
+    <div class="modal-content">
+      <div class="close">
+        <a href="/managebike"> +</a>
+      </div>
+      <form action="/addBike" method="post">
+        <span><h3>User Name</h3></span>
+        <div class="form-input">
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInput">Serial</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              name="serial"
+              placeholder="Serial"
+            />
+          </div>
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInput">Brand</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              name="brand"
+              placeholder="Brand"
+            />
+          </div>
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInput">Color</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              name="color"
+              placeholder="Color"
+            />
+          </div>
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInput">Type</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              name="type"
+              placeholder="Type"
+            />
+          </div>
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInput">Status</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              name="status"
+              placeholder="Status"
+            />
+          </div>
+          <div class="col-auto">
+            <label for="inlineFormInput">Locker</label>
+            <select name="locker">
+              <option value="true">Yes</option>
+              <option value="false">No</option> </select
+            ><br />
+          </div>
+        </div>
+        <button id="update-btn" type="submit" class="btn btn-primary mb-2">
+          Update
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

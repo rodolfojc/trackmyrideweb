@@ -23,9 +23,74 @@
 // var mymap = L.map('mapid').setView([53.347557, -6.259317], 13);
 
 
+var APIUrl = 'https://cors-anywhere.herokuapp.com/http://34.247.183.192:3000/getracks';
+var geoJson;
+var lt;
+var ln;
+var id;
+// function getRacks() {
+    
+//     $.getJSONuncached = function (url) {
+//       console.log("Executed");
+//       return $.ajax({
+//         url: url,
+//         type: "GET",
+//         cache: false,
+//         success: function (JSONdata) {                     
+//             geoJson = JSONdata;    
+//             console.log("Inside function" + geoJson);   
+//             return geoJson;   
+//         },        
+//       });
+//     };
+//     $.getJSONuncached(APIUrl);   
+//     console.log("Return" + geoJson); 
+   
+      
+// };
+// var mymap = L.map('mapid', { 
+//     zoomControl: false //Remove default zoom control from the left side
+// }).setView([53.347557, -6.259317], 13);
+
+
+// var counties = $.ajax({
+//     url: "https://cors-anywhere.herokuapp.com/http://34.247.183.192:3000/getracks",
+//     dataType: "json",
+//     success: console.log("County data successfully loaded." ),
+//     error: function(xhr) {
+//         alert(xhr.statusText)
+//     }
+// })
+// $.when(counties).done(function() {
+    
+//     var mapWithRackMarkers = L.geoJSON(counties.responseJSON, {
+//         //add multiple locations with personalised marker using geoJson
+//         pointToLayer: function(feature, latlng){
+//            return L.marker(latlng, {
+//                icon: fontAwesomeIcon
+//            });
+           
+//             // return L.circleMarker(latlng, geojsonMarkerOptions);
+//            },
+
+//         onEachFeature: onEachFeature,
+//     }).addTo(mymap);
+//    console.log(counties.responseJSON) 
+// });
+
+
+
+// $(document).ready(function () {
+
+// console.log(counties);
+   
+// });
+
 var mymap = L.map('mapid', { 
-    zoomControl: false //Remove default zoom control from the left side
-}).setView([53.347557, -6.259317], 13);
+        zoomControl: false //Remove default zoom control from the left side
+    }).setView([53.347557, -6.259317], 13);
+
+
 
 //Create new zoom control on the right side of the map    
 L.control.zoom({
@@ -166,8 +231,11 @@ function onEachFeature(feature, layer){
    '<button class="btn btn-outline-info btn-sm" id="chatToggle">Report</button>'
     );
     layer.on('click', function (e) {
-          
-        console.log(feature.properties.id + ' ' + e.latlng.lat + ', ' + e.latlng.lng + 'from geoJSON ');
+    lt = e.latlng.lat;
+    ln = e.latlng.lng;
+    rackId = feature.properties.id;
+        console.log(rackId + ' ' + lt + ', ' + ln);
+        
   });
 }
 
@@ -229,11 +297,6 @@ function onEachFeature(feature, layer){
         console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
     });
 
-    //When button is clicked, grab the location
-    $(document).on('click', '#grabPosition', function() {
-       
-    });
-
     // Layer groups for filters
 
 //add layer to the map
@@ -286,17 +349,82 @@ L.control.layers({
             theme: "minimal"
         });
 
-        $('#dismiss, .overlay').on('click', function () {
+        //Report incident is clicked inside the popup
+        $("div").on("click", '#chatToggle', function () {
+
+            $('#newRackForm').removeClass('active');
+            $('#incidentForm').addClass('active');
+            $('.sidebar-header span').text('Report Incident');
+         
+            $('#sidebar').addClass('active'); //display side panel
+            $('.overlay').addClass('active');
+            $('#clickMap').removeClass('active'); //hide pin on map message
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            $('#lat').val(lt); //set latitude of clicked rack 
+            $('#lon').val(ln);  //set longitude of clicked rack 
+            $('#rackId').val(rackId);  //set id of clicked rack 
+            $('#incident').val("Theft");
+            
+         });
+
+         //Apply/Remove grey layer over the map
+         $('#dismiss, .overlay').on('click', function () {
             $('#sidebar').removeClass('active');
             $('.overlay').removeClass('active');
         });
 
-        $("div").on("click", '#chatToggle', function () {
-            $('#sidebar').addClass('active');
-            $('.overlay').addClass('active');
-            $('.collapse.in').toggleClass('in');
-            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-        });
-    });
+        //Allow user to pick a point in the map
+        $("div").on("click", '#newRack', function () {
 
-   
+            mymap.removeLayer(mapWithRackMarkers);   //hide all racks
+            mymap.removeLayer(mapWithHotspotsMarkers); //hide all hotspot
+            $('.overlay').addClass('active'); //add overlay
+            $('#clickMap').addClass('active'); //display pin on map message
+            $('#mapid').css('cursor', 'crosshair'); //change cursor
+
+            
+            mymap.on('click', function(e) {
+                $('.sidebar-header span').text('Add new Rack');//Form title
+                //CREATE IF TO CHECK IF ID EXISTS
+                let randomRackId = Math.floor((Math.random() * 1000000) + 1);
+                $('#newRackId').val(randomRackId); 
+                // ----------------------------------
+                $('#newLat').val(e.latlng.lat); //set latitude of clicked spot
+                $('#newLon').val(e.latlng.lng);  //set longitude of clicked spot
+                $('#newRackForm').addClass('active');//display rack form
+                $('#incidentForm').removeClass('active');//hide incident form
+                $('#sidebar').addClass('active'); //display side bar
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');//tag element as expdanded
+            });
+
+        
+                
+                // $('.collapse.in').toggleClass('in');
+                //dont allow to pick an existing rack location
+        
+                //add marker and popup with button
+                //confirm button get lat and long
+                
+        
+        
+            // $('#rackId').val(rackId);  //set id of clicked rack 
+            // $('#incident').val("Theft");
+            
+         });
+
+
+         
+
+
+    });
+    // Submit form to add incident to the database
+    $("#incidentForm").on("submit", function(){
+       addRack();
+        return true;
+      })
+    
+      function addRack() {
+         
+        console.log("clicked");
+        }
