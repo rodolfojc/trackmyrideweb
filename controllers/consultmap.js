@@ -1,8 +1,6 @@
-const ConsultMapPage = require("../models/User.js");
 
 module.exports = async (req, res) => {
-  const mapPage = await ConsultMapPage.find({});
-  res.render("map", {
-    mapPage,
-  });
+  const userId = req.session.userId;
+  console.log(userId);
+  res.render("map", { userId });
 };
