@@ -55,7 +55,23 @@ const theftController = require('./controllers/theftCtrl'); //DELETE IF NOT IN U
 
 const newRackController = require('./controllers/newRackCtrl');
 
+
 const updateController = require('./controllers/updateBike');
+
+
+const searchBikesController = require("./controllers/searchBikesCtrl");
+//###################################################################################
+
+//Creating a customer middleware
+// const validateMiddleWare = (req, res, next) => {
+// if (req.email == null || req.password == null) {
+// return res.redirect("/sigIn2");
+// }
+// next();
+// };
+//
+// app.use("/index/store", validateMiddleWare);
+
 
 app.use(bodyParser.json());
 app.use(
@@ -103,7 +119,10 @@ app.post('/incident', incidentsController); //New incident to the map
 
 app.post('/addBike', addbikeController);
 
+app.post("/searchBikes",searchBikesController);
+
 app.put('/incrementRack/:id', theftController); //DELETE IF NOT IN USE Testing the route to increment theft on a rack
+
 
 app.post('/addNewRack', newRackController); //New rack
 

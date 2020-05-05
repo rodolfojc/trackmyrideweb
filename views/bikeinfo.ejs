@@ -2,46 +2,72 @@
 
 <html lang="en">
 
+  <!-- PRESENT A FORM, SO THE USER CAN INPUT THE BIKE DETAILS
+      (SERIAL) AND SUBMIT THE FORM.
+      THE FORM BRINGS USER TO A PAGE WITH THE BIKES THAT MATCH
+      THE CRITERIA
+  -->
+
  <!--Importing the Header Layout element-->
-  <%-include('layouts/header'); -%>
+ <%-include('layouts/login2_header'); -%>
 
   <body>
-      
-    <div class="section">
-        <div class="home-route">
-            <a href="#"><i class="material-icons">home</i><b>HOME</b></a>
+
+
+    <!-- source code from https://richwebdeveloper.com/login-and-registration-form-in-html-bootstrap/ -->
+    <div class="container">
+      <div class="row d-flex justify-content-center mx-auto">
+          <div class="col-md-6 col-xs-12 div-style">
+          <form action="/searchBikes" method="POST">
+              <div class="d-flex justify-content-center mx-auto main-label" >
+                  <h2>Insert Bike Details</h2>
+                  <!-- <img class="logo" src="img/trackMyRidelogo2.JPG"> -->
+              </div>
+              <div class="form-group">
+                <!-- <input type="text" serial="serial" id="serial-field" placeholder="Bike's Serial Number"> -->
+                  <input type="number" class="form-control text-box" name="serial"  id="serial" aria-describedby="serial" placeholder="Serial Number">
+              </div>
+              <!-- <div class="form-group">
+                   <input type="text" class="form-control text-box" id="password" aria-describedby="password" placeholder="Brand">
           
-        </div>
+              </div> -->
+              <!-- <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="remeberme">
+                  <label class="form-check-label" for="remeberme">Remember me</label>
+              </div> -->
+              <div class="form-group  justify-content-center d-flex">
+                  <button type="submit" class="btn btn-primary button-submit">Search</button>
+              </div>
+          </form>
+      </div>
+      </div>
+  </div>
+    
 
-        
+      
+    <!-- <div class="login" >
+      <p class="main-txt" style="font-family: pacifico;color: white;font-size: 23px;margin-left: 45px;">
+        Track My Ride
+        <i id="bike-icon" class="material-icons"  >directions_bike</i></p>
 
-      <h1><form>
-       
+      
+        <form>
           <img class="logo" src="img/trackMyRidelogo2.JPG">
           <input type="text" serial="serial" id="serial-field" placeholder="Bike's Serial Number"><br>
           <input type="text" name="brand" id="brand=field" placeholder="Bike's Brand"><br>
           <input type="text" name="colour" id="colour=field" placeholder="Bike's Colour"><br>
-          
-          
-          
-          <div class="report-rec">
-           
-            <br />
-            <br />
-            <a href='/bikeinfo'>SEARCH</a>
-        </div>
-           
-       
-      </form></h1>
-<!--Importing the Video background element-->
-      <%-include('layouts/videobackground'); -%>
+              
+          <a href='/bikeinfo'>SEARCH</a>
 
+
+         </form>
+          </div>
+
+       -->
+         
+          
+          
      
-     
-     
-     
-      </div>
-    </div>
     <!--Importing the Scripts from Layout-->
     <%-include('layouts/scripts'); -%>
   </body>
