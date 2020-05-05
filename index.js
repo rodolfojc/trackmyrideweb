@@ -258,3 +258,6 @@ app.route('/put/:id').get((req, res) => {
 //     return res.redirect("welcomescreen");
 //   });
 // });
+app.get("/gdpr", (req, res) => {
+  res.render("gdpr");
+});
