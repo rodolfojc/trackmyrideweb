@@ -6,7 +6,9 @@ module.exports = async (req, res) => {
   console.log(req.session.userId);
   
   // Getting value from the form 
-  let {serial, brand, color, type, status, locker, userId} = req.body;
+  let {image,serial, brand, color, type, status, locker, userId} = req.body;
+
+
   
   try {
     const response = await axios({
@@ -15,6 +17,7 @@ module.exports = async (req, res) => {
       headers: { "Content-Type": "application/json" },
       data: {
         serial,
+        image,
         userId: req.session.userId, 
         brand,
         color,

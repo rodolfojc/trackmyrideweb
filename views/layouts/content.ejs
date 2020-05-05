@@ -6,13 +6,8 @@
   
   <div id="midle-content-left">
 
-<<<<<<< HEAD
-    <form action="/addbike"  method="post">
-      
-=======
-    <form action="/addBike" method="POST">
+    <form action="/addBike" method="POST" enctype="multipart/form-data">
 
->>>>>>> development
        <div class="col-auto">
 
         <% for (var i =0; i< bike.length; i++) { %>
@@ -77,16 +72,19 @@
       <select name="locker">
         <option value="true">Yes</option>
         <option value="false">No</option>
+        
+        
       </select>
+    </div>
+   
     </div>
     <br />
     <div class="col-auto">
-      
-      <!-- <button id="btn2" name="post" foraction="/addbike" type="submit" class="btn btn-primary mb-2">
-        Add new bike
-      </button> -->
-     
-        <button
+      <div class="form-group floating-label-form-group controls">
+         <input type="file" class="form-control" id="image" name="image">
+      </div>
+    <div class="col-auto">
+       <button
           id="btn1"
           type="post"
           class="btn btn-primary mb-2s"
