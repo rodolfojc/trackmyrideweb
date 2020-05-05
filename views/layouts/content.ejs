@@ -6,7 +6,7 @@
   
   <div id="midle-content-left">
 
-    <form action="/addBike" method="POST">
+    <form action="/addBike" method="POST" enctype="multipart/form-data">
 
        <div class="col-auto">
 
@@ -14,6 +14,7 @@
      
       <label class="sr-only" for="inlineFormInput" > Serial:   </label>
        <input
+       id="input-id"
         type="text"
         class="form-control mb-2"
         name="serial"
@@ -29,6 +30,7 @@
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Brand</label>
       <input
+        id="input-id"
         type="text"
         class="form-control mb-2"
         name="brand"
@@ -38,6 +40,7 @@
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Color</label>
       <input
+        id="input-id"
         type="text"
         class="form-control mb-2"
         name="color"
@@ -47,6 +50,7 @@
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Type</label>
       <input
+        id="input-id"
         type="text"
         class="form-control mb-2"
         name="type"
@@ -56,6 +60,7 @@
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Status</label>
       <input
+        id="input-id"
         type="text"
         class="form-control mb-2"
         name="status"
@@ -63,29 +68,33 @@
       />
     </div>
     <div class="col-auto">
-      <label for="inlineFormInput">Locker</label>
+      <label style="color:white;" for="inlineFormInput">Locker</label>
       <select name="locker">
         <option value="true">Yes</option>
         <option value="false">No</option>
+        
+        
       </select>
+    </div>
+   
     </div>
     <br />
     <div class="col-auto">
-      
-      <!-- <button id="btn2" name="post" foraction="/addbike" type="submit" class="btn btn-primary mb-2">
-        Add new bike
-      </button> -->
-      <a class="update" href="/addbike">
-        <button
+      <div class="form-group floating-label-form-group controls">
+         <input type="file" class="form-control" id="image" name="image">
+      </div>
+    <div class="col-auto">
+       <button
           id="btn1"
-          type="button"
+          type="post"
           class="btn btn-primary mb-2s"
           data-toggle="modal"
           data-target="#myModal"
+          formaction="/addbike"
         >
           ADD NEW BIKE
         </button>
-      </a>
+     
     
       <a class="update" href="/put/<%= bike[i].id %>">
         <button
