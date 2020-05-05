@@ -1,3 +1,6 @@
 module.exports = (req, res) => {
-  const welcomePage = res.render("welcomescreen");
+
+  isfalse=2;
+  const welcomePage = res.render("welcomescreen",{isfalse: isfalse});
 };
+

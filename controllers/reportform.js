@@ -8,8 +8,11 @@ const ReportFormPage = require("../models/User.js");
 // };
 
 module.exports = async (req, res) => {
+
+  isfalse=1;
   const reportFormPage = await ReportFormPage.find({});
-  res.render("reportForm", {
+  res.render("welcomescreen", {
+    isfalse:isfalse,
     reportFormPage,
   });
 };
