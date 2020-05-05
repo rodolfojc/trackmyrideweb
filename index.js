@@ -55,6 +55,8 @@ const theftController = require('./controllers/theftCtrl'); //DELETE IF NOT IN U
 
 const newRackController = require('./controllers/newRackCtrl');
 
+const updateController = require('./controllers/updateBike');
+
 app.use(bodyParser.json());
 app.use(
 	expressSession({
@@ -104,6 +106,8 @@ app.post('/addBike', addbikeController);
 app.put('/incrementRack/:id', theftController); //DELETE IF NOT IN USE Testing the route to increment theft on a rack
 
 app.post('/addNewRack', newRackController); //New rack
+
+app.get('/update', updateController); // to call the modal in ManageBike Screen.
 
 // Finish Routes#############################################################################
 

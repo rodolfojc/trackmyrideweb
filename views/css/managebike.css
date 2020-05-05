@@ -108,6 +108,7 @@ footer {
 .parent-modal {
   display: flex;
   justify-content: center;
+  z-index: 999;
 }
 
 .modal-content {
@@ -222,13 +223,14 @@ footer {
 
 @media (max-height: 800px) {
   #update-btn {
-    width: auto;
+    width: 60%;
     height: auto;
     margin-top: 13%;
     padding-top: 5%;
     padding-bottom: 8%;
     border-radius: 20px;
     text-align: center;
+    margin-left: 85px;
   }
 }
 @media (max-height: 800px) {
