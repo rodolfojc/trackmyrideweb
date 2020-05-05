@@ -6,22 +6,31 @@
   
   <div id="midle-content-left">
 
+<<<<<<< HEAD
     <form action="/addbike"  method="post">
       
+=======
+    <form action="/addBike" method="POST">
+
+>>>>>>> development
        <div class="col-auto">
 
         <% for (var i =0; i< bike.length; i++) { %>
      
       <label class="sr-only" for="inlineFormInput" > Serial:   </label>
-
        <input
        id="input-id"
         type="text"
         class="form-control mb-2"
         name="serial"
-        placeholder="<%= bike[i].serial %>"
-      /> 
-      
+        placeholder="Serial"
+      />
+      <input
+        type="hidden"
+        class="form-control mb-2"
+        name=""
+        value=""
+      />
     </div>
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Brand</label>

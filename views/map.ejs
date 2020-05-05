@@ -9,33 +9,159 @@
 
     <div class="wrapper">
 
- <!-- Sidebar  -->
+ <!-- Sidebar Report -->
  <nav id="sidebar">
-  <div id="dismiss">
-    <i class="fas fa-arrow-left"></i>
-</div>
+    <div id="dismiss">
+      <i class="fas fa-arrow-left"></i>
+    </div>
   
-  <div class="sidebar-header">
-      <h3>Report Incident</h3>
-  </div>
+    <!-- Sidebar title  -->
+    <div class="sidebar-header">
+      <h3><span></span></h3>
+    </div>
 
+ 
   <ul class="list-unstyled components">
-      <p>Fill the form</p>
-      <li class="active">
-          <a href="#" data-toggle="collapse" aria-expanded="false">Select a rack</a>
-           <form >
-          <div class="form-group mx-sm-3 mb-2">
-          <label for="lat" class="sr-only">Latitude</label>
-          <input type="number" class="form-control" id="lat" placeholder="lat">
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-          <label for="lon" class="sr-only">Longitude</label>
-          <input type="number" class="form-control" id="lon" placeholder="lon">
-        </div>
-        <button type="submit" class="btn btn-primary mb-2" id="grabPosition">Report event</button>
-      </form>
+          <!-- Report Incident Form -->
+           <form action="/incident" method="POST" role="form" id="incidentForm" >
+            <!-- Map id - hidden -->
+            <input type="text" class="form-control" id="rackId" name="rackId">
+             <!-- Latitude -->
+            <div class="form-group row mx-sm-3 mb-2">
+              <label for="lat" class="col-sm-3 col-form-label">Latitude</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="lat" name="latitude" readOnly >
+              </div>
+            </div>
+            <!-- Longitude -->
+            <div class="form-group row mx-sm-3 mb-2">
+              <label for="longitude" class="col-sm-3 col-form-label">Longitude</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="lon" name="longitude" readOnly >
+              </div>
+            </div>
+             <!-- Report type -->
+             <div class="form-group row mx-sm-3 mb-2">
+              <label for="incident" class="col-sm-3 col-form-label" id="inc"><span>Incident</span></label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="incident" name="incident" readOnly >
+              </div>
+            </div>
+            <!-- User -->
+            <div class="form-group row mx-sm-3 mb-2">
+              <label for="email" class="col-sm-3 col-form-label">Email</label>
+              <div class="col-sm-9">
+                <input type="email" class="form-control" id="email" name="email" >
+              </div>
+            </div>
+           
+            <!-- Incident Date -->
+            <div class="form-group row mx-sm-3 mb-2">
+              <label for="date" class="col-sm-3 col-form-label" id="dt"><span>Date</span></label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" id="date" name="date" >
+              </div>
+            </div>
+            <!-- Incident Period -->
+            <div class="form-group row mx-sm-3 mb-2">
+              <label for="time" class="col-sm-3 col-form-label">Time</label>
+              <div class="col-sm-9">
+                <select id="time" name="time" class="form-control">
+                  <option value="morning">Morning</option>
+                  <option value="afternoon">Afternoon</option>
+                  <option value="evening">Evening</option>      
+              </select>
+                <!-- <input type="date" class="form-control" id="incident"disabled > -->
+              </div>
+            </div>
+             <!-- Description -->
+             <div class="form-group row mx-sm-3 mb-2">
+              <label for="description" class="col-sm-3 col-form-label">Description</label>
+              <div class="col-sm-9">
+                <textarea id="description" name="description" placeholder="Write something.." style="height:200px "></textarea>
+              </div>
+            </div>
 
-      </li>
+                  
+        <button type="submit" class="btn btn-success mb-3" id="grabPosition" >Report event</button>
+      </form>
+    </ul>
+
+    <!-- Add new Rack Form -->
+    <!-- <ul class="list-unstyled components"> -->
+       <form action="/addNewRack" method="POST" role="form" id="newRackForm">
+        <!-- Map id - hidden -->
+        <input type="text" class="form-control" id="newRackId" name="newRackId">
+         <!-- Latitude -->
+        <div class="form-group row mx-sm-3 mb-2">
+          <label for="lat" class="col-sm-3 col-form-label">Latitude</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="newLat" name="latitude" readOnly >
+          </div>
+        </div>
+        <!-- Longitude -->
+        <div class="form-group row mx-sm-3 mb-2">
+          <label for="longitude" class="col-sm-3 col-form-label">Longitude</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="newLon" name="longitude" readOnly >
+          </div>
+        </div>
+        <!-- Rack type -->
+        <div class="form-group row mx-sm-3 mb-2">
+          <label for="time" class="col-sm-3 col-form-label">Type</label>
+          <div class="col-sm-9 ">
+            <select id="type" name="type" class="form-control">
+              <option value="stand">Stand</option>
+              <option value="pole">Pole</option>
+              <option value="gate">Gate</option> 
+              <option value="private">Private Property</option>      
+           </select>
+          </div>
+        </div>
+          
+         <!-- Quantity -->
+         <div class="form-group row mx-sm-3 mb-2">
+          <label for="quantity" class="col-sm-3 col-form-label" id="inc">Quantity</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="quantity" name="quantity" >
+          </div>
+        </div>
+        <!-- User -->
+        <div class="form-group row mx-sm-3 mb-2">
+          <label for="email" class="col-sm-3 col-form-label">Email</label>
+          <div class="col-sm-9">
+            <input type="email" class="form-control" id="newEmail" name="email" >
+          </div>
+        </div>
+       
+        <!-- Property -->
+        <div class="form-group row mx-sm-3 mb-2">
+          <label for="property" class="col-sm-3 col-form-label" id="ppt"><span>Location</span></label>
+          <div class="col-sm-9">
+            <select id="property" name="property" class="form-control">
+              <option value="stand">Private</option>
+              <option value="pole">Public</option>
+           </select>
+          </div>
+        </div>
+  
+         <!-- Description -->
+         <div class="form-group row mx-sm-3 mb-2">
+          <label for="description" class="col-sm-3 col-form-label">Description</label>
+          <div class="col-sm-9">
+            <textarea id="newDescription" name="newDescription" placeholder="Write something.." style="height:200px "></textarea>
+          </div>
+        </div>
+
+              
+    <button type="submit" class="btn btn-success mb-3" id="grabNewRack" >Add new Rack</button>
+  </form>
+
+
+
+
+<!-- </ul> -->
+
       
   
 </nav>
@@ -58,15 +184,14 @@
    <span class="navbar-toggler-icon"></span>
 </button>
 <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
- <ul class="navbar-nav text-right">
+  <ul class="navbar-nav text-right">
      <li class="nav-item active">
-         <a class="nav-link" href="#">Home </a>
-       </li>
+        <a class="nav-link" href="#">Home </a>
+      </li>
      <li>
-       <a class="flex-fill text-right text-light nav-link" data-toggle="collapse" href="#" data-target=".chat" id="chatToggle">Report Rack</a>
+      <a class="flex-fill text-right text-light nav-link" data-toggle="collapse" href="#" data-target=".chat" id="newRack">Add Rack to Map</a>
      </li>
- 
-   </ul>
+  </ul>
 </div>
 </nav>
 <div >
@@ -77,11 +202,14 @@
 
   </div>
 </div>
-      
+<!-- Overlay a grey layer on the map -->
+<div class="overlay">
+  <div id="clickMap" >Pin location on the map</div>
+</div>    
     </div>
 
-  </div>
 
+  </div>
 
  
 
@@ -99,16 +227,17 @@
     <!--Importing the Scripts from Layout-->
 
       <!-- jQuery CDN - Slim version (=without AJAX) -->
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <!-- Popper.JS -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-      <!-- Bootstrap JS -->
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-      <!-- jQuery Custom Scroller CDN -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script type="text/javascript" src="js/mapAPI.js"></script>
-      <script type="text/javascript" src="jquery/jquery.min.js"></script>
-  <!--<script type="text/javascript" src="js/map.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+       <!-- <script type="text/javascript" src="js/mapAPI.js"></script> -->
+      <!-- <script type="text/javascript" src="jquery/jquery.min.js"></script> -->
+  <script type="text/javascript" src="js/map.js"></script>
 <!-- <script src="js/map.js"></script>  -->
 <%-include('layouts/scripts'); -%>
   </body>

@@ -326,15 +326,23 @@ body
 
 
 
+
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
+    https://bootstrapious.com/tutorial/sidebar/index3.html
 ----------------------------------------------------- */
 
+#rackId, #newRackId{ 
+  /* selected rack */
+ display:none
+}
+
 #sidebar {
-  width: 250px;
+  width: 350px;
   position: fixed;
   top: 0;
-  left: -250px;
+  left: -350px;
   height: 100vh;
   z-index: 999;
   background: black;
@@ -353,7 +361,7 @@ body
   height: 35px;
   line-height: 35px;
   text-align: center;
-  /* background: black; */
+  background: black;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -368,6 +376,7 @@ body
   color: #7386D5;
 }
 
+/* Overlay layer */
 .overlay {
   display: none;
   position: fixed;
@@ -378,10 +387,48 @@ body
   opacity: 0;
   transition: all 0.5s ease-in-out;
 }
+/* Active overlay layer */
 .overlay.active {
   display: block;
   opacity: 10;
 }
+
+
+/* Message on the overlay hidden */
+#clickMap{
+  display: none;
+}
+
+
+#newRackForm.active{
+  display: block;
+}
+#incidentForm.active{
+  display: block;
+}
+
+#newRackForm{
+  display: none;
+}
+#incidentForm{
+  display: none;
+}
+
+
+/* Message on the overlay active */
+#clickMap.active{
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+
+
 
 #sidebar .sidebar-header {
   padding: 20px;
@@ -462,12 +509,12 @@ a.download {
   zoom: 1;
 }
 
-/a.article,
+a.article,
 a.article:hover {
   background: #6d7fcc !important;
   color: #fff !important;
 
-
+}
 /* ---------------------------------------------------
     FONT AWESOME STYLE
 ----------------------------------------------------- */

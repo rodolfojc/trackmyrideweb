@@ -3,6 +3,7 @@ const express = require("express");
 
 const axios = require("axios");
 const GeoJSON = require("geojson");
+const expressSession = require("express-session");
 
 const app = express();
 //Path is a module to help us to get the directory path...
@@ -45,21 +46,21 @@ const newUserController = require("./controllers/newUser");
 
 const welcomeScreenController = require("./controllers/welcomeScreen");
 
-const addbikeController = require("./controllers/addbike");
-//###################################################################################
 
-//Creating a customer middleware
-// const validateMiddleWare = (req, res, next) => {
-// if (req.email == null || req.password == null) {
-// return res.redirect("/sigIn2");
-// }
-// next();
-// };
-//
-// app.use("/index/store", validateMiddleWare);
+const incidentsController = require("./controllers/incidentsCtrl");
+
+const addbikeController = require("./controllers/addbike");
+
+const theftController = require("./controllers/theftCtrl"); //DELETE IF NOT IN USE
+
+const newRackController = require("./controllers/newRackCtrl");
 
 app.use(bodyParser.json());
-
+app.use(expressSession({
+  secret: 'TrackMyRide',
+  resave: true,
+  saveUninitialized: true
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
@@ -92,7 +93,15 @@ app.get("/consult", consultPageController);
 
 app.get("/welcomescreen", welcomeScreenController);
 
+app.post("/incident", incidentsController); //New incident to the map
+
 app.post("/addBike", addbikeController);
+
+app.put("/incrementRack/:id", theftController); //DELETE IF NOT IN USE Testing the route to increment theft on a rack
+
+app.post("/addNewRack", newRackController ); //New rack
+
+
 
 // Finish Routes#############################################################################
 
@@ -135,7 +144,7 @@ app.post("/addBike", addbikeController);
 // });
 
 //#############################################################################################//
-app.post("/index/store", async (req, res) => {
+app.post("/signin", async (req, res) => {
   console.log("teste store: " + req.body);
 
   // Axios
@@ -152,14 +161,12 @@ app.post("/index/store", async (req, res) => {
         password,
       },
     });
-    res.status(200).render(welcomeController);
+    console.log(response.data.userId);
+    res.render("home", { userId: response.data.userId });
   } catch (err) {
     console.log(err.message);
   }
-
-  //model creates a new doc with browser data
-  // UserCredentials.create(req.body, (error, blogspot) => {
-  //   res.redirect("/");
+  
 });
 
 app.post("/login", async (req, res) => {
@@ -177,7 +184,10 @@ app.post("/login", async (req, res) => {
         password,
       },
     });
-    res.render("home", { token: response.token });
+    console.log(response);
+    req.session.userId = response.data.userId;
+    res.render("home", { userId: response.data.userId });
+    
   } catch (err) {
     //alert(response);
     res.render("login2", { errors: "Invalid email or password" });
