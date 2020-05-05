@@ -1,13 +1,34 @@
-//Author: Yuri Braga
-//Route to add a new bike
-// Importing DB Bikes
-const bikeModel = require("../models/Bike.js");
-
-//Function to create a new Bike
+const axios = require("axios");
 
 module.exports = async (req, res) => {
-  console.log("add bikE METHOD: " + req.body);
-  bikeModel.create(req.body, (error, bikes) => {
-    res.redirect("/managebike");
-  });
+ 
+  // Check the userId Logged
+  console.log(req.session.userId);
+  
+  // Getting value from the form 
+  let {serial, brand, color, type, status, locker, userId} = req.body;
+  
+  try {
+    const response = await axios({
+      method: "POST",
+      url: "http://34.247.183.192:3000/registerbike",
+      headers: { "Content-Type": "application/json" },
+      data: {
+        serial,
+        userId: req.session.userId, 
+        brand,
+        color,
+        type,
+        status,
+        locker
+      },
+    });
+    console.log(response);
+    console.log(req.session.userId);
+    res.render("managebike");
+    
+  } catch (err) {
+    console.log(err);
+    res.redirect("/managebike");  
+  }  
 };

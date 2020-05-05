@@ -1,11 +1,27 @@
-const ManageBikePage = require("../models/Bike.js");
+const axios = require("axios");
 
 module.exports = async (req, res) => {
-  const bike = await ManageBikePage.find({});
+  const userId = req.session.userId;
   isfalse = 2;
-  res.render("managebike", {
-    bike: bike,
-    isfalse: isfalse,
-  });
-  console.log(bike);
+  bike = [];
+
+  try {
+    const response = await axios({
+      method: "GET",
+      url: `http://34.247.183.192:3000/getbikes/${userId}`,
+      headers: { "Content-Type": "application/json" },
+      data: {},
+    });
+    console.log(response);
+    bike.push(response.data);
+    res.render("managebike", {
+      userId,
+      bike,
+    });
+    console.log(bike);
+
+  } catch (err) {
+    console.log(err);
+    res.redirect("/managebike");  
+  }    
 };
