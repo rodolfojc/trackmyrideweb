@@ -53,6 +53,8 @@ const addbikeController = require("./controllers/addbike");
 const theftController = require("./controllers/theftCtrl"); //DELETE IF NOT IN USE
 
 const newRackController = require("./controllers/newRackCtrl");
+
+const searchBikesController = require("./controllers/searchBikesCtrl");
 //###################################################################################
 
 //Creating a customer middleware
@@ -106,6 +108,8 @@ app.post("/addBike", addbikeController);
 app.put("/incrementRack/:id", theftController); //DELETE IF NOT IN USE Testing the route to increment theft on a rack
 
 app.post("/addNewRack", newRackController ); //New rack
+
+app.post("/searchBikes",searchBikesController);
 
 
 

@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const BikeSchema = new Schema({
-  serial: String,
+  // serial: String,
+  serial: Number, //The db is number, here was String - Jady
   brand: String,
   color: String,
   type: String,
