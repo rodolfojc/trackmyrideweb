@@ -173,7 +173,8 @@ app.post('/signin', async (req, res) => {
 app.post('/login', async (req, res) => {
 	// Axios
 	const { email, password } = req.body;
-	console.log(req.body);
+  console.log(req.body);
+  isfalse=2;
 
 	try {
 		const response = await axios({
@@ -187,7 +188,8 @@ app.post('/login', async (req, res) => {
 		});
 		console.log(response);
 		req.session.userId = response.data.userId;
-		res.render('welcomescreen', { userId: response.data.userId });
+    res.render('welcomescreen', { isfalse:isfalse,
+      userId: response.data.userId });
 	} catch (err) {
 		//alert(response);
 		res.render('login2', { errors: 'Invalid email or password' });
@@ -225,7 +227,7 @@ app.post('/login', async (req, res) => {
 //     });
 // });
 
-app.route('/put/').get((req, res) => {
+app.route('/put/:id').get((req, res) => {
 	var id = req.params.id;
 	console.log('1 ---    Numero do meu ID: ' + id);
 
