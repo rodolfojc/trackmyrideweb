@@ -559,3 +559,19 @@ a.article:hover {
    DISPLAY BIKES FROM SEARCH EJS STYLE
 ----------------------------------------------------- */
 
+.row{ 
+  /* after navbar */
+  margin-top: 20px;
+}
+body, html{
+background: #ae9ef711; 
+}
+
+.card-block{
+  padding: 10px;
+}
+
+#bikeTxt{
+  height: 200px;
+  width: 465px;
+}
