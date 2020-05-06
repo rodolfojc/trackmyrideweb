@@ -10,6 +10,7 @@ const BikeSchema = new Schema({
   status: String,
   lock: String,
   image: String,
+  
 });
 
 const Bike = mongoose.model("bikes", BikeSchema);
