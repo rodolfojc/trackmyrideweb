@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <!-- PRESENT THE BIKES THAT MATCH A CRITERIA
+    IN FIND BIKES /BIKE INFO
+    https://www.codeply.com/go/AxMtnBNLm9/bootstrap-4-dynamic-dismissable-cards-grid
+  -->
+
+ <!--Importing the Header Layout element-->
+ <%-include('layouts/header'); -%>
+
+  <body>
+
+    <div class="container">
+    <div class="row" id="contentPanel">
+  
+      </div>
+  </div>
+
+   <%for (var i = 0; i<bikeInfoPage.length; i++){%>
+
+  
+         <tr>
+         <td><%=bikeInfoPage[i].serial%></td>
+          <td><%=bikeInfoPage[i].brand%></td>
+          <td><%=bikeInfoPage[i].status%></td>
+      </tr>
+
+  <%  } %>
+    <!--Importing the Scripts from Layout-->
+    <script >
+
+        var x = `<%bikeInfoPage%>`
+        let array = [];
+         console.log(typeof x);
+
+        //  x.array.forEach(element => {
+        //    console.log("it worked");
+        //  });
+    
+        array.push({
+        // Brand: "<%=bikeInfoPage.brand%>",
+        Brand: "<%=bikeInfoPage.brand%>",
+        Status: "<%=bikeInfoPage.status%>"
+      });  
+      
+      var tasks = [{
+        "title": "home",
+        "color": "blue",
+    },
+    {
+        "title": "city",
+        "color": "green",
+    }
+];
+
+         
+         
+
+var num = tasks.length;
+console.log(num);
+
+
+var addCols = function (num, array){
+
+  
+  //Make i the array i
+    for (var i=1;i<=num;i++) {
+        var myCol = $('<div class="col-sm-3 col-md-3 pb-2"></div>');
+        var myPanel = $('<div class="card-deck"><div class="card card-outline-info" id="'+i+
+        'Panel"><div class="card-block">    <img class="card-img-top" src="https://cdn.webshopapp.com/shops/219098/files/302607843/second-hand-s-h-bike-cuda-bolt-kids-road-24w-priva.jpg" alt="Card image cap"><div class="card-title"><span>Bike '+i+
+          '</span></div><p>Brand: <%=bikeInfoPage.brand%></p>'+'<p>Status: '+ array[i-1].Status+'</p>'+
+            ' </div></div></div>');
+        myPanel.appendTo(myCol);
+        myCol.appendTo('#contentPanel');
+    }
+
+};
+
+$( document ).ready(function() {
+
+
+
+  addCols(num, tasks);
+    // addCols($('#numPanels').val());
+    return false;
+    });
+
+
+
+//       var tasks = [{
+//         "title": "home",
+//         "color": "blue",
+//     },
+//     {
+//         "title": "city",
+//         "color": "green",
+//     }
+// ];
+// tasks.push({
+//         "title": "<%=bikeInfoPage.brand%>",
+//         "color": "<%=bikeInfoPage.status%>",});
+
+// let cardContainer;
+
+// let createTaskCard = (task) => {
+
+//     let card = document.createElement('div');
+//     card.className = 'card shadow cursor-pointer';
+
+//     let cardImg = document.createElement('div');
+//     cardImg.className = 'card-img-top';
+
+//     let cardBody = document.createElement('div');
+//     cardBody.className = 'card-body';
+
+//     let title = document.createElement('h5');
+//     title.innerText = task.title;
+//     title.className = 'card-title';
+
+//     let color = document.createElement('div');
+//     color.innerText = task.color;
+//     color.className = 'card-color';
+
+//     let img = document.createElement('div');
+//     img.innerText = task.img;
+//     img.className = 'card-img';
+
+
+//     cardBody.appendChild(img);
+//     cardBody.appendChild(title);
+//     cardBody.appendChild(color);
+    
+//     card.appendChild(cardImg);  
+//     card.appendChild(cardBody);
+//     cardContainer.appendChild(card);
+
+// }
+
+// let initListOfTasks = () => {
+//     if (cardContainer) {
+//         document.getElementById('card-container').replaceWith(cardContainer);
+//         return;
+//     }
+
+//     cardContainer = document.getElementById('card-container');
+//     tasks.forEach((task) => {
+//         createTaskCard(task);
+//     });
+// };
+
+
+// initListOfTasks();
+    </script>
+    <%-include('layouts/scripts'); -%>
+  </body>
+</html>

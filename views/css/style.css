@@ -516,7 +516,7 @@ a.article:hover {
 
 }
 /* ---------------------------------------------------
-    FONT AWESOME STYLE
+    FONT AWESOME STYLE FOR MAP
 ----------------------------------------------------- */
 .fa-flag {
   color: purple;
@@ -527,4 +527,35 @@ a.article:hover {
   color: yellow;
 }
 
+/* ---------------------------------------------------
+   BIKE INFO EJS STYLE
+----------------------------------------------------- */
+
+.div-style{
+  margin-top : 4rem;
+  padding : 3rem;
+  background: rgba(255, 255, 255, 0.459);
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0.5rem 1rem 0px;
+}
+.text-box{
+  border-radius: 1rem;
+  margin-top : 1rem;
+  color: black;
+}
+.button-submit{
+  width: 50%;
+  border-radius: 1rem;
+  margin-top : 1rem
+
+}
+
+.main-label{
+  margin: 1rem;
+
+}
+
+/* ---------------------------------------------------
+   DISPLAY BIKES FROM SEARCH EJS STYLE
+----------------------------------------------------- */
 
