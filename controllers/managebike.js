@@ -4,6 +4,7 @@ module.exports = async (req, res) => {
 	const userId = req.session.userId;
 	isfalse = 2;
 	bike = [];
+	registredBefore=false;
 
 	try {
 		const response = await axios({
@@ -17,7 +18,8 @@ module.exports = async (req, res) => {
 		res.render('managebike', {
 			userId,
 			bike,
-			isfalse: isfalse
+			isfalse: isfalse,
+			registredBefore:registredBefore
 		});
 		console.log(bike);
 	} catch (err) {
