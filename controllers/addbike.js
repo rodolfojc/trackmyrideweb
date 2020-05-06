@@ -1,37 +1,40 @@
-const axios = require("axios");
+const axios = require('axios');
 
 module.exports = async (req, res) => {
- 
-  // Check the userId Logged
+	// Check the userId Logged
   console.log(req.session.userId);
   
-  // Getting value from the form 
-  let {image,serial, brand, color, type, status, locker, userId} = req.body;
-
+  var image =req.file;
+  
 
   
-  try {
-    const response = await axios({
-      method: "POST",
-      url: "http://34.247.183.192:3000/registerbike",
-      headers: { "Content-Type": "application/json" },
-      data: {
-        serial,
-        image,
-        userId: req.session.userId, 
-        brand,
-        color,
-        type,
-        status,
-        locker
-      },
-    });
-    console.log(response);
-    console.log(req.session.userId);
-    res.render("managebike");
-    
-  } catch (err) {
-    console.log(err);
-    res.redirect("/managebike");  
-  }  
+
+	// Getting value from the form
+  let {serial, brand, color, type, status, locker, userId } = req.body;
+  const isFalse=1;
+
+	try {
+		const response = await axios({
+			method: 'POST',
+      url: 'http://34.247.183.192:3000/registerbike',
+			headers: { 'Content-Type': 'application/json' },
+			data: {
+				serial,
+				img:req.file,
+				userId: req.session.userId,
+				brand,
+				color,
+				type,
+				status,
+				locker
+			}
+		});
+		console.log(response);
+		console.log(req.session.userId);
+    res.render('managebike',
+);
+	} catch (err) {
+		console.log(err);
+		res.redirect('/managebike');
+	}
 };
