@@ -571,7 +571,13 @@ background: #ae9ef711;
   padding: 10px;
 }
 
-#bikeTxt{
+/* INSIDE MODAL. NEED TO CHANGE TO INHERIT PARENT SIZE */
+#bikeTxt{ 
   height: 200px;
   width: 465px;
 }
+
+
+
+
+

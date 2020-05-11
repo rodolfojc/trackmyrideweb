@@ -1,5 +1,6 @@
 const bikeModel = require("../models/Bike.js");
 
+
 module.exports = async (req, res) => {
     const id = req.body.serial;
   //  const bikeInfoPage = await bikeModel.find({});
@@ -7,13 +8,19 @@ module.exports = async (req, res) => {
     
     const bikeInfoPage = await bikeModel.findOne({serial: id});  
     if(!bikeInfoPage) {
+
       throw new Error('no document found');
+      
     }
       res.render("bikeResults",  {bikeInfoPage});
       return bikeInfoPage;
     } catch (error) {
     console.log(`findOne error--> ${error}`);
-    res.redirect('/bikeinfo');
+  
+    res.render("bikeinfo", { error: true }); 
+   // res.redirect('/bikeinfo');
+ //  res.render("bikeinfo", { myVar: myVar });
+    //res.render('bikeinfo');
     return error;
     
 }
