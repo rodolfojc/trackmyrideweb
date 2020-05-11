@@ -40,6 +40,7 @@
 aria-hidden="true">
 <div class="modal-dialog" role="document">
   <div class="modal-content">
+    <form action="/reportBikeInfo/<%=bikeInfoPage._id%>" method="POST">
     <div class="modal-header">
       <h5 class="modal-title" id="exampleModalLabel">Is there anything suspicious with this bike?</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -47,13 +48,14 @@ aria-hidden="true">
       </button>
     </div>
     <div class="modal-body">
-      <textarea id="bikeTxt" name="description" placeholder="Write something.." ></textarea>
+      <textarea id="bikeTxt" required value ="<%bikeInfoPage._id%>" name="description" placeholder="Write something.." ></textarea>
              
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary"  id="save">Submit</button>
+      <button type="submit" class="btn btn-primary"  id="save">Submit</button>
     </div>
+  </form>
   </div>
 </div>
 </div>
@@ -146,8 +148,9 @@ $( document ).ready(function() {
     $('#save').click(function() {
       console.log("clicked");
         $('#basicExampleModal').modal('hide');
-  $select_value = $("#bikeTxt").val();
-  console.log($select_value);
+        $select_value = $("#bikeTxt").val();
+      
+       console.log($select_value);
  
 });
 

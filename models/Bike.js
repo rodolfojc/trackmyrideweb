@@ -10,6 +10,9 @@ const BikeSchema = new Schema({
   status: String,
   lock: String,
   image: String,
+  report:[{
+    type: String
+}],
   
 });
 
