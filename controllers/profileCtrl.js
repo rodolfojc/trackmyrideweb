@@ -3,8 +3,9 @@ const bikeModel = require("../models/Bike.js");
 
 module.exports = async (req, res) => {
     // const id =  mongoose.Types.ObjectId(req.session.userId);
+
      const id = req.session.userId;
-    console.log(id);
+    console.log(req.session.userId);
 
   try {
     

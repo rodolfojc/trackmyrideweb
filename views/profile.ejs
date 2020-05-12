@@ -50,7 +50,11 @@
 	box-shadow: none !important;
 }
    </style>
-  
+
+<% var noData; %>
+
+    
+
      <!-- Top Navbar -->
      <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-0 static-top " >
       <a href="#" class="navbar-brand" ><i class="fas fa-bicycle"></i></a>
@@ -87,16 +91,28 @@
               <div class="tab-pane active" id="bikes">
                 <form>
                   <div class="form-group row mx-sm-3 mb-2">
-                    <label for="bikes" class="col-sm-2 col-form-label">Registered Bikes</label>
+                    <label for="bikes" class="col-sm-2 col-form-label">Bike Status</label>
                     <div class="col-sm-10">
-                      <input type="text" readonly class="form-control" id="bikes" value="<%=userBikeDetails.id%>">
+                      <%if (noData ) {%>
+          
+                             <input type="text" readonly class="form-control" id="bikes" placeholder="Nothing registered">
+                            <% } else{ %>
+                      <input type="text" readonly class="form-control" id="bikes" placeholder="<%=userBikeDetails.status%>">
+                      <% } %>
                     </div>
                   </div>
                     <!-- Any suspicious activity reported for user -->
                   <div class="form-group row mx-sm-3 mb-2">
                     <label for="activity" class="col-sm-2 col-form-label">Reports </label>
                     <div class="col-sm-10">
-                      <input type="text" readonly class="form-control" id="activity" value="getFromDb">
+                      <%if (noData || userBikeDetails.report==0) {%>
+                      
+                      <input type="text" readonly class="form-control" id="activity" placeholder="Nothing Reported About Your Bike">
+
+                    <%  }else { %>
+                      <input type="text" readonly class="form-control" id="activity" placeholder="<%=userBikeDetails.report[0]%>">
+                      <%  } %>
+
                     </div>
                   </div>
                 </form>
