@@ -61,6 +61,12 @@ const updateController = require('./controllers/updateBike');
 const searchBikesController = require('./controllers/searchBikesCtrl');
 
 const reportBikeInfoController = require('./controllers/reportBikeInfoCtrl');
+
+const callModalController = require('./controllers/callModal');
+
+const callRegisterController = require('./controllers/callregisterModal');
+
+const callWelcomeScreen2Controller = require('./controllers/welcomeScreen2');
 //###################################################################################
 
 //Creating a customer middleware
@@ -144,6 +150,12 @@ app.get('/update', updateController); // to call the modal in ManageBike Screen.
 
 app.post('/reportBikeInfo/:id', reportBikeInfoController);
 
+app.get('/callmodal', callModalController); //to call Modal in Main Screen to access Managebike options.
+
+app.get('/registerbike', callRegisterController); // to call Modal to register a bike.
+
+app.get('/welcomescreen2', callWelcomeScreen2Controller);
+
 // Finish Routes#############################################################################
 
 // app.post("/index/store", async (req, res) => {
@@ -213,6 +225,7 @@ app.post('/login', async (req, res) => {
 	// Axios
 	const { email, password } = req.body;
 	console.log(req.body);
+	modal = 2;
 	isfalse = 2;
 	registredBefore = false;
 
@@ -230,6 +243,7 @@ app.post('/login', async (req, res) => {
 		req.session.userId = response.data.userId;
 		res.render('welcomescreen', {
 			isfalse: isfalse,
+			modal: modal,
 			registredBefore: registredBefore,
 			userId: response.data.userId
 		});
