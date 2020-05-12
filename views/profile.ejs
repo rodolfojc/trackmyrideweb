@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <!-- USER PROFILE  -->
+
+ <!--Importing the Header Layout element-->
+  <%-include('layouts/header'); -%> 
+
+
+ <!-- Scripts -->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+          
+      <body>
+   <style>
+     img {
+  border-radius: 50%;
+}
+
+.circular {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+.circular img {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+   </style>
+  
+     <!-- Top Navbar -->
+     <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-0 static-top " >
+      <a href="#" class="navbar-brand" ><i class="fas fa-bicycle"></i></a>
+      <div class="d-flex bg-secondary"></div>
+      <div class="p-2 mr-auto">
+        <a class=" text-light  p-1"  href="/welcomescreen"  id="home">Home</a>
+        <!-- <a class="  text-light p-1"  href="/bikeinfo" id="bikeinfo">Back</a> -->
+      </div>
+    </nav>
+
+  
+  
+    <!-- Card profile https://getbootstrap.com/docs/4.3/components/card/ -->
+    <div class = "col-sm-6 col-md-12 pb-2">
+    <!-- <div class="card text-center "> -->
+      <div class="card .mx-auto">
+        <div class="outter"><img src="https://pbs.twimg.com/profile_images/444514088354197504/Nnxts7O_.jpeg" class="circular"/></div>   
+      <!-- <img src="/img/profilePhoto3.jpg" class="card-img-top" alt="My profile"> -->
+      <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">My profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Account details</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <!-- How many bikes user have -->
+        <form>
+          <div class="form-group row mx-sm-3 mb-2">
+            <label for="bikes" class="col-sm-2 col-form-label">Registered Bikes</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="bikes" value="getFromDb">
+            </div>
+          </div>
+           <!-- Any suspicious activity reported for user -->
+          <div class="form-group row mx-sm-3 mb-2">
+            <label for="activity" class="col-sm-2 col-form-label">Reports </label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="activity" value="getFromDb">
+            </div>
+          </div>
+        </form>
+        <hr/>
+        <p class="card-text">You can check your bike details in Manage My Bike</p>
+        <a href="#" class="btn btn-primary">Take me to Manage My Bike</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+     
+    <!--Importing the Scripts from Layout-->
+   
+    <%-include('layouts/scripts'); -%>
+    
+  </body>
+</html>

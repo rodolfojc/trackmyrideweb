@@ -8,5 +8,5 @@ module.exports = async (req, res) => {
  
     //res.send(success);
    res.redirect("/bikeinfo");
-    // res.render("bikeResults",  {bikeInfoPage: bikeInfoPage});
+   
 }
