@@ -1,14 +1,18 @@
 const axios = require('axios');
+const Image = require('../models/Image.js');
 
 module.exports = async (req, res) => {
 	// Check the userId Logged
 	console.log(req.session.userId);
 
 	//Here you have the image to be added to the DB.
-	var image = req.file;
+       let image = req.file;
+
+	
+	
 
 	// Getting value from the form
-	let { serial, brand, color, type, status, locker, userId } = req.body;
+	let { serial, brand, color, type, status, locker, userId} = req.body;
 
 	try {
 		const response = await axios({
