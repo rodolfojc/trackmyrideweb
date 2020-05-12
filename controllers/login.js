@@ -1,10 +1,10 @@
-const LoginPage = require("../models/User.js");
+const LoginPage = require('../models/User.js');
 
 module.exports = async (req, res) => {
-  isFalse=2;
-  const loginpage = await LoginPage.find({});
-  res.render("login2", {
-    loginpage,
-    isFalse: isFalse
-  });
+	isFalse = 2;
+	const loginpage = await LoginPage.find({});
+	res.render('login2', {
+		loginpage,
+		isFalse: isFalse
+	});
 };

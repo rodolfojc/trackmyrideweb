@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head> 
+    <meta charset = "utf-8" /> 
+      
+    <title> 
+        Home Menu
+    </title> 
+      
+    <!-- add icon link -->
+    <link rel = "icon" href =  
+  "https://user-images.githubusercontent.com/33750251/64987392-f9eead80-d8c0-11e9-84a9-e2a4a7f624db.png"
+    type = "image/x-icon"> 
     
+  </head> 
   <!--Importing the Header Layout element-->
   <%-include('layouts/login2_header'); -%>
   <div class="login">
@@ -10,13 +22,13 @@
     
       <form>
       <!--When submitting the form the browser will make a POST request to the /signin/store endpoint.Check Index.js-->
-       <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/managebike">Register your Bike</button>
+       <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/callmodal">MANAGE BIKE</button>
 
-       <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/consultmap">Consult Map</button>
+       <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/consultmap">MAP INCIDENTS</button>
 
-       <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/managebike">Info</button>
+       <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/reportForm">CONSULT BIKE</button>
 
-       <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/reportForm">Report</button>
+       <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/myprofile">MY PROFILE</button>
       <!-- <span class="link-password" -->
         <!-- ><a href="#">Forgotten your username or password?</a> -->
         <!-- <br /> -->
@@ -27,7 +39,10 @@
   </div>
 
   <body>
-    <%-include('layouts/navbar'); -%> <%-include('layouts/login2_scripts'); -%> <%-include('layouts/modalmainscreen'); -%><%-include('layouts/firstRegModal'); -%>
+    <%-include('layouts/navbar'); -%> 
+    <%-include('layouts/login2_scripts'); -%> 
+    <%-include('layouts/modalmainscreen'); -%>
+    <%-include('layouts/registerBikeModal'); -%>
     
   </body>
 </html>

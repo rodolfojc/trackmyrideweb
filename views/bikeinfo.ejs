@@ -10,8 +10,50 @@
 
  <!--Importing the Header Layout element-->
  <%-include('layouts/login2_header'); -%>
-
+ <head> 
+  <meta charset = "utf-8" /> 
+    
+  <title> 
+      Consult Bike Info
+  </title> 
+    
+  <!-- add icon link -->
+  <link rel = "icon" href =  
+"https://user-images.githubusercontent.com/33750251/64987392-f9eead80-d8c0-11e9-84a9-e2a4a7f624db.png"
+  type = "image/x-icon"> 
+  
+</head> 
   <body>
+    <% var error; %>
+   
+
+
+    <% if (error) { %>
+      <div id="modal" style="display: block" >
+ 
+   <% } else {%>
+   <div id="modal" style="display: none">
+
+    <% } %>
+    <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Testing modal for error messsage</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary"  id="save">Submit</button>
+        </div>
+      </form>
+      </div>
+    </div>
+    </div>
+    </div>
 
 
     <!-- source code from https://richwebdeveloper.com/login-and-registration-form-in-html-bootstrap/ -->
@@ -25,7 +67,7 @@
               </div>
               <div class="form-group">
                 <!-- <input type="text" serial="serial" id="serial-field" placeholder="Bike's Serial Number"> -->
-                  <input type="number" class="form-control text-box" name="serial"  id="serial" aria-describedby="serial" placeholder="Serial Number">
+                  <input type="number" required class="form-control text-box" name="serial"  id="serial" aria-describedby="serial" placeholder="Serial Number">
               </div>
               <!-- <div class="form-group">
                    <input type="text" class="form-control text-box" id="password" aria-describedby="password" placeholder="Brand">
@@ -42,30 +84,12 @@
       </div>
       </div>
   </div>
-    
-
-      
-    <!-- <div class="login" >
-      <p class="main-txt" style="font-family: pacifico;color: white;font-size: 23px;margin-left: 45px;">
-        Track My Ride
-        <i id="bike-icon" class="material-icons"  >directions_bike</i></p>
-
-      
-        <form>
-          <img class="logo" src="img/trackMyRidelogo2.JPG">
-          <input type="text" serial="serial" id="serial-field" placeholder="Bike's Serial Number"><br>
-          <input type="text" name="brand" id="brand=field" placeholder="Bike's Brand"><br>
-          <input type="text" name="colour" id="colour=field" placeholder="Bike's Colour"><br>
-              
-          <a href='/bikeinfo'>SEARCH</a>
 
 
-         </form>
-          </div>
 
-       -->
-         
-          
+
+
+           
           
      
     <!--Importing the Scripts from Layout-->

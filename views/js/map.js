@@ -352,6 +352,8 @@ L.control.layers({
         //Report incident is clicked inside the popup
         $("div").on("click", '#chatToggle', function () {
 
+            
+
             $('#newRackForm').removeClass('active');
             $('#incidentForm').addClass('active');
             $('.sidebar-header span').text('Report Incident');
