@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     
     const success = await bikeModel.findByIdAndUpdate(id, {$push: {report: req.body.description}}, {new: true}) ;    
  
-    res.send(success);
-   // res.render("bikeResults",  {bikeInfoPage});
+    //res.send(success);
+   res.redirect("/bikeinfo");
     // res.render("bikeResults",  {bikeInfoPage: bikeInfoPage});
 }
