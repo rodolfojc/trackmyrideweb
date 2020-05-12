@@ -9,10 +9,12 @@
 
 
  <!-- Scripts -->
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  
           
       <body>
    <style>
@@ -55,50 +57,127 @@
   
   
     <!-- Card profile https://getbootstrap.com/docs/4.3/components/card/ -->
-    <div class = "col-sm-6 col-md-12 pb-2">
-    <!-- <div class="card text-center "> -->
-      <div class="card .mx-auto">
-        <div class="outter"><img src="https://pbs.twimg.com/profile_images/444514088354197504/Nnxts7O_.jpeg" class="circular"/></div>   
-      <!-- <img src="/img/profilePhoto3.jpg" class="card-img-top" alt="My profile"> -->
+<div class="container">
+  <div class="card text-center">
+    <div class="outter"><img src="https://pbs.twimg.com/profile_images/444514088354197504/Nnxts7O_.jpeg" class="circular"/>
+    </div>   
+    <!-- Tabs Titles -->
       <div class="card-header">
-        <ul class="nav nav-pills card-header-pills">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">My profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Account details</a>
-          </li>
-        </ul>
+          <ul class="nav nav-tabs card-header-tabs" id="tabs">
+              <li class="nav-item">
+                  <a class="active nav-link active" href="#bikes" data-toggle="tab">My Bikes</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#account" data-toggle="tab">My account</a>
+              </li>
+          </ul>
       </div>
+      <!-- Card body and tabs-pane -->
       <div class="card-body">
-        <!-- How many bikes user have -->
-        <form>
-          <div class="form-group row mx-sm-3 mb-2">
-            <label for="bikes" class="col-sm-2 col-form-label">Registered Bikes</label>
-            <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="bikes" value="getFromDb">
-            </div>
+          <div class="tab-content">
+            <!-- TAB 1 -->
+             <!-- How many bikes user have-->
+              <div class="tab-pane active" id="bikes">
+                <form>
+                  <div class="form-group row mx-sm-3 mb-2">
+                    <label for="bikes" class="col-sm-2 col-form-label">Registered Bikes</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="bikes" value="getFromDb">
+                    </div>
+                  </div>
+                    <!-- Any suspicious activity reported for user -->
+                  <div class="form-group row mx-sm-3 mb-2">
+                    <label for="activity" class="col-sm-2 col-form-label">Reports </label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="activity" value="getFromDb">
+                    </div>
+                  </div>
+                </form>
+                <hr/>
+                <p class="card-text">You can update your bike details in Manage My Bike</p>
+                <!-- <a href="#" class="btn btn-primary">Take me there</a> -->
+                <button type="submit" class="btn btn-primary">Take me there</button>
+              </div>
+               <!-- TAB 2-->
+            
+                <!-- Username -->
+                <div class="tab-pane fade " id="account">
+                <form>
+                  <div class="form-group row mx-sm-3 mb-2">
+                    <label for="username" class="col-sm-2 col-form-label">Username</label>
+                    <div class="col-sm-10">
+                      <input type="email" readonly class="form-control-plaintext" id="username" value="getFromDb">
+                    </div>
+                  </div>
+                    <!-- Password -->
+                  <div class="form-group row mx-sm-3 mb-2">
+                    <label for="password" class="col-sm-2 col-form-label">Password </label>
+                    <div class="col-sm-10">
+                      <input type="password" readonly class="form-control-plaintext" id="password" value="getFromDb">
+                    </div>
+                  </div>
+                <hr/>
+                <button type="submit" class="btn btn-primary" id="update">Update password</button>
+                  <button type="submit" class="btn btn-danger" id="deleteAcc">Delete Account</button>
+              </form>
+
+
+
+
+              </div>
           </div>
-           <!-- Any suspicious activity reported for user -->
-          <div class="form-group row mx-sm-3 mb-2">
-            <label for="activity" class="col-sm-2 col-form-label">Reports </label>
-            <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="activity" value="getFromDb">
-            </div>
-          </div>
-        </form>
-        <hr/>
-        <p class="card-text">You can check your bike details in Manage My Bike</p>
-        <a href="#" class="btn btn-primary">Take me to Manage My Bike</a>
       </div>
-    </div>
   </div>
 </div>
+    
+<!-- 
+  <div id="home" class="container tab-pane active"><br>
+    <h3>HOME</h3>
+    <form>
+    <div class="form-group row mx-sm-3 mb-2">
+      <label for="bikes" class="col-sm-2 col-form-label">Registered Bikes</label>
+      <div class="col-sm-10">
+        <input type="text" readonly class="form-control-plaintext" id="bikes" value="getFromDb">
+      </div>
+    </div>
 
+    <div class="form-group row mx-sm-3 mb-2">
+      <label for="activity" class="col-sm-2 col-form-label">Reports </label>
+      <div class="col-sm-10">
+        <input type="text" readonly class="form-control-plaintext" id="activity" value="getFromDb">
+      </div>
+    </div>
+  </form>
+  <hr/>
+  <p class="card-text">You can check your bike details in Manage My Bike</p>
+  <a href="#" class="btn btn-primary">Take me to Manage My Bike</a>
+  </div>
+
+  <div id="menu1" class="container tab-pane fade"><br>
+    <h3>Menu 1</h3>
+  
+  </div> -->
+  
+  <!-- </div> -->
+<!-- </div> -->
+       
+         
+        <!-- </form> -->
+       
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </div> -->
+
+ 
      
+
     <!--Importing the Scripts from Layout-->
    
     <%-include('layouts/scripts'); -%>
+    <script>
+         $('#myTab li:last-child a').tab('show') 
+    </script>
     
   </body>
 </html>
