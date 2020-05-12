@@ -9,7 +9,7 @@ const BikeSchema = new Schema({
   type: String,
   status: String,
   lock: String,
-  img:{ data: Buffer, contentType: String },
+  image:{ data: Buffer, contentType: String },
 
   
 });
