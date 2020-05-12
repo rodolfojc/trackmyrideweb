@@ -573,8 +573,11 @@ background: #ae9ef711;
 
 /* INSIDE MODAL. NEED TO CHANGE TO INHERIT PARENT SIZE */
 #bikeTxt{ 
-  height: 200px;
-  width: 465px;
+  box-sizing:border-box;
+  width: 100%;
+  height: 100%; 
+  /* height: 200px; */
+  /* width: 465px; */
 }
 
 
