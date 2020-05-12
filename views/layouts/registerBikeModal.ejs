@@ -7,10 +7,12 @@
         <div class="close">
           <a href="/welcomescreen2"> +</a>
         </div>
-        <form action="/addBike" method="post">
+        <form action="/addBike" method="POST" enctype="multipart/form-data">
           <span><h3>Register a Bike</h3></span>
           <div class="form-input">
             <div class="col-auto">
+
+            
               <label class="sr-only" for="inlineFormInput">Serial</label>
               <input
                 type="text"
@@ -57,18 +59,7 @@
             </div>
             <div class="col-auto">
           
-              <div class="form-group floating-label-form-group controls">
-              <input
-                type="file"
-                class="form-control mb-2"
-                id="image"
-                name="myImages"
-                accept="image/*"
-                
-                placeholder="Status"
-              /></div>
-            </div>
-            <div class="col-auto">
+             <div class="col-auto">
               <label for="inlineFormInput">Locker</label>
               <select name="locker">
                 <option value="true">Yes</option>
@@ -76,15 +67,30 @@
               ><br />
             </div>
             
+            <div class="col-auto">
+            
+            <input type="file" class="form-control mb-2" id="image" name="MyImage" accept="image/*"/>
+              
+            <div id="two-btn" class="col-auto">
+               <button
+                  id="btn1"
+                  type="post"
+                  class="btn btn-primary mb-2s"
+                  data-toggle="modal"
+                  data-target="#myModal"
+                  formaction="/addbike"
+                >
+                  ADD NEW BIKE
+                </button>
           
           
-          <button id="register-btn" type="submit" class="btn btn-primary mb-2">
-            REGISTER
-          </button>
+            
           </div>
         </div>
          
         </form>
+
+       
       </div>
     </div>
   </div>

@@ -82,7 +82,7 @@ const callWelcomeScreen2Controller = require('./controllers/welcomeScreen2');
 app.use(bodyParser.json());
 
 //To enable photo upload
-app.use(bodyParser.urlencoded({ extended: true }));
+ app.use(bodyParser.urlencoded({ extended: true }));
 
 //Creating a local directory to store the pictures
 var storage = multer.diskStorage({
@@ -286,17 +286,17 @@ app.post('/login', async (req, res) => {
 
 app.route('/put/:id').get((req, res) => {
 	var id = req.params.id;
-	console.log('1 ---    Numero do meu ID: ' + id);
+	
 
 	bikeModel.findById(id, (err, bike) => {
-		console.log('2- Retorno da minha DB: ' + bike);
+		
 		var isfalse = 1;
 
 		res.render('managebike', {
 			bike: bike,
 			isfalse: isfalse
 		});
-		console.log('2- Retorno da minha DB: ' + bike);
+		
 	});
 });
 // })
