@@ -59,6 +59,8 @@ const newRackController = require('./controllers/newRackCtrl');
 const updateController = require('./controllers/updateBike');
 
 const searchBikesController = require('./controllers/searchBikesCtrl');
+
+const reportBikeInfoController = require('./controllers/reportBikeInfoCtrl');
 //###################################################################################
 
 //Creating a customer middleware
@@ -104,9 +106,6 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('views'));
 
-
-
-
 app.listen(3005, () => {
 	console.log('App listening on port 3005');
 });
@@ -142,6 +141,8 @@ app.put('/incrementRack/:id', theftController); //DELETE IF NOT IN USE Testing t
 app.post('/addNewRack', newRackController); //New rack
 
 app.get('/update', updateController); // to call the modal in ManageBike Screen.
+
+app.post('/reportBikeInfo/:id', reportBikeInfoController);
 
 // Finish Routes#############################################################################
 
