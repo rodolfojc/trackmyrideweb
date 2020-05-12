@@ -4,7 +4,8 @@ const express = require('express');
 const axios = require('axios');
 const GeoJSON = require('geojson');
 const expressSession = require('express-session');
-const fileUpolad = require('express-fileupload')
+//This adds the file property to the req object so uploaded files are accessible.
+const multer = require('multer');
 
 const app = express();
 //Path is a module to help us to get the directory path...
@@ -55,13 +56,17 @@ const theftController = require('./controllers/theftCtrl'); //DELETE IF NOT IN U
 
 const newRackController = require('./controllers/newRackCtrl');
 
-
 const updateController = require('./controllers/updateBike');
 
+const searchBikesController = require('./controllers/searchBikesCtrl');
 
-const searchBikesController = require("./controllers/searchBikesCtrl");
+const reportBikeInfoController = require('./controllers/reportBikeInfoCtrl');
 
-const reportBikeInfoController = require("./controllers/reportBikeInfoCtrl")
+const callModalController = require('./controllers/callModal');
+
+const callRegisterController = require('./controllers/callregisterModal');
+
+const callWelcomeScreen2Controller = require('./controllers/welcomeScreen2');
 //###################################################################################
 
 //Creating a customer middleware
@@ -74,8 +79,24 @@ const reportBikeInfoController = require("./controllers/reportBikeInfoCtrl")
 //
 // app.use("/index/store", validateMiddleWare);
 
-
 app.use(bodyParser.json());
+
+//To enable photo upload
+ app.use(bodyParser.urlencoded({ extended: true }));
+
+//Creating a local directory to store the pictures
+var storage = multer.diskStorage({
+	destination: function(req, file, cb) {
+		cb(null, 'uploads');
+	},
+
+	filename: function(req, file, cb) {
+		cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+	}
+});
+
+var upload = multer({ storage: storage });
+
 app.use(
 	expressSession({
 		secret: 'TrackMyRide',
@@ -90,8 +111,6 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
 app.set('view engine', 'ejs');
 
 app.use(express.static('views'));
-
-app.use(fileUpolad());
 
 app.listen(3005, () => {
 	console.log('App listening on port 3005');
@@ -119,18 +138,23 @@ app.get('/welcomescreen', welcomeScreenController);
 
 app.post('/incident', incidentsController); //New incident to the map
 
-app.post('/addBike', addbikeController);
+app.post('/addBike', upload.single('myImages'), addbikeController);
 
-app.post("/searchBikes",searchBikesController);
+app.post('/searchBikes', searchBikesController);
 
 app.put('/incrementRack/:id', theftController); //DELETE IF NOT IN USE Testing the route to increment theft on a rack
-
 
 app.post('/addNewRack', newRackController); //New rack
 
 app.get('/update', updateController); // to call the modal in ManageBike Screen.
 
 app.post('/reportBikeInfo/:id', reportBikeInfoController);
+
+app.get('/callmodal', callModalController); //to call Modal in Main Screen to access Managebike options.
+
+app.get('/registerbike', callRegisterController); // to call Modal to register a bike.
+
+app.get('/welcomescreen2', callWelcomeScreen2Controller);
 
 // Finish Routes#############################################################################
 
@@ -200,8 +224,10 @@ app.post('/signin', async (req, res) => {
 app.post('/login', async (req, res) => {
 	// Axios
 	const { email, password } = req.body;
-  console.log(req.body);
-  isfalse=2;
+	console.log(req.body);
+	modal = 2;
+	isfalse = 2;
+	registredBefore = false;
 
 	try {
 		const response = await axios({
@@ -215,8 +241,12 @@ app.post('/login', async (req, res) => {
 		});
 		console.log(response);
 		req.session.userId = response.data.userId;
-    res.render('welcomescreen', { isfalse:isfalse,
-      userId: response.data.userId });
+		res.render('welcomescreen', {
+			isfalse: isfalse,
+			modal: modal,
+			registredBefore: registredBefore,
+			userId: response.data.userId
+		});
 	} catch (err) {
 		//alert(response);
 		res.render('login2', { errors: 'Invalid email or password' });
@@ -256,17 +286,17 @@ app.post('/login', async (req, res) => {
 
 app.route('/put/:id').get((req, res) => {
 	var id = req.params.id;
-	console.log('1 ---    Numero do meu ID: ' + id);
+	
 
 	bikeModel.findById(id, (err, bike) => {
-		console.log('2- Retorno da minha DB: ' + bike);
+		
 		var isfalse = 1;
 
 		res.render('managebike', {
 			bike: bike,
 			isfalse: isfalse
 		});
-		console.log('2- Retorno da minha DB: ' + bike);
+		
 	});
 });
 // })
@@ -281,6 +311,6 @@ app.route('/put/:id').get((req, res) => {
 //     return res.redirect("welcomescreen");
 //   });
 // });
-app.get("/gdpr", (req, res) => {
-  res.render("gdpr");
+app.get('/gdpr', (req, res) => {
+	res.render('gdpr');
 });

@@ -4,6 +4,7 @@ module.exports = async (req, res) => {
 	const userId = req.session.userId;
 	isfalse = 2;
 	bike = [];
+	modal = 1;
 
 	registredBefore = false;
 
@@ -16,7 +17,8 @@ module.exports = async (req, res) => {
 		});
 		console.log(response);
 		bike.push(response.data);
-		res.render('managebike', {
+		res.render('welcomeScreen', {
+			modal: modal,
 			userId,
 			bike,
 			isfalse: isfalse,

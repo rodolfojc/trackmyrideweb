@@ -2,8 +2,9 @@ const axios = require('axios');
 
 module.exports = async (req, res) => {
 	const userId = req.session.userId;
-	isfalse = 2;
+	isfalse = 1;
 	bike = [];
+	modal = 1; //turn off ModalMainScreen.
 
 	registredBefore = false;
 
@@ -16,7 +17,8 @@ module.exports = async (req, res) => {
 		});
 		console.log(response);
 		bike.push(response.data);
-		res.render('managebike', {
+		res.render('welcomeScreen', {
+			modal: modal,
 			userId,
 			bike,
 			isfalse: isfalse,
