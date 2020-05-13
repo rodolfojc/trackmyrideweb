@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 
 const UserSchema = new Schema({
   //Mongoose validation before saving it to the Database.
+  
   email: {
     type: String,
     required: true,

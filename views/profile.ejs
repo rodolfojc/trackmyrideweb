@@ -129,7 +129,7 @@
                   <div class="form-group row mx-sm-3 mb-2">
                     <label for="bikes" class="col-sm-2 col-form-label">Bike Status</label>
                     <div class="col-sm-10">
-                      <%if (noData ) {%>
+                      <%if (userBikeDetails==null ) {%>
           
                              <input type="text" readonly class="form-control" id="bikes" placeholder="Nothing registered">
                             <% } else{ %>
@@ -141,7 +141,7 @@
                   <div class="form-group row mx-sm-3 mb-2">
                     <label for="activity" class="col-sm-2 col-form-label">Reports </label>
                     <div class="col-sm-10">
-                      <%if (noData || userBikeDetails.report==0) {%>
+                      <%if (noData || userBikeDetails==null) {%>
                       
                       <input type="text" readonly class="form-control" id="activity" placeholder="Nothing Reported About Your Bike">
 
@@ -193,8 +193,10 @@
                             <p>If you delete your profile all your data will be lost</p>
                           </div>
                         <div class="modal-footer">
+                          <form action="/deleteaccount/<%=userId%>" method="POST">
                             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-danger" id="delete">Delete</button>
+                            <button type="submit" class="btn btn-danger" id="delete">Delete</button>
+                           </form>
                         </div>
                     </div>
                 </div>

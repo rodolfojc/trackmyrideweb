@@ -3,18 +3,19 @@ const userModel = require("../models/User.js");
 
  module.exports = async (req, res) => {
   
-    const id = req.session.userId; //Logged user
+    const userId = req.session.userId; //Logged user
          
          await Promise.all([ //Execute both queries
             //Return the user object
-            userModel.findById({_id: id}),
+            userModel.findById({_id: userId}),
              //Find the bikes the user have and return the object
-            bikeModel.findOne({userId: id})
+            bikeModel.findOne({userId: userId})
           ]).then( (result) => {
             let userBikeDetails = result[1]; //Assign user object
             let accountDetails = result[0]; //Assign bikes object
             //Display profile page and send both user and bike objects
-            res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails})
+            console.log(userId);
+            res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId})
               
           }).catch(err =>{
              console.log(err);
