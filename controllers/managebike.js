@@ -15,14 +15,14 @@ module.exports = async (req, res) => {
 			data: {}
 		});
 		console.log(response);
-		bike.push(response.data);
+		bike = response.data;
+		console.log('bike ===>' + bike);
 		res.render('managebike', {
 			userId,
 			bike,
 			isfalse: isfalse,
 			registredBefore: registredBefore
 		});
-		console.log(bike);
 	} catch (err) {
 		console.log(err);
 		res.redirect('/managebike');

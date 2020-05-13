@@ -197,6 +197,13 @@ footer {
 	padding-top: 10%;
 	border-style: none;
 }
+
+.form-control:disabled,
+.form-control[readonly] {
+	background-color: white !important;
+	opacity: 1;
+	border-style: none;
+}
 /*####################Mobile Version Ends here*/
 
 /*####################PC version */
