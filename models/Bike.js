@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
 const userModel = require("../models/User.js");
+
+const Img = require('./Image.js');
+
 
 const BikeSchema = new Schema({
 	// serial: String,
@@ -11,7 +15,10 @@ const BikeSchema = new Schema({
 	type: String,
 	status: String,
 	lock: String,
-	image: String,
+	image: [
+		{
+			Img
+		}],
 	report: [
 		{
 			type: String,

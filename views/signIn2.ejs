@@ -22,7 +22,7 @@
           >directions_bike</i
         >
       </p>
-      <form action="/signin" method="POST">
+      <form name = "signvalidated" action="/signin" method="POST">
         <!--When submitting the form the browser will make a POST request to the /signin/store endpoint.Check Index.js-->
         <input
           type="text"
@@ -42,14 +42,13 @@
            placeholder="Confirm your Password" 
            required="required" 
          />
-
         <br>
  
-        <span class="checkbox"><input type="checkbox" class="form-group" name="terms-checkbox" id="terms" value="#" /></span>
+        <span class="checkbox"><input type="checkbox" class="form-group" name="termscheckbox" id="terms" value="#" required/></span>
         <label for="terms" id="label">Accept Terms and Conditions</label>
         <br><br>
         <a href="gdpr" id="terms-link"><i class="terms-conditions" name="terms-link"><strong>Terms and Conditions</strong></a><br>
-         <button id="btn" type="submit"class="btn btn-primary btn-block btn-large">Register</button>
+         <button id="btn" type="submit" class="btn btn-primary btn-block btn-large" >Register</button>
 
         <span class="link-password"
           ><a href="#">Forgotten your username or password?</a>
@@ -60,6 +59,6 @@
       </form>
     </div>
 
-    <%-include('layouts/login2_scripts'); -%> <%-include('layouts/scripts'); -%>
+     <%-include('layouts/scripts'); -%>
   </body>
 </html>

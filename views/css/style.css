@@ -532,6 +532,34 @@ a.article:hover {
 	border-radius: 20px;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 0.5rem 1rem 0px;
 }
+
+
+#bike-icon {
+	    margin-left: 33%;
+        margin-top: -1.7%;
+		
+		position: fixed;
+		left: 20%;
+		animation-name: fade;
+		animation-duration: 10s;
+	  }
+	
+	  @keyframes fade {
+		50% {
+		  left: 30%;
+	
+		}
+	  }
+
+	  @media only screen and (min-width: 320px)
+	  and (max-device-width: 480px)
+	  and (-webkit-min-device-pixel-ratio: 2)  {
+		#bike-icon {
+			margin-left: 345px;
+			margin-top: -27px;
+		}
+	
+
 .text-box {
 	border-radius: 1rem;
 	margin-top: 1rem;
@@ -574,3 +602,10 @@ html {
   /* width: 465px; */
 
 }
+
+form .error {
+	color: #ff0000;
+	font-size: small;
+	font-style: italic;
+}
+  
