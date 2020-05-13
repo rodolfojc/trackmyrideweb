@@ -1,5 +1,5 @@
 const bikeModel = require("../models/Bike.js");
-
+const userModel = require("../models/User.js");
 
 module.exports = async (req, res) => {
     // const id =  mongoose.Types.ObjectId(req.session.userId);
@@ -26,12 +26,12 @@ module.exports = async (req, res) => {
     return error;
     
 }
-//receive a tru or false if no data is in the profile
-  //Find the bikes this user id has and render to the profile page
+// receive a tru or false if no data is in the profile
+//   Find the bikes this user id has and render to the profile page
 
-  //Find the reports this user id has and render to the profile page
+//   Find the reports this user id has and render to the profile page
 
 
- //  res.render("profile", { userId: userId });
+ // res.render("profile", { userId: userId });
    
 }
