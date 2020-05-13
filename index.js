@@ -73,13 +73,13 @@ const profileController = require('./controllers/profileCtrl');
 
 //Creating a customer middleware
 const validateMiddleWare = (req, res, next) => {
-if (req.email == null || req.password == null) {
-return res.redirect("/sigIn2");
-}
-next();
+	if (req.email == null || req.password == null) {
+		return res.redirect('/sigIn2');
+	}
+	next();
 };
 
-app.use("/index/store", validateMiddleWare);
+app.use('/index/store', validateMiddleWare);
 
 app.use(bodyParser.json());
 
@@ -128,7 +128,7 @@ app.get('/managebike', manageBikeController);
 
 app.get('/consultmap', consultMapController); //Display the map
 
-app.get('/', homeController); 
+app.get('/', homeController);
 
 app.get('/bikeinfo', bikeInfoController); //Display form to user input a serial number
 
@@ -245,6 +245,7 @@ app.post('/login', async (req, res) => {
 		});
 		console.log(response);
 		req.session.userId = response.data.userId;
+
 		res.render('welcomescreen', {
 			isfalse: isfalse,
 			modal: modal,
@@ -290,17 +291,14 @@ app.post('/login', async (req, res) => {
 
 app.route('/put/:id').get((req, res) => {
 	var id = req.params.id;
-	
 
 	bikeModel.findById(id, (err, bike) => {
-		
 		var isfalse = 1;
 
 		res.render('managebike', {
 			bike: bike,
 			isfalse: isfalse
 		});
-		
 	});
 });
 // })
