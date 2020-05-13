@@ -555,7 +555,7 @@ a.article:hover {
 	  and (max-device-width: 480px)
 	  and (-webkit-min-device-pixel-ratio: 2)  {
 		#bike-icon {
-			margin-left: 581px;
+			margin-left: 345px;
 			margin-top: -27px;
 		}
 	
