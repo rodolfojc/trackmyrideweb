@@ -8,9 +8,7 @@ module.exports = async (req, res) => {
     
     const bikeInfoPage = await bikeModel.findOne({serial: id});  
     if(!bikeInfoPage) {
-
       throw new Error('no document found');
-      
     }
       res.render("bikeResults",  {bikeInfoPage});
       return bikeInfoPage;
