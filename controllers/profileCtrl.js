@@ -15,6 +15,8 @@ const userModel = require("../models/User.js");
             let accountDetails = result[0]; //Assign bikes object
             //Display profile page and send both user and bike objects
             console.log(userId);
+            console.log(userBikeDetails);
+            console.log(accountDetails);
             res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId})
               
           }).catch(err =>{
