@@ -5,16 +5,31 @@
   <!-- USER PROFILE  -->
 
  <!--Importing the Header Layout element-->
-  <%-include('layouts/header'); -%> 
-
+ 
+  <head>
+    <title>
+      TrackMyRide
+    </title>
+  </head>
 
  <!-- Scripts -->
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   
+  <script>
+      
+      $(document).ready(function(){    
+    $('#deletAcc').click(function () {
+      event.preventDefault();
+      console.log("Modal should open now");
+      $("#myModal").modal('show');
+
+    });
+  });
+ </script>
           
       <body>
    <style>
@@ -142,8 +157,8 @@
                 <!-- <a href="#" class="btn btn-primary">Take me there</a> -->
                 <button type="submit" class="btn btn-success">Take me there</button>
               </div>
+
                <!-- TAB 2-->
-            
                 <!-- Username -->
                 <div class="tab-pane fade " id="account">
                 <form>
@@ -163,9 +178,28 @@
                   </div>
                 <hr/>
                 <button type="submit" class="btn btn-primary" id="update">Update password</button>
-                  <button type="submit" class="btn btn-danger" id="deleteAcc">Delete Account</button>
+                  <button type="button" class="btn btn-danger" id="deleteAcc"  data-toggle="modal" data-target="#myModal">Delete Account</button>
               </form>
 
+              <!-- Bootstrap modal from https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=modal -->
+            <div id="myModal" class="modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Delete profile?</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>If you delete your profile all your data will be lost</p>
+                          </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" id="delete">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
 
 
 
@@ -178,8 +212,7 @@
      
 
     <!--Importing the Scripts from Layout-->
+
    
-    <%-include('layouts/scripts'); -%>
-    
   </body>
 </html>

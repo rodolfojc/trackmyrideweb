@@ -3,43 +3,24 @@ const userModel = require("../models/User.js");
 
  module.exports = async (req, res) => {
   
-    const id = req.session.userId;
- 
-    //  try {
-         //Save the data
-         await Promise.all([
+    const id = req.session.userId; //Logged user
+         
+         await Promise.all([ //Execute both queries
             //Return the user object
             userModel.findById({_id: id}),
-             //Find the bikes the user have
+             //Find the bikes the user have and return the object
             bikeModel.findOne({userId: id})
-        
           ]).then( (result) => {
-            console.log( result[0] );
-            console.log( result[1] );
-            let userBikeDetails = result[1];
-            let accountDetails = result[0];
-       //     res.render("profile",  {userBikeDetails: userBikeDetails})
-        
+            let userBikeDetails = result[1]; //Assign user object
+            let accountDetails = result[0]; //Assign bikes object
+            //Display profile page and send both user and bike objects
             res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails})
               
           }).catch(err =>{
              console.log(err);
           });
-         
-         //Refresh the page 
-      //   return res.redirect('/consultmap');
-        // return res.send(result[1]);
-         
-        // } catch (err) {
-            // console.log(req.status);
-// }
    
 }
-
-    
-
-
-    
 
 
 //CODE BELOW IS WORKING
