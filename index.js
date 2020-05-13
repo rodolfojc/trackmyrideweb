@@ -67,6 +67,8 @@ const callModalController = require('./controllers/callModal');
 const callRegisterController = require('./controllers/callregisterModal');
 
 const callWelcomeScreen2Controller = require('./controllers/welcomeScreen2');
+
+const profileController = require('./controllers/profileCtrl');
 //###################################################################################
 
 //Creating a customer middleware
@@ -124,15 +126,15 @@ app.get('/home', welcomeController);
 
 app.get('/managebike', manageBikeController);
 
-app.get('/consultmap', consultMapController);
+app.get('/consultmap', consultMapController); //Display the map
 
-app.get('/', homeController);
+app.get('/', homeController); 
 
-app.get('/bikeinfo', bikeInfoController);
+app.get('/bikeinfo', bikeInfoController); //Display form to user input a serial number
 
-app.get('/reportForm', reportFormController);
+app.get('/reportForm', reportFormController); //IS IT IN USE???????
 
-app.get('/consult', consultPageController);
+app.get('/consult', consultPageController); //Redirect user to Consult Map or Consult a bike serial
 
 app.get('/welcomescreen', welcomeScreenController);
 
@@ -148,13 +150,15 @@ app.post('/addNewRack', newRackController); //New rack
 
 app.get('/update', updateController); // to call the modal in ManageBike Screen.
 
-app.post('/reportBikeInfo/:id', reportBikeInfoController);
+app.post('/reportBikeInfo/:id', reportBikeInfoController); //User report suspicious activity  with that bike
 
 app.get('/callmodal', callModalController); //to call Modal in Main Screen to access Managebike options.
 
 app.get('/registerbike', callRegisterController); // to call Modal to register a bike.
 
 app.get('/welcomescreen2', callWelcomeScreen2Controller);
+
+app.get('/profile', profileController); //Open user profile page
 
 // Finish Routes#############################################################################
 
