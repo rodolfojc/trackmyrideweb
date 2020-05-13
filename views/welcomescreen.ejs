@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   
+   
+      
+    <!-- add icon link -->
+    <link rel = "icon" href =  
+  "https://user-images.githubusercontent.com/33750251/64987392-f9eead80-d8c0-11e9-84a9-e2a4a7f624db.png"
+    type = "image/x-icon"> 
+    
+  
   <!--Importing the Header Layout element-->
   <%-include('layouts/login2_header'); -%>
+  <body>
   <div class="login">
     <p class="main-txt" style="font-family: pacifico;color: white;font-size: 23px;margin-left: 45px;">
       Track My Ride
       <i id="bike-icon" class="material-icons"  >directions_bike</i></p>
-    
+      
       <form>
       <!--When submitting the form the browser will make a POST request to the /signin/store endpoint.Check Index.js-->
        <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/callmodal">MANAGE BIKE</button>
@@ -25,8 +34,9 @@
       <!-- > -->
     <!-- </form> -->
   </div>
+  
 
-  <body>
+  
     <%-include('layouts/navbar'); -%> 
     <%-include('layouts/login2_scripts'); -%> 
     <%-include('layouts/modalmainscreen'); -%>

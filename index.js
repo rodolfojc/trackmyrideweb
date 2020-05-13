@@ -72,19 +72,19 @@ const profileController = require('./controllers/profileCtrl');
 //###################################################################################
 
 //Creating a customer middleware
-// const validateMiddleWare = (req, res, next) => {
-// if (req.email == null || req.password == null) {
-// return res.redirect("/sigIn2");
-// }
-// next();
-// };
-//
-// app.use("/index/store", validateMiddleWare);
+const validateMiddleWare = (req, res, next) => {
+if (req.email == null || req.password == null) {
+return res.redirect("/sigIn2");
+}
+next();
+};
+
+app.use("/index/store", validateMiddleWare);
 
 app.use(bodyParser.json());
 
 //To enable photo upload
- app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Creating a local directory to store the pictures
 var storage = multer.diskStorage({
@@ -93,7 +93,7 @@ var storage = multer.diskStorage({
 	},
 
 	filename: function(req, file, cb) {
-		cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+		cb(null, file.fieldname + '-' + path.extname(file.originalname));
 	}
 });
 
