@@ -151,14 +151,14 @@
                     <label for="username" class="col-sm-2 col-form-label">Username</label>
                     <div class="col-sm-10">
 
-                      <input type="email" readonly class="form-control" id="username" value="<%=userBikeDetails.userId%>">
+                      <input type="email" readonly class="form-control" id="username" value="<%=accountDetails.email%>">
                     </div>
                   </div>
                     <!-- Password -->
                   <div class="form-group row mx-sm-3 mb-2">
                     <label for="password" class="col-sm-2 col-form-label">Password </label>
                     <div class="col-sm-10">
-                      <input type="password" readonly class="form-control" id="password" value="getFromDb">
+                      <input type="password" readonly class="form-control" id="password" value="<%=accountDetails.password%>">
                     </div>
                   </div>
                 <hr/>
