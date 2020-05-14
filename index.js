@@ -165,7 +165,7 @@ app.get('/profile', profileController.loadProfile); //Open user profile page
 
 app.post('/deleteaccount/:id', accountController); //Delete an account from the user profile page
 
-app.post('/updatepassword/', profileController.updatePassword);
+app.post('/updatepassword', profileController.updatePassword);
 // Finish Routes#############################################################################
 
 // app.post("/index/store", async (req, res) => {
@@ -225,7 +225,8 @@ app.post('/signin', async (req, res) => {
 			}
 		});
 		console.log(response.data.userId);
-		res.render('welcomescreen', { userId: response.data.userId });
+		res.redirect("/");//Redirect to the main page instead to login
+		//res.render('welcomescreen', { userId: response.data.userId });
 	} catch (err) {
 		console.log(err.message);
 	}

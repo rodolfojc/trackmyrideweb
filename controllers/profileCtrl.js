@@ -27,6 +27,7 @@ const axios = require('axios');
 }
 
 exports.updatePassword = async (req, res) => {
+   console.log("Route ok");
   
    const userId = req.session.userId; //Logged user
    const password = req.body;
@@ -41,8 +42,9 @@ exports.updatePassword = async (req, res) => {
 				password
 			}
       });
-      		
-		res.render('profile', { userId });
+         
+      res.send(userId);
+		//res.render('profile', { userId });
 	} catch (err) {
 		console.log(err.message);
 	}
