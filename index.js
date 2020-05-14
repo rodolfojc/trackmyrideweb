@@ -165,7 +165,7 @@ app.get('/profile', profileController.loadProfile); //Open user profile page
 
 app.post('/deleteaccount/:id', accountController); //Delete an account from the user profile page
 
-app.post('/updatepassword', profileController.updatePassword);
+app.post('/updatepassword/:id', profileController.updatePassword);
 // Finish Routes#############################################################################
 
 // app.post("/index/store", async (req, res) => {

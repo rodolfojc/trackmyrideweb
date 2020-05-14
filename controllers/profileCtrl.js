@@ -29,8 +29,11 @@ const axios = require('axios');
 exports.updatePassword = async (req, res) => {
    console.log("Route ok");
   
-   const userId = req.session.userId; //Logged user
-   const password = req.body;
+   const userId = req.params.id; //Logged user
+//   const password = "test";
+ const password = req.body.updatedPass;
+   
+   console.log("From the update pass route" +userId +" pass:" + password);
    
    try {
 		const response = await axios({
@@ -44,6 +47,7 @@ exports.updatePassword = async (req, res) => {
       });
          
       res.send(userId);
+      
 		//res.render('profile', { userId });
 	} catch (err) {
 		console.log(err.message);
