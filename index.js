@@ -71,6 +71,7 @@ const callWelcomeScreen2Controller = require('./controllers/welcomeScreen2');
 const profileController = require('./controllers/profileCtrl');
 
 const accountController = require('./controllers/accountCtrl');
+
 //###################################################################################
 
 //Creating a customer middleware
@@ -160,9 +161,11 @@ app.get('/registerbike', callRegisterController); // to call Modal to register a
 
 app.get('/welcomescreen2', callWelcomeScreen2Controller);
 
-app.get('/profile', profileController); //Open user profile page
+app.get('/profile', profileController.loadProfile); //Open user profile page
 
 app.post('/deleteaccount/:id', accountController); //Delete an account from the user profile page
+
+app.post('/updatepassword/', profileController.updatePassword);
 // Finish Routes#############################################################################
 
 // app.post("/index/store", async (req, res) => {
