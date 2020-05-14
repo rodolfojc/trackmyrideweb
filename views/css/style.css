@@ -323,12 +323,12 @@ body
 	display: none;
 }
 
-#sidebar {
-	width: 350px;
+#sidebar {    
+	width: 300px;
 	position: fixed;
 	top: 0;
-	left: -350px;
-	height: 100vh;
+  left: -300px;
+   height: 90%;
 	z-index: 999;
 	background: black;
 	color: #fff;
@@ -410,18 +410,19 @@ body
 }
 
 #sidebar .sidebar-header {
-	padding: 20px;
+	padding: 10px;
 	background: #6d7fcc;
 }
 
-#sidebar ul.components {
-	padding: 20px 0;
+#sidebar input {
+	padding: 5px 0;
 	border-bottom: 1px solid #47748b;
 }
 
+/*
 #sidebar ul p {
 	color: #fff;
-	padding: 10px;
+	padding: 5px;
 }
 
 #sidebar ul li a {
@@ -452,14 +453,21 @@ a[data-toggle="collapse"] {
 	right: 20px;
 	transform: translateY(-50%);
 }
+*/
 
 .form-input input {
 	border-style: none !important;
 	background-color: white !important;
 	background: white !important;
-	box-shadow: none !important;
+  box-shadow: none !important;
+ 
 }
-
+/*
+.col-form-label {
+margin-right: 10px;
+margin-left: 40px;
+}
+*/
 #register-btn {
 	margin-top: 0%;
 	width: 60%;
