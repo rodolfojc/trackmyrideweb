@@ -317,3 +317,7 @@ footer {
 		display: none;
 	}
 }
+
+.validationmessage{
+	color:red;
+}
