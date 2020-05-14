@@ -1,31 +1,38 @@
-<!--This Modal will pop up when user wants to update a bike-->
 
-<!--Modal Section-->
-<div class="container">
-    <div class="parent-modal" id=<%= modal===2? "hidden":"displayed" %>>
-      <div class="modal-content">
-        <div class="close">
-          <a href="/welcomescreen2"> +</a>
-        </div>
-                   <!--Content starts in here-->
-                   <span><h3>MANAGE MY BIKE</h3></span>
-                   <div class="login">
-                 <form>
-                  <div> <button id="btn-modalmain" type="submit"  formaction="/managebike"  class="btn btn-primary btn-block btn-large" >
-                    CHECK MY BIKE
-                  </button></div>
-
-                  <div><button id="btn-modalmain" type="submit" formaction="/registerbike"  class="btn btn-primary btn-block btn-large">
-                    REGISTER A BIKE
-                  </button></div>
-                </div>
-            </form>
-                 
-              
-            
-          </div>
+<!-- Modal on the Home Page -->
+<!--Enable user to choose between Check a Bike or Register a Bike-->
+<!--Modal extracted from Bootstrap-->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" style="z-index: 999;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">MANAGE BIKE</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
         
-      <!--content finishes in here-->
+     
+
+      <a href="/managebike"> <div> <button id="btn-modalmain"   class="btn btn-primary btn-block btn-large" >
+         CHECK MY BIKE
+       </button></a></div>
+
+       <a><button type="button" id="btn-modalmain"  class="btn btn-primary btn-block btn-large" data-toggle="modal" data-target="#exampleModalScrollable">
+        REGISTER A BIKE
+      </button></a>
+ 
+
+       
+      </div>
+      <div class="modal-footer">
+       
+        
+      </div>
     </div>
+  </div>
 </div>
-  
+    
+    
+   

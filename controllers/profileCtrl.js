@@ -1,7 +1,8 @@
 const bikeModel = require("../models/Bike.js");
 const userModel = require("../models/User.js");
+const axios = require('axios');
 
- module.exports = async (req, res) => {
+ exports.loadProfile = async (req, res) => {
   
     const userId = req.session.userId; //Logged user
          
@@ -23,6 +24,29 @@ const userModel = require("../models/User.js");
              console.log(err);
           });
    
+}
+
+exports.updatePassword = async (req, res) => {
+  
+   const userId = req.session.userId; //Logged user
+   const password = req.body;
+   
+   try {
+		const response = await axios({
+			method: 'POST',
+			url: 'http://34.247.183.192:3000/updatepassword',
+			headers: {},
+			data: {
+				userId,
+				password
+			}
+      });
+      		
+		res.render('profile', { userId });
+	} catch (err) {
+		console.log(err.message);
+	}
+  
 }
 
 

@@ -191,7 +191,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 9999;
+	z-index: 999;
 	width: 100%;
 	height: 50px;
 	background-color: rgba(41, 0, 59, 0.8);
@@ -541,79 +541,73 @@ a.article:hover {
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 0.5rem 1rem 0px;
 }
 
-
 #bike-icon {
-	    margin-left: 33%;
-        margin-top: -1.7%;
-		
-		position: fixed;
-		left: 20%;
-		animation-name: fade;
-		animation-duration: 10s;
-	  }
-	
-	  @keyframes fade {
-		50% {
-		  left: 30%;
-	
-		}
-	  }
+	margin-left: 33%;
+	margin-top: -1.7%;
 
-	  @media only screen and (min-width: 320px)
-	  and (max-device-width: 480px)
-	  and (-webkit-min-device-pixel-ratio: 2)  {
-		#bike-icon {
-			margin-left: 345px;
-			margin-top: -27px;
-		}
-	
-
-.text-box {
-	border-radius: 1rem;
-	margin-top: 1rem;
-	color: black;
-}
-.button-submit {
-	width: 50%;
-	border-radius: 1rem;
-	margin-top: 1rem;
+	position: fixed;
+	left: 20%;
+	animation-name: fade;
+	animation-duration: 10s;
 }
 
-.main-label {
-	margin: 1rem;
+@keyframes fade {
+	50% {
+		left: 30%;
+	}
 }
 
-/* ---------------------------------------------------
+@media only screen and (min-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+	#bike-icon {
+		margin-left: 345px;
+		margin-top: -27px;
+	}
+
+	.text-box {
+		border-radius: 1rem;
+		margin-top: 1rem;
+		color: black;
+	}
+	.button-submit {
+		width: 50%;
+		border-radius: 1rem;
+		margin-top: 1rem;
+	}
+
+	.main-label {
+		margin: 1rem;
+	}
+
+	/* ---------------------------------------------------
    DISPLAY BIKES FROM SEARCH EJS STYLE
 ----------------------------------------------------- */
 
-.row {
-	/* after navbar */
-	margin-top: 20px;
-}
-body,
-html {
-	background: #ae9ef711;
-}
+	.row {
+		/* after navbar */
+		margin-top: 20px;
+	}
+	body,
+	html {
+		background: #ae9ef711;
+	}
 
-.card-block {
-	padding: 10px;
+	.card-block {
+		padding: 10px;
+	}
+
+	/* INSIDE MODAL */
+
+	#bikeTxt {
+		box-sizing: border-box;
+		width: 100%;
+		height: 100%;
+		/* height: 200px; */
+		/* width: 465px; */
+	}
+
+	form .error {
+		color: #ff0000;
+		font-size: small;
+		font-style: italic;
+	}
 }
-
-/* INSIDE MODAL */
-
-#bikeTxt{ 
-  box-sizing:border-box;
-  width: 100%;
-  height: 100%; 
-  /* height: 200px; */
-  /* width: 465px; */
-
-}
-
-form .error {
-	color: #ff0000;
-	font-size: small;
-	font-style: italic;
-}
-    }
