@@ -1,93 +1,33 @@
 <!DOCTYPE html>
+
+<!--Manage Bike contains components extracted from Bootstrap.-->
 <html lang="en">
+
+<!-- Header -->
   <%-include('layouts/header-managebike'); -%>
-  
-
- <title> 
-            Sign In
-        </title> 
           
-        <!-- add icon link -->
-        <link rel = "icon" href =  
-      "https://user-images.githubusercontent.com/33750251/64987392-f9eead80-d8c0-11e9-84a9-e2a4a7f624db.png"
-        type = "image/x-icon"> 
+    
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand" href="welcomescreen2">TrackMyRide</a>
-        <button
-          class="navbar-toggler navbar-toggler-right"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          Menu
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="welcomescreen2">Home</a>
-            </li>
-            <li class="nav-item">
-            
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- Navigation -->
-    <div class="card" style="background:-webkit-radial-gradient( 0% 100%, ellipse cover, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40% ), linear-gradient(to bottom, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%) !important; }">
+    <!-- Navbar -->
+  <%- include('layouts/managebikenavbar') %>
+
+  <!-- Navigation -->
+
+  <div class="card" style="background:-webkit-radial-gradient( 0% 100%, ellipse cover, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40% ), linear-gradient(to bottom, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%) !important; }">
      
-            <%- include('layouts/carousel') %>
-            <%-include('layouts/content'); -%> 
-         
-          <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-        </blockquote>
+  <%- include('layouts/carousel') %>
+  <%-include('layouts/managebikecontent'); -%> 
+
       </div>
-    </div>
-    
+</div>
 
-    <!-- Page Header -->
-    
-
-    <!-- Main Content -->
-
-    
-    <%-include('layouts/modal'); -%>
+    <!--Modal for Update a user bike.-->
+  <%-include('layouts/modal'); -%>
     
     
 
-
-    <!-- Content at the third part of the screen -->
-
-    <!-- Footer -->
-    <!-- <footer style="height: 0px;"></footer> -->
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="/js/clean-blog.min.js"></script>
-    <script src="js/bikelist.js"></script>
+   <!--All scripts for this page are located in here-->
+   <%-include('layouts/managebikescripts'); -%>
   </body>
+
 </html>
