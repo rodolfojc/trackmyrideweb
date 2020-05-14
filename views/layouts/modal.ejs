@@ -1,72 +1,67 @@
-<!--This Modal will pop up when user wants to update a bike-->
 
-<!--Modal Section-->
-<div class="container">
-  <div class="parent-modal" id=<%= isfalse===2? "hidden":"displayed" %>>
+<!--Modal to update a bike -->
+<!--Modal extracted from Bootstrap -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="close">
-        <a href="/managebike"> +</a>
-      </div>
-      <form action="/addBike" method="post">
-        <span><h3>User Name</h3></span>
-        <div class="form-input">
-          <div class="col-auto">
-            <label class="sr-only" for="inlineFormInput">Serial</label>
-            <input
-              type="text"
-              class="form-control mb-2"
-              name="serial"
-              placeholder="Serial"
-            />
-          </div>
-          <div class="col-auto">
-            <label class="sr-only" for="inlineFormInput">Brand</label>
-            <input
-              type="text"
-              class="form-control mb-2"
-              name="brand"
-              placeholder="Brand"
-            />
-          </div>
-          <div class="col-auto">
-            <label class="sr-only" for="inlineFormInput">Color</label>
-            <input
-              type="text"
-              class="form-control mb-2"
-              name="color"
-              placeholder="Color"
-            />
-          </div>
-          <div class="col-auto">
-            <label class="sr-only" for="inlineFormInput">Type</label>
-            <input
-              type="text"
-              class="form-control mb-2"
-              name="type"
-              placeholder="Type"
-            />
-          </div>
-          <div class="col-auto">
-            <label class="sr-only" for="inlineFormInput">Status</label>
-            <input
-              type="text"
-              class="form-control mb-2"
-              name="status"
-              placeholder="Status"
-            />
-          </div>
-          <div class="col-auto">
-            <label for="inlineFormInput">Locker</label>
-            <select name="locker">
-              <option value="true">Yes</option>
-              <option value="false">No</option> </select
-            ><br />
-          </div>
-        </div>
-        <button id="update-btn" type="submit" class="btn btn-primary mb-2">
-          Update
+      <div class="modal-header">
+        <h5 class="" id="">UPDATE DETAILS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
         </button>
-      </form>
+      </div>
+      <div class="modal-body">
+          <form action="/addBike" method="post">
+
+          <div class="form-group">
+              <div class="form-group">
+               <input type="text" class="form-control" id="recipient-name" placeholder="SERIAL:">
+                </div>
+             </div>
+
+             <div class="form-group">
+              <div class="form-group">
+               <input type="text" class="form-control" id="recipient-name" placeholder="BRAND:">
+                </div>
+             </div>
+
+             <div class="form-group">
+              <div class="form-group">
+               <input type="text" class="form-control" id="recipient-name" placeholder="COLOR:">
+                </div>
+             </div>
+
+             <div class="form-group">
+              <div class="form-group">
+               <input type="text" class="form-control" id="recipient-name" placeholder="TYPE:">
+                </div>
+             </div>
+
+             <div class="form-group">
+              <div class="form-group">
+               
+                  <label for="inlineFormInput">Status</label>
+                  <select name="locker">
+                    <option value="true">Owned</option>
+                    <option value="false">Lost</option> </select
+                  ><br />
+                    <label for="inlineFormInput">Locker</label>
+                    <select name="locker">
+                      <option value="true">Yes</option>
+                      <option value="false">No</option> </select
+                    ><br />
+                </div>
+             </div>
+          
+          
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+        <!-- To update user details-->
+        <button type="button" class="btn btn-primary">UPDATE</button>
+      </div>
     </div>
   </div>
 </div>

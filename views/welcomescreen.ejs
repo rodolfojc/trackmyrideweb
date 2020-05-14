@@ -17,30 +17,38 @@
       Track My Ride
       <i id="bike-icon" class="material-icons"  >directions_bike</i></p>
       
-      <form>
+      
+      
       <!--When submitting the form the browser will make a POST request to the /signin/store endpoint.Check Index.js-->
-       <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/callmodal">MANAGE BIKE</button>
+       <a><button id="btn-consult" class="btn btn-primary btn-block btn-large" data-toggle="modal" data-target="#exampleModalCenter">MANAGE BIKE</button></a>
+      
+       <a href="/consultmap"><button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" ">MAP INCIDENTS</button></a>
 
-       <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/consultmap">MAP INCIDENTS</button>
+       <a href="/bikeinfo"><button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" ">CONSULT BIKE</button></a>
 
-       <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/bikeinfo">CONSULT BIKE</button>
+       <a href="/profile"><button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" ">MY PROFILE</button></a>
+    
+     <!-- Button trigger modal -->
 
-       <button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" formaction="/profile">MY PROFILE</button>
-      <!-- <span class="link-password" -->
-        <!-- ><a href="#">Forgotten your username or password?</a> -->
-        <!-- <br /> -->
-        <!-- <br /> -->
-        <!-- <a href="/">Already a member? Login</a></span -->
-      <!-- > -->
-    <!-- </form> -->
+ 
+
+     
   </div>
   
 
   
     <%-include('layouts/navbar'); -%> 
-    <%-include('layouts/login2_scripts'); -%> 
+    <%-include('layouts/welcomescreen-scripts'); -%> 
     <%-include('layouts/modalmainscreen'); -%>
     <%-include('layouts/registerBikeModal'); -%>
+
+    <!-- Bootstrap core JavaScript -->
+    
+      <!--To use bootstrap Modal
+      -->
+    
+  
+   
     
   </body>
 </html>
