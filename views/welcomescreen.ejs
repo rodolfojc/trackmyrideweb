@@ -12,6 +12,10 @@
   <!--Importing the Header Layout element-->
   <%-include('layouts/login2_header'); -%>
   <body>
+    
+
+   
+
   <div class="login">
     <p class="main-txt" style="font-family: pacifico;color: white;font-size: 23px;margin-left: 45px;">
       Track My Ride
@@ -41,14 +45,67 @@
     <%-include('layouts/welcomescreen-scripts'); -%> 
     <%-include('layouts/modalmainscreen'); -%>
     <%-include('layouts/registerBikeModal'); -%>
+    
+   
 
     <!-- Bootstrap core JavaScript -->
     
       <!--To use bootstrap Modal
       -->
+
+     
+      <script>
     
-  
+     // Wait for the DOM to be ready
+$(function() {
+  // Initialize form validation on the registration form.
+  // It has the name attribute "registration"
+  $("form[name='addbike']").validate({
+    // Specify validation rules
+    errorClass : 'validationmessage',
+    rules: {
+      // The key name on the left side is the name attribute
+      // of an input field. Validation rules are defined
+      // on the right side
+      serial: "required",
+      color: "required",
+      brand:"required",
+      type:"required",
+     
+    },
+    // Specify validation error messages
+    messages:{
+      serial: "It is necessary to enter a Serial Number",
+      color: "Please define a color",
+      brand: "Define your bike Brand",
+      type:"Ex.Road,Montain,Hybrid,Folding,Cyclocross",
+
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+});
+
+$(document).ready(function(){
+    $("#submitBtn").click(function(){        
+        $("#addbike").submit(); // Submit the form
+        $(".form-control mb-2").prop('required',true);
+
+    });
+     });
+
+     
+     
+
+     
+
+
+    
+    </script>
    
-    
+  
   </body>
 </html>

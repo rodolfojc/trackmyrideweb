@@ -7,7 +7,8 @@ module.exports = async (req, res) => {
 
 	//Here you have the image to be added to the DB.
        let image = req.file;
-
+ 
+	   bike = [];
 	
 	
 
@@ -31,8 +32,13 @@ module.exports = async (req, res) => {
 			}
 		});
 		console.log(response);
+		bike = response.data;
+		const successMessage = (response.data.message)
 		console.log(req.session.userId);
-		res.render('managebike');
+		console.log(successMessage);
+		res.render('welcomescreen',bike,userId, successMessage,
+			
+		);
 	} catch (err) {
 		console.log(err);
 		res.redirect('/managebike');
