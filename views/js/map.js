@@ -93,7 +93,7 @@ var id;
 
 var mymap = L.map('mapid', { 
         zoomControl: false //Remove default zoom control from the left side
-    }).setView([53.347557, -6.259317], 13);
+    }).setView([53.347557, -6.259317], 15);
 
 
 
@@ -530,7 +530,7 @@ function onEachFeature(feature, layer){
 }
 
     
-    var mapWithRackMarkers = L.geoJSON(maps, {
+    var mapWithRackMarkers = L.geoJSON(maps2, {
         //add multiple locations with personalised marker using geoJson
         pointToLayer: function(feature, latlng){
            return L.marker(latlng, {
@@ -543,7 +543,7 @@ function onEachFeature(feature, layer){
         onEachFeature: onEachFeature,
     }).addTo(mymap);
 
-    var mapWithHotspotsMarkers = L.geoJSON(maps, {
+    var mapWithHotspotsMarkers = L.geoJSON(maps2, {
         //add multiple locations with personalised marker using geoJson
         pointToLayer: function(feature, latlng){
              return L.circleMarker(latlng, hotspotMarker);
