@@ -1,3 +1,5 @@
+
+
 // const axios =  require('axios');
 
 // const geoJSON2 = async () => {
@@ -23,11 +25,12 @@
 // var mymap = L.map('mapid').setView([53.347557, -6.259317], 13);
 
 
-var APIUrl = 'https://cors-anywhere.herokuapp.com/http://34.247.183.192:3000/getracks';
-var geoJson;
+//var APIUrl = 'https://cors-anywhere.herokuapp.com/http://34.247.183.192:3000/getracks';
+//var geoJson;
 var lt;
 var ln;
 var id;
+
 // function getRacks() {
     
 //     $.getJSONuncached = function (url) {
@@ -112,355 +115,367 @@ mymap.addLayer(layer);
 
 // var geoJson = geoJSON2();
 
+//var geoJson =JSON.stringify(location);
 //var geoJson = JSON.parse(location);
-var geoJson = {
+//var geoJson = location;
+//console.log(typeof location);
+
+// function getStoreLocs() {
+//     let url = 'location.json';
+//     $.getJSON(url, function (json) {
+//         let geoJson = json;
+//     })
+// }
+
+// getStoreLocs()
+// var geoJson = {
     
-        type: "FeatureCollection",
-        features: [
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.22726053",
-        Y: "53.34779261",
-        location_stand: "East wall road outside the O2",
-        no_stands: "4",
-        security_safetyrating: "Medium"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.22726053,
-        53.34779261
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.265138686",
-        Y: "53.33424783",
-        location_stand: "Camden street lower, outside centra shop",
-        no_stands: "1",
-        security_safetyrating: "High"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.265138686,
-        53.33424783
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.249765605",
-        Y: "53.34494805",
-        location_stand: "Marks lane",
-        no_stands: "2",
-        security_safetyrating: "Medium"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.249765605,
-        53.34494805
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.251051724",
-        Y: "53.34851312",
-        location_stand: "Custom House Quay, outside AIB International Centre",
-        no_stands: "1",
-        security_safetyrating: ""
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.251051724,
-        53.34851312
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.242272854",
-        Y: "53.34296483",
-        location_stand: "Pearce street outside garden area",
-        no_stands: "3",
-        security_safetyrating: "High"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.242272854,
-        53.34296483
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.262080967",
-        Y: "53.34817688",
-        location_stand: "Middle abbey street, outside arnotts carpark",
-        no_stands: "2",
-        security_safetyrating: "High"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.262080967,
-        53.34817688
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.25176385",
-        Y: "53.35182974",
-        location_stand: "Foley street",
-        no_stands: "3",
-        security_safetyrating: "Medium"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.25176385,
-        53.35182974
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.268160194",
-        Y: "53.35686542",
-        location_stand: "Bloomington street outside Dargans pharmacy.",
-        no_stands: "3",
-        security_safetyrating: "High"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.268160194,
-        53.35686542
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.264363527",
-        Y: "53.35398625",
-        location_stand: "Parnell square north",
-        no_stands: "4",
-        security_safetyrating: "High"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.264363527,
-        53.35398625
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.262504756",
-        Y: "53.34211451",
-        location_stand: "William street south, duke street gallery.",
-        no_stands: "2",
-        security_safetyrating: "High"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.262504756,
-        53.34211451
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.271338612",
-        Y: "53.35055212",
-        location_stand: "North king street",
-        no_stands: "2",
-        security_safetyrating: "High"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.271338612,
-        53.35055212
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.245986372",
-        Y: "53.33485887",
-        location_stand: "Maggot street lower outside Medmark healthcare ",
-        no_stands: "2",
-        security_safetyrating: "High"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.245986372,
-        53.33485887
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Railing",
-        X: "-6.262797117",
-        Y: "53.33769129",
-        location_stand: "Cuffe street, across from O'callaghan Stephen green hotel",
-        no_stands: "5",
-        security_safetyrating: "High"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.262797117,
-        53.33769129
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.25826081",
-        Y: "53.35392471",
-        location_stand: "Parnell street outside temple hall",
-        no_stands: "2",
-        security_safetyrating: "High"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.25826081,
-        53.35392471
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.264474839",
-        Y: "53.3509772",
-        location_stand: "Parnell street outside beauty chic",
-        no_stands: "2",
-        security_safetyrating: "High"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.264474839,
-        53.3509772
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.259794384",
-        Y: "53.35342112",
-        location_stand: "Parnell street, outside 147 deli",
-        no_stands: "2",
-        security_safetyrating: "High"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.259794384,
-        53.35342112
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.265522242",
-        Y: "53.33630513",
-        location_stand: "Wexford street, Infront of bank of ireland",
-        no_stands: "2",
-        security_safetyrating: "High"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.265522242,
-        53.33630513
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.264283061",
-        Y: "53.34393043",
-        location_stand: "Bottom of George's street, beside the mercantile",
-        no_stands: "6",
-        security_safetyrating: "High"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.264283061,
-        53.34393043
-        ]
-        }
-        },
-        {
-        type: "Feature",
-        properties: {
-        type_stands: "Sheffield Stand",
-        X: "-6.252724081",
-        Y: "53.33299531",
-        location_stand: "Fitzwilliam Place",
-        no_stands: "2",
-        security_safetyrating: "Medium"
-        },
-        geometry: {
-        type: "Point",
-        coordinates: [
-        -6.252724081,
-        53.33299531
-        ]
-        }
-        }
-        ]
-        }
+//         type: "FeatureCollection",
+//         features: [
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.22726053",
+//         Y: "53.34779261",
+//         location_stand: "East wall road outside the O2",
+//         no_stands: "4",
+//         security_safetyrating: "Medium"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.22726053,
+//         53.34779261
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.265138686",
+//         Y: "53.33424783",
+//         location_stand: "Camden street lower, outside centra shop",
+//         no_stands: "1",
+//         security_safetyrating: "High"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.265138686,
+//         53.33424783
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.249765605",
+//         Y: "53.34494805",
+//         location_stand: "Marks lane",
+//         no_stands: "2",
+//         security_safetyrating: "Medium"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.249765605,
+//         53.34494805
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.251051724",
+//         Y: "53.34851312",
+//         location_stand: "Custom House Quay, outside AIB International Centre",
+//         no_stands: "1",
+//         security_safetyrating: ""
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.251051724,
+//         53.34851312
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.242272854",
+//         Y: "53.34296483",
+//         location_stand: "Pearce street outside garden area",
+//         no_stands: "3",
+//         security_safetyrating: "High"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.242272854,
+//         53.34296483
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.262080967",
+//         Y: "53.34817688",
+//         location_stand: "Middle abbey street, outside arnotts carpark",
+//         no_stands: "2",
+//         security_safetyrating: "High"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.262080967,
+//         53.34817688
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.25176385",
+//         Y: "53.35182974",
+//         location_stand: "Foley street",
+//         no_stands: "3",
+//         security_safetyrating: "Medium"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.25176385,
+//         53.35182974
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.268160194",
+//         Y: "53.35686542",
+//         location_stand: "Bloomington street outside Dargans pharmacy.",
+//         no_stands: "3",
+//         security_safetyrating: "High"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.268160194,
+//         53.35686542
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.264363527",
+//         Y: "53.35398625",
+//         location_stand: "Parnell square north",
+//         no_stands: "4",
+//         security_safetyrating: "High"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.264363527,
+//         53.35398625
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.262504756",
+//         Y: "53.34211451",
+//         location_stand: "William street south, duke street gallery.",
+//         no_stands: "2",
+//         security_safetyrating: "High"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.262504756,
+//         53.34211451
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.271338612",
+//         Y: "53.35055212",
+//         location_stand: "North king street",
+//         no_stands: "2",
+//         security_safetyrating: "High"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.271338612,
+//         53.35055212
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.245986372",
+//         Y: "53.33485887",
+//         location_stand: "Maggot street lower outside Medmark healthcare ",
+//         no_stands: "2",
+//         security_safetyrating: "High"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.245986372,
+//         53.33485887
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Railing",
+//         X: "-6.262797117",
+//         Y: "53.33769129",
+//         location_stand: "Cuffe street, across from O'callaghan Stephen green hotel",
+//         no_stands: "5",
+//         security_safetyrating: "High"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.262797117,
+//         53.33769129
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.25826081",
+//         Y: "53.35392471",
+//         location_stand: "Parnell street outside temple hall",
+//         no_stands: "2",
+//         security_safetyrating: "High"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.25826081,
+//         53.35392471
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.264474839",
+//         Y: "53.3509772",
+//         location_stand: "Parnell street outside beauty chic",
+//         no_stands: "2",
+//         security_safetyrating: "High"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.264474839,
+//         53.3509772
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.259794384",
+//         Y: "53.35342112",
+//         location_stand: "Parnell street, outside 147 deli",
+//         no_stands: "2",
+//         security_safetyrating: "High"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.259794384,
+//         53.35342112
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.265522242",
+//         Y: "53.33630513",
+//         location_stand: "Wexford street, Infront of bank of ireland",
+//         no_stands: "2",
+//         security_safetyrating: "High"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.265522242,
+//         53.33630513
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.264283061",
+//         Y: "53.34393043",
+//         location_stand: "Bottom of George's street, beside the mercantile",
+//         no_stands: "6",
+//         security_safetyrating: "High"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.264283061,
+//         53.34393043
+//         ]
+//         }
+//         },
+//         {
+//         type: "Feature",
+//         properties: {
+//         type_stands: "Sheffield Stand",
+//         X: "-6.252724081",
+//         Y: "53.33299531",
+//         location_stand: "Fitzwilliam Place",
+//         no_stands: "2",
+//         security_safetyrating: "Medium"
+//         },
+//         geometry: {
+//         type: "Point",
+//         coordinates: [
+//         -6.252724081,
+//         53.33299531
+//         ]
+//         }
+//         }
+//         ]
+//         }
 
 
     
@@ -515,7 +530,7 @@ function onEachFeature(feature, layer){
 }
 
     
-    var mapWithRackMarkers = L.geoJSON(geoJson, {
+    var mapWithRackMarkers = L.geoJSON(maps, {
         //add multiple locations with personalised marker using geoJson
         pointToLayer: function(feature, latlng){
            return L.marker(latlng, {
@@ -528,7 +543,7 @@ function onEachFeature(feature, layer){
         onEachFeature: onEachFeature,
     }).addTo(mymap);
 
-    var mapWithHotspotsMarkers = L.geoJSON(geoJson, {
+    var mapWithHotspotsMarkers = L.geoJSON(maps, {
         //add multiple locations with personalised marker using geoJson
         pointToLayer: function(feature, latlng){
              return L.circleMarker(latlng, hotspotMarker);
@@ -565,6 +580,7 @@ function onEachFeature(feature, layer){
     
 
     function addMarkerToMap(lat, lon){
+
         //pin a specific location - JUST FOR TESTE, DELETE IT IN THE END
         var marker = L.marker([lon, lat]).addTo(mymap);
 
@@ -663,6 +679,7 @@ L.control.layers({
 
              
     $(document).ready(function () {
+        
         $("#sidebar").mCustomScrollbar({
             theme: "minimal"
         });

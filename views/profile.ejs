@@ -15,6 +15,7 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
   />
   </head>
+  
 
  <!-- Scripts -->
 
@@ -133,6 +134,7 @@
                       
                       <input type="text" readonly class="form-control" id="activity" placeholder="Nothing Reported About Your Bike">
                     <%  }else { %>
+
                       <input type="text" readonly class="form-control" id="activity" placeholder="<%=userBikeDetails.report[0]%>">
                       <%  } %>
 
@@ -218,7 +220,7 @@
                   <p>Insert the new password</p>
                 </div>
               <div class="modal-footer">
-                <form action="/updatepassword/<%=userId%>" method="POST" name="update">
+                <form action="/updatepassword" method="POST" name="update">
                    <!-- Password -->
                    <div class="form-group row mx-sm-3 mb-2">
                     <label for="password" class="col-sm-3 col-form-label">New Password </label>

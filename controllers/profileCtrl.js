@@ -29,11 +29,12 @@ const axios = require('axios');
 exports.updatePassword = async (req, res) => {
    console.log("Route ok");
   
-   const userId = req.params.id; //Logged user
+  // const userId = req.params.id; //Logged user
 //   const password = "test";
+const userId = req.session.userId;
  const password = req.body.updatedPass;
    
-   console.log("From the update pass route" +userId +" pass:" + password);
+   console.log("From the update user: " +userId +" pass:" + password);
    
    try {
 		const response = await axios({

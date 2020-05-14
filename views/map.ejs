@@ -64,14 +64,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
   <body>
 
 
-      <script type="text/javascript">
-      $(document).ready(function () {
-        var user = '<%=racks[0].newRackId%>';
-    console.log("Racks " + user);
-
-    });
-    
-    </script>
 
 
     <div class="wrapper">
@@ -312,33 +304,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
        <!-- <script type="text/javascript" src="js/mapAPI.js"></script> -->
       <!-- <script type="text/javascript" src="jquery/jquery.min.js"></script> -->
   <!-- <script type="text/javascript" src="js/map.js"></script> -->
-  <script type="text/javascript" src="location.json"></script>
-<script src="js/map.js"></script> 
-<script>
+<script src="js/maps.js"></script>
+      <script src="js/map.js"></script> 
+  <!-- <script src="js/location.js"></script> -->
 
-$(document).ready(function(){
-
-var lat = '<%=racks[0].latitude%>';
-var lon = '<%=racks[0].longitude%>';
-addMarkerToMap(lon, lat);
-console.log("Add to map");
-});
-  
-$('#showHotspots').click(function () {
-  //   console.log("testing script");
-  //   var user = '<%=racks[0].newRackId%>';
-  // console.log("This is the rack" + user)
-  // var myJSON = JSON.stringify(user);
-  //   secondFun(myJSON);  
-  //   testing();
-
-  
-    });
-      //  $("div").on("click", '#chatToggle', testing());
-      //  console.log("testing script");
-
-
-</script>
-<%-include('layouts/scripts'); -%>
   </body>
 </html>

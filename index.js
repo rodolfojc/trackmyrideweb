@@ -1,6 +1,7 @@
 const dotenv = require('dotenv').config();
 const express = require('express');
 
+
 const axios = require('axios');
 const GeoJSON = require('geojson');
 const expressSession = require('express-session');
@@ -165,7 +166,7 @@ app.get('/profile', profileController.loadProfile); //Open user profile page
 
 app.post('/deleteaccount/:id', accountController); //Delete an account from the user profile page
 
-app.post('/updatepassword/:id', profileController.updatePassword);
+app.post('/updatepassword', profileController.updatePassword);
 // Finish Routes#############################################################################
 
 // app.post("/index/store", async (req, res) => {

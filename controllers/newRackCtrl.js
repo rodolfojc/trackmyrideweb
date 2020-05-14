@@ -23,6 +23,7 @@ module.exports = async (req,res) =>{
 
             console.log( "Redirecting to Consult Map page" );
             return res.redirect('/consultmap');
+            // res.render("map", {newRackAdded:racks});
 
           });
             
