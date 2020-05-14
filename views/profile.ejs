@@ -10,6 +10,10 @@
     <title>
       TrackMyRide
     </title>
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
   </head>
 
  <!-- Scripts -->
@@ -19,24 +23,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   
-  <script>
-      
-      $(document).ready(function(){    
-    $('#deletAcc').click(function () {
-      event.preventDefault();
-      console.log("Modal should open now");
-      $("#myModal").modal('show');
-
-    });
-  });
- </script>
+  
           
       <body>
    <style>
      img {
   border-radius: 50%;
 }
-
 .circular {
   width: 150px;
   height: 150px;
@@ -57,34 +50,27 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-
 .form-group input {
-
 	background-color: white !important;
 	background: rgba(128, 128, 128, 0.411) !important;
 	box-shadow: none !important;
 }
-
 #profileContainer .card{
   box-shadow: 5px 5px 15px #8c3ce798;
   transition: all 0.3s ease-in ;
   font-weight: 600;
   /* Include webkit transition */
 }
-
 #profileContainer .card:hover{
   background: #783ce728;
   color: #3f3e3e;
   border: none;
   box-shadow: 5px 5px 10px #9e9e9e;
 }
-
  .card-body, .tab-pane, .tab-content, .active{
   background: white;
   color: #3f3e3e;
 }
-
-
    </style>
 
 <% var noData; %>
@@ -144,7 +130,6 @@
                       <%if (noData || userBikeDetails==null) {%>
                       
                       <input type="text" readonly class="form-control" id="activity" placeholder="Nothing Reported About Your Bike">
-
                     <%  }else { %>
                       <input type="text" readonly class="form-control" id="activity" placeholder="<%=userBikeDetails.report[0]%>">
                       <%  } %>
@@ -161,60 +146,116 @@
                <!-- TAB 2-->
                 <!-- Username -->
                 <div class="tab-pane fade " id="account">
-                <form>
+                <form action="/updatepassword/<%=userId%>" method="POST"></form>
                   <div class="form-group row mx-sm-3 mb-2">
-                    <label for="username" class="col-sm-2 col-form-label">Username</label>
-                    <div class="col-sm-10">
-
+                    <label for="username" class="col-sm-3 col-form-label">Username</label>
+                    <div class="col-sm-8">
                       <input type="email" readonly class="form-control" id="username" value="<%=accountDetails.email%>">
                     </div>
                   </div>
                     <!-- Password -->
                   <div class="form-group row mx-sm-3 mb-2">
-                    <label for="password" class="col-sm-2 col-form-label">Password </label>
-                    <div class="col-sm-10">
+                    <label for="password" class="col-sm-3 col-form-label">Password </label>
+                    <div class="col-sm-8">
                       <input type="password" readonly class="form-control" id="password" value="<%=accountDetails.password%>">
                     </div>
                   </div>
+                  <!-- GDPR -->
+                  <div class="form-group row mx-sm-3 mb-2">
+                    <label for="gdpr" class="col-sm-3 col-form-label">Terms And Conditions </label>
+                    <div class="col-sm-8">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                        Check Terms And Conditions
+                      </button>
+                    </div>
+                  </div>
                 <hr/>
+               
                 <button type="submit" class="btn btn-primary" id="update">Update password</button>
                   <button type="button" class="btn btn-danger" id="deleteAcc"  data-toggle="modal" data-target="#myModal">Delete Account</button>
               </form>
-
-              <!-- Bootstrap modal from https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=modal -->
-            <div id="myModal" class="modal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Delete profile?</h5>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <p>If you delete your profile all your data will be lost</p>
-                          </div>
-                        <div class="modal-footer">
-                          <form action="/deleteaccount/<%=userId%>" method="POST">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger" id="delete">Delete</button>
-                           </form>
-                        </div>
-                    </div>
-                </div>
             </div>
-       
+          </div>  <!--tab content ends -->
+        </div>    <!--card body ends -->
+      </div> <!--card text ends -->
+    </div>  <!--container body ends -->
 
-
-
+    <!-- Bootstrap modal from https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=modal -->
+    <!-- Delete account Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Delete profile?</h5>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                  <p>If you delete your profile all your data will be lost</p>
+                </div>
+              <div class="modal-footer">
+                <form action="/deleteaccount/<%=userId%>" method="POST">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-danger" id="delete">Delete</button>
+                </form>
               </div>
           </div>
       </div>
+    </div> <!-- modal ends  -->
+
+    <!-- Modal for Terms And Conditions -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Track My Ride Terms And Conditions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Include GDPR file here  -->
+        <%-include('layouts/gdprModal'); -%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>
-    
+        
      
 
     <!--Importing the Scripts from Layout-->
 
+    <script>
+      
+      $(document).ready(function(){    
+    $('#deletAcc').click(function () {
+      event.preventDefault();
+      console.log("Modal should open now");
+      $("#myModal").modal('show');
+    });
+  });
+ </script>
+<script>
+  $(document).ready(function () {
+    $("form[name='signvalidated']").validate({
+        rules: {
+            email: "required",
+            password: "required",
+            termscheckbox: "required",
+        },
+        messages: {
+            email: "Please enter valid email",
+            password: "Please enter a valid password",
+            termscheckbox: "You must",            
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    })
+});
+</script>
    
   </body>
 </html>
