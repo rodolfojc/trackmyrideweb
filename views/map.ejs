@@ -18,6 +18,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script type="text/javascript" src="js/geojson.min.js"></script>
   
    <!-- Font Awesome Script -->
    <script src="https://kit.fontawesome.com/5c19bf284e.js"></script>
@@ -61,6 +62,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
 
 
   <body>
+
+
+      <script type="text/javascript">
+      $(document).ready(function () {
+        var user = '<%=racks[0].newRackId%>';
+    console.log("Racks " + user);
+
+    });
+    
+    </script>
+
 
     <div class="wrapper">
 
@@ -227,6 +239,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
   
 </nav>
 
+
    
 <!-- Content -->
 
@@ -296,10 +309,36 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-       <script type="text/javascript" src="js/mapAPI.js"></script>
+       <!-- <script type="text/javascript" src="js/mapAPI.js"></script> -->
       <!-- <script type="text/javascript" src="jquery/jquery.min.js"></script> -->
   <!-- <script type="text/javascript" src="js/map.js"></script> -->
-<!-- <script src="js/map.js"></script>  -->
+  <script type="text/javascript" src="location.json"></script>
+<script src="js/map.js"></script> 
+<script>
+
+$(document).ready(function(){
+
+var lat = '<%=racks[0].latitude%>';
+var lon = '<%=racks[0].longitude%>';
+addMarkerToMap(lon, lat);
+console.log("Add to map");
+});
+  
+$('#showHotspots').click(function () {
+  //   console.log("testing script");
+  //   var user = '<%=racks[0].newRackId%>';
+  // console.log("This is the rack" + user)
+  // var myJSON = JSON.stringify(user);
+  //   secondFun(myJSON);  
+  //   testing();
+
+  
+    });
+      //  $("div").on("click", '#chatToggle', testing());
+      //  console.log("testing script");
+
+
+</script>
 <%-include('layouts/scripts'); -%>
   </body>
 </html>
