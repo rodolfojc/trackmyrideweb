@@ -92,9 +92,10 @@
 	color: red;
 }
 
+/* Login and Register form */
 .section input {
 	border-radius: 10px;
-	font-family: "Play";
+	/* font-family: "Play"; Too many different fonts */
 	padding: 10px;
 	background-color: rgb(214, 212, 216);
 	outline: 1;
@@ -179,7 +180,7 @@
 
 .section-signin input {
 	border-radius: 10px;
-	font-family: "Play";
+	/* font-family: "Play"; */
 	padding: 10px;
 	background-color: rgb(214, 212, 216);
 	outline: 1;
