@@ -317,3 +317,9 @@ footer {
 		display: none;
 	}
 }
+
+form .error {
+	color: #ff0000;
+	font-size: small;
+	font-style: italic;
+}
