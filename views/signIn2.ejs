@@ -2,10 +2,19 @@
 <html lang="en">
   <!--Importing the Header Layout element-->
   <%-include('layouts/signin_header'); -%>
+
+  <!-- Scripts -->
+  <!-- Boostrtrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Font Awesome Script -->
+    <script src="https://kit.fontawesome.com/5c19bf284e.js"></script>
+  
+    <!-- Responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
  
   <body>
-    <!--Importing Navbar from Layout element-->
-    <%-include('layouts/navbar'); -%>
+   
 
     <div class="login">
       <!-- <img class="logo" src="img/trackMyRidelogo2.JPG"> -->
@@ -45,19 +54,21 @@
         <br>
  
         <span class="checkbox"><input type="checkbox" class="form-group" name="termscheckbox" id="terms" value="#" required/></span>
-        <label for="terms" id="label">Accept Terms and Conditions</label>
-        <br><br>
-        <a href="gdpr" id="terms-link"><i class="terms-conditions" name="terms-link"><strong>Terms and Conditions</strong></a><br>
-         <button id="btn" type="submit" class="btn btn-primary btn-block btn-large" >Register</button>
+        <strong> <span style="color: white"> Accept<a href="#" data-toggle="modal" data-target="#exampleModalLong"> Terms and Conditions</a></span></strong>
+   
+         <button id="btn" type="submit" class="btn btn-primary btn-block btn-large" >Sign Up <i class="fas fa-user-plus"></i></button>
 
-        <span class="link-password"
-          ><a href="#">Forgotten your username or password?</a>
+        <!-- <span class="link-password"><a href="#">Forgotten your username or password?</a> -->
           <br />
           <br />
-          <a href="/">Already a member? Login</a></span
-        >
+         
+          <a href="/"> <p  style="text-align: center; color:white">Already a member? <strong> <span style=" color: #63e69e">Log in <i class="fas fa-sign-in-alt"></i></span></p></strong></a>
+        
       </form>
     </div>
+
+      <!-- GDPR Modal  - trigger when link is clicked-->
+      <%-include('layouts/GDPR/gdprModal'); -%>
 
      <%-include('layouts/scripts'); -%>
   </body>
