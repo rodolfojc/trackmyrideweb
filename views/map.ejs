@@ -114,7 +114,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
             <div class="form-group row mx-sm-3">
               <label for="email" class=".col-xs-6 .col-sm-4 col-form-label">Email</label>
               <div class=".col-xs-6 .col-lg-4">
-                <input type="email" class="form-control"placeholder="<%=userId%>"  id="<%=userId%>" name="email" >
+                <input type="email" class="form-control"placeholder=""  id="" name="email" >
                 <!-- <input type="email" class="form-control" id="email" name="email" > -->
               </div>
             </div>
@@ -156,25 +156,25 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
     <!-- <ul class="list-unstyled components"> -->
        <form action="/addNewRack" method="POST" role="form" id="newRackForm">
         <!-- Map id - hidden -->
-        <input type="text" class="form-control" id="newRackId" name="newRackId">
+        <input type="text" class="form-control-sm" id="newRackId" name="newRackId">
          <!-- Latitude -->
-        <div class="form-group row mx-sm-3 mb-2">
-          <label for="lat" class="col-sm-3 col-form-label">Latitude</label>
-          <div class="col-sm-7">
+        <div class="form-group row ">
+          <label for="lat" class="col-xs-4 col-form-label">Latitude</label>
+          <div class="col-xs-8">
             <input type="text" class="form-control" id="newLat" name="latitude" readOnly >
           </div>
         </div>
         <!-- Longitude -->
-        <div class="form-group row mx-sm-3 mb-2">
-          <label for="longitude" class="col-sm-3 col-form-label">Longitude</label>
-          <div class="col-sm-7">
+        <div class="form-group row ">
+          <label for="longitude" class="col-xs-4 col-form-label">Longitude</label>
+          <div class="col-xs-8">
             <input type="text" class="form-control" id="newLon" name="longitude" readOnly >
           </div>
         </div>
         <!-- Rack type -->
-        <div class="form-group row mx-sm-3 mb-2">
-          <label for="time" class="col-sm-3 col-form-label">Type</label>
-          <div class="col-sm-7">
+        <div class="form-group row ">
+          <label for="time" class="col-xs-4 col-form-label">Type</label>
+          <div class="col-xs-8">
             <select id="type" name="type" class="form-control">
               <option value="stand">Stand</option>
               <option value="pole">Pole</option>
@@ -185,24 +185,27 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
         </div>
           
          <!-- Quantity -->
-         <div class="form-group row mx-sm-3 mb-2">
-          <label for="quantity" class="col-sm-3 col-form-label" id="inc">Quantity</label>
-          <div class="col-sm-7">
+         <div class="form-group row ">
+          <label for="quantity" class="col-xs-4 col-form-label" id="inc">Quantity</label>
+          <div class="col-xs-8">
             <input type="number" class="form-control" id="quantity" name="quantity" >
           </div>
         </div>
         <!-- User -->
-        <div class="form-group row mx-sm-3 mb-2">
-          <label for="email" class="col-sm-3 col-form-label">Email</label>
-          <div class="col-sm-7">
-            <input type="email" class="form-control" id="newEmail" name="email" >
+        <% if(userId == null){ %>
+        <div class="form-group row ">
+          <label for="email" class="col-xs-4 col-form-label">Email</label>
+          <div class="col-xs-8">
+        
+            <input type="email" class="form-control" id="newEmail"  name="email" >
+       
           </div>
         </div>
-       
+        <%  } %>
         <!-- Property -->
-        <div class="form-group row mx-sm-3 mb-2">
-          <label for="property" class="col-sm-3 col-form-label" id="ppt"><span>Location</span></label>
-          <div class="col-sm-7">
+        <div class="form-group row ">
+          <label for="property" class="col-xs-4 col-form-label" id="ppt"><span>Location</span></label>
+          <div class="col-xs-8">
             <select id="property" name="property" class="form-control">
               <option value="stand">Private</option>
               <option value="pole">Public</option>
@@ -211,10 +214,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
         </div>
   
          <!-- Description -->
-         <div class="form-group row mx-sm-3 mb-2">
-          <label for="description" class="col-sm-3 col-form-label">Description</label>
-          <div class="col-sm-7">
-            <textarea id="newDescription" name="newDescription" placeholder="Write something.." style="height:200px "></textarea>
+         <div class="form-group row ">
+          <label for="description" class="col-xs-4 col-form-label">Description</label>
+          <div class="col-xs-8">
+            <textarea id="newDescription" name="newDescription" placeholder="Write something.." style="height:100px "></textarea>
           </div>
         </div>
 

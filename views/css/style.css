@@ -328,7 +328,7 @@ body
 	position: fixed;
 	top: 0;
   left: -300px;
-   height: 90%;
+   height: 100%;
 	z-index: 999;
 	background: black;
 	color: #fff;
@@ -415,8 +415,11 @@ body
 }
 
 #sidebar input {
-	padding: 5px 0;
-	border-bottom: 1px solid #47748b;
+
+  padding: 5px 0px;
+  margin-left: 10px;
+  border-bottom: 1px solid #47748b;
+ 
 }
 
 /*
@@ -458,16 +461,21 @@ a[data-toggle="collapse"] {
 .form-input input {
 	border-style: none !important;
 	background-color: white !important;
-	background: white !important;
+	background: rgb(126, 88, 88) !important;
   box-shadow: none !important;
  
 }
-/*
+/* label side bar form */
 .col-form-label {
 margin-right: 10px;
 margin-left: 40px;
 }
-*/
+/* Input side bar form */
+.col-xs-8{
+  /* margin-left: auto; */
+
+
+}
 #register-btn {
 	margin-top: 0%;
 	width: 60%;
