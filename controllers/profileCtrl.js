@@ -31,7 +31,7 @@ exports.updatePassword = async (req, res) => {
   
   // const userId = req.params.id; //Logged user
 //   const password = "test";
-const userId = req.session.userId;
+ const userId = req.session.userId;
  const password = req.body.updatedPass;
    
    console.log("From the update user: " +userId +" pass:" + password);
