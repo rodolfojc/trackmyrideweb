@@ -36,8 +36,6 @@ L.control.zoom({    position:'topright'}).addTo(mymap);
 //Main map layer
 var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 
-//Add layer to the map
-mymap.addLayer(layer);
 
 //Personalized marker for hotspots
 var hotspotMarker = {
@@ -68,7 +66,7 @@ const fontAwesomeIcon = L.divIcon({
 //Pop up over the pin
 var popup = L.popup();
 
-//Add a pop up on each marker
+//Add a pop up on each rack marker
 function onEachFeature(feature, layer){
     layer.bindPopup('Name: '+ feature.properties.location_stand +
     '<br> Stands: '+feature.properties.no_stands +
@@ -82,6 +80,174 @@ function onEachFeature(feature, layer){
             
   });
 }
+
+//Add Racks to the map
+var mapWithRackMarkers = L.geoJSON(maps2, {
+    //add multiple locations with personalised marker using geoJson
+    pointToLayer: function(feature, latlng){
+       return L.marker(latlng, {
+           icon: fontAwesomeIcon
+       });
+       },
+    onEachFeature: onEachFeature,
+}).addTo(mymap);
+
+//Add Hotspots to the Map 
+var mapWithHotspotsMarkers = L.geoJSON(maps2, {
+    //add multiple locations with personalised marker using geoJson
+    pointToLayer: function(feature, latlng){
+         return L.circleMarker(latlng, hotspotMarker);
+       },
+    onEachFeature: onEachFeature,
+}).addTo(mymap);
+
+
+    
+
+    //When button is clicked, toggle the Racks markers 
+    $(document).on('click', '#showRacks', function() {
+        //If markers are visible, hide it
+        if(mymap.hasLayer(mapWithRackMarkers)){
+            mymap.removeLayer(mapWithRackMarkers);
+        }else{
+            //If markers are hidden, show them
+            mapWithRackMarkers.addTo(mymap);
+        }
+    });
+
+    //When button is clicked, toggle the Hotspots markers 
+    $(document).on('click', '#showHotspots', function() {
+        //If markers are visible, hide it
+        if(mymap.hasLayer(mapWithHotspotsMarkers)){
+            mymap.removeLayer(mapWithHotspotsMarkers);
+        }else{
+            //If markers are hidden, show them
+            mapWithHotspotsMarkers.addTo(mymap);
+        }
+    });
+
+    //To add a rack manually - FOR User adding a new rack
+    function addMarkerToMap(lat, lon){
+
+        //pin a specific location - JUST FOR TEST, DELETE IT IN THE END
+        var marker = L.marker([lon, lat]).addTo(mymap);
+
+        marker.bindPopup("Added by the user.<br> Under validation").openPopup();
+            //Get the location from a leaflet marker - JUST FOR TESTE, DELETE IT IN THE END
+        marker.on('click', function(ev){
+            var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
+            console.log(latlng.lat + ', ' + latlng.lng + 'from marker ');
+          });
+
+
+    }
+   
+    //Get the location clicked on the map
+    mymap.on('click', function(e) {
+        console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+    });
+
+    // Layer groups for filters
+
+//add layer to the map
+    mymap.addLayer(layer);
+
+    function testing(){
+        // //Report incident is clicked inside the popup
+     
+        console.log("show rack clicked");
+
+          $('#newRackForm').removeClass('active');
+          $('#incidentForm').addClass('active');
+          $('.sidebar-header span').text('Report Incident');
+       
+          $('#sidebar').addClass('active'); //display side panel
+          $('.overlay').addClass('active');
+          $('#clickMap').removeClass('active'); //hide pin on map message
+          $('.collapse.in').toggleClass('in');
+          $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+          $('#lat').val(lt); //set latitude of clicked rack 
+          $('#lon').val(ln);  //set longitude of clicked rack 
+          $('#rackId').val(rackId);  //set id of clicked rack 
+          $('#incident').val("Theft");
+          
+       }
+
+           
+  $(document).ready(function () {
+      
+      $("#sidebar").mCustomScrollbar({
+          theme: "minimal"
+      });
+
+      // //Report incident is clicked inside the popup
+      $("div").on("click", '#chatToggle', function () {
+
+          
+          $('#newRackForm').removeClass('active');
+          $('#incidentForm').addClass('active');
+          $('.sidebar-header span').text('Report Incident');
+       
+          $('#sidebar').addClass('active'); //display side panel
+          $('.overlay').addClass('active');
+          $('#clickMap').removeClass('active'); //hide pin on map message
+          $('.collapse.in').toggleClass('in');
+          $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+          $('#lat').val(lt); //set latitude of clicked rack 
+          $('#lon').val(ln);  //set longitude of clicked rack 
+          $('#rackId').val(rackId);  //set id of clicked rack 
+          $('#incident').val("Theft");
+          
+       });
+
+       //Apply/Remove grey layer over the map
+       $('#dismiss, .overlay').on('click', function () {
+          $('#sidebar').removeClass('active');
+          $('.overlay').removeClass('active');
+      });
+
+      //Allow user to pick a point in the map
+      $("div").on("click", '#newRack', function () {
+
+          mymap.removeLayer(mapWithRackMarkers);   //hide all racks
+          mymap.removeLayer(mapWithHotspotsMarkers); //hide all hotspot
+          $('.overlay').addClass('active'); //add overlay
+          $('#clickMap').addClass('active'); //display pin on map message
+          $('#mapid').css('cursor', 'crosshair'); //change cursor
+
+          
+          mymap.on('click', function(e) {
+              $('.sidebar-header span').text('Add new Rack');//Form title
+              //CREATE IF TO CHECK IF ID EXISTS
+              let randomRackId = Math.floor((Math.random() * 1000000) + 1);
+              $('#newRackId').val(randomRackId); 
+              // ----------------------------------
+              $('#newLat').val(e.latlng.lat); //set latitude of clicked spot
+              $('#newLon').val(e.latlng.lng);  //set longitude of clicked spot
+              $('#newRackForm').addClass('active');//display rack form
+              $('#incidentForm').removeClass('active');//hide incident form
+              $('#sidebar').addClass('active'); //display side bar
+              $('a[aria-expanded=true]').attr('aria-expanded', 'false');//tag element as expdanded
+          });
+
+              // $('.collapse.in').toggleClass('in');
+              //dont allow to pick an existing rack location
+      
+              //add marker and popup with button
+              //confirm button get lat and long
+              
+      
+      
+          // $('#rackId').val(rackId);  //set id of clicked rack 
+          // $('#incident').val("Theft");
+          
+       });
+
+
+  });
+ 
+ 
+
 
 //pin a specific location - JUST FOR TESTE, DELETE IT IN THE END
 //var marker = L.marker([53.347557, -6.259317]).addTo(mymap);
@@ -101,115 +267,37 @@ function onEachFeature(feature, layer){
 
 
     
-    var mapWithRackMarkers = L.geoJSON(maps2, {
-        //add multiple locations with personalised marker using geoJson
-        pointToLayer: function(feature, latlng){
-           return L.marker(latlng, {
-               icon: fontAwesomeIcon
-           });
-           
-            // return L.circleMarker(latlng, geojsonMarkerOptions);
-           },
-
-        onEachFeature: onEachFeature,
-    }).addTo(mymap);
-
-    var mapWithHotspotsMarkers = L.geoJSON(maps2, {
-        //add multiple locations with personalised marker using geoJson
-        pointToLayer: function(feature, latlng){
-             return L.circleMarker(latlng, hotspotMarker);
-           },
-
-        onEachFeature: onEachFeature,
-    }).addTo(mymap);
 
 
-    //When button is clicked, toggle the Racks markers 
-    $(document).on('click', '#showRacks', function() {
-        //If markers are visible, hide it
-        if(mymap.hasLayer(mapWithRackMarkers)){
-            mymap.removeLayer(mapWithRackMarkers);
-        }else{
-            //If markers are hidden, show them
-            mapWithRackMarkers.addTo(mymap);
-        }
-    });
-
-    //When button is clicked, toggle the Hotspots markers 
-    $(document).on('click', '#showHotspots', function() {
-        //If markers are visible, hide it
-        if(mymap.hasLayer(mapWithHotspotsMarkers)){
-            mymap.removeLayer(mapWithHotspotsMarkers);
-            var user = '<%=racks[0].newRackId%>';
-    console.log("Racks " + user);
-        }else{
-            //If markers are hidden, show them
-            mapWithHotspotsMarkers.addTo(mymap);
-        }
-    });
-
-    
-
-    function addMarkerToMap(lat, lon){
-
-        //pin a specific location - JUST FOR TESTE, DELETE IT IN THE END
-        var marker = L.marker([lon, lat]).addTo(mymap);
-
-        marker.bindPopup("Added by the user.<br> Under validation").openPopup();
-
-        marker.on('click', function(ev){
-            var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
-            console.log(latlng.lat + ', ' + latlng.lng + 'from marker ');
-          });
-
-
-    }
-    //Get the location from a leaflet marker - JUST FOR TESTE, DELETE IT IN THE END
-    // marker.on('click', function(ev){
-    //     var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
-    //     console.log(latlng.lat + ', ' + latlng.lng + 'from marker ');
-    //   });
-
-    //Get the location clicked on the map
-    mymap.on('click', function(e) {
-        console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
-    });
-
-    // Layer groups for filters
-
-//add layer to the map
-    mymap.addLayer(layer);
-
-
-    //checkbox option 1 with racks
-var racks = L.layerGroup([
-    L.marker([53.348046, -6.268652]),
-    L.marker([53.349017, -6.2554])
-]);
+    //checkbox option 1 with racksNOT IN USE -DELETE IT 
+// var racks = L.layerGroup([
+//     L.marker([53.348046, -6.268652]),
+//     L.marker([53.349017, -6.2554])
+// ]);
 
 //checkbox option 2 with hotspot circles
-var hotspot = L.layerGroup([
-    L.circle([53.347557, -6.259317], {
-                color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        radius: 25
-        })
-]);
+// var hotspot = L.layerGroup([
+//     L.circle([53.347557, -6.259317], {
+//                 color: 'red',
+//         fillColor: '#f03',
+//         fillOpacity: 0.5,
+//         radius: 25
+//         })
+// ]);
 
 
-//Radio buttons to switch layers
-L.control.layers({
-        'Racks': layer,
-        'Hotspots': difflayer,
-    }, 
-    //check box with options - not exclusively
-    {
-        'Markers #1': racks,
-        'Markers #2': hotspot
-    }).addTo(mymap);
-    //add layers control to the map
-    L.control.scale().addTo(mymap);
+//Radio buttons to switch layers - not in use, delete it
+// L.control.layers({
+//         'Racks': layer,
+//         'Hotspots': difflayer,
+//     }, 
+//     //check box with options - not exclusively
+//     {
+//         'Markers #1': racks,
+//         'Markers #2': hotspot
+//     }).addTo(mymap);
+//     //add layers control to the map
+//     L.control.scale().addTo(mymap);
 
     
     
@@ -223,115 +311,4 @@ L.control.layers({
     // });
 
 
-    function testing(){
-          // //Report incident is clicked inside the popup
-       
-          console.log("show rack clicked");
-
-            $('#newRackForm').removeClass('active');
-            $('#incidentForm').addClass('active');
-            $('.sidebar-header span').text('Report Incident');
-         
-            $('#sidebar').addClass('active'); //display side panel
-            $('.overlay').addClass('active');
-            $('#clickMap').removeClass('active'); //hide pin on map message
-            $('.collapse.in').toggleClass('in');
-            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            $('#lat').val(lt); //set latitude of clicked rack 
-            $('#lon').val(ln);  //set longitude of clicked rack 
-            $('#rackId').val(rackId);  //set id of clicked rack 
-            $('#incident').val("Theft");
-            
-         }
-
-         function secondFun(user){
-            console.log(user)
-            }
-
-             
-    $(document).ready(function () {
-        
-        $("#sidebar").mCustomScrollbar({
-            theme: "minimal"
-        });
-
-        // //Report incident is clicked inside the popup
-        $("div").on("click", '#chatToggle', function () {
-
-            
-            $('#newRackForm').removeClass('active');
-            $('#incidentForm').addClass('active');
-            $('.sidebar-header span').text('Report Incident');
-         
-            $('#sidebar').addClass('active'); //display side panel
-            $('.overlay').addClass('active');
-            $('#clickMap').removeClass('active'); //hide pin on map message
-            $('.collapse.in').toggleClass('in');
-            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            $('#lat').val(lt); //set latitude of clicked rack 
-            $('#lon').val(ln);  //set longitude of clicked rack 
-            $('#rackId').val(rackId);  //set id of clicked rack 
-            $('#incident').val("Theft");
-            
-         });
-
-         //Apply/Remove grey layer over the map
-         $('#dismiss, .overlay').on('click', function () {
-            $('#sidebar').removeClass('active');
-            $('.overlay').removeClass('active');
-        });
-
-        //Allow user to pick a point in the map
-        $("div").on("click", '#newRack', function () {
-
-            mymap.removeLayer(mapWithRackMarkers);   //hide all racks
-            mymap.removeLayer(mapWithHotspotsMarkers); //hide all hotspot
-            $('.overlay').addClass('active'); //add overlay
-            $('#clickMap').addClass('active'); //display pin on map message
-            $('#mapid').css('cursor', 'crosshair'); //change cursor
-
-            
-            mymap.on('click', function(e) {
-                $('.sidebar-header span').text('Add new Rack');//Form title
-                //CREATE IF TO CHECK IF ID EXISTS
-                let randomRackId = Math.floor((Math.random() * 1000000) + 1);
-                $('#newRackId').val(randomRackId); 
-                // ----------------------------------
-                $('#newLat').val(e.latlng.lat); //set latitude of clicked spot
-                $('#newLon').val(e.latlng.lng);  //set longitude of clicked spot
-                $('#newRackForm').addClass('active');//display rack form
-                $('#incidentForm').removeClass('active');//hide incident form
-                $('#sidebar').addClass('active'); //display side bar
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');//tag element as expdanded
-            });
-
-        
-                
-                // $('.collapse.in').toggleClass('in');
-                //dont allow to pick an existing rack location
-        
-                //add marker and popup with button
-                //confirm button get lat and long
-                
-        
-        
-            // $('#rackId').val(rackId);  //set id of clicked rack 
-            // $('#incident').val("Theft");
-            
-         });
-
-
-         
-
-
-    });
-    // Submit form to add incident to the database
-    $("#incidentForm").on("submit", function(){
-       addRack();
-        return true;
-      })
     
-      function addRack() {
-         
-        console.log("clicked");
-        }
