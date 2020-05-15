@@ -1,5 +1,7 @@
 
 //GET DATA FROM NEW RACKS TABLE
+
+
 // const axios =  require('axios');
 
 // const geoJSON2 = async () => {

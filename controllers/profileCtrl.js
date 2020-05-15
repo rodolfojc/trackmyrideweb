@@ -1,10 +1,13 @@
 const bikeModel = require("../models/Bike.js");
 const userModel = require("../models/User.js");
+let userBikeDetails; //Assign user object
+let accountDetails;
+let userId ;
 const axios = require('axios');
 
  exports.loadProfile = async (req, res) => {
   
-    const userId = req.session.userId; //Logged user
+    userId = req.session.userId; //Logged user
          
          await Promise.all([ //Execute both queries
             //Return the user object
@@ -12,8 +15,8 @@ const axios = require('axios');
              //Find the bikes the user have and return the object
             bikeModel.findOne({userId: userId})
           ]).then( (result) => {
-            let userBikeDetails = result[1]; //Assign user object
-            let accountDetails = result[0]; //Assign bikes object
+             userBikeDetails = result[1]; //Assign user object
+             accountDetails = result[0]; //Assign bikes object
             //Display profile page and send both user and bike objects
             console.log(userId);
             console.log(userBikeDetails);
@@ -27,11 +30,10 @@ const axios = require('axios');
 }
 
 exports.updatePassword = async (req, res) => {
-   console.log("Route ok");
   
-  // const userId = req.params.id; //Logged user
+ const userId = req.params.id; //Logged user
 //   const password = "test";
-const userId = req.session.userId;
+//const userId = req.session.userId;
  const password = req.body.updatedPass;
    
    console.log("From the update user: " +userId +" pass:" + password);
@@ -39,17 +41,17 @@ const userId = req.session.userId;
    try {
 		const response = await axios({
 			method: 'POST',
-			url: 'http://34.247.183.192:3000/updatepassword',
+			url: `http://34.247.183.192:3000/updatepassword/${userId}`,
 			headers: {},
-			data: {
-				userId,
+			data: {			
 				password
 			}
       });
-         
-      res.send(userId);
       
-		//res.render('profile', { userId });
+      console.log(response.data.message);
+      //res.send(userId);
+      res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId})
+	//	res.render('profile', { userId });
 	} catch (err) {
 		console.log(err.message);
 	}

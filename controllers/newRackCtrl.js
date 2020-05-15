@@ -22,8 +22,8 @@ module.exports = async (req,res) =>{
           ]).then( () => {
 
             console.log( "Redirecting to Consult Map page" );
-            return res.redirect('/consultmap');
-            // res.render("map", {newRackAdded:racks});
+            //return res.redirect('/consultmap');
+             res.render("map", {newRackAdded:racks});
 
           });
             
