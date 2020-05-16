@@ -1,38 +1,85 @@
 const newRack = require("../models/Racks.js");
-const Theft = require("../models/Theft.js");
+const racksModel = require("../models/Theft.js");
 
-//PASSING A CONSTANT RACKID FOR TEST
 
 //Request to the server
 module.exports = async (req,res) =>{
-    //Get the new data from browser
-    const newRackAdded = new newRack(req.body);
-    const rack = new Theft({rackId : req.body.newRackId});
-    // const rack = new Theft({rackId : req.body.newRackId}, {quantity: 0},  { testField: req.body.property});
+  //User ID
+    console.log("User id session " + req.session.userId);
+    //Get the new data from form
+     const newIncident = new newRack(req.body);
+     //Get rack Id
+     const rack = newIncident.rackId;
      try {
          //Save the data
          await Promise.all([
-            newRackAdded.save(), //add rack to the list
-          
-            // add new rack to the theft table
-           rack.save(function (err, rc) { 
-            if (err) return console.error(err);
-            console.log(rc.rackId + " saved to theft collection.");
-                   })
+           //add incident to the list
+           //Get the new data from browser
+//     const newRackAdded = new newRack(req.body);
+//     const rack = new racksModel({rackId : req.body.newRackId});
+            newIncident.save(), 
+            // Increment one incident on the  theft field (quantity)
+            racksModel.findOneAndUpdate({rackId : rack}, {$inc: { quantity: 1}}, {new: true })
+          //  Theft.findOneAndUpdate({rackId : rack}, {$inc: { quantity: 1}}, {new: true }) DELETE
           ]).then( () => {
-
-            console.log( "Redirecting to Consult Map page" );
-            //return res.redirect('/consultmap');
-             res.render("map", {newRackAdded:racks});
-
+            //TO BE ADDED - RETURN BACK A SUCCESS MESSAGE
+            console.log( "This is the rackId" +rack );
           });
-            
-              
+         
+         //Refresh the page 
+         return res.redirect('/consultmap');
+         
         } catch (err) {
             console.log(req.status);
 }
       
 }
+
+
+
+
+
+// const newRack = require("../models/Racks.js");
+// const racksModel = require("../models/Theft.js");
+
+
+
+// //Request to the server
+// module.exports = async (req,res) =>{
+//   const userId = req.session.userId; 
+//     //Get the new data from browser
+//     const newRackAdded = new newRack(req.body);
+//     const rack = new racksModel({rackId : req.body.newRackId});
+//     // const rack = new Theft({rackId : req.body.newRackId}, {quantity: 0},  { testField: req.body.property});
+//      try {
+//          //Save the data
+//          await Promise.all([
+//             newRackAdded.save(), //add rack to the list
+          
+//             // add new rack to the theft table
+//            rack.save(function (err, rc) { 
+//             if (err) return console.error(err);
+//             console.log(rc.rackId + " saved to theft collection.");
+//                    })
+//           ]).then( () => {
+
+      
+//              console.log(rack);
+//               // res.render("map", {newRackAdded:racks});
+//              console.log( "Redirecting to Consult Map page" );
+//              res.render("map", { userId: userId, newRackAdded:racks});
+//            // res.redirect("/consultmap", { userId: userId});
+//              //res.redirect('/consultmap');
+             
+
+//           });
+            
+      
+//         } catch (err) {
+//             console.log(req.status);
+// }
+
+// }
 
 // CODE BELOW IFOR ONLY ONE MONGOOSE TRANSACTION
 // module.exports = async (req,res) =>{
