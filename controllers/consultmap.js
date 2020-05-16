@@ -1,6 +1,11 @@
+const rackModel = require("../models/Racks.js");
+
 
 module.exports = async (req, res) => {
   const userId = req.session.userId;
-  console.log(userId);
-  res.render("map", { userId: userId });
+
+  const racks = await rackModel.find({}) ;    
+  // console.log("Racks from ctrl" + racks);
+  res.render("map", { userId: userId});
+  // res.render("map", { userId: userId , racks:racks});
 };

@@ -10,15 +10,15 @@
     <title>
       TrackMyRide
     </title>
-    <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-  />
-  </head>
+    <!-- Responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> </head>
+  
 
  <!-- Scripts -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -131,6 +131,7 @@
                       
                       <input type="text" readonly class="form-control" id="activity" placeholder="Nothing Reported About Your Bike">
                     <%  }else { %>
+
                       <input type="text" readonly class="form-control" id="activity" placeholder="<%=userBikeDetails.report[0]%>">
                       <%  } %>
 
@@ -146,18 +147,11 @@
                <!-- TAB 2-->
                 <!-- Username -->
                 <div class="tab-pane fade " id="account">
-                <form action="/updatepassword/<%=userId%>" method="POST"></form>
+                <form >
                   <div class="form-group row mx-sm-3 mb-2">
                     <label for="username" class="col-sm-3 col-form-label">Username</label>
                     <div class="col-sm-8">
                       <input type="email" readonly class="form-control" id="username" value="<%=accountDetails.email%>">
-                    </div>
-                  </div>
-                    <!-- Password -->
-                  <div class="form-group row mx-sm-3 mb-2">
-                    <label for="password" class="col-sm-3 col-form-label">Password </label>
-                    <div class="col-sm-8">
-                      <input type="password" readonly class="form-control" id="password" value="<%=accountDetails.password%>">
                     </div>
                   </div>
                   <!-- GDPR -->
@@ -170,9 +164,9 @@
                     </div>
                   </div>
                 <hr/>
-               
-                <button type="submit" class="btn btn-primary" id="update">Update password</button>
-                  <button type="button" class="btn btn-danger" id="deleteAcc"  data-toggle="modal" data-target="#myModal">Delete Account</button>
+                <button type="button" class="btn btn-primary" id="updateP"  data-toggle="modal" data-target="#pass">Update password</button>
+                <a href='/'><button type="button" class="btn btn-success" id="logout" >Logout</button></a>
+                <button type="button" class="btn btn-danger" id="deleteAcc"  data-toggle="modal" data-target="#myModal">Delete Account</button>
               </form>
             </div>
           </div>  <!--tab content ends -->
@@ -202,27 +196,44 @@
       </div>
     </div> <!-- modal ends  -->
 
-    <!-- Modal for Terms And Conditions -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Track My Ride Terms And Conditions</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <!-- Update password Modal -->
+    <div id="pass" class="modal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">New Password</h5>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                  <p>Insert the new password</p>
+                </div>
+              <div class="modal-footer">
+                <form action="/updatepassword/<%=userId%>"" method="POST" name="update">
+                   <!-- Password -->
+                   <div class="form-group row mx-sm-3 mb-2">
+                    <label for="password" class="col-sm-3 col-form-label">New Password </label>
+                    <div class="col-sm-8">
+                      <input type="password"  class="form-control" id="password"  name="updatedPass">
+                    </div>
+                    <label for="password" class="col-sm-3 col-form-label">Retype Password </label>
+                    <div class="col-sm-8">
+                      <input type="password"  class="form-control" id="passwordCheck" >
+                    </div>
+                  </div>
+
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-success" id="updatePass">Update</button>
+                </form>
+              </div>
+          </div>
       </div>
-      <div class="modal-body">
-        <!-- Include GDPR file here  -->
-        <%-include('layouts/gdprModal'); -%>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-        
+    </div> <!-- modal ends  -->
+
+    <!-- GDPR Modal -->
+    <%-include('layouts/GDPR/gdprModal'); -%>
+
+ 
+
      
 
     <!--Importing the Scripts from Layout-->
@@ -232,30 +243,30 @@
       $(document).ready(function(){    
     $('#deletAcc').click(function () {
       event.preventDefault();
-      console.log("Modal should open now");
       $("#myModal").modal('show');
     });
-  });
- </script>
-<script>
-  $(document).ready(function () {
-    $("form[name='signvalidated']").validate({
+
+    $("form[name='update']").validate({
         rules: {
-            email: "required",
-            password: "required",
-            termscheckbox: "required",
-        },
+                password : {
+                    minlength : 5,
+                    required: true
+                },
+                password_confirm : {
+                    minlength : 5,
+                    equalTo : "#password",
+                    required: true
+                }
+            },
         messages: {
-            email: "Please enter valid email",
-            password: "Please enter a valid password",
-            termscheckbox: "You must",            
+            required: "Please enter a valid password",
+
         },
         submitHandler: function (form) {
             form.submit();
         }
     })
-});
-</script>
-   
+  });
+ </script>
   </body>
 </html>
