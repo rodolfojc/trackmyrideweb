@@ -1,27 +1,3 @@
-
-//GET DATA FROM NEW RACKS TABLE
-
-
-// const axios =  require('axios');
-
-// const geoJSON2 = async () => {
-//     let response = null;
-
-//     try{
-//         response = await axios({
-//         method: "GET",
-//         url: "http://34.247.183.192:3000/getracks",
-//         headers: {}, 
-//         data: {}
-//       });
-//         //console.log(response);
-//       }catch (err) {
-//         console.log(err.message)
-//       }
-
-//     return response;
-// };
-
 var lt;
 var ln;
 var id;
@@ -36,9 +12,11 @@ var mymap = L.map('mapid', {
 L.control.zoom({    position:'topright'}).addTo(mymap);
     
 //Main map layer
-var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+//var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 
-
+var layer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
 //Personalized marker for hotspots
 var hotspotMarker = {
     radius: 8,
@@ -182,6 +160,7 @@ var mapWithHotspotsMarkers = L.geoJSON(maps2, {
           $('.sidebar-header span').text('Report Incident');
        
           $('#sidebar').addClass('active'); //display side panel
+
           $('.overlay').addClass('active');
           $('#clickMap').removeClass('active'); //hide pin on map message
           $('.collapse.in').toggleClass('in');
@@ -196,6 +175,7 @@ var mapWithHotspotsMarkers = L.geoJSON(maps2, {
            
   $(document).ready(function () {
       
+    
       $("#sidebar").mCustomScrollbar({
           theme: "minimal"
       });
@@ -226,17 +206,16 @@ var mapWithHotspotsMarkers = L.geoJSON(maps2, {
           $('.overlay').removeClass('active');
       });
 
-      //Allow user to pick a point in the map
+      //Allow user to pick a point in the map to report a new rack
       $("div").on("click", '#newRack', function () {
 
           mymap.removeLayer(mapWithRackMarkers);   //hide all racks
           mymap.removeLayer(mapWithHotspotsMarkers); //hide all hotspot
+          $('#clickMap span').text('Pin location on the map');//Add overlay message
           $('.overlay').addClass('active'); //add overlay
           $('#clickMap').addClass('active'); //display pin on map message
           $('#mapid').css('cursor', 'crosshair'); //change cursor
-
-          
-          mymap.on('click', function(e) {
+          mymap.on('click', function(e) { //When the map is clicked
               $('.sidebar-header span').text('Add new Rack');//Form title
               //CREATE IF TO CHECK IF ID EXISTS
               let randomRackId = getRandomIntInclusive();
@@ -250,6 +229,9 @@ var mapWithHotspotsMarkers = L.geoJSON(maps2, {
               $('a[aria-expanded=true]').attr('aria-expanded', 'false');//tag element as expdanded
           });
 
+
+         
+
               // $('.collapse.in').toggleClass('in');
               //dont allow to pick an existing rack location
       
@@ -262,6 +244,14 @@ var mapWithHotspotsMarkers = L.geoJSON(maps2, {
           // $('#incident').val("Theft");
           
        });
+
+       //Report Incident clicked from the Navbar
+       $("div").on("click", '#addIncident', function () {
+        mymap.removeLayer(mapWithHotspotsMarkers); //hide all hotspot
+         $('#clickMap span').text('Click on a spot to report');//Add overlay message
+          $('.overlay').addClass('active'); //add overlay
+          $('#clickMap').addClass('active'); //display pin on map message
+        });
 
 
   });
@@ -289,7 +279,7 @@ var mapWithHotspotsMarkers = L.geoJSON(maps2, {
   
 //new layer, could be used for nightime map
 // var difflayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//     attribution: '&copy; OpenStreetMap contributors'
+//     attribution: '&copy; OpenStreetMap 'contri'butors'
 // }).addTo(mymap);    
 
 

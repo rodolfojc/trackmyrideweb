@@ -10,4 +10,5 @@ module.exports = async (req, res) => {
   // console.log("Racks from ctrl" + racks);
  // res.render("map", { userId: userId});
  res.render("map", { userId: userId , rack:rack});
+ //res.render("map copy"); JUST FOR TESTS
 };
