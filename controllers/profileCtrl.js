@@ -1,7 +1,8 @@
 const bikeModel = require("../models/Bike.js");
 const userModel = require("../models/User.js");
-let userBikeDetails; //Assign user object
-let accountDetails;
+let userBikeDetails; //Assign bike object
+let accountDetails; //Assign user object
+let bikeCount;
 let message;
 let userId ;
 const axios = require('axios');
@@ -14,15 +15,19 @@ const axios = require('axios');
             //Return the user object
             userModel.findById({_id: userId}),
              //Find the bikes the user have and return the object
-            bikeModel.findOne({userId: userId})
+            bikeModel.findOne({userId: userId}),
+            //count the number of bikes an user have
+            bikeModel.countDocuments({userId: userId})
           ]).then( (result) => {
-             userBikeDetails = result[1]; //Assign user object
-             accountDetails = result[0]; //Assign bikes object
+            accountDetails = result[0];    //Assign user object
+             userBikeDetails = result[1]; //Assign bikes object
+             bikeCount = result[2];
+         
             //Display profile page and send both user and bike objects
             console.log(userId);
             console.log(userBikeDetails);
             console.log(accountDetails);
-            res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId})
+            res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, bikeCount:bikeCount, userId:userId})
               
           }).catch(err =>{
              console.log(err);
