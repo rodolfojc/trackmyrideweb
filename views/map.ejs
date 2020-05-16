@@ -9,10 +9,7 @@
     <title>
       TrackMyRide
     </title>
-    <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-  />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"  />
    <!-- add icon link -->
    <link rel = "icon" href = "https://user-images.githubusercontent.com/33750251/64987392-f9eead80-d8c0-11e9-84a9-e2a4a7f624db.png"
    type = "image/x-icon"> 
@@ -26,10 +23,9 @@
   
    <!-- Font Awesome Script -->
    <script src="https://kit.fontawesome.com/5c19bf284e.js"></script>
+
 <!-- Scrollbar Custom CSS -->
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"
 />
 
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
@@ -270,6 +266,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
 </div>
 </nav>
 <div >
+  
 <div class="map-responsive">
   <div id="mapid" ></div>
 </div>   
@@ -321,14 +318,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
 
    
    if(("<%=locals.rack%>").length >0){
+     console.log("<%rack.newRackId%>");
      console.log("<%=locals.rack%>");
-     console.log(typeof "<%=locals.rack%>");
    }else{
     console.log("null");
    }
 
   
-  addMarkerToMap(-6.259317, 53.347557 );
+  
       
     });
   </script> 

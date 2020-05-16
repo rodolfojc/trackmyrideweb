@@ -83,6 +83,21 @@ function onEachFeature(feature, layer){
   });
 }
 
+//Add a pop up on each rack marker
+function onEachSpot(feature, layer){
+    layer.bindPopup('Name: '+ feature.properties.location_stand +
+    '<br> Incidents: '+feature.properties.theft +
+   '<br><button class="btn btn-outline-info btn-sm" id="chatToggle">Report</button>'
+    );
+        layer.on('click', function (e) {
+        lt = e.latlng.lat;
+        ln = e.latlng.lng;
+        rackId = feature.properties.id;
+            console.log(rackId + ' ' + lt + ', ' + ln);
+            
+  });
+}
+
 //Add Racks to the map
 var mapWithRackMarkers = L.geoJSON(maps2, {
     //add multiple locations with personalised marker using geoJson
@@ -96,11 +111,14 @@ var mapWithRackMarkers = L.geoJSON(maps2, {
 
 //Add Hotspots to the Map 
 var mapWithHotspotsMarkers = L.geoJSON(maps2, {
+    filter: function(feature, layer) {
+        return feature.properties.theft > 0;
+    },
     //add multiple locations with personalised marker using geoJson
     pointToLayer: function(feature, latlng){
          return L.circleMarker(latlng, hotspotMarker);
        },
-    onEachFeature: onEachFeature,
+    onEachFeature: onEachSpot,
 }).addTo(mymap);
 
 
