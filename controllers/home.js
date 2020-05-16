@@ -1,3 +1,7 @@
+
+
+
+// IS THIS IN USE? OR IS THE HOME PAGE LOGIN.JS?
 const HomePage = require('../models/User.js');
 
 module.exports = async (req, res) => {

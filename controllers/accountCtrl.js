@@ -5,7 +5,7 @@ const userModel = require("../models/User.js");
 const bikeModel = require("../models/Bike.js");
 
 module.exports = async (req, res) => {
-   const id = req.params.id //Session ID
+   const id = req.params.id // ID
 
 
    await Promise.all([ //Execute both queries
