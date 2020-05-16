@@ -221,7 +221,7 @@ var mapWithHotspotsMarkers = L.geoJSON(maps2, {
           mymap.on('click', function(e) {
               $('.sidebar-header span').text('Add new Rack');//Form title
               //CREATE IF TO CHECK IF ID EXISTS
-              let randomRackId = Math.floor((Math.random() * 1000000) + 1);
+              let randomRackId = getRandomIntInclusive();
               $('#newRackId').val(randomRackId); 
               // ----------------------------------
               $('#newLat').val(e.latlng.lat); //set latitude of clicked spot
@@ -247,6 +247,13 @@ var mapWithHotspotsMarkers = L.geoJSON(maps2, {
 
 
   });
+
+  //Create random Rack ID
+  function getRandomIntInclusive() {
+    min = Math.ceil(200000);
+    max = Math.floor(300000);
+    return Math.floor(Math.random() * (max - min + 1)) + min; // max/min inclusive 
+  }
  
  
 

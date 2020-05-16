@@ -1,10 +1,11 @@
 const incident = require("../models/Incidents.js");
 const Theft = require("../models/Theft.js");
+const racksModel = require("../models/Theft.js");
 
 
 //Request to the server
 module.exports = async (req,res) =>{
-    console.log(req.session.userId);
+    console.log("User id session " + req.session.userId);
     //Get the new data from browser
      const newIncident = new incident(req.body);
      const rack = newIncident.rackId;
@@ -13,9 +14,10 @@ module.exports = async (req,res) =>{
          await Promise.all([
             newIncident.save(), //add incident to the list
             // Increment one incident on the rack
-            Theft.findOneAndUpdate({rackId : rack}, {$inc: { quantity: 1}}, {new: true })
+            racksModel.findOneAndUpdate({rackId : rack}, {$inc: { quantity: 1}}, {new: true })
+          //  Theft.findOneAndUpdate({rackId : rack}, {$inc: { quantity: 1}}, {new: true })
           ]).then( () => {
-            console.log( rack );
+            console.log( "This is the rackId" +rack );
           });
          
          //Refresh the page 
