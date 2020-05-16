@@ -243,7 +243,14 @@
  <!-- <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-0" > -->
   <div id="content"> 
   <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-0 static-top " >
- <a href="#" class="navbar-brand" ><i class="fas fa-bicycle"></i></a>
+    <% if(userId == undefined){ %>
+      <a class=" text-light  p-1"  href="/consult"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+      
+      <%}else{%>
+        <a class=" text-light  p-1"  href="/welcomescreen"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+       
+        <%}%>
+ <!-- <a href="#" class="navbar-brand" ><i class="fas fa-bicycle"></i></a> -->
  <!-- <a class=" text-light  p-1"  href="/consult"  id="home"><i class="fas fa-arrow-alt-circle-left"></i> Back</a> -->
  <div class="d-flex bg-secondary"></div>
  <div class="p-2 mr-auto">
