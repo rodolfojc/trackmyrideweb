@@ -1,7 +1,6 @@
 const dotenv = require('dotenv').config();
 const express = require('express');
 
-
 const axios = require('axios');
 const GeoJSON = require('geojson');
 const expressSession = require('express-session');
@@ -168,13 +167,7 @@ app.get('/profile', profileController.loadProfile); //Open user profile page
 
 app.post('/deleteaccount/:id', accountController); //Delete an account from the user profile page
 
-<<<<<<< HEAD
-app.post('/updatepassword/', profileController.updatePassword);
-
-app.post('/update/', bikeUpdateController.bikeUpdate);
-=======
 app.post('/updatepassword/:id', profileController.updatePassword);
->>>>>>> ae7c74f41912be5fe9f2c29fc22ddf143ce995dc
 // Finish Routes#############################################################################
 
 // app.post("/index/store", async (req, res) => {
@@ -234,7 +227,7 @@ app.post('/signin', async (req, res) => {
 			}
 		});
 		console.log(response.data.userId);
-		res.redirect("/");//Redirect to the main page instead to login
+		res.redirect('/'); //Redirect to the main page instead to login
 		//res.render('welcomescreen', { userId: response.data.userId });
 	} catch (err) {
 		console.log(err.message);
@@ -304,7 +297,6 @@ app.post('/login', async (req, res) => {
 //       });
 //     });
 // });
-
 
 app.get('/gdpr', (req, res) => {
 	res.render('gdpr');
