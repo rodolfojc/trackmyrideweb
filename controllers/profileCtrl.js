@@ -2,6 +2,7 @@ const bikeModel = require("../models/Bike.js");
 const userModel = require("../models/User.js");
 let userBikeDetails; //Assign user object
 let accountDetails;
+let message;
 let userId ;
 const axios = require('axios');
 
@@ -47,10 +48,10 @@ exports.updatePassword = async (req, res) => {
 				password
 			}
       });
-      
+      message = response.data.message;
       console.log(response.data.message);
       //res.send(userId);
-      res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId})
+      res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId, message:message})
 	//	res.render('profile', { userId });
 	} catch (err) {
 		console.log(err.message);

@@ -120,6 +120,7 @@
 	transition: all 0.8s;
 }
 
+/* is this in use?? */
 .video-container {
 	position: fixed;
 	top: 0;
@@ -259,6 +260,7 @@ body
   width: 100vw;
 } */
 /* after navbar */
+
 
 .home-button {
 	border-radius: 30px;

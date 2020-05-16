@@ -13,6 +13,10 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
   />
+   <!-- add icon link -->
+   <link rel = "icon" href = "https://user-images.githubusercontent.com/33750251/64987392-f9eead80-d8c0-11e9-84a9-e2a4a7f624db.png"
+   type = "image/x-icon"> 
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -192,7 +196,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
           </div>
         </div>
         <!-- User -->
-        <% if(userId == null){ %>
+        <% if(userId == null || userId == undefined){ %>
         <div class="form-group row ">
           <label for="email" class="col-xs-4 col-form-label">Email</label>
           <div class="col-xs-8">
@@ -243,6 +247,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
   <div id="content"> 
   <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-0 static-top " >
  <a href="#" class="navbar-brand" ><i class="fas fa-bicycle"></i></a>
+ <!-- <a class=" text-light  p-1"  href="/consult"  id="home"><i class="fas fa-arrow-alt-circle-left"></i> Back</a> -->
  <div class="d-flex bg-secondary"></div>
  <div class="p-2 mr-auto">
    <button class="btn btn-success p-1" id= "showRacks">Racks</button>

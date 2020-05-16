@@ -8,39 +8,73 @@
       THE CRITERIA
   -->
 
- <!--Importing the Header Layout element-->
- 
- <%-include('layouts/header'); -%> 
+ <head>
 
+  <title> TrackMyRide </title>
+
+  <!-- add icon link -->
+  <link rel = "icon" href = "https://user-images.githubusercontent.com/33750251/64987392-f9eead80-d8c0-11e9-84a9-e2a4a7f624db.png"
+      type = "image/x-icon"> 
+
+  
+  <!-- Font Awesome Script -->
+  <script src="https://kit.fontawesome.com/5c19bf284e.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <!-- Responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> </head>
+  
+  
+</head>
 
  <!-- Scripts -->
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-      <script>
-        //When page is reloaded, check for "error"
-        //that returns true if no bike was found
-        //and then display the modal alert
+      
+  
+        <!-- When page is reloaded, check for "error" that returns true if no bike was found -->
+        <!-- and then display the modal alert -->
+        <script>
           $(document).ready(function(){
             if("<%=error%>"){
                 $("#myModal").modal('show');
                 }
+             
               }); 
       </script>
       
     
       <body>
+
+        <style>
+          body, html {
+              height: 100%;
+                width: 100vw;
+              } 
+           body{
+            background-image: linear-gradient(45deg, #8b33ff, #584ba1);
+           
+          }
+        
+        </style>
    
     <% var error; %>
+    
+
 
      <!-- Top Navbar -->
-     <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-0 static-top " >
-      <a href="#" class="navbar-brand" ><i class="fas fa-bicycle"></i></a>
+    <nav id="mainNav" class="navbar navbar-dark bg-transparent navbar-expand-md py-0 static-top " >
       <div class="d-flex bg-secondary"></div>
       <div class="p-2 mr-auto">
-        <a class=" text-light  p-1"  href="/welcomescreen"  id="home">Back</a>
-        <!-- <a class="  text-light p-1"  href="/bikeinfo" id="bikeinfo">Back</a> -->
+        <% if(userId == undefined){ %>
+        <a class=" text-light  p-1"  href="/consult"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+        
+        <%}else{%>
+          <a class=" text-light  p-1"  href="/welcomescreen"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+         
+          <%}%>
       </div>
     </nav>
 
