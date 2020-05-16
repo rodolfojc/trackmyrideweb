@@ -72,6 +72,8 @@ const profileController = require('./controllers/profileCtrl');
 
 const accountController = require('./controllers/accountCtrl');
 
+const bikeUpdateController = require('./controllers/bikeUpdateCtrl');
+
 //###################################################################################
 
 //Creating a customer middleware
@@ -166,6 +168,8 @@ app.get('/profile', profileController.loadProfile); //Open user profile page
 app.post('/deleteaccount/:id', accountController); //Delete an account from the user profile page
 
 app.post('/updatepassword/', profileController.updatePassword);
+
+app.post('/update/', bikeUpdateController.bikeUpdate);
 // Finish Routes#############################################################################
 
 // app.post("/index/store", async (req, res) => {
@@ -295,30 +299,7 @@ app.post('/login', async (req, res) => {
 //     });
 // });
 
-app.route('/put/:id').get((req, res) => {
-	var id = req.params.id;
 
-	bikeModel.findById(id, (err, bike) => {
-		var isfalse = 1;
-
-		res.render('managebike', {
-			bike: bike,
-			isfalse: isfalse
-		});
-	});
-});
-// })
-// .post((req, res) => {
-//   var id = req.params.id;
-//   console.log("Id do UPDATE :" + id);
-//   console.log("corpo do update" + req.params);
-
-//   bikeModel.findByIdAndUpdate(id, req.body, { new: true }, (err) => {
-//     console.log(req.body);
-//     if (err) return res.send(500, err);
-//     return res.redirect("welcomescreen");
-//   });
-// });
 app.get('/gdpr', (req, res) => {
 	res.render('gdpr');
 });

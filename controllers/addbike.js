@@ -9,6 +9,8 @@ module.exports = async (req, res) => {
        let image = req.file;
  
 	   bike = [];
+
+	  
 	
 	
 
@@ -36,7 +38,7 @@ module.exports = async (req, res) => {
 		const successMessage = (response.data.message)
 		console.log(req.session.userId);
 		console.log(successMessage);
-		res.render('welcomescreen',bike,userId, successMessage,
+		res.render('welcomescreen',bike,userId, successMessage,isFalse
 			
 		);
 	} catch (err) {
