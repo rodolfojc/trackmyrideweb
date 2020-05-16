@@ -5,33 +5,33 @@ const racksModel = require("../models/Theft.js");
 //Request to the server
 module.exports = async (req,res) =>{
   //User ID
-    console.log("User id session " + req.session.userId);
+  const userId = req.session.userId;
     //Get the new data from form
-     const newIncident = new newRack(req.body);
+    const newRackAdded = new newRack(req.body);
      //Get rack Id
-     const rack = newIncident.rackId;
+         //const rackId = newRackAdded.rackId;
+             const rack = new racksModel({rackId : req.body.newRackId});
+  
+    //  const rack = newIncident.rackId;
      try {
          //Save the data
          await Promise.all([
            //add incident to the list
-           //Get the new data from browser
-//     const newRackAdded = new newRack(req.body);
-//     const rack = new racksModel({rackId : req.body.newRackId});
-            newIncident.save(), 
+           newRackAdded.save(),   
             // Increment one incident on the  theft field (quantity)
-            racksModel.findOneAndUpdate({rackId : rack}, {$inc: { quantity: 1}}, {new: true })
-          //  Theft.findOneAndUpdate({rackId : rack}, {$inc: { quantity: 1}}, {new: true }) DELETE
+            rack.save(), //  Theft.findOneAndUpdate({rackId : rack}, {$inc: { quantity: 1}}, {new: true }) DELETE
           ]).then( () => {
             //TO BE ADDED - RETURN BACK A SUCCESS MESSAGE
-            console.log( "This is the rackId" +rack );
+            console.log( "This is the rack" +newRackAdded );
+              res.render("map",  {userId: userId, rack:newRackAdded})
+            //res.redirect("/consultmap",  {userId: userId, rack:newRackAdded});
           });
          
-         //Refresh the page 
-         return res.redirect('/consultmap');
-         
+                  
         } catch (err) {
-            console.log(req.status);
-}
+            console.log(err);
+        }
+     
       
 }
 

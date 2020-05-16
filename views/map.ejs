@@ -65,8 +65,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
 
 
 
-  <body>
 
+
+  <body>
 
 
 
@@ -282,6 +283,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
 </div>    
     </div>
 
+    
+
 
   
 
@@ -296,7 +299,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
           </div>
         </div>
        -->
-      
+
          
     <!--Importing the Scripts from Layout-->
 
@@ -312,18 +315,26 @@ href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.
        <!-- <script type="text/javascript" src="js/mapAPI.js"></script> -->
       <!-- <script type="text/javascript" src="jquery/jquery.min.js"></script> -->
   <!-- <script type="text/javascript" src="js/map.js"></script> -->
+  <script type="text/javascript">
+             
+    $(document).ready(function () {
+
+   
+   if(("<%=locals.rack%>").length >0){
+     console.log("<%=locals.rack%>");
+     console.log(typeof "<%=locals.rack%>");
+   }else{
+    console.log("null");
+   }
+
+  
+  addMarkerToMap(-6.259317, 53.347557 );
+      
+    });
+  </script> 
 <script src="js/maps2.js"></script>
       <script src="js/map.js"></script> 
   <!-- <script src="js/location.js"></script> -->
-<script>
-             
-             $(document).ready(function () {
-
-addMarkerToMap(-6.259317, 53.347557 );
-
-             });
-</script>
-
 
 
   </body>
