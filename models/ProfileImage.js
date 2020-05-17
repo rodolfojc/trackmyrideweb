@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
 
-const profileSchema = new mongoose.Schema({
+const profileImgSchema = new mongoose.Schema({
     userId: {
-        // type: mongoose.Schema.Types.ObjectId,
-        // ref: 'User'
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     },
-    data: Buffer, contentType: String
+    filename: String,
+    fieldname: String,
+    originalName: String,
+    url: String,
+    created: Date
 });
 
-const newImage = mongoose.model("Profile", profileSchema);
+const newPic = mongoose.model('Profile', profileImgSchema);
 
-module.exports = newImage;
+module.exports = newPic;

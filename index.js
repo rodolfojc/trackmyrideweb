@@ -98,7 +98,7 @@ var storage = multer.diskStorage({
 	},
 
 	filename: function(req, file, cb) {
-		cb(null, file.fieldname + '-' + path.extname(file.originalname));
+		cb(null, req.params.id + path.extname(file.originalname));
 	}
 });
 
@@ -169,7 +169,7 @@ app.post('/deleteaccount/:id', accountController); //Delete an account from the 
 
 app.post('/updatepassword/:id', profileController.updatePassword);
 
-app.post('/addPicture/:id', upload.single('image'), profileController.updatePicture);
+app.post('/addPicture/:id', upload.single('MyImage'), profileController.updatePicture);
 
 // Finish Routes#############################################################################
 

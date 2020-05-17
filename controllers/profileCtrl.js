@@ -4,6 +4,7 @@ const userModel = require("../models/User.js");
 //const Profile = mongoose.model('Profile');
 const Profile = require("../models/ProfileImage.js");
 //const Bike = mongoose.model("Bike");
+const path = require('path');
 
 let userBikeDetails; //Assign bike object
 let accountDetails; //Assign user object
@@ -73,15 +74,20 @@ exports.updatePassword = async (req, res) => {
 }
 
 exports.updatePicture = async (req, res) => {
-  const data = req.file;
-  req.file.filename = req.params.id;
-  
-  console.log(data);
-  try{
-    let newImage = new Profile(data);
-    await newImage.save();
-  }catch (err) {
-    console.log(err.message);
+
+  let img = new Profile();
+  img.userId = req.params.id;
+  img.url = req.protocol + '://' + req.get('host') + '/uploads/' + req.params.id + path.extname(req.file.originalname);
+  img.fieldname = `MyProfile-${req.params.id}`
+  img.filename = `MyProfile-${req.params.id}`;
+  img.originalName = req.file.originalname;
+    
+  try {
+    await img.save();
+    //res.status(201).send({ img });
+    res.render('profile', {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId, message:message});
+  } catch (err) {
+    return res.sendStatus(400);
   }
 }
 
