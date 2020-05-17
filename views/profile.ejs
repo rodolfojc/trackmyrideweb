@@ -96,6 +96,7 @@
         
         <%}else{%>
           <a class=" text-light  p-1"  href="/welcomescreen"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+          
          
           <%}%>
       </div>
@@ -105,9 +106,22 @@
     <!-- Card profile https://getbootstrap.com/docs/4.3/components/card/ -->
 <div class="container" id="profileContainer">
   <div class="card text-center">
+
+    <%if (profilePic ==null) {%>
     <div class="outter"><img src="https://pbs.twimg.com/profile_images/444514088354197504/Nnxts7O_.jpeg" class="circular"/>
+  <%  } else{ %>
+      <div class="outter"><img src="<%=profilePic%>" class="circular"/>
+   <%   } %>
       <div>
-      <button type="button" class="btn btn-outline-success">  Upload profile picture</button>
+
+        <form name="addPicture" id ="addPicture" action="/addPicture/<%= userId%>" method="POST" enctype="multipart/form-data">
+        <div class="form-group floating-label-form-group controls">
+          <input type="file" class="form-control" id="image" name="<%= userId%>" accept="image/*" multiple>
+       </div>
+      
+       <button type="submit" class="btn btn-outline-success">  Upload profile picture</button>
+   
+        </form>
     </div>
     </div>   
     <!-- Tabs Titles -->

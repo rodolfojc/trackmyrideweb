@@ -26,6 +26,7 @@ const UserCredentials = require('./models/User.js');
 
 //Importing Bike model
 const bikeModel = require('./models/Bike.js');
+const ProfileImage = require('./models/ProfileImage');
 
 //Routing imports##################################################################
 
@@ -167,6 +168,8 @@ app.get('/profile', profileController.loadProfile); //Open user profile page
 app.post('/deleteaccount/:id', accountController); //Delete an account from the user profile page
 
 app.post('/updatepassword/:id', profileController.updatePassword);
+
+app.post('/addPicture/:id', upload.single('image'), profileController.updatePicture);
 
 // Finish Routes#############################################################################
 
