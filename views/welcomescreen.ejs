@@ -10,6 +10,10 @@
 
     <!-- Responsiveness IF ACTIVE THE BIKE DOES NOT MOVE-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> </head>
+
+  
+  <!-- Font Awesome Script -->
+  <script src="https://kit.fontawesome.com/5c19bf284e.js"></script>
   
     
   
@@ -17,6 +21,15 @@
   <%-include('layouts/login2_header'); -%>
   
   <body>
+
+       <!-- Top Navbar -->
+       <nav id="mainNav" class="navbar navbar-dark bg-transparent navbar-expand-md py-0 static-top " >
+        <div class="d-flex bg-secondary"></div>
+        <div class="p-2 mr-auto">
+        
+          <a class=" text-light  p-1"  href="/"  id="logout" ><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </nav>
     
 
    
@@ -46,7 +59,7 @@
   
 
   
-    <%-include('layouts/navbar'); -%> 
+
     <%-include('layouts/welcomescreen-scripts'); -%> 
     <%-include('layouts/modalmainscreen'); -%>
     <%-include('layouts/registerBikeModal'); -%>
