@@ -12,7 +12,8 @@
     </title>
     <!-- Responsiveness -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> </head>
-  
+    <!-- Font Awesome Script -->
+    <script src="https://kit.fontawesome.com/5c19bf284e.js"></script>
 
  <!-- Scripts -->
 
@@ -70,7 +71,18 @@
  .card-body, .tab-pane, .tab-content, .active{
   background: white;
   color: #3f3e3e;
-}
+ }
+ /* Background style */
+  body, html {
+    height: 100%;
+    width: 100vw;
+  } 
+           
+  body{
+    background-image: linear-gradient(45deg, #ffa033b4, #f19f40c4);
+  }
+
+
    </style>
 
 <% var noData; %>
@@ -78,15 +90,28 @@
     
 
      <!-- Top Navbar -->
-     <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-0 static-top " >
+     <!-- <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-0 static-top " >
       <a href="#" class="navbar-brand" ><i class="fas fa-bicycle"></i></a>
       <div class="d-flex bg-secondary"></div>
       <div class="p-2 mr-auto">
         <a class=" text-light  p-1"  href="/welcomescreen"  id="home">Home</a>
-        <!-- <a class="  text-light p-1"  href="/bikeinfo" id="bikeinfo">Back</a> -->
+      
+      </div>
+    </nav> -->
+
+     <!-- Top Navbar -->
+     <nav id="mainNav" class="navbar navbar-dark bg-transparent navbar-expand-md py-0 static-top " >
+      <div class="d-flex bg-secondary"></div>
+      <div class="p-2 mr-auto">
+        <% if(userId == undefined){ %>
+        <a class=" text-light  p-1"  href="/consult"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+        
+        <%}else{%>
+          <a class=" text-light  p-1"  href="/welcomescreen"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+         
+          <%}%>
       </div>
     </nav>
-
   
   
     <!-- Card profile https://getbootstrap.com/docs/4.3/components/card/ -->
