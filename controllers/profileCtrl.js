@@ -65,8 +65,8 @@ exports.updatePassword = async (req, res) => {
       message = response.data.message;
       console.log(response.data.message);
       //res.send(userId);
-      res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId, message:message})
-	//	res.render('profile', { userId });
+     // res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId, message:message})
+		res.redirect("/welcomescreen")
 	} catch (err) {
 		console.log(err.message);
 	}
