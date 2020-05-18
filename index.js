@@ -67,7 +67,7 @@ const reportBikeInfoController = require('./controllers/reportBikeInfoCtrl');
 
 const callModalController = require('./controllers/callModal');
 
-const callRegisterController = require('./controllers/callregisterModal');
+const callRegisterController = require('./controllers/callRegisterModal');
 
 const callWelcomeScreen2Controller = require('./controllers/welcomeScreen2');
 
@@ -132,7 +132,7 @@ const flashNotificationOptions = {
 //Creating a local directory to store the pictures
 var storage = multer.diskStorage({
 	destination: function(req, file, cb) {
-		cb(null, 'uploads');
+		cb(null, '/home/ec2-user/trackmyrideweb/views/uploads');
 	},
 
 	filename: function(req, file, cb) {
@@ -150,6 +150,7 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
 app.set('view engine', 'ejs');
 
 app.use(express.static('views'));
+//app.use(express.static('uploads'));
 
 app.listen(3005, () => {
 	console.log('App listening on port 3005');
@@ -203,6 +204,7 @@ app.post('/updatepassword/:id', profileController.updatePassword);
 
 app.post('/addPicture/:id', upload.single('MyImage'), profileController.updatePicture);
 
+app.get('/aploads/:id', profileController.image);
 // Finish Routes#############################################################################
 
 // app.post("/index/store", async (req, res) => {

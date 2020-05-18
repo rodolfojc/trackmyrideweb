@@ -30,10 +30,11 @@ const axios = require('axios');
             accountDetails = result[0];    //Assign user object
              userBikeDetails = result[1]; //Assign bikes object
              bikeCount = result[2];
-             profilePic = result[3];
+             profilePic = result[3].url;
          
             //Display profile page and send both user and bike objects
             console.log(userId);
+            console.log(profilePic);
             console.log(userBikeDetails);
             console.log(profilePic);
             res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, bikeCount:bikeCount, userId:userId, profilePic: profilePic})
@@ -89,10 +90,16 @@ exports.updatePicture = async (req, res) => {
   try {
     await img.save();
     //res.status(201).send({ img });
-    res.render('profile', {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId, message:message});
+    req.flash('GOOD', 'Password updated', '/profile');
   } catch (err) {
     return res.sendStatus(400);
   }
+}
+
+exports.image = async (req, res) => {
+  const imageUrl = req.params.id + path.extname(file.originalname);
+  console.log(imageUrl);
+  res.send(imageUrl);
 }
 
 //CODE BELOW IS WORKING
