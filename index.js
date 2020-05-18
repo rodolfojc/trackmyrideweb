@@ -25,6 +25,7 @@ const UserCredentials = require('./models/User.js');
 
 //Importing Bike model
 const bikeModel = require('./models/Bike.js');
+const ProfileImage = require('./models/ProfileImage');
 
 //Routing imports##################################################################
 
@@ -98,7 +99,7 @@ var storage = multer.diskStorage({
 	},
 
 	filename: function(req, file, cb) {
-		cb(null, file.fieldname + '-' + path.extname(file.originalname));
+		cb(null, req.params.id + path.extname(file.originalname));
 	}
 });
 
@@ -168,6 +169,9 @@ app.get('/profile', profileController.loadProfile); //Open user profile page
 app.post('/deleteaccount/:id', accountController); //Delete an account from the user profile page
 
 app.post('/updatepassword/:id', profileController.updatePassword);
+
+app.post('/addPicture/:id', upload.single('MyImage'), profileController.updatePicture);
+
 // Finish Routes#############################################################################
 
 // app.post("/index/store", async (req, res) => {

@@ -1,0 +1,84 @@
+<form action="/addNewRack" method="POST" role="form" id="newRackForm">
+
+    <!-- Map id - hidden -->
+    <input type="text" class="form-control-sm" id="newRackId" name="newRackId">
+     <!-- Latitude -->
+    <div class="form-group ">
+      <div class="row" >
+      <label for="lat" class="col-4 form-label">Latitude</label>
+      <div class="col-8">
+        <input type="text" class="form-control" id="newLat" name="latitude" readOnly >
+      </div>
+      </div>
+    </div>
+    <!-- Longitude -->
+    <div class="form-group">
+      <div class="row" >
+      <label for="longitude" class="col-4 form-label">Longitude</label>
+      <div class="col-8">
+        <input type="text" class="form-control" id="newLon" name="longitude" readOnly >
+      </div>
+      </div>
+    </div>
+    <!-- Rack type -->
+    <div class="form-group">
+      <div class="row" >
+      <label for="time" class="col-4 form-label">Type</label>
+      <div class="col-8">
+        <select id="type" name="type" class="form-control">
+          <option value="stand">Stand</option>
+          <option value="pole">Pole</option>
+          <option value="gate">Gate</option> 
+          <option value="private">Private Property</option>      
+       </select>
+      </div>
+      </div>
+    </div>
+      
+     <!-- Quantity -->
+     <div class="form-group">
+      <div class="row" >
+      <label for="quantity" class="col-4 form-label" id="inc">Quantity</label>
+      <div class="col-8">
+        <input type="number" class="form-control" id="quantity" name="quantity" >
+      </div>
+      </div>
+    </div>
+    <!-- User -->
+    <% if(userId == null || userId == undefined){ %>
+    <div class="form-group">
+      <div class="row" >
+      <label for="email" class="col-4 form-label">Email</label>
+      <div class="col-8">
+    
+        <input type="email" class="form-control" id="newEmail"  name="email" >
+      </div>
+   
+      </div>
+    </div>
+    <%  } %>
+    <!-- Property -->
+    <div class="form-group">
+      <div class="row" >
+      <label for="property" class="col-4 form-label" id="ppt"><span>Location</span></label>
+      <div class="col-8">
+        <select id="property" name="property" class="form-control">
+          <option value="stand">Private</option>
+          <option value="pole">Public</option>
+       </select>
+      </div>
+    </div>
+    </div>
+
+     <!-- Description -->
+     <div class="form-group">
+      <div class="row" >
+      <label for="description" class="col-4 form-label">Description</label>
+      <div class="col-xs-8">
+        <textarea id="newDescription" name="newDescription" placeholder="Write something.." style="height:100px "></textarea>
+      </div>
+      </div>
+    </div>
+<button type="submit" class="btn btn-success mb-3" id="grabNewRack" >Add new Rack</button>
+</form>
+

@@ -33,6 +33,7 @@ module.exports = async (req,res) =>{
          
          //Refresh the page 
          return res.redirect('/consultmap');
+        // res.render("map",  {userId: userId, rack:newRackAdded});
          
         } catch (err) {
             console.log(req.status);
