@@ -261,7 +261,6 @@ body
 } */
 /* after navbar */
 
-
 .home-button {
 	border-radius: 30px;
 	height: 44px;
@@ -327,12 +326,12 @@ body
 	display: none;
 }
 
-#sidebar {    
+#sidebar {
 	width: 300px;
 	position: fixed;
 	top: 0;
-  left: -300px;
-   height: 100%;
+	left: -300px;
+	height: 100%;
 	z-index: 999;
 	background: black;
 	color: #fff;
@@ -419,11 +418,9 @@ body
 }
 
 #sidebar input {
-
-  padding: 5px 0px;
-  margin-left: 10px;
-  border-bottom: 1px solid #47748b;
- 
+	padding: 5px 0px;
+	margin-left: 10px;
+	border-bottom: 1px solid #47748b;
 }
 
 /*
@@ -465,20 +462,17 @@ a[data-toggle="collapse"] {
 .form-input input {
 	border-style: none !important;
 	background-color: white !important;
-	background: rgb(126, 88, 88) !important;
-  box-shadow: none !important;
- 
+
+	box-shadow: none !important;
 }
 /* label side bar form */
 .col-form-label {
-margin-right: 10px;
-margin-left: 40px;
+	margin-right: 10px;
+	margin-left: 40px;
 }
 /* Input side bar form */
-.col-xs-8{
-  /* margin-left: auto; */
-
-
+.col-xs-8 {
+	/* margin-left: auto; */
 }
 #register-btn {
 	margin-top: 0%;
@@ -621,5 +615,19 @@ a.article:hover {
 		color: #ff0000;
 		font-size: small;
 		font-style: italic;
+	}
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+	#bike-icon {
+		margin-left: 35%;
+		margin-top: -2.4%;
+	}
+}
+
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+	#bike-icon {
+		margin-left: 34%;
+		margin-top: -1.7%;
 	}
 }
