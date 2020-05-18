@@ -362,10 +362,11 @@
              
     $(document).ready(function () {
 
+      
       //Timeout for flash message to disappear (10 seconds)
       window.setTimeout("document.getElementById('flashMessage').style.display='none';", 10000);
 
-   if(("<%-locals.rack%>").length >0){
+   if(("<%=locals.rack%>").length >0){
      console.log("<%=rack.newRackId%>");
      console.log("<%=locals.rack%>");
    }else{

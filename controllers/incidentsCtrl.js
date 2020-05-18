@@ -32,7 +32,9 @@ module.exports = async (req,res) =>{
           });
          
          //Refresh the page 
-         return res.redirect('/consultmap');
+         req.flash('OK', 'Thank you: report under review. Keep riding  <i class="fas fa-bicycle"></i>', '/consultmap');
+     
+         //return res.redirect('/consultmap');
         // res.render("map",  {userId: userId, rack:newRackAdded});
          
         } catch (err) {
