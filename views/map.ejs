@@ -270,7 +270,7 @@
 
  <!-- <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-0" > -->
   <div id="content"> 
-    <%- locals.flash %>
+    
   <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-2 static-top " >
     
     <% if(userId == undefined){ %>
@@ -325,10 +325,15 @@
           </div>
         </div>
         </nav>
-        
+        <div id="flashMessage">
+          <%- locals.flash %>
+        </div>
+
   
         <!--Map  -->
         <div class="map-responsive">
+       
+          
           <div id="mapid" ></div>
         </div>   
       </div>
@@ -357,9 +362,11 @@
              
     $(document).ready(function () {
 
-   
-   if(("<%=locals.rack%>").length >0){
-     console.log("<%rack.newRackId%>");
+      //Timeout for flash message to disappear (10 seconds)
+      window.setTimeout("document.getElementById('flashMessage').style.display='none';", 10000);
+
+   if(("<%-locals.rack%>").length >0){
+     console.log("<%=rack.newRackId%>");
      console.log("<%=locals.rack%>");
    }else{
     console.log("null");
