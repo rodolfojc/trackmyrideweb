@@ -210,6 +210,8 @@ app.post('/addPicture/:id', upload.single('MyImage'), profileController.updatePi
 
 app.post('/addBikePicture/:id', upload.single('MyImage'), manageBikeController.updatePicture);
 
+app.post('/updateBikeInfo/:id', manageBikeController.updateBike);
+
 // Finish Routes#############################################################################
 
 // app.post("/index/store", async (req, res) => {
