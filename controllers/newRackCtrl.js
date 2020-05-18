@@ -26,7 +26,7 @@ module.exports = async (req,res) =>{
             
            //  res.render("map",  {userId: userId, rack:newRackAdded})
         //  res.render("map", {userId: userId});
-        req.flash('GOOD', 'Thank you: suggestion under review. Keep riding  <i class="fas fa-bicycle"></i>', '/consultmap');
+        req.flash('GOOD', 'Thank you: suggestion under review. Keep riding  <i class="material-icons">', '/consultmap');
       // res.render("/consultmap");
           });
          

@@ -11,6 +11,7 @@ module.exports = async (req, res) => {
    //res.redirect("/bikeinfo", {userId: userId});
   // req.flash('GOOD', 'Password updated', '/profile');
    //req.flash('GOOD', 'Report Submitted');
-   res.render("bikeinfo", {userId: userId});
+  // res.render("bikeinfo", {userId: userId});
+     req.flash('GOOD', 'Report Submitted and under review. Thank you and keep Riding <i class="fas fa-bicycle"></i>', '/bikeinfo');
    
 }
