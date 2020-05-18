@@ -1,6 +1,9 @@
 html {
 	height: 100%;
 }
+
+/*
+//Background color gradient
 body {
 	background: -webkit-radial-gradient(
 			0% 100%,
@@ -11,7 +14,7 @@ body {
 		linear-gradient(to bottom, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%),
 		linear-gradient(135deg, #670d10 0%, #092756 100%) !important;
 }
-
+*/
 img {
 	max-width: 100% !important;
 	max-height: 10% !important;
