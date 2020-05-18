@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
 	bike = [];
 	modal = 1; //turn off ModalMainScreen.
 
-	registredBefore = false;
+	registredBefore = true;
 
 	try {
 		const response = await axios({

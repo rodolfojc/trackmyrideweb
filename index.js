@@ -1,7 +1,6 @@
 const dotenv = require('dotenv').config();
 const express = require('express');
 
-
 const axios = require('axios');
 const GeoJSON = require('geojson');
 const expressSession = require('express-session');
@@ -67,13 +66,17 @@ const reportBikeInfoController = require('./controllers/reportBikeInfoCtrl');
 
 const callModalController = require('./controllers/callModal');
 
-const callRegisterController = require('./controllers/callregisterModal');
+const callRegisterController = require('./controllers/callRegisterModal');
 
 const callWelcomeScreen2Controller = require('./controllers/welcomeScreen2');
 
 const profileController = require('./controllers/profileCtrl');
 
 const accountController = require('./controllers/accountCtrl');
+
+const bikeUpdateController = require('./controllers/bikeUpdateCtrl');
+
+const bikeImageController = require('./controllers/bikeImageCtrl');
 
 //###################################################################################
 
@@ -132,7 +135,7 @@ const flashNotificationOptions = {
 //Creating a local directory to store the pictures
 var storage = multer.diskStorage({
 	destination: function(req, file, cb) {
-		cb(null, 'uploads');
+		cb(null, '/home/ec2-user/trackmyrideweb/views/uploads');
 	},
 
 	filename: function(req, file, cb) {
@@ -149,7 +152,10 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
 
 app.set('view engine', 'ejs');
 
-	app.use(express.static('views'));
+
+app.use(express.static('views'));
+//app.use(express.static('uploads'));
+
 
 app.listen(3005, () => {
 	console.log('App listening on port 3005');
@@ -203,6 +209,7 @@ app.post('/updatepassword/:id', profileController.updatePassword);
 
 app.post('/addPicture/:id', upload.single('MyImage'), profileController.updatePicture);
 
+app.get('/aploads/:id', profileController.image);
 // Finish Routes#############################################################################
 
 // app.post("/index/store", async (req, res) => {
@@ -262,7 +269,7 @@ app.post('/signin', async (req, res) => {
 			}
 		});
 		console.log(response.data.userId);
-		res.redirect("/");//Redirect to the main page instead to login
+		res.redirect('/'); //Redirect to the main page instead to login
 		//res.render('welcomescreen', { userId: response.data.userId });
 	} catch (err) {
 		console.log(err.message);
@@ -333,30 +340,6 @@ app.post('/login', async (req, res) => {
 //     });
 // });
 
-app.route('/put/:id').get((req, res) => {
-	var id = req.params.id;
-
-	bikeModel.findById(id, (err, bike) => {
-		var isfalse = 1;
-
-		res.render('managebike', {
-			bike: bike,
-			isfalse: isfalse
-		});
-	});
-});
-// })
-// .post((req, res) => {
-//   var id = req.params.id;
-//   console.log("Id do UPDATE :" + id);
-//   console.log("corpo do update" + req.params);
-
-//   bikeModel.findByIdAndUpdate(id, req.body, { new: true }, (err) => {
-//     console.log(req.body);
-//     if (err) return res.send(500, err);
-//     return res.redirect("welcomescreen");
-//   });
-// });
 app.get('/gdpr', (req, res) => {
 	res.render('gdpr');
 });
