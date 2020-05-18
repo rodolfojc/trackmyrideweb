@@ -3,10 +3,10 @@ const BikePicture = require('../models/BikeImage');
 
 exports.loadBike = async (req, res) => {
 	const userId = req.session.userId;
-	isfalse = 2;
+
 	bike = [];
 
-	registredBefore = false;
+	registredBefore = true;
 
 	try {
 		const response = await axios({
@@ -15,13 +15,21 @@ exports.loadBike = async (req, res) => {
 			headers: { 'Content-Type': 'application/json' },
 			data: {}
 		});
+
 		console.log(response);
 		bike = response.data;
-		console.log('bike ===>' + bike);
+		console.log(bike);
+		//Check if bike is returned
+		if (bike === undefined || bike.length == 0) {
+			//if bike is not defined
+
+			return res.redirect('/registerbike');
+		}
+
 		res.render('managebike', {
 			userId,
 			bike,
-			isfalse: isfalse,
+
 			registredBefore: registredBefore
 		});
 	} catch (err) {

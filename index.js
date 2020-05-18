@@ -1,7 +1,6 @@
 const dotenv = require('dotenv').config();
 const express = require('express');
 
-
 const axios = require('axios');
 const GeoJSON = require('geojson');
 const expressSession = require('express-session');
@@ -75,6 +74,10 @@ const callWelcomeScreen2Controller = require('./controllers/welcomeScreen2');
 const profileController = require('./controllers/profileCtrl');
 
 const accountController = require('./controllers/accountCtrl');
+
+const bikeUpdateController = require('./controllers/bikeUpdateCtrl');
+
+const bikeImageController = require('./controllers/bikeImageCtrl');
 
 //###################################################################################
 
@@ -266,7 +269,7 @@ app.post('/signin', async (req, res) => {
 			}
 		});
 		console.log(response.data.userId);
-		res.redirect("/");//Redirect to the main page instead to login
+		res.redirect('/'); //Redirect to the main page instead to login
 		//res.render('welcomescreen', { userId: response.data.userId });
 	} catch (err) {
 		console.log(err.message);
@@ -337,30 +340,6 @@ app.post('/login', async (req, res) => {
 //     });
 // });
 
-app.route('/put/:id').get((req, res) => {
-	var id = req.params.id;
-
-	bikeModel.findById(id, (err, bike) => {
-		var isfalse = 1;
-
-		res.render('managebike', {
-			bike: bike,
-			isfalse: isfalse
-		});
-	});
-});
-// })
-// .post((req, res) => {
-//   var id = req.params.id;
-//   console.log("Id do UPDATE :" + id);
-//   console.log("corpo do update" + req.params);
-
-//   bikeModel.findByIdAndUpdate(id, req.body, { new: true }, (err) => {
-//     console.log(req.body);
-//     if (err) return res.send(500, err);
-//     return res.redirect("welcomescreen");
-//   });
-// });
 app.get('/gdpr', (req, res) => {
 	res.render('gdpr');
 });
