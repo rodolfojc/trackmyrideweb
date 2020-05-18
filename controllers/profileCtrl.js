@@ -90,9 +90,13 @@ exports.updatePicture = async (req, res) => {
   try {
     await img.save();
     //res.status(201).send({ img });
+
     req.flash('GOOD', 'Profile picture updated', '/profile');
+
   } catch (err) {
+    req.flash('BAD', 'Something went wrong', '/');
     return res.sendStatus(400);
+
   }
 }
 

@@ -105,6 +105,8 @@ html {
 	height: 100%;
 	overflow: hidden;
 }
+
+
 body {
 	width: 100%;
 	height: 100%;
@@ -137,6 +139,17 @@ body {
 		linear-gradient(135deg, #670d10 0%, #092756 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3E1D6D', endColorstr='#092756', GradientType=1);
 }
+
+
+
+/* Body background color */
+/*body{
+	background-color: rgb(55, 151, 241);
+	width: 100%;
+	height: 100%;
+	font-family: "Open Sans", sans-serif;
+}
+*/
 .login {
 	position: absolute;
 	top: 50%;

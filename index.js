@@ -153,8 +153,10 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
 
 app.set('view engine', 'ejs');
 
+
 app.use(express.static('views'));
 //app.use(express.static('uploads'));
+
 
 app.listen(3005, () => {
 	console.log('App listening on port 3005');
