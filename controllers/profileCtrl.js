@@ -96,6 +96,12 @@ exports.updatePicture = async (req, res) => {
   }
 }
 
+exports.image = async (req, res) => {
+  const imageUrl = req.params.id + path.extname(file.originalname);
+  console.log(imageUrl);
+  res.send(imageUrl);
+}
+
 //CODE BELOW IS WORKING
 
 // module.exports = async (req, res) => {
