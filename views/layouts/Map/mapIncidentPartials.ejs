@@ -1,0 +1,81 @@
+ <!-- Report Incident Form -->
+ <form class="active" action="/incident" method="POST" role="form" id="incidentForm" >
+    <!-- Map id - hidden -->
+    <div class="col-auto">
+    <input type="text" class="form-control" id="rackId" name="rackId">
+     <!-- Latitude -->
+
+     <div class="form-group">
+      <div class="row" >
+      <label for="lat" class="col-4 form-label">Latitude</label>
+      <div class="col-8">
+        <input type="text" class="form-control" id="lat" name="latitude" readOnly >
+      </div>
+    </div>
+  </div>
+    <!-- Longitude -->
+    <div class="form-group">
+      <div class="row" >
+      <label for="longitude" class="col-4 form-label">Longitude</label>
+      <div class="col-8">
+        <input type="text" class="form-control" id="lon" name="longitude" readOnly >
+      </div>
+    </div>
+     <!-- Report type -->
+     <div class="form-group">
+      <div class="row" >
+      <label for="incident" class="col-4 form-label" id="inc"><span>Incident</span></label>
+      <div class="col-8">
+        <input type="text" class="form-control" id="incident" name="incident" readOnly >
+      </div>
+    </div>
+     </div>
+    <!-- User -->
+    <div class="form-group">
+      <div class="row" >
+      <label for="email" class="col-4 form-label">Email</label>
+      <div class="col-8">
+        <input type="email" class="form-control"placeholder=""  id="" name="email" >
+        <!-- <input type="email" class="form-control" id="email" name="email" > -->
+      </div>
+    </div>
+   </div>           
+    <!-- Incident Date -->
+    <div class="form-group">
+      <div class="row" >
+      <label for="date" class="col-4 form-label" id="dt"><span>Date</span></label>
+      <div class="col-8">
+        <input type="date" class="form-control" id="date" name="date" >
+      </div>
+    </div>
+    </div>
+
+    <!-- Incident Period -->
+   <div class="form-group">
+
+    <div class="row" >
+      <label for="time" class="col-4 form-label">Time</label>
+      <div class="col-8">
+        <select id="time" name="time" class="form-control">
+          <option value="morning">Morning</option>
+          <option value="afternoon">Afternoon</option>
+          <option value="evening">Evening</option>      
+      </select>
+        <!-- <input type="date" class="form-control" id="incident"disabled > -->
+      </div>
+    </div>
+   </div>
+     <!-- Description -->
+     <div class="form-group">
+      <div class="row" >
+      <label for="description" class="col-4 form-label">Description</label>
+      <div class="col-8">
+        <textarea id="description" name="description" placeholder="Write something.." style="height:150px "></textarea>
+      </div>
+    </div>
+     </div>
+
+          
+<button type="submit" class="btn btn-success mb-3" id="grabPosition" >Report event</button>
+    </div>
+</form>

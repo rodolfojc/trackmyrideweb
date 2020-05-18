@@ -308,17 +308,18 @@ body
 	flex-grow: 1;
 }
 
-.wrapper {
-	display: flex;
-	width: 100%;
-	align-items: stretch;
-}
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
     https://bootstrapious.com/tutorial/sidebar/index3.html
 ----------------------------------------------------- */
 
+/* SideBar container */
+.wrapper {
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
 #rackId,
 #newRackId {
 	/* selected rack */

@@ -1,7 +1,14 @@
+//const mongoose = require('mongoose');
 const bikeModel = require("../models/Bike.js");
 const userModel = require("../models/User.js");
-let userBikeDetails; //Assign user object
-let accountDetails;
+//const Profile = mongoose.model('Profile');
+const Profile = require("../models/ProfileImage.js");
+//const Bike = mongoose.model("Bike");
+const path = require('path');
+
+let userBikeDetails; //Assign bike object
+let accountDetails; //Assign user object
+let bikeCount;
 let message;
 let userId ;
 const axios = require('axios');
@@ -14,15 +21,22 @@ const axios = require('axios');
             //Return the user object
             userModel.findById({_id: userId}),
              //Find the bikes the user have and return the object
-            bikeModel.findOne({userId: userId})
+            bikeModel.findOne({userId: userId}),
+            //count the number of bikes an user have
+            bikeModel.countDocuments({userId: userId}),
+            //Upload Profile picture
+            Profile.findOne({userId: userId})
           ]).then( (result) => {
-             userBikeDetails = result[1]; //Assign user object
-             accountDetails = result[0]; //Assign bikes object
+            accountDetails = result[0];    //Assign user object
+             userBikeDetails = result[1]; //Assign bikes object
+             bikeCount = result[2];
+             profilePic = result[3];
+         
             //Display profile page and send both user and bike objects
             console.log(userId);
             console.log(userBikeDetails);
             console.log(accountDetails);
-            res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId})
+            res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, bikeCount:bikeCount, userId:userId, profilePic: profilePic})
               
           }).catch(err =>{
              console.log(err);
@@ -59,6 +73,23 @@ exports.updatePassword = async (req, res) => {
   
 }
 
+exports.updatePicture = async (req, res) => {
+
+  let img = new Profile();
+  img.userId = req.params.id;
+  img.url = req.protocol + '://' + req.get('host') + '/uploads/' + req.params.id + path.extname(req.file.originalname);
+  img.fieldname = `MyProfile-${req.params.id}`
+  img.filename = `MyProfile-${req.params.id}`;
+  img.originalName = req.file.originalname;
+    
+  try {
+    await img.save();
+    //res.status(201).send({ img });
+    res.render('profile', {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId, message:message});
+  } catch (err) {
+    return res.sendStatus(400);
+  }
+}
 
 //CODE BELOW IS WORKING
 

@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
 			throw new Error('no document found');
 		}
 		// If success
-		res.render('bikeResults', { bikeInfoPage: bikeInfoPage });
+		res.render('bikeResults', { bikeInfoPage: bikeInfoPage, userId: userId });
 		return bikeInfoPage;
 	} catch (error) {
 		// If error;

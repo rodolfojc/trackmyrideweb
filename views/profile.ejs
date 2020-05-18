@@ -12,7 +12,8 @@
     </title>
     <!-- Responsiveness -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> </head>
-  
+    <!-- Font Awesome Script -->
+    <script src="https://kit.fontawesome.com/5c19bf284e.js"></script>
 
  <!-- Scripts -->
 
@@ -70,29 +71,58 @@
  .card-body, .tab-pane, .tab-content, .active{
   background: white;
   color: #3f3e3e;
-}
+ }
+ /* Background style */
+  body, html {
+    height: 100%;
+    width: 100vw;
+  } 
+           
+  body{
+    background-image: linear-gradient(45deg, #ffa033b4, #f19f40c4);
+  }
+
+
    </style>
 
 <% var noData; %>
 
-    
-
      <!-- Top Navbar -->
-     <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-0 static-top " >
-      <a href="#" class="navbar-brand" ><i class="fas fa-bicycle"></i></a>
+     <nav id="mainNav" class="navbar navbar-dark bg-transparent navbar-expand-md py-0 static-top " >
       <div class="d-flex bg-secondary"></div>
       <div class="p-2 mr-auto">
-        <a class=" text-light  p-1"  href="/welcomescreen"  id="home">Home</a>
-        <!-- <a class="  text-light p-1"  href="/bikeinfo" id="bikeinfo">Back</a> -->
+        <% if(userId == undefined){ %>
+        <a class=" text-light  p-1"  href="/consult"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+        
+        <%}else{%>
+          <a class=" text-light  p-1"  href="/welcomescreen"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+          
+         
+          <%}%>
       </div>
     </nav>
-
   
   
     <!-- Card profile https://getbootstrap.com/docs/4.3/components/card/ -->
 <div class="container" id="profileContainer">
   <div class="card text-center">
+
+    <%if (profilePic ==null) {%>
     <div class="outter"><img src="https://pbs.twimg.com/profile_images/444514088354197504/Nnxts7O_.jpeg" class="circular"/>
+  <%  } else{ %>
+      <div class="outter"><img src="<%=profilePic%>" class="circular"/>
+   <%   } %>
+      <div>
+
+        <form name="addPicture" id ="addPicture" action="/addPicture/<%= userId%>" method="POST" enctype="multipart/form-data">
+        <div class="form-group floating-label-form-group controls">
+          <input type="file" class="form-control" id="image" name="MyImage" accept="image/*" multiple>
+       </div>
+      
+       <button type="submit" class="btn btn-outline-success">  Upload profile picture</button>
+   
+        </form>
+    </div>
     </div>   
     <!-- Tabs Titles -->
       <div class="card-header">
@@ -113,19 +143,20 @@
               <div class="tab-pane active" id="bikes">
                 <form>
                   <div class="form-group row mx-sm-3 mb-2">
-                    <label for="bikes" class="col-sm-2 col-form-label">Bike Status</label>
+                    <label for="bikes" class="col-sm-2 col-form-label">Registered Bikes</label>
                     <div class="col-sm-10">
-                      <%if (userBikeDetails==null ) {%>
+                      <%if (bikeCount==null ) {%>
           
                              <input type="text" readonly class="form-control" id="bikes" placeholder="Nothing registered">
                             <% } else{ %>
-                      <input type="text" readonly class="form-control" id="bikes" placeholder="<%=userBikeDetails.status%>">
+                              
+                      <input type="text" readonly class="form-control" id="bikes" placeholder="<%=bikeCount%>">
                       <% } %>
                     </div>
                   </div>
                     <!-- Any suspicious activity reported for user -->
                   <div class="form-group row mx-sm-3 mb-2">
-                    <label for="activity" class="col-sm-2 col-form-label">Reports </label>
+                    <label for="activity" class="col-sm-2 col-form-label">Latest Reports </label>
                     <div class="col-sm-10">
                       <%if (noData || userBikeDetails==null) {%>
                       
@@ -141,7 +172,7 @@
                 <hr/>
                 <p class="card-text">You can update your bike details in Manage My Bike</p>
                 <!-- <a href="#" class="btn btn-primary">Take me there</a> -->
-                <button type="submit" class="btn btn-success">Take me there</button>
+                <a href="/managebike"> <button type="submit" class="btn btn-success">Take me there</button> </a> 
               </div>
 
                <!-- TAB 2-->
@@ -239,7 +270,7 @@
     <!--Importing the Scripts from Layout-->
 
     <script>
-      
+   
       $(document).ready(function(){    
     $('#deletAcc').click(function () {
       event.preventDefault();
