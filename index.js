@@ -27,6 +27,7 @@ const UserCredentials = require('./models/User.js');
 //Importing Bike model
 const bikeModel = require('./models/Bike.js');
 const ProfileImage = require('./models/ProfileImage');
+const BikePicture = require('./models/BikeImage');
 
 //Routing imports##################################################################
 
@@ -165,7 +166,7 @@ app.get('/sign', signinController);
 
 app.get('/home', welcomeController);
 
-app.get('/managebike', manageBikeController);
+app.get('/managebike', manageBikeController.loadBike);
 
 app.get('/consultmap', consultMapController); //Display the map
 
@@ -207,7 +208,10 @@ app.post('/updatepassword/:id', profileController.updatePassword);
 
 app.post('/addPicture/:id', upload.single('MyImage'), profileController.updatePicture);
 
-app.get('/aploads/:id', profileController.image);
+app.post('/addBikePicture/:id', upload.single('MyImage'), manageBikeController.updatePicture);
+
+app.post('/updateBikeInfo/:id', manageBikeController.updateBike);
+
 // Finish Routes#############################################################################
 
 // app.post("/index/store", async (req, res) => {

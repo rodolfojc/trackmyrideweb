@@ -90,16 +90,10 @@ exports.updatePicture = async (req, res) => {
   try {
     await img.save();
     //res.status(201).send({ img });
-    req.flash('GOOD', 'Password updated', '/profile');
+    req.flash('GOOD', 'Profile picture updated', '/profile');
   } catch (err) {
     return res.sendStatus(400);
   }
-}
-
-exports.image = async (req, res) => {
-  const imageUrl = req.params.id + path.extname(file.originalname);
-  console.log(imageUrl);
-  res.send(imageUrl);
 }
 
 //CODE BELOW IS WORKING
