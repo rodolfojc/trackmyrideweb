@@ -35,7 +35,7 @@ const axios = require('axios');
             //Display profile page and send both user and bike objects
             console.log(userId);
             console.log(userBikeDetails);
-            console.log(accountDetails);
+            console.log(profilePic);
             res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, bikeCount:bikeCount, userId:userId, profilePic: profilePic})
               
           }).catch(err =>{
