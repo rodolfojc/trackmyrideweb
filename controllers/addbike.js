@@ -34,7 +34,9 @@ module.exports = async (req, res) => {
 		const successMessage = response.data.message;
 		console.log(req.session.userId);
 		console.log(successMessage);
-		res.redirect('/welcomescreen2', bike, userId, successMessage);
+		// res.redirect('/welcomescreen2', bike, userId, successMessage);
+		req.flash('GOOD', 'User Created!', '/managebike');
+		
 	} catch (err) {
 		console.log(err);
 		res.redirect('/managebike');

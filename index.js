@@ -66,7 +66,7 @@ const reportBikeInfoController = require('./controllers/reportBikeInfoCtrl');
 
 const callModalController = require('./controllers/callModal');
 
-const callRegisterController = require('./controllers/callregisterModal');
+const callRegisterController = require('./controllers/callRegisterModal');
 
 const callWelcomeScreen2Controller = require('./controllers/welcomeScreen2');
 

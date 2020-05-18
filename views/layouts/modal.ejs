@@ -1,16 +1,57 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="" id="">UPDATE BIKE</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form action="/addBike" method="post">
 
-<!--Modal to update a bike -->
-<!--Modal extracted from Bootstrap -->
+          <div class="form-group">
+              <div class="form-group">
+               <input type="text" class="form-control" name="serial" id="recipient-name" placeholder="SERIAL:">
+                </div>
+             </div>
 
+             <div class="form-group">
+              <div class="form-group">
+               <input type="text" class="form-control" name="brand" id="recipient-name" placeholder="BRAND:">
+                </div>
+             </div>
 
-<!--Update Button to call Modal and update dish detail-->
-<!-- <a class="update" href="/put/{}">
-  <button
-    id="update"
-    type="button"
-    class="update"
-    data-toggle="modal"
-    data-target="#myModal"
-  >
-    <i class="fas fa-pen-square"></i>
-  </button> -->
+             <div class="form-group">
+              <div class="form-group">
+               <input type="text" class="form-control" name="color" id="recipient-name" placeholder="COLOR:">
+                </div>
+             </div>
+
+             <div class="form-group">
+              <div class="form-group">
+               <input type="text" class="form-control" name="type" id="recipient-name" placeholder="TYPE:">
+                </div>
+             </div>
+             <div class="form-group">
+              <div class="form-group">
+               <input type="text" class="form-control" name="status" id="recipient-name" placeholder="STATUS:">
+                </div>
+             </div>
+             <div class="form-group">
+              <div class="form-group">
+               <input type="text" class="form-control" name="lock" id="recipient-name" placeholder="LOCK:">
+                </div>
+             </div>
+
+          
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+        <button type="button" class="btn btn-primary">UPDATE</button>
+      </div>
+    </div>
+  </div>
+</div>

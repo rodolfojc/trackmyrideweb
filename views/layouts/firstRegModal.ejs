@@ -1,16 +1,14 @@
 <!--This Modal will pop up when user wants to update a bike-->
-
-<!--Modal Section-->
 <%- locals.flash %>
-<div class="container">
-    <div class="parent-modal" id=<%= registredBefore===false? "hidden":"hidden" %>>
-      <div class="modal-content">
+<!--Modal Section-->
+<div class="hardcoded-container">
+    <div class="parent-modal" id=<%= registredBefore===false? "hidden":"displayed" %>>
+      <div class="hardcoded-modal-content">
         <div class="close">
           <a href="/welcomescreen2"> +</a>
         </div>
-        <!--##########content  -->
-        <form name='addbike2' action="/addBike" method="POST" enctype="multipart/form-data">
-          <span><h3>YOU NEED TO REGISTER YOUR FIRST BIKE</h3></span>
+        <div><h3>REGISTER YOUR FIRST BIKE...</h3></div>
+        <form name="addbike2" id ="addbike2" action="/addBike" method="POST" enctype="multipart/form-data">
           <div class="form-input">
             <div class="col-auto">
 
@@ -65,12 +63,12 @@
               />
             </div>
             <div class="col-auto">
-              <label class="sr-only" for="inlineFormInput">Lock</label>
+              <label class="sr-only" for="inlineFormInput">Locker</label>
               <input
                 type="text"
                 class="form-control mb-2"
-                name="lock"
-                placeholder="Lock"
+                name="locker"
+                placeholder="Locker"
                 required
               />
             </div>
@@ -82,17 +80,12 @@
               <div class="form-group floating-label-form-group controls">
                 <input type="file" class="form-control" id="image" name="myImages" accept="image/*" multiple>
              </div>
-
-             <a href="/welcomescreen2"><button type="button" class="btn btn-danger btn-lg" style="background:red;" data-dismiss="modal">Close</button></a>
-             <button type="submit" class="btn btn-primary btn-lg">REGISTER</button>
-            </form>
+            
           </div>
         </div>
+        <button type="button" class="btn btn-danger" style="background:red;" data-dismiss="modal">Close</button>
+        <button id="submitBtn2" class="btn btn-primary">REGISTER</button>
       </div>
-    
-        
-       
-
       </div>
     </div>
   </div>

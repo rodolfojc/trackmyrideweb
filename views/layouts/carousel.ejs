@@ -1,17 +1,28 @@
 <!-- ManageBike page carousel -->
 <!--Components extracted from Bootstrap-->
 
-<div class="jumbotron jumbotron-fluid">
+<div id="jumbotron" class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">TrackMyRide</h1>
     <p class="lead">Manage your bike................<i id="bike-icon" class="material-icons">directions_bike</i></p>
     
   </div>
 </div>
-<div class="card">
+
+<!--Jumbo finshes here-->
+
+<!--CARD -->
+<% bike.map((bike)=>{%>
+<div id="manageBikeCard" class="card">
+  
+  <!--START CARD COM FOTO DO LADO-->
   <div class="card mb-3" style="max-width: 100%!important;">
+    
+<!--Carousel-->
+
     <div class="row no-gutters">
       <div class="col-md-4">
+        <!--COMECA-->
         <div
           id="carouselExampleIndicators"
           class="carousel slide"
@@ -70,17 +81,20 @@
           >
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
-          </a> </div>           
+          </a>
+        
+        </div>           
           </div>
+          
+
+          <!--Managebike content --HORIZONTAL CARD BODY --> 
           <div class="col-md-8">
             <div class="card-body">
              
-<!--Managebike content -->
-<div class="card">
-                                  
+                             
   <form>
     <br>
-    <% bike.map((bike)=>{%>
+    
     <div class="form-group row" >
       <label id="form-label" for="inputSerial" class="col-sm-2 col-form-label"><strong>Serial</strong></label>
       <div class="col-sm-10">
@@ -132,14 +146,14 @@
         </div>
       </div>
     </div> <button type="button"   class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" data-whatever="">UPLOAD PICTURE</button>
-    <button type="button"   class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="">UPDATE</button>
+     <button type="button"   class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="">UPDATE</button>
     <div class="form-group row">
       
      
     </div>
     
   </form>
-  <%  }); %>
+
   
   
   
@@ -150,10 +164,13 @@
   
 
 </div>
+</div> 
 </div>
 
-              
-            </div>
-          </div>
+<%  }); %>
+
+  
+           
+         
         </div>
-      </div>
+     
