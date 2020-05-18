@@ -6,16 +6,12 @@ module.exports = async (req, res) => {
 	console.log(req.session.userId);
 
 	//Here you have the image to be added to the DB.
-       let image = req.file;
- 
-	   bike = [];
+	let image = req.file;
 
-	  
-	
-	
+	bike = [];
 
 	// Getting value from the form
-	let { serial, brand, color, type, status, locker, userId} = req.body;
+	let { serial, brand, color, type, status, locker, userId } = req.body;
 
 	try {
 		const response = await axios({
@@ -35,12 +31,10 @@ module.exports = async (req, res) => {
 		});
 		console.log(response);
 		bike = response.data;
-		const successMessage = (response.data.message)
+		const successMessage = response.data.message;
 		console.log(req.session.userId);
 		console.log(successMessage);
-		res.render('welcomescreen',bike,userId, successMessage,isFalse
-			
-		);
+		res.redirect('/welcomescreen2', bike, userId, successMessage);
 	} catch (err) {
 		console.log(err);
 		res.redirect('/managebike');

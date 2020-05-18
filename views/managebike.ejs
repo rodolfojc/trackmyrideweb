@@ -23,6 +23,7 @@
 
     <!--Modal for Update a user bike.-->
   <%-include('layouts/modal'); -%>
+  <%-include('layouts/uploadPictureModal'); -%>
     
     
 
@@ -44,7 +45,7 @@
       $(function() {
         // Initialize form validation on the registration form.
         // It has the name attribute "registration"
-        $("form[name='update']").validate({
+        $("form[name='updatebike']").validate({
           // Specify validation rules
           errorClass : 'validationmessage',
           rules: {
@@ -55,6 +56,8 @@
             color: "required",
             brand:"required",
             type:"required",
+            status:"required",
+            locker:"required",
            
           },
           // Specify validation error messages
@@ -77,13 +80,26 @@
       
       $(document).ready(function(){
           $("#updateBtn").click(function(){        
-              $("#update").submit(); // Submit the form
+              $("#updatebike").submit(); // Submit the form
               $(".form-group").prop('required',true);
+  
+              
+      
+          });
+           });
+
+           $(document).ready(function(){
+          $("#uploadBtn").click(function(){        
+              $("#uploadimage").submit(); // Submit the form
+              $(".form-group").prop('required',true);
+  
+              
       
           });
            });
       
    </script>
+   
    
   </body>
 

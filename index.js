@@ -74,6 +74,8 @@ const accountController = require('./controllers/accountCtrl');
 
 const bikeUpdateController = require('./controllers/bikeUpdateCtrl');
 
+const bikeImageController = require('./controllers/bikeImageCtrl');
+
 //###################################################################################
 
 //Creating a customer middleware
@@ -168,6 +170,11 @@ app.get('/profile', profileController.loadProfile); //Open user profile page
 app.post('/deleteaccount/:id', accountController); //Delete an account from the user profile page
 
 app.post('/updatepassword/:id', profileController.updatePassword);
+
+app.post('/updatebike', bikeUpdateController.bikeUpdate);
+
+app.post('/uploadimage/:id', bikeImageController.imageUploader);
+
 // Finish Routes#############################################################################
 
 // app.post("/index/store", async (req, res) => {

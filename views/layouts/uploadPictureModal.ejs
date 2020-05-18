@@ -1,0 +1,42 @@
+
+<!--Modal to update a bike -->
+
+  <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="" id="">UPlOAD PICTURE</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <% bike.map((bike)=>{%>
+            <form name="uploadImage" id="uploadimage" action="/uploadimage/<%bike._id%>" method="POST" enctype="multipart/form-data">
+              
+            
+                <div class="form-group floating-label-form-group controls">
+                 <input type="file" class="form-control" id="image" name="myImages" accept="image/*" multiple>
+              </div>
+             
+              <%  }); %>
+   
+           
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+           <!-- To update user details-->
+        
+           <button id="uploadBtn" type="button" class="btn btn-primary">UPLOAD</button>
+         </form>
+        </div>
+        <div class="modal-footer">
+        
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  

@@ -61,21 +61,24 @@
                 />
               </div>
               <div class="col-auto">
-             
-               
-                  <label for="inlineFormInput">Status</label>
-                  <select name="locker" required> 
-                    <option value="true">Owned</option>
-                    <option value="false">Lost</option> </select
-                  ><br />
+                <label class="sr-only" for="inlineFormInput">Status</label>
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  name="status"
+                  placeholder="Status"
+                  required
+                />
+              </div>
               <div class="col-auto">
-            
-               <div class="col-auto">
-                <label for="inlineFormInput">Locker</label>
-                <select name="locker">
-                  <option value="true">Yes</option>
-                  <option value="false">No</option> </select
-                ><br />
+                <label class="sr-only" for="inlineFormInput">Locker</label>
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  name="locker"
+                  placeholder="Locker"
+                  required
+                />
               </div>
               
               <div class="col-auto">
@@ -88,11 +91,13 @@
               
             </div>
           </div>
+          <button type="button" class="btn btn-danger" style="background:red;" data-dismiss="modal">Close</button>
+          <button id="submitBtn" type="button" class="btn btn-primary">Save changes</button>
         </div>
       
           
-          <button type="button" class="btn btn-danger" style="background:red;" data-dismiss="modal">Close</button>
-          <button id="submitBtn" type="button" class="btn btn-primary">Save changes</button>
+         
+      
 
           <!--MODAL-->
           <!-- Modal -->
