@@ -23,8 +23,10 @@ module.exports = async (req,res) =>{
           ]).then( () => {
             //TO BE ADDED - RETURN BACK A SUCCESS MESSAGE
             console.log( "This is the rack" +newRackAdded );
-             res.render("map",  {userId: userId, rack:newRackAdded})
+            
+           //  res.render("map",  {userId: userId, rack:newRackAdded})
         //  res.render("map", {userId: userId});
+        req.flash('GOOD', 'Password updated', '/consultmap');
       // res.render("/consultmap");
           });
          

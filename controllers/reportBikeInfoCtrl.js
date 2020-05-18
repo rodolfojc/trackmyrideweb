@@ -9,6 +9,8 @@ module.exports = async (req, res) => {
  
     //res.send(success);
    //res.redirect("/bikeinfo", {userId: userId});
+  // req.flash('GOOD', 'Password updated', '/profile');
+   //req.flash('GOOD', 'Report Submitted');
    res.render("bikeinfo", {userId: userId});
    
 }

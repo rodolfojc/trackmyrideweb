@@ -64,11 +64,15 @@ exports.updatePassword = async (req, res) => {
       });
       message = response.data.message;
       console.log(response.data.message);
-      //res.send(userId);
-      res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId, message:message})
-	//	res.render('profile', { userId });
+
+    //  res.redirect(('/profile', {anyVar:true})); 
+         // res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId, message:message})
+         req.flash('GOOD', 'Password updated', '/profile');
+        // return	res.redirect("/profile");
+  
 	} catch (err) {
-		console.log(err.message);
+    console.log(err.message);
+    req.flash('BAD', 'Something went wrong', '/profile');
 	}
   
 }
