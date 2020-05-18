@@ -55,3 +55,40 @@ exports.updatePicture = async (req, res) => {
 	  return res.sendStatus(400);
 	}
   }
+
+  exports.updateBike = async (req, res) => {
+
+	const bikeId = req.params.id;
+	const {serial, brand, color, type, status, locker} = req.body;
+
+	try {
+		const response = await axios({
+			method: 'POST',
+			url: `http://34.247.183.192:3000/updatebike/${bikeId}`,
+			headers: { 'Content-Type': 'application/json' },
+			data: {
+				serial,
+				brand,
+				color,
+				type,
+				status,
+				locker
+			}
+		});
+		
+		bike = response.data.message;
+		console.log(bike);
+		//Check if bike is returned
+		if (bike === undefined || bike.length == 0) {
+			//if bike is not defined
+			return res.redirect('/registerbike');
+		}
+		res.render('managebike')
+
+	} catch (err) {
+		console.log(err);
+		res.redirect('/managebike');
+	}
+
+
+  }
