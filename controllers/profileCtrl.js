@@ -89,9 +89,13 @@ exports.updatePicture = async (req, res) => {
   try {
     await img.save();
     //res.status(201).send({ img });
-    res.render('profile', {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId, message:message});
+    req.flash('GOOD', 'Picture updated', '/profile');
+
+  //  res.render('profile', {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId, message:message});
   } catch (err) {
+    req.flash('BAD', 'Something went wrong', '/');
     return res.sendStatus(400);
+
   }
 }
 
