@@ -125,6 +125,7 @@
     </div>
     </div>   
     <!-- Tabs Titles -->
+    <%- locals.flash %>
       <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs" id="tabs">
               <li class="nav-item">
@@ -172,6 +173,7 @@
                 <hr/>
                 <p class="card-text">You can update your bike details in Manage My Bike</p>
                 <!-- <a href="#" class="btn btn-primary">Take me there</a> -->
+              
                 <a href="/managebike"> <button type="submit" class="btn btn-success">Take me there</button> </a> 
               </div>
 
@@ -253,7 +255,7 @@
                   </div>
 
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-                  <button type="submit" class="btn btn-success" id="updatePass">Update</button>
+                  <button type="submit" class="btn btn-success" id="updatePass" >Update</button>
                 </form>
               </div>
           </div>
@@ -275,8 +277,8 @@
     $('#deletAcc').click(function () {
       event.preventDefault();
       $("#myModal").modal('show');
-    });
-
+   
+   
     $("form[name='update']").validate({
         rules: {
                 password : {
@@ -298,6 +300,8 @@
         }
     })
   });
+
+});
  </script>
   </body>
 </html>
