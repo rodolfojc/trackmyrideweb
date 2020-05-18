@@ -8,6 +8,7 @@
           
     
   <body>
+    
     <!-- Navbar -->
   <%- include('layouts/managebikenavbar') %>
 
@@ -45,7 +46,7 @@
       $(function() {
         // Initialize form validation on the registration form.
         // It has the name attribute "registration"
-        $("form[name='updatebike']").validate({
+        $("form[name='update']").validate({
           // Specify validation rules
           errorClass : 'validationmessage',
           rules: {
@@ -79,7 +80,7 @@
       
       
       $(document).ready(function(){
-          $("#updateBtn").click(function(){        
+          $("#update-bike").click(function(){        
               $("#updatebike").submit(); // Submit the form
               $(".form-group").prop('required',true);
   
@@ -88,16 +89,7 @@
           });
            });
 
-           $(document).ready(function(){
-          $("#uploadBtn").click(function(){        
-              $("#uploadimage").submit(); // Submit the form
-              $(".form-group").prop('required',true);
-  
-              
-      
-          });
-           });
-      
+          
    </script>
    
    

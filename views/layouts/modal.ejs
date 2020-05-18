@@ -2,14 +2,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="" id="">UPDATE BIKE</h5>
+        
+        <h5><%=bike._id%></h5>
+       
+                                   
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
+      </div><% bike.map((bike)=>{%>
       <div class="modal-body">
-          <form action="/addBike" method="post">
-
+          <form name="update" id="updatebike" action="/updateBikeInfo/<%=bike._id%>" method="post">
+            <% }); %>
           <div class="form-group">
               <div class="form-group">
                <input type="text" class="form-control" name="serial" id="recipient-name" placeholder="SERIAL:">
@@ -50,7 +53,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
-        <button type="button" class="btn btn-primary">UPDATE</button>
+        <button id="update-bike" type="button" class="btn btn-primary">UPDATE</button>
       </div>
     </div>
   </div>

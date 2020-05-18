@@ -59,7 +59,7 @@ exports.updatePicture = async (req, res) => {
   exports.updateBike = async (req, res) => {
 
 	const bikeId = req.params.id;
-	const {serial, brand, color, type, status, locker} = req.body;
+	const {serial, brand, color, type, status, lock} = req.body;
 
 	try {
 		const response = await axios({
@@ -72,18 +72,25 @@ exports.updatePicture = async (req, res) => {
 				color,
 				type,
 				status,
-				locker
+				lock
 			}
 		});
 		
-		bike = response.data.message;
+		// bike = response.data.message;
 		console.log(bike);
+		console.log("CLICOU");
+		userId = req.params.id;
+
 		//Check if bike is returned
+		
 		if (bike === undefined || bike.length == 0) {
 			//if bike is not defined
 			return res.redirect('/registerbike');
 		}
-		res.render('managebike')
+		req.flash('GOOD', 'Bike Updated!', '/managebike');
+		// res.render('managebike',{
+		// 	bike,
+		// 	userId})
 
 	} catch (err) {
 		console.log(err);
