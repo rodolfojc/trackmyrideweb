@@ -76,53 +76,221 @@
 </style>
 
   <body>
-    <!-- Outter Class -->
     <div class="wrapper">
-      
-      <!-- Sidebar -->
+      <!-- Sidebar Report -->
       <nav id="sidebar">
-
-        <!-- Untoggle button -->
         <div id="dismiss">
           <i class="fas fa-arrow-left"></i>
         </div>  
-
-        <!-- Sidebar title  from JS-->
+        <!-- Sidebar title  -->
         <div class="sidebar-header">
-          <h3><span></span></h3> 
-        </div> 
-                   
-        <!-- Add Incident Form -->
-        <%-include('layouts/map/mapIncidentPartials'); -%>
-    
-        <!-- Add new Rack Form-->
-        <%-include('layouts/map/mapRackPartial'); -%>
+          <h3><span></span></h3>
+        </div>
+        <ul class="list-unstyled components">
+
+         <!-- Report Incident Form -->
+ <form class="active" action="/incident" method="POST" role="form" id="incidentForm" >
+    <!-- Map id - hidden -->
+    <div class="col-auto">
+    <input type="text" class="form-control" id="rackId" name="rackId">
+     <!-- Latitude -->
+
+     <div class="form-group">
+      <div class="row" >
+      <label for="lat" class="col-4 form-label">Latitude</label>
+      <div class="col-8">
+        <input type="text" class="form-control" id="lat" name="latitude" readOnly >
+      </div>
+    </div>
+  </div>
+    <!-- Longitude -->
+    <div class="form-group">
+      <div class="row" >
+      <label for="longitude" class="col-4 form-label">Longitude</label>
+      <div class="col-8">
+        <input type="text" class="form-control" id="lon" name="longitude" readOnly >
+      </div>
+    </div>
+     <!-- Report type -->
+     <div class="form-group">
+      <div class="row" >
+      <label for="incident" class="col-4 form-label" id="inc"><span>Incident</span></label>
+      <div class="col-8">
+        <input type="text" class="form-control" id="incident" name="incident" readOnly >
+      </div>
+    </div>
+     </div>
+    <!-- User -->
+    <div class="form-group">
+      <div class="row" >
+      <label for="email" class="col-4 form-label">Email</label>
+      <div class="col-8">
+        <input type="email" class="form-control"placeholder=""  id="" name="email" >
+        <!-- <input type="email" class="form-control" id="email" name="email" > -->
+      </div>
+    </div>
+   </div>           
+    <!-- Incident Date -->
+    <div class="form-group">
+      <div class="row" >
+      <label for="date" class="col-4 form-label" id="dt"><span>Date</span></label>
+      <div class="col-8">
+        <input type="date" class="form-control" id="date" name="date" >
+      </div>
+    </div>
+    </div>
+
+    <!-- Incident Period -->
+   <div class="form-group">
+
+    <div class="row" >
+      <label for="time" class="col-4 form-label">Time</label>
+      <div class="col-8">
+        <select id="time" name="time" class="form-control">
+          <option value="morning">Morning</option>
+          <option value="afternoon">Afternoon</option>
+          <option value="evening">Evening</option>      
+      </select>
+        <!-- <input type="date" class="form-control" id="incident"disabled > -->
+      </div>
+    </div>
+   </div>
+     <!-- Description -->
+     <div class="form-group">
+      <div class="row" >
+      <label for="description" class="col-4 form-label">Description</label>
+      <div class="col-8">
+        <textarea id="description" name="description" placeholder="Write something.." style="height:150px "></textarea>
+      </div>
+    </div>
+     </div>
+
+          
+<button type="submit" class="btn btn-success mb-3" id="grabPosition" >Report event</button>
+    </div>
+</form>
+    </ul>
+   
+    <!-- Add new Rack Form for Button-->
+
+    <form action="/addNewRack" method="POST" role="form" id="newRackForm">
+
+      <!-- Map id - hidden -->
+      <input type="text" class="form-control-sm" id="newRackId" name="newRackId">
+       <!-- Latitude -->
+      <div class="form-group ">
+        <div class="row" >
+        <label for="lat" class="col-4 form-label">Latitude</label>
+        <div class="col-8">
+          <input type="text" class="form-control" id="newLat" name="latitude" readOnly >
+        </div>
+        </div>
+      </div>
+      <!-- Longitude -->
+      <div class="form-group">
+        <div class="row" >
+        <label for="longitude" class="col-4 form-label">Longitude</label>
+        <div class="col-8">
+          <input type="text" class="form-control" id="newLon" name="longitude" readOnly >
+        </div>
+        </div>
+      </div>
+      <!-- Rack type -->
+      <div class="form-group">
+        <div class="row" >
+        <label for="time" class="col-4 form-label">Type</label>
+        <div class="col-8">
+          <select id="type" name="type" class="form-control">
+            <option value="stand">Stand</option>
+            <option value="pole">Pole</option>
+            <option value="gate">Gate</option> 
+            <option value="private">Private Property</option>      
+         </select>
+        </div>
+        </div>
+      </div>
+        
+       <!-- Quantity -->
+       <div class="form-group">
+        <div class="row" >
+        <label for="quantity" class="col-4 form-label" id="inc">Quantity</label>
+        <div class="col-8">
+          <input type="number" class="form-control" id="quantity" name="quantity" >
+        </div>
+        </div>
+      </div>
+      <!-- User -->
+      <% if(userId == null || userId == undefined){ %>
+      <div class="form-group">
+        <div class="row" >
+        <label for="email" class="col-4 form-label">Email</label>
+        <div class="col-8">
       
-      </nav> 
+          <input type="email" class="form-control" id="newEmail"  name="email" >
+        </div>
+     
+        </div>
+      </div>
+      <%  } %>
+      <!-- Property -->
+      <div class="form-group">
+        <div class="row" >
+        <label for="property" class="col-4 form-label" id="ppt"><span>Location</span></label>
+        <div class="col-8">
+          <select id="property" name="property" class="form-control">
+            <option value="stand">Private</option>
+            <option value="pole">Public</option>
+         </select>
+        </div>
+      </div>
+      </div>
+  
+       <!-- Description -->
+       <div class="form-group">
+        <div class="row" >
+        <label for="description" class="col-4 form-label">Description</label>
+        <div class="col-xs-8">
+          <textarea id="newDescription" name="newDescription" placeholder="Write something.." style="height:100px "></textarea>
+        </div>
+        </div>
+      </div>
+  <button type="submit" class="btn btn-success mb-3" id="grabNewRack" >Add new Rack</button>
+  </form>
+  
+
+      </nav>
 
 
    
+<!-- Content -->
+ <!-- Top Navbar -->
 
-      <!-- Content -->
-      <div id="content">
 
-      <!-- Top Navbar -->
-      <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-2 static-top " >
-    <!-- If there is no user logged in -->
-        <% if(userId == undefined){ %>
-          <!-- Back button routes -->
-          <a class=" text-light  p-1"  href="/consult"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
-          <%}else{%>     
-            <a class=" text-light  p-1"  href="/welcomescreen"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
-            <%}%>
 
-            <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+
+ <!-- <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-0" > -->
+  <div id="content"> 
+    <%- locals.flash %>
+  <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-2 static-top " >
+    
+    <% if(userId == undefined){ %>
+      <a class=" text-light  p-1"  href="/consult"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+      <%}else{%>
+        <a class=" text-light  p-1"  href="/welcomescreen"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+        <%}%>
+
+          <!-- <a href="#" class="navbar-brand" ><i class="fas fa-bicycle"></i></a> -->
+          <!-- <a class=" text-light  p-1"  href="/consult"  id="home"><i class="fas fa-arrow-alt-circle-left"></i> Back</a> -->
+          <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
             <button class="navbar-toggler navbar-brand abs" type="button" data-toggle="collapse" data-target="#navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-center" id="navbarsExample11">
-              <ul class="navbar-nav justify-content-between w-100">
+          </button>
+          <div class="collapse navbar-collapse text-center" id="navbarsExample11">
+            <ul class="navbar-nav justify-content-between w-100">
+              
+     
               <li class="nav-item active">
+
                 <button class="btn btn-primary p-2" id= "showRacks">Display Parking Spots</button>
               </li>
               <li>
@@ -134,24 +302,41 @@
               <li>
                 <button class="btn btn-light p-2" data-target=".chat"  id= "addIncident">Report Incident </button>
               </li>
+
+         
+
             </ul>
+
+            <!-- <button class="btn btn-primary p-1" id= "showRacks">Show all Parking Spots</button>
+      
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+            <ul class="navbar-nav text-right">
+              <li class="nav-item active">
+                <a class="nav-link" href="/welcomescreen2">Home </a>
+              </li>
+              <li>
+                <a class="flex-fill text-right text-light nav-link" data-toggle="collapse" href="#" data-target=".chat" id="newRack">Add Rack to Map</a>
+              </li>
+            </ul> -->
           </div>
         </div>
         </nav>
         
   
-        
         <!--Map  -->
-      <div class="map-responsive">
+        <div class="map-responsive">
           <div id="mapid" ></div>
         </div>   
-     </div> <!-- end .content -->
-     
-     <!-- Overlay a grey layer on the map -->
+      </div>
+      <!-- Overlay a grey layer on the map -->
       <div class="overlay">
         <div id="clickMap" ><span></span></div>
       </div>    
-    </div> <!--end .wrapper -->
+    </div>
 
 
     <!--Importing the Scripts from Layout-->

@@ -1,9 +1,10 @@
 <!--This Modal will pop up when user wants to update a bike-->
 
 <!--Modal Section-->
-<div class="hardcoded-container">
-    <div class="parent-modal" id=<%= registredBefore===false? "hidden":"displayed" %>>
-      <div class="hardcoded-modal-content">
+<%- locals.flash %>
+<div class="container">
+    <div class="parent-modal" id=<%= registredBefore===false? "hidden":"hidden" %>>
+      <div class="modal-content">
         <div class="close">
           <a href="/welcomescreen2"> +</a>
         </div>

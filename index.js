@@ -4,6 +4,7 @@ const express = require('express');
 const axios = require('axios');
 const GeoJSON = require('geojson');
 const expressSession = require('express-session');
+const flash = require('express-flash-notification');
 //This adds the file property to the req object so uploaded files are accessible.
 const multer = require('multer');
 
@@ -93,7 +94,44 @@ app.use(bodyParser.json());
 
 //To enable photo upload
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+	expressSession({
+		secret: 'TrackMyRide',
+		resave: true,
+		saveUninitialized: true
+	})
+);
 
+const flashNotificationOptions = {
+	beforeSingleRender: function(item, callback) {
+	  if (item.type) {
+		switch(item.type) {
+		  case 'GOOD':
+			item.type = 'Success';
+			item.alertClass = 'alert-success';
+			break;
+		  case 'OK':
+			item.type = 'Info';
+			item.alertClass = 'alert-info';
+			break;
+		  case 'BAD':
+			item.type = 'Error';
+			item.alertClass = 'alert-danger';
+			break;
+		}
+	  }
+	  callback(null, item);
+	}
+  };
+  
+  // Flash Notification Middleware Initialization
+  app.use(flash(app, flashNotificationOptions));
+/*
+  app.get('/alert-1-good', function(req, res) {
+	req.flash('GOOD', 'MESSAGE', '/profile');
+  })
+  
+*/
 //Creating a local directory to store the pictures
 var storage = multer.diskStorage({
 	destination: function(req, file, cb) {
@@ -107,13 +145,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
-app.use(
-	expressSession({
-		secret: 'TrackMyRide',
-		resave: true,
-		saveUninitialized: true
-	})
-);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });

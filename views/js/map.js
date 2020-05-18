@@ -50,7 +50,8 @@ var popup = L.popup();
 function onEachFeature(feature, layer){
     layer.bindPopup('Name: '+ feature.properties.location_stand +
     '<br> Stands: '+feature.properties.no_stands +
-   '<br><button class="btn btn-outline-info btn-sm" id="chatToggle">Report</button>'
+    '<br> Incidents: '+feature.properties.theft +
+   '<br><button class="btn btn-outline-danger btn-sm" id="chatToggle">Report</button>'
     );
         layer.on('click', function (e) {
         lt = e.latlng.lat;
@@ -65,7 +66,7 @@ function onEachFeature(feature, layer){
 function onEachSpot(feature, layer){
     layer.bindPopup('Name: '+ feature.properties.location_stand +
     '<br> Incidents: '+feature.properties.theft +
-   '<br><button class="btn btn-outline-info btn-sm" id="chatToggle">Report</button>'
+   '<br><button class="btn btn-danger-info btn-sm" id="chatToggle">Report</button>'
     );
         layer.on('click', function (e) {
         lt = e.latlng.lat;
@@ -211,6 +212,7 @@ var mapWithHotspotsMarkers = L.geoJSON(maps2, {
 
           mymap.removeLayer(mapWithRackMarkers);   //hide all racks
           mymap.removeLayer(mapWithHotspotsMarkers); //hide all hotspot
+          $('#sidebar').removeClass('active');
           $('#clickMap span').text('Pin location on the map');//Add overlay message
           $('.overlay').addClass('active'); //add overlay
           $('#clickMap').addClass('active'); //display pin on map message
@@ -248,9 +250,12 @@ var mapWithHotspotsMarkers = L.geoJSON(maps2, {
        //Report Incident clicked from the Navbar
        $("div").on("click", '#addIncident', function () {
         mymap.removeLayer(mapWithHotspotsMarkers); //hide all hotspot
+        $('#sidebar').removeClass('active');
          $('#clickMap span').text('Click on a spot to report');//Add overlay message
           $('.overlay').addClass('active'); //add overlay
           $('#clickMap').addClass('active'); //display pin on map message
+          mymap.addLayer(mapWithRackMarkers); //display all racks again
+
         });
 
 
