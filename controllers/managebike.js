@@ -1,6 +1,7 @@
 const axios = require('axios');
+const BikePicture = require('../models/BikeImage');
 
-module.exports = async (req, res) => {
+exports.loadBike = async (req, res) => {
 	const userId = req.session.userId;
 	isfalse = 2;
 	bike = [];
@@ -28,3 +29,21 @@ module.exports = async (req, res) => {
 		res.redirect('/managebike');
 	}
 };
+
+exports.updatePicture = async (req, res) => {
+
+	let img = new BikePicture();
+	img.userId = req.params.id;
+	//img.url = req.protocol + '://' + req.get('host') + '/uploads/' + req.params.id + path.extname(req.file.originalname);
+	img.fieldname = `BikePicture-${req.params.id}`
+	img.filename = `BikePicture-${req.params.id}`;
+	img.originalName = req.file.originalname;
+	  
+	try {
+	  await img.save();
+	  //res.status(201).send({ img });
+	  req.flash('GOOD', 'Picture uploaded', '/managebike');
+	} catch (err) {
+	  return res.sendStatus(400);
+	}
+  }
