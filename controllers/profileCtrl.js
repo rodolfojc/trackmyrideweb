@@ -30,7 +30,7 @@ const axios = require('axios');
             accountDetails = result[0];    //Assign user object
              userBikeDetails = result[1]; //Assign bikes object
              bikeCount = result[2];
-             profilePic = result[3].url;
+             profilePic = result[3];
          
             //Display profile page and send both user and bike objects
             console.log(userId);
