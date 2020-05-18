@@ -25,12 +25,12 @@ exports.bikeUpdate = async (req, res) => {
 				userId
 			}
 		});
-
+        console.log("CLICLOU!");
 		console.log(response);
 		updatedbike = response.data;
 		const successMessage = response.data.message;
 
-		res.render('managebike', { userId, updatedbike, successMessage, bike: updatedike });
+		res.render('managebike', { userId, updatedbike, successMessage, bike: updatedbike });
 	} catch (err) {
 		console.log(err.message);
 	}
