@@ -276,8 +276,11 @@ app.post('/signin', async (req, res) => {
 		res.redirect('/'); //Redirect to the main page instead to login
 		//res.render('welcomescreen', { userId: response.data.userId });
 	} catch (err) {
-		console.log(err.message);
+	//	req.flash('BAD', 'Something went wrong. Try again and Keep riding  <i class="material-icons">', '/');
+     		console.log(err.message);
+			 res.redirect('/');
 	}
+
 });
 
 app.post('/login', async (req, res) => {

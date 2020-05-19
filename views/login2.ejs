@@ -22,11 +22,13 @@
     
 </head> 
  <body>
-    
+ 
     <div class="section">
       <div class="map-route">
           <a href='/consult'><i class="material-icons">pin_drop</i><b></b>Consult</b></a>
       </div>
+
+     
     <div class="login">
       <!-- <img class="logo" src="img/trackMyRidelogo2.JPG"> -->
       <p class="main-txt" style=" font-family:pacifico;
@@ -35,6 +37,8 @@
 
     
       margin-left: 45px;" >Track My Ride<i id="bike-icon" class="material-icons">directions_bike</i></p>
+      
+   
       <form action="login" method="POST">
 
         <input
@@ -50,6 +54,9 @@
           placeholder="Password"
           required="required"
         />
+        <!-- Flash Messages -->
+      
+
         <% if (locals.errors) { %>
           <p style="color: red;">Invalid Email or Password, try again!</p>
         <% }%>
