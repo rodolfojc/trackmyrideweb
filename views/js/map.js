@@ -250,7 +250,7 @@ var mapWithHotspotsMarkers = L.geoJSON(maps2, {
        $("div").on("click", '#addIncident', function () {
         mymap.removeLayer(mapWithHotspotsMarkers); //hide all hotspot
         $('#sidebar').removeClass('active');
-         $('#clickMap span').text('Click on a spot to report');//Add overlay message
+         $('#clickMap span').text('Click on the flag icon to report');//Add overlay message
           $('.overlay').addClass('active'); //add overlay
           $('#clickMap').addClass('active'); //display pin on map message
           mymap.addLayer(mapWithRackMarkers); //display all racks again
