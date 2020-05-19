@@ -1,10 +1,15 @@
-<!--This Modal will pop up when user wants to update a bike-->
+<!--This Modal will pop up when user wants to update THE FIRST bike-->
+<!-- This is a one time event -->
+<!--Flash will make sure we Display the Success Message when completing it-->
 <%- locals.flash %>
 <!--Modal Section-->
+<!--This Modal was hard-coded-->
 <div class="hardcoded-container">
+  <!--Route renders an object that changes the CSS ID turning the State from Hidden to Displayed.-->
     <div class="parent-modal" id=<%= registredBefore===false? "hidden":"displayed" %>>
       <div class="hardcoded-modal-content">
         <div class="close">
+          <!--Button to leave the page-->
           <a href="/welcomescreen2"> +</a>
         </div>
         <div><h3>REGISTER YOUR FIRST BIKE...</h3></div>
@@ -81,8 +86,11 @@
             
           </div>
         </div>
-        <a href="/welcomescreen2"><button type="button" class="btn btn-danger" style="background:red;" data-dismiss="modal">Close</button></a>
+        <!--Form will submit using JQuery-->
+        </form>
         <button id="submitBtn2" class="btn btn-primary">REGISTER</button>
+        <a href="/welcomescreen2"><button type="button" class="btn btn-danger" style="background:red;" data-dismiss="modal">Close</button></a>
+        
       </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<!--Managebike Page-->
 <!--Manage Bike contains components extracted from Bootstrap.-->
 <html lang="en">
 
@@ -12,106 +12,26 @@
     <!-- Navbar -->
   <%- include('layouts/managebikenavbar') %>
 
+  
   <!-- Navigation -->
 
   <div class="card">
-     
-  <%- include('layouts/carousel') %>
-  
 
-      </div>
-</div>
+     <!--Carousel and Bike Form-->
+
+  <%- include('layouts/carousel') %>
+   </div>
+   <!--End of card-->
+
 
     <!--Modal for Update a user bike.-->
   <%-include('layouts/modal'); -%>
+  <!--Modal to upload a picture-->
   <%-include('layouts/uploadPictureModal'); -%>
-    
-    
-
-   <!--All scripts for this page are located in here-->
+  <!--All scripts for this page are located in here-->
    <%-include('layouts/managebikescripts'); -%>
 
-   <script>
-    var bikelist;
-    $('#exampleModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var recipient = button.data('whatever') // Extract info from data-* attributes
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
-        modal.find('.modal-title').text('New message to ' + recipient)
-        modal.find('.modal-body input').val(recipient)
-      }); 
-    
-      $(function() {
-        // Initialize form validation on the registration form.
-        // It has the name attribute "registration"
-        $("form[name='update']").validate({
-          // Specify validation rules
-          errorClass : 'validationmessage',
-          rules: {
-            // The key name on the left side is the name attribute
-            // of an input field. Validation rules are defined
-            // on the right side
-            serial: "required",
-            color: "required",
-            brand:"required",
-            type:"required",
-            status:"required",
-            locker:"required",
-           
-          },
-          // Specify validation error messages
-          messages:{
-            serial: "It is necessary to enter a Serial Number",
-            color: "Please define a color",
-            brand: "Define your bike Brand",
-            type:"Ex.Road,Montain,Hybrid,Folding,Cyclocross",
-      
-          },
-          // Make sure the form is submitted to the destination defined
-          // in the "action" attribute of the form when valid
-          submitHandler: function(form) {
-            form.submit();
-          }
-        });
-      });
-      
-      
-      
-      $(document).ready(function(){
-          $("#update-bike").click(function(){        
-              $("#updatebike").submit(); // Submit the form
-              $(".form-group").prop('required',true);
-  
-              
-      
-          });
-           });
-
-
-          //  $(function() {
-        //Function to upload bike picture.
-      //   $("form[name='MyImage']").validate({
-         
-      //     submitHandler: function(form) {
-      //       form.submit();
-      //     }
-      //   });
-      // });
-              $(document).ready(function(){
-              $("#uploadBtn").click(function(){        
-              $("#uploadimage").submit(); // Submit the form
-              $(".form-group").prop('required',true);
-  
-              
-      
-          });
-           });
-
-
-          
-   </script>
+   
    
    
   </body>

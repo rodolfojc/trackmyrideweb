@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   
+<!-- Welcome Screen main Page -->
    
       
     <!-- add icon link -->
@@ -13,7 +14,7 @@
 
   
   <!-- Font Awesome Script -->
-  <script src="https://kit.fontawesome.com/5c19bf284e.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/5c19bf284e.js"></script> -->
   
     
   
@@ -30,6 +31,7 @@
           <a class=" text-light  p-1"  href="/"  id="logout" ><i class="fas fa-sign-out-alt"></i> Logout</a>
         </div>
       </nav>
+      <!-- Ends here-->
     
 
   
@@ -40,143 +42,37 @@
       <i id="bike-icon" class="material-icons"  >directions_bike</i></p>
       
       
-      
-      <!--When submitting the form the browser will make a POST request to the /signin/store endpoint.Check Index.js-->
+      <!-- Menu-->
+      <!--Call modal main screen and offers user options to manage bike-->
        <a><button id="btn-consult" class="btn btn-primary btn-block btn-large" data-toggle="modal" data-target="#exampleModalCenter">MANAGE BIKE</button></a>
-      
+      <!--Route to consult map-->
        <a href="/consultmap"><button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" ">MAP INCIDENTS</button></a>
-
+      <!-- Route to consult bike using bike serial number--->
        <a href="/bikeinfo"><button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" ">CONSULT BIKE SERIAL</button></a>
-
+      <!-- Route to Profile Page-->
        <a href="/profile"><button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" ">MY PROFILE</button></a>
-    
-     <!-- Button trigger modal -->
 
- 
 
      
   </div>
   
 
   
-
-    <%-include('layouts/welcomescreen-scripts'); -%> 
+    
+    <!--Import modal to provide manage bike options-->
     <%-include('layouts/modalmainscreen'); -%>
+    <!--Import modal to first register a bike-->
     <%-include('layouts/registerBikeModal'); -%>
+    <!--import first registration modal-->
     <%-include('layouts/firstRegModal'); -%>
     
    
 
-    <!-- Bootstrap core JavaScript -->
+ 
     
-      <!--To use bootstrap Modal
-      -->
+   <!--Scripts for this page-->
 
-     
-      <script>
-     
-    
-     // Wait for the DOM to be ready
-$(function() {
-  // Initialize form validation on the registration form.
-  // It has the name attribute "registration"
-  $("form[name='addbike']").validate({
-    // Specify validation rules
-    errorClass : 'validationmessage',
-    rules: {
-      // The key name on the left side is the name attribute
-      // of an input field. Validation rules are defined
-      // on the right side
-      serial: "required",
-      color: "required",
-      brand:"required",
-      type:"required",
-      status:"required",
-      locker:"required",
-     
-    },
-    // Specify validation error messages
-    messages:{
-      serial: "It is necessary to enter a Serial Number",
-      color: "Please define a color",
-      brand: "Define your bike Brand",
-      type:"Ex.Road,Montain,Hybrid,Folding,Cyclocross",
+    <%-include('layouts/welcomescreen-scripts'); -%>
 
-    },
-    // Make sure the form is submitted to the destination defined
-    // in the "action" attribute of the form when valid
-    submitHandler: function(form) {
-      form.submit();
-    }
-  });
-});
-$(document).ready(function(){
-    $("#submitBtn").click(function(){        
-        $("#addbike").submit(); // Submit the form
-        $(".form-control mb-2").prop('required',true);
-       
-    });
-     });
-
-
-     // Initialize form validation on the registration form.
-  // It has the name attribute "registration"
-  $("form[name='addbike2']").validate({
-    // Specify validation rules
-    errorClass : 'validationmessage',
-    rules: {
-      // The key name on the left side is the name attribute
-      // of an input field. Validation rules are defined
-      // on the right side
-      serial: "required",
-      color: "required",
-      brand:"required",
-      type:"required",
-      status:"required",
-      locker:"required",
-     
-    },
-    // Specify validation error messages
-    messages:{
-      serial: "It is necessary to enter a Serial Number",
-      color: "Please define a color",
-      brand: "Define your bike Brand",
-      type:"Ex.Road,Montain,Hybrid,Folding,Cyclocross",
-
-    },
-    // Make sure the form is submitted to the destination defined
-    // in the "action" attribute of the form when valid
-    submitHandler: function(form) {
-      form.submit();
-    }
-  });
-
-$(document).ready(function(){
-    $("#submitBtn2").click(function(){        
-        $("#addbike2").submit(); // Submit the form
-        $(".form-control mb-2").prop('required',true);
-       
-    });
-     });
-     
-
-     
-
-    
-
-    
-
-   
-     
-     
-
-     
-
-
-    
-    </script>
-
-    
-  
   </body>
 </html>
