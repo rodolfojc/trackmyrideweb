@@ -40,7 +40,7 @@ const homeController = require('./controllers/login');
 
 const signinController = require('./controllers/signIn');
 
- const welcomeController = require('./controllers/home');
+//  const welcomeController = require('./controllers/home');
 
 const manageBikeController = require('./controllers/managebike');
 
@@ -64,7 +64,7 @@ const addbikeController = require('./controllers/addbike');
 
 const newRackController = require('./controllers/newRackCtrl');
 
-const updateController = require('./controllers/updateBike');
+// const updateController = require('./controllers/updateBike');
 
 const searchBikesController = require('./controllers/searchBikesCtrl');
 
