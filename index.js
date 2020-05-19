@@ -9,7 +9,27 @@ const ejs = require('ejs'); // Constant to receive EJS module ( To install serve
 const mongoose = require('mongoose'); //communicate with the Mongo Server (Install Server Side)
 const bodyParser = require('body-parser'); //parses incoming request bodies in a middleware and make the form data available under req.body property.
 const app = express(); //create the express application
-app.use(bodyParser.json()); //to use the body portion of request to json
+const rateLimit = require('express-rate-limit'); // Prevent DOS Attacks
+const xss = require('xss-clean'); //Preventing XSS Attacks
+const helmet = require('helmet'); //Preventing XSS Attacks II
+const mongoSanitize = require('express-mongo-sanitize'); //Preventing NoSQL Injection Attacks
+
+
+// Limit requests by users - Prevent DOS Attacks 
+const limit = rateLimit({
+    max: 200,// max requests
+    windowMs: 60 * 60 * 1000, // Set to 1 Hour
+    message: 'Error: Too many requests, please try later!' 
+});
+
+// Preventing XSS Attacks - Set of functions
+app.use(helmet());
+app.use(xss());
+
+//Preventing NoSQL Injection Attacks - MongoDB
+app.use(mongoSanitize());
+
+app.use(bodyParser.json({ limit: '10kb' })); //to use the body portion of request to json
 app.use(bodyParser.urlencoded({ extended: true })); //parsing the incoming body request 
 app.use(express.static('views')); //serving static files
 app.set('view engine', 'ejs'); //Template engine for html files
@@ -137,9 +157,9 @@ app.listen(3005, () => {
 
 //Routes for all pages #####################################################################
 
-app.get('/', homeController); //Main route
+app.get('/', limit, homeController); //Main route
 
-app.get('/sign', signinController); //Sign Up Controller
+app.get('/sign', limit, signinController); //Sign Up Controller
 
 app.get('/managebike', manageBikeController.loadBike); //Direct user to manage its bikes
 
