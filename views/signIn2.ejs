@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!--SignIn Page -->
   <!--Importing the Header Layout element-->
   <%-include('layouts/signin_header'); -%>
 
@@ -15,9 +16,8 @@
  
   <body>
    
-
+  <!--Parent Div-->
     <div class="login">
-      <!-- <img class="logo" src="img/trackMyRidelogo2.JPG"> -->
       <p
         class="main-txt"
         style="
@@ -31,6 +31,7 @@
           >directions_bike</i
         >
       </p>
+
       <form name = "signvalidated" action="/signin" method="POST">
         <!--When submitting the form the browser will make a POST request to the /signin/store endpoint.Check Index.js-->
         <input
@@ -58,7 +59,6 @@
    
          <button id="btn" type="submit" class="btn btn-primary btn-block btn-large" >Sign Up <i class="fas fa-user-plus"></i></button>
 
-        <!-- <span class="link-password"><a href="#">Forgotten your username or password?</a> -->
           <br />
           <br />
          
@@ -69,6 +69,9 @@
 
       <!-- GDPR Modal  - trigger when link is clicked-->
       <%-include('layouts/GDPR/gdprModal'); -%>
+      
+      
+      <!--Scripts-->
 
      <%-include('layouts/scripts'); -%>
   </body>

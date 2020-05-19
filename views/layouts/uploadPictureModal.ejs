@@ -1,7 +1,7 @@
 
-<!--Modal to update a bike -->
+<!--Modal to upload bike picture -->
 
-  <!-- Modal -->
+  <!-- Modal Header -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -11,9 +11,10 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+   <!--Modal Body-->
         <div class="modal-body">
           
-                   
+                   <!--Passing Bike ID-->
             <form name="MyImage" id="uploadimage" action="/addbikepicture/<%=bike._id%>" method="POST" enctype="multipart/form-data">
               
             
@@ -30,7 +31,7 @@
           <button id="uploadBtn" type="button" class="btn btn-primary">UPLOAD</button>
 
            <button type="button" style="border-style:none;background:linear-gradient(0deg, rgba(255,223,205,1) 0%, rgba(255,14,14,1) 100%);!important" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
-           <!-- To update user details-->
+           
         
            
         
