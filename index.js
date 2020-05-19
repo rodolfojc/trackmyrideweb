@@ -1,25 +1,27 @@
-const dotenv = require('dotenv').config();
-const express = require('express');
-
-const axios = require('axios');
-const GeoJSON = require('geojson');
-const expressSession = require('express-session');
-const flash = require('express-flash-notification');
-//This adds the file property to the req object so uploaded files are accessible.
-const multer = require('multer');
+const dotenv = require('dotenv').config(); //To load environment variables 
+const express = require('express'); //Express middleware
+const axios = require('axios'); //handle http  requests
+const expressSession = require('express-session'); //Create the session
+const flash = require('express-flash-notification'); //Handle server response and display it to the user
+const multer = require('multer');// file property to the req object so uploaded files are accessible.
+const path = require('path'); //Path is a module to help us to get the directory path...
+const ejs = require('ejs'); // Constant to receive EJS module ( To install server side)
+const mongoose = require('mongoose'); //communicate with the Mongo Server (Install Server Side)
+const bodyParser = require('body-parser'); //parses incoming request bodies in a middleware and make the form data available under req.body property.
 
 const app = express();
-//Path is a module to help us to get the directory path...
-const path = require('path');
-//To be able to serve static files such CSS and fonts.
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); //parsing the incoming body request 
+app.use(express.static('views')); //serving static files
 
-// Constant to receive EJS module ( To install server side)
-const ejs = require('ejs');
-// Constant to require mongoose to be used and to communicate with the Mongo Server (Install Server Side)
-const mongoose = require('mongoose');
+app.set('view engine', 'ejs'); //Template engine for html files
 
-//Body-Parse parses incoming request bodies in a middleware and make the form data available under req.body property.
-const bodyParser = require('body-parser');
+
+
+
+
+//const GeoJSON = require('geojson'); CHECK FOR DELETION
+
 
 //Importing User model
 const UserCredentials = require('./models/User.js');
@@ -55,7 +57,7 @@ const incidentsController = require('./controllers/incidentsCtrl');
 
 const addbikeController = require('./controllers/addbike');
 
-const theftController = require('./controllers/theftCtrl'); //DELETE IF NOT IN USE
+//const theftController = require('./controllers/theftCtrl'); //DELETE IF NOT IN USE
 
 const newRackController = require('./controllers/newRackCtrl');
 
@@ -90,11 +92,6 @@ const validateMiddleWare = (req, res, next) => {
 };
 
 app.use('/index/store', validateMiddleWare);
-
-app.use(bodyParser.json());
-
-//To enable photo upload
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
 	expressSession({
 		secret: 'TrackMyRide',
@@ -103,18 +100,23 @@ app.use(
 	})
 );
 
+//Flash notifications to render server messages to front end, based on :
+//https://github.com/carlosascari/express-flash-notification-example/blob/master/server.js
 const flashNotificationOptions = {
 	beforeSingleRender: function(item, callback) {
 	  if (item.type) {
 		switch(item.type) {
+			//Positive Message
 		  case 'GOOD':
 			item.type = 'Success';
 			item.alertClass = 'alert-success';
 			break;
+			//Warning message
 		  case 'OK':
 			item.type = 'Info';
 			item.alertClass = 'alert-info';
 			break;
+			//Error message
 		  case 'BAD':
 			item.type = 'Error';
 			item.alertClass = 'alert-danger';
@@ -127,12 +129,7 @@ const flashNotificationOptions = {
   
   // Flash Notification Middleware Initialization
   app.use(flash(app, flashNotificationOptions));
-/*
-  app.get('/alert-1-good', function(req, res) {
-	req.flash('GOOD', 'MESSAGE', '/profile');
-  })
-  
-*/
+
 //Creating a local directory to store the pictures
 var storage = multer.diskStorage({
 	destination: function(req, file, cb) {
@@ -147,15 +144,11 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 
-app.use(bodyParser.urlencoded({ extended: true }));
+
 
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
 
-app.set('view engine', 'ejs');
 
-
-app.use(express.static('views'));
-//app.use(express.static('uploads'));
 
 
 app.listen(3005, () => {
@@ -188,7 +181,7 @@ app.post('/addBike', upload.single('myImages'), addbikeController);
 
 app.post('/searchBikes', searchBikesController);
 
-app.put('/incrementRack/:id', theftController); //DELETE IF NOT IN USE Testing the route to increment theft on a rack
+//app.put('/incrementRack/:id', theftController); //DELETE IF NOT IN USE Testing the route to increment theft on a rack
 
 app.post('/addNewRack', newRackController); //New rack
 
