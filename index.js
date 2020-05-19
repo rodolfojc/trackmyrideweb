@@ -12,6 +12,7 @@ const app = express(); //create the express application
 const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
 
 
 // Limit requests by users - Prevent DOS Attacks 
@@ -24,6 +25,9 @@ const limit = rateLimit({
 // Preventing XSS Attacks
 app.use(helmet());
 app.use(xss());
+
+//Preventing NoSQL Injection Attacks
+app.use(mongoSanitize());
 
 app.use(bodyParser.json({ limit: '10kb' })); //to use the body portion of request to json
 app.use(bodyParser.urlencoded({ extended: true })); //parsing the incoming body request 
