@@ -9,10 +9,10 @@ const ejs = require('ejs'); // Constant to receive EJS module ( To install serve
 const mongoose = require('mongoose'); //communicate with the Mongo Server (Install Server Side)
 const bodyParser = require('body-parser'); //parses incoming request bodies in a middleware and make the form data available under req.body property.
 const app = express(); //create the express application
-const rateLimit = require('express-rate-limit');
-const xss = require('xss-clean');
-const helmet = require('helmet');
-const mongoSanitize = require('express-mongo-sanitize');
+const rateLimit = require('express-rate-limit'); // Prevent DOS Attacks
+const xss = require('xss-clean'); //Preventing XSS Attacks
+const helmet = require('helmet'); //Preventing XSS Attacks II
+const mongoSanitize = require('express-mongo-sanitize'); //Preventing NoSQL Injection Attacks
 
 
 // Limit requests by users - Prevent DOS Attacks 
@@ -22,11 +22,11 @@ const limit = rateLimit({
     message: 'Error: Too many requests, please try later!' 
 });
 
-// Preventing XSS Attacks
+// Preventing XSS Attacks - Set of functions
 app.use(helmet());
 app.use(xss());
 
-//Preventing NoSQL Injection Attacks
+//Preventing NoSQL Injection Attacks - MongoDB
 app.use(mongoSanitize());
 
 app.use(bodyParser.json({ limit: '10kb' })); //to use the body portion of request to json
