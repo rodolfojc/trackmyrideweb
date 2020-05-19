@@ -12,24 +12,28 @@
           </button>
         </div>
         <div class="modal-body">
-          <% bike.map((bike)=>{%>
-            <form name="uploadImage" id="uploadimage" action="/uploadimage/<%bike._id%>" method="POST" enctype="multipart/form-data">
+          
+                   
+            <form name="MyImage" id="uploadimage" action="/addbikepicture/<%=bike._id%>" method="POST" enctype="multipart/form-data">
               
             
                 <div class="form-group floating-label-form-group controls">
-                 <input type="file" class="form-control" id="image" name="myImages" accept="image/*" multiple>
+                 <input type="file" class="form-control" id="image" name="MyImage" accept="image/*" multiple>
               </div>
-             
-              <%  }); %>
+            </form>
+           
    
            
          </div>
          <div class="modal-footer">
-           <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+
+          <button id="uploadBtn" type="button" class="btn btn-primary">UPLOAD</button>
+
+           <button type="button" style="border-style:none;background:linear-gradient(0deg, rgba(255,223,205,1) 0%, rgba(255,14,14,1) 100%);!important" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
            <!-- To update user details-->
         
-           <button id="uploadBtn" type="button" class="btn btn-primary">UPLOAD</button>
-         </form>
+           
+        
         </div>
         <div class="modal-footer">
         
