@@ -1,14 +1,12 @@
+// Return the latest parking spot added to the database
+
 const rackModel = require("../models/Racks.js");
 
 
 module.exports = async (req, res) => {
-  const userId = req.session.userId;
-  const rack = rackModel.findOne().sort({created_at: -1});
+  const userId = req.session.userId; //user ID
+  const rack = rackModel.findOne().sort({created_at: -1}); //Find the latest created
   console.log(rack);
+ res.render("map", { userId: userId , rack:rack}); //render map page
 
-    
-  // console.log("Racks from ctrl" + racks);
- // res.render("map", { userId: userId});
- res.render("map", { userId: userId , rack:rack});
- //res.render("map copy"); JUST FOR TESTS
 };

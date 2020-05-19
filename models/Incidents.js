@@ -1,3 +1,6 @@
+//Incidents schema
+
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -11,11 +14,7 @@ const IncidentSchema = new Schema({
   date: String,
   time: String,
   description: String,
-//   theft: [{
-//     quantity: Number,
-//   }
-      
-//   ],
+
 });
 
 const incident = mongoose.model("incidentNew", IncidentSchema);

@@ -14,31 +14,13 @@ module.exports = async (req, res) => {
        //Find the bikes the user have and return the object
       bikeModel.remove({userId: id})
     ]).then( () => {
-     
       console.log("deleted");
       
       req.session.destroy((err) => {
                   res.redirect('/') // will always fire after session is destroyed
                 })
                
-     // res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId})
-        
     }).catch(err =>{
        console.log(err);
     });
-   
-//   try {
-//      await userModel.findByIdAndDelete({_id: id}); 
-   
-  
-//      req.session.destroy((err) => {
-//         res.redirect('/') // will always fire after session is destroyed
-//       })
-   
-//     } catch (error) {
-//     console.log(`Delete account error--> ${error}`);
-
-  
-// }
- 
 }
