@@ -1,8 +1,8 @@
 const axios = require('axios');
-const Image = require('../models/Image.js');
 
+    // Route to add a bike.
 module.exports = async (req, res) => {
-	// Check the userId Logged
+    // Check the userId Logged
 	console.log(req.session.userId);
 
 	//Here you have the image to be added to the DB.
@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
 
 	// Getting value from the form
 	let { serial, brand, color, type, status, locker, userId } = req.body;
-
+   // Sending request to the server
 	try {
 		const response = await axios({
 			method: 'POST',
@@ -29,12 +29,11 @@ module.exports = async (req, res) => {
 				locker
 			}
 		});
-		console.log(response);
+		//getting bike response.
 		bike = response.data;
-		const successMessage = response.data.message;
-		console.log(req.session.userId);
-		console.log(successMessage);
-		// res.redirect('/welcomescreen2', bike, userId, successMessage);
+		
+		
+		//Flash will display a success message.
 		req.flash('GOOD', 'User Created!', '/managebike');
 		
 	} catch (err) {

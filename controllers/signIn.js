@@ -1,3 +1,5 @@
+// Route to Signup Page.
+
 const SignInPage = require("../models/User.js");
 
 module.exports = async (req, res) => {
