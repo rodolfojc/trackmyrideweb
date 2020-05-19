@@ -8,11 +8,10 @@ const path = require('path'); //Path is a module to help us to get the directory
 const ejs = require('ejs'); // Constant to receive EJS module ( To install server side)
 const mongoose = require('mongoose'); //communicate with the Mongo Server (Install Server Side)
 const bodyParser = require('body-parser'); //parses incoming request bodies in a middleware and make the form data available under req.body property.
-const app = express();
-app.use(bodyParser.json());
+const app = express(); //create the express application
+app.use(bodyParser.json()); //to use the body portion of request to json
 app.use(bodyParser.urlencoded({ extended: true })); //parsing the incoming body request 
 app.use(express.static('views')); //serving static files
-
 app.set('view engine', 'ejs'); //Template engine for html files
 
 //Creating a customer middleware
@@ -34,17 +33,6 @@ app.use(expressSession({
 
 //Mongoose connection using environment variables
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
-
-//const GeoJSON = require('geojson'); CHECK FOR DELETION
-
-
-//Importing User models
-//const UserCredentials = require('./models/User.js');
-//const ProfileImage = require('./models/ProfileImage');
-
-//Importing Bike models
-//const bikeModel = require('./models/Bike.js');
-//const BikePicture = require('./models/BikeImage');
 
 //Routing imports##################################################################
 
@@ -153,15 +141,11 @@ app.get('/', homeController); //Main route
 
 app.get('/sign', signinController); //Sign Up Controller
 
-//app.get('/home', welcomeController); //CHECK FOR DELETION
-
 app.get('/managebike', manageBikeController.loadBike); //Direct user to manage its bikes
 
 app.get('/consultmap', consultMapController); //Display the map
 
 app.get('/bikeinfo', bikeInfoController); //Display form to user input a serial number
-
-//app.get('/reportForm', reportFormController); //IS IT IN USE???????
 
 app.get('/consult', consultPageController); //Redirect user to Consult Map or Consult a bike serial
 
@@ -174,8 +158,6 @@ app.post('/incident', incidentsController); //New incident to the map
 app.post('/addBike', upload.single('myImages'), addbikeController); //Register a new Bike
 
 app.post('/searchBikes', searchBikesController); //Find bike by serial number
-
-//app.put('/incrementRack/:id', theftController); //DELETE IF NOT IN USE Testing the route to increment theft on a rack
 
 app.post('/addNewRack', newRackController); //New rack reported
 
@@ -199,49 +181,8 @@ app.post('/addbikepicture/:id', upload.single('MyImage'), manageBikeController.u
 
 app.post('/updateBikeInfo/:id', manageBikeController.updateBike); //Update bike details
 
-// Finish Routes#############################################################################
-
-// app.post("/index/store", async (req, res) => {
-// console.log(req.body);
-//
-// Axios
-// const { email, password } = req.body;
-// console.log(req.body);
-//
-// try {
-// const response = await axios({
-// method: "post",
-// url: "http://34.247.183.192:3000/signup",
-// headers: {},
-// data: {
-// email,
-// password,
-// },
-// });
-// console.log(response);
-// } catch (err) {
-// console.log(err.message);
-// }
-
-//
-// model creates a new doc with browser data
-// UserCredentials.create(req.body, (error, blogspot) => {
-// res.redirect("/");
-// });
-//
-// res.sendFile(path.resolve(__dirname, "public/pages/signin2.html"));
-//
-// after sign in, save token
-// res.render("home");
-// });
-
-// app.get("/about", (req, res) => {
-// res.sendFile(path.resolve(__dirname, "about.html"));
-// });
-
-//#############################################################################################//
+//Sign up route form
 app.post('/signin', async (req, res) => {
-	console.log('teste store: ' + req.body);
 
 	// Axios
 	const { email, password } = req.body;
@@ -259,15 +200,14 @@ app.post('/signin', async (req, res) => {
 		});
 		console.log(response.data.userId);
 		res.redirect('/'); //Redirect to the main page instead to login
-		//res.render('welcomescreen', { userId: response.data.userId });
 	} catch (err) {
-	//	req.flash('BAD', 'Something went wrong. Try again and Keep riding  <i class="material-icons">', '/');
      		console.log(err.message);
 			 res.redirect('/');
 	}
 
 });
 
+//Sign in route
 app.post('/login', async (req, res) => {
 	// Axios
 	const { email, password } = req.body;
@@ -296,42 +236,7 @@ app.post('/login', async (req, res) => {
 			userId: response.data.userId
 		});
 	} catch (err) {
-		//alert(response);
 		res.render('login2', { errors: 'Invalid email or password' });
 	}
 });
 
-//########################################################/
-//To save username inside the database
-
-// app.route("/put/id:").get((req, res) => {
-//   var id = req.params.id;
-//   console.log("Test to get ID ===>: " + id);
-
-//   bikeModel
-//     .findById(id, (err, bike) => {
-//       console.log("Return from DB: ==> : " + bike);
-//       var isfalse = 3;
-
-//       res.render("managebike", {
-//         bike: bike,
-//         isfalse: isfalse,
-//       });
-//       console.log("Return from DB:==> " + bike);
-//     })
-//     .post((req, res) => {
-//       var id = req.params.id;
-//       console.log("UPDATE ID: ==> " + id);
-//       console.log("What will be updated: ==> " + req.params);
-
-//       bikeModel.findByIdAndUpdate(id, req.body, { new: true }, (err) => {
-//         console.log(req.body);
-//         if (err) return res.send(500, err);
-//         return res.redirect("managebike");
-//       });
-//     });
-// });
-
-app.get('/gdpr', (req, res) => {
-	res.render('gdpr');
-});
