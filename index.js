@@ -10,6 +10,9 @@ const mongoose = require('mongoose'); //communicate with the Mongo Server (Insta
 const bodyParser = require('body-parser'); //parses incoming request bodies in a middleware and make the form data available under req.body property.
 const app = express(); //create the express application
 const rateLimit = require('express-rate-limit');
+const xss = require('xss-clean');
+
+
 
 // Limit requests by users - Prevent DOS Attacks 
 const limit = rateLimit({
@@ -17,6 +20,9 @@ const limit = rateLimit({
     windowMs: 60 * 60 * 1000, // Set to 1 Hour
     message: 'Error: Too many requests, please try later!' 
 });
+
+// Preventing XSS Attacks
+app.use(xss());
 
 app.use(bodyParser.json({ limit: '10kb' })); //to use the body portion of request to json
 app.use(bodyParser.urlencoded({ extended: true })); //parsing the incoming body request 
