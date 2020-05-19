@@ -82,7 +82,7 @@ const accountController = require('./controllers/accountCtrl');
 
 const bikeUpdateController = require('./controllers/bikeUpdateCtrl');
 
-const bikeImageController = require('./controllers/bikeImageCtrl');
+//const bikeImageController = require('./controllers/bikeImageCtrl');
 
 //###################################################################################
 
