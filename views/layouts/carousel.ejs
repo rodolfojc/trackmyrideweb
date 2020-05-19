@@ -40,15 +40,18 @@
           </ol>
           <div id="inner-image" class="carousel-inner">
            <!--If image is empty this is the default one-->
-           <%if (bikeImg ==null) {%>
+          
+           <%if (bikeImg==null) {%>
+
             <div class="carousel-item active">
-              <img
-              class="img-fluid" 
-              alt="Responsive image"
+              <div class="img-fluid">
+                <img alt="Responsive image"
                 style="height: 500px;max-width: 18rem;"
                 src="/img/bike1.jpeg"
                 alt="First slide"
               />
+              </div>
+              
             </div>
             <!--If there is a bike display here-->
             <%  } else{ %>
