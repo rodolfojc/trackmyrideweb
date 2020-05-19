@@ -1,0 +1,98 @@
+<!--This Modal will pop up when user wants to update THE FIRST bike-->
+<!-- This is a one time event -->
+<!--Flash will make sure we Display the Success Message when completing it-->
+<%- locals.flash %>
+<!--Modal Section-->
+<!--This Modal was hard-coded-->
+<div class="hardcoded-container">
+  <!--Route renders an object that changes the CSS ID turning the State from Hidden to Displayed.-->
+    <div class="parent-modal" id=<%= registredBefore===false? "hidden":"displayed" %>>
+      <div class="hardcoded-modal-content">
+        <div class="close">
+          <!--Button to leave the page-->
+          <a href="/welcomescreen2"> +</a>
+        </div>
+        <div><h3>REGISTER YOUR FIRST BIKE...</h3></div>
+        <form name="addbike2" id ="addbike2" action="/addBike" method="POST" enctype="multipart/form-data">
+          <div class="form-input">
+            <div class="col-auto">
+
+            
+              <label class="sr-only" for="inlineFormInput">Serial</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                name="serial"
+                placeholder="Serial"
+                required
+              />
+            </div>
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInput">Brand</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                name="brand"
+                placeholder="Brand"
+                required
+              />
+            </div>
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInput">Color</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                name="color"
+                placeholder="Color"
+                required
+              />
+            </div>
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInput">Type</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                name="type"
+                placeholder="Type"
+                required
+              />
+            </div>
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInput">Status</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                name="status"
+                placeholder="Status"
+                required
+              />
+            </div>
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInput">Lock</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                name="lock"
+                placeholder="Lock"
+                required
+              />
+            </div>
+            
+            <div class="col-auto">
+
+             
+            
+            
+            
+          </div>
+        </div>
+        <!--Form will submit using JQuery-->
+        </form>
+        <button id="submitBtn2" class="btn btn-primary">REGISTER</button>
+        <a href="/welcomescreen2"><button type="button" class="btn btn-danger" style="background:red;" data-dismiss="modal">Close</button></a>
+        
+      </div>
+      </div>
+    </div>
+  </div>
+  

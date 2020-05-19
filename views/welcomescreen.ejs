@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Welcome Screen main Page -->
+   
+      
+    <!-- add icon link -->
+    <link rel = "icon" href =  
+  "https://user-images.githubusercontent.com/33750251/64987392-f9eead80-d8c0-11e9-84a9-e2a4a7f624db.png"
+    type = "image/x-icon"> 
+
+    <!-- Responsiveness IF ACTIVE THE BIKE DOES NOT MOVE-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> </head>
+
+  
+  <!-- Font Awesome Script -->
+  <script src="https://kit.fontawesome.com/5c19bf284e.js"></script>
+  
+    
+  
+  <!--Importing the Header Layout element-->
+  <%-include('layouts/login2_header'); -%>
+  
+  <body>
+
+       <!-- Top Navbar -->
+       <nav id="mainNav" class="navbar navbar-dark bg-transparent navbar-expand-md py-0 static-top " >
+        <div class="d-flex bg-secondary"></div>
+        <div class="p-2 mr  -auto">
+        
+          <a class=" text-light  p-1"  href="/"  id="logout" ><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </nav>
+      <!-- Ends here-->
+    
+
+  
+
+  <div class="login">
+    <p class="main-txt" style="font-family: pacifico;color: white;font-size: 23px;margin-left: 45px;">
+      Track My Ride
+      <i id="bike-icon" class="material-icons"  >directions_bike</i></p>
+      
+      
+      <!-- Menu-->
+      <!--Call modal main screen and offers user options to manage bike-->
+       <a><button id="btn-consult" class="btn btn-primary btn-block btn-large" data-toggle="modal" data-target="#exampleModalCenter">MANAGE BIKE</button></a>
+      <!--Route to consult map-->
+       <a href="/consultmap"><button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" ">MAP INCIDENTS</button></a>
+      <!-- Route to consult bike using bike serial number--->
+       <a href="/bikeinfo"><button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" ">CONSULT BIKE SERIAL</button></a>
+      <!-- Route to Profile Page-->
+       <a href="/profile"><button id="btn-consult" type="submit"class="btn btn-primary btn-block btn-large" ">MY PROFILE</button></a>
+
+
+     
+  </div>
+  
+
+  
+    
+    <!--Import modal to provide manage bike options-->
+    <%-include('layouts/modalmainscreen'); -%>
+    <!--Import modal to first register a bike-->
+    <%-include('layouts/registerBikeModal'); -%>
+    <!--import first registration modal-->
+    <%-include('layouts/firstRegModal'); -%>
+    
+   
+
+ 
+    
+   <!--Scripts for this page-->
+
+    <%-include('layouts/welcomescreen-scripts'); -%>
+
+  </body>
+</html>

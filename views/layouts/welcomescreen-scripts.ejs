@@ -1,0 +1,122 @@
+<!--Welcome screen scripts-->
+<!-- All the scripts for the managebike main page are here.-->
+
+
+<!--importing JQUERY-->
+<script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    
+    <!--Bootstrap JS-->
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--JQuery validation -->
+ <script>
+   src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"
+ </script>
+
+ <!--J Query local file import-->
+
+<script src="/js/jquery.validate.min.js"></script>
+
+
+
+   
+     
+      <script>
+   //Function to validate and submit the form when user wants to add a new bike.
+   $(function() {
+     // Initialize form validation on the registration form.
+     // It has the name attribute "registration"
+     $("form[name='addbike']").validate({
+       // Specify validation rules
+       errorClass : 'validationmessage',
+       rules: {
+         // The key name on the left side is the name attribute
+         // of an input field. Validation rules are defined
+         // on the right side
+         serial: "required",
+         color: "required",
+         brand:"required",
+         type:"required",
+         status:"required",
+         locker:"required",
+        
+       },
+       // Specify validation error messages
+       messages:{
+         serial: "It is necessary to enter a Serial Number",
+         color: "Please define a color",
+         brand: "Define your bike Brand",
+         type:"Ex.Road,Montain,Hybrid,Folding,Cyclocross",
+   
+       },
+       // Make sure the form is submitted to the destination defined
+       // in the "action" attribute of the form when valid
+       submitHandler: function(form) {
+         form.submit();
+       }
+     });
+   });//function to submit form using JQuery.
+   $(document).ready(function(){
+       $("#submitBtn").click(function(){        
+           $("#addbike").submit(); // Submit the form
+           $(".form-control mb-2").prop('required',true);
+          
+       });
+        });
+
+
+      </script>
+
+      <script>
+
+     //Function to register a bike from the First register Modal.
+     $("form[name='addbike2']").validate({
+       // Specify validation rules
+       errorClass : 'validationmessage',
+       rules: {
+         // The key name on the left side is the name attribute
+         // of an input field. Validation rules are defined
+         // on the right side
+         serial: "required",
+         color: "required",
+         brand:"required",
+         type:"required",
+         status:"required",
+         locker:"required",
+        
+       },
+       // Specify validation error messages
+       messages:{
+         serial: "It is necessary to enter a Serial Number",
+         color: "Please define a color",
+         brand: "Define your bike Brand",
+         type:"Ex.Road,Montain,Hybrid,Folding,Cyclocross",
+   
+       },
+       // Make sure the form is submitted to the destination defined
+       // in the "action" attribute of the form when valid
+       submitHandler: function(form) {
+         form.submit();
+       }
+     });
+   //Function to submit the form using JQuery.
+   $(document).ready(function(){
+       $("#submitBtn2").click(function(){        
+           $("#addbike2").submit(); // Submit the form
+           $(".form-control mb-2").prop('required',true);
+          
+       });
+        }); 
+        
+      </script>
+      
+   
+       

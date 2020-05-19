@@ -1,4 +1,32 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+//Bike Schema
+const userModel = require('../models/User.js');
 
-const BikeSchema = new Schema({});
+const Img = require('./Image.js');
+
+const BikeSchema = new Schema({
+	//Setting attributes
+	userId: { type: mongoose.Schema.Types.ObjectId, ref: userModel },
+	serial: Number, //The db is number, here was String - Jady
+	brand: String,
+	color: String,
+	type: String,
+	status: String,
+	lock: String,
+	image: [
+		{
+			Img
+		}
+	],
+	report: [
+		{
+			type: String,
+			default: ''
+		}
+	]
+});
+
+const Bike = mongoose.model('bikes', BikeSchema);
+
+module.exports = Bike;

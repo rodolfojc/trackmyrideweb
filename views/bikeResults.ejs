@@ -1,0 +1,118 @@
+<!-- PRESENT THE BIKES THAT MATCH A CRITERIA
+    IN FIND BIKES /BIKE INFO
+
+    BOOTSTRAP GRID SOURCE CODE
+    https://www.codeply.com/go/AxMtnBNLm9/bootstrap-4-dynamic-dismissable-cards-grid
+  -->
+<!-- Header tags -->
+<%-include('layouts/Consultbike/consultbike_header'); -%>
+
+<body>
+
+  <!-- Style tags -->
+<%-include('layouts/Consultbike/consultbike_style'); -%>
+
+
+  <!-- Top Navbar -->
+  <nav id="mainNav" class="navbar navbar-dark bg-transparent navbar-expand-md py-0 static-top ">
+    <div class="d-flex bg-secondary"></div>
+    <div class="p-2 mr-auto">
+      <% if(userId == undefined){ %>
+      <a class=" text-light  p-1" href="/bikeinfo" id="home"><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+      <%}else{%>
+      <a class=" text-light  p-1" href="/welcomescreen" id="home"><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+      <%}%>
+    </div>
+  </nav>
+
+
+
+  <!--  Content-->
+  <div class="container">
+    <div class="row" id="contentPanel">
+    </div>
+  </div>
+  </div>
+
+
+  <!-- Modal to report a suspicious activity with a bike
+     https://mdbootstrap.com/docs/jquery/modals/basic/ -->
+  <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <%- locals.flash %>
+      <form action="/reportBikeInfo/<%=bikeInfoPage._id%>" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Is there anything suspicious with this bike?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <textarea id="bikeTxt" required="" value="<%bikeInfoPage._id%>" name="description"
+            placeholder="Write something.."></textarea>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" id="save">Submit</button>
+        </div>
+      </form>
+    </div>
+    </div>
+    </div>
+    
+    <script>
+      let array = [];
+      //Bike returned from the query
+      array.push({
+        Brand: "<%=bikeInfoPage.brand%>",
+        Status: "<%=bikeInfoPage.status%>"
+      });
+      //Determine the number of cards that will be created, each card for a bike
+      //Feature would be implemented with find bikes by color, type, etc
+      var num = array.length;
+      //Create the variable
+      var addCols = function (num, array) {
+        //Make i the array i
+        for (var i = 1; i <= num; i++) {
+          var myCol = $('<div class="col-sm-6 col-md-4 pb-2"></div>');
+          var myPanel = $('<div class="card-deck"><div class="card border-success mb-3" id="' + i +
+            'Panel"><div class="card-block">    <img class="card-img-top" src="https://cdn.webshopapp.com/shops/219098/files/302607843/second-hand-s-h-bike-cuda-bolt-kids-road-24w-priva.jpg" alt="Card image cap"><div class="card-title"><span>Bike ' + i +
+            '</span></div><p>Brand: <%=bikeInfoPage.brand%></p>' + '<p>Status: <%=bikeInfoPage.status%></p>' +
+            '<button type="button" id="modalDisplay" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal"> Report This Bike</button>' +
+            ' </div></div></div>');
+          myPanel.appendTo(myCol);
+          myCol.appendTo('#contentPanel');
+        }
+
+      };
+
+      //Display cards with image and details
+      //as soon as page loads
+      $(document).ready(function () {
+        addCols(num, array);
+        // addCols($('#numPanels').val());
+        return false;
+      });
+
+      //Delete text previously inserted in the modal text area
+      $(document).on('hidden.bs.modal', function (e) {
+        $('.modal-body textarea').each(function () {
+          $(this).val('');
+        });
+      });
+
+
+      //TO DEVELOPED A FUNCTION TO VALIDATE IF TEXT AREA IS EMPTY
+
+     // When save button is clicked, save content from
+      //text area in the $select_value variable
+      $('#save').click(function () {
+          $select_value = $("#bikeTxt").val();
+      });
+    </script>
+</body>
+
+</html>

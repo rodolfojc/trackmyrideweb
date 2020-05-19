@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--SignIn Page -->
+  <!--Importing the Header Layout element-->
+  <%-include('layouts/signin_header'); -%>
+
+  <!-- Scripts -->
+  <!-- Boostrtrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Font Awesome Script -->
+    <script src="https://kit.fontawesome.com/5c19bf284e.js"></script>
+  
+    <!-- Responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+ 
+  <body>
+   
+  <!--Parent Div-->
+    <div class="login">
+      <p
+        class="main-txt"
+        style="
+          font-family: pacifico;
+          color: white;
+          font-size: 23px;
+          margin-left: 45px;
+        "
+      >
+        Track My Ride<i id="bike-icon" class="material-icons"
+          >directions_bike</i
+        >
+      </p>
+
+      <form name = "signvalidated" action="/signin" method="POST">
+        <!--When submitting the form the browser will make a POST request to the /signin/store endpoint.Check Index.js-->
+        <input
+          type="text"
+          name="email"
+          placeholder="Enter your email"
+          required="required"
+        />
+        <input
+          type="PASSWORD"
+          name="password"
+          placeholder="Enter a Password"
+          required="required"
+        />
+        <input 
+           type="PASSWORD" 
+           name="p" 
+           placeholder="Confirm your Password" 
+           required="required" 
+         />
+        <br>
+ 
+        <span class="checkbox"><input type="checkbox" class="form-group" name="termscheckbox" id="terms" value="#" required/></span>
+        <strong> <span style="color: white"> Accept<a href="#" data-toggle="modal" data-target="#exampleModalLong"> Terms and Conditions</a></span></strong>
+   
+         <button id="btn" type="submit" class="btn btn-primary btn-block btn-large" >Sign Up <i class="fas fa-user-plus"></i></button>
+
+          <br />
+          <br />
+         
+          <a href="/"> <p  style="text-align: center; color:white">Already a member? <strong> <span style=" color: #63e69e">Log in <i class="fas fa-sign-in-alt"></i></span></p></strong></a>
+        
+      </form>
+    </div>
+
+      <!-- GDPR Modal  - trigger when link is clicked-->
+      <%-include('layouts/GDPR/gdprModal'); -%>
+      
+      
+      <!--Scripts-->
+
+     <%-include('layouts/scripts'); -%>
+  </body>
+</html>

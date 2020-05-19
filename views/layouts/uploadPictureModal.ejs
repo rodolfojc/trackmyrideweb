@@ -1,0 +1,47 @@
+
+<!--Modal to upload bike picture -->
+
+  <!-- Modal Header -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="" id="">UPlOAD PICTURE</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+   <!--Modal Body-->
+        <div class="modal-body">
+          
+                   <!--Passing Bike ID-->
+            <form name="MyImage" id="uploadimage" action="/addbikepicture/<%=bike._id%>" method="POST" enctype="multipart/form-data">
+              
+            
+                <div class="form-group floating-label-form-group controls">
+                 <input type="file" class="form-control" id="image" name="MyImage" accept="image/*" multiple>
+              </div>
+            </form>
+           
+   
+           
+         </div>
+         <div class="modal-footer">
+
+          <button id="uploadBtn" type="button" class="btn btn-primary">UPLOAD</button>
+
+           <button type="button" style="border-style:none;background:linear-gradient(0deg, rgba(255,223,205,1) 0%, rgba(255,14,14,1) 100%);!important" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+           
+        
+           
+        
+        </div>
+        <div class="modal-footer">
+        
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  

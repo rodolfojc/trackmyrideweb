@@ -1,0 +1,637 @@
+@font-face {
+	font-family: "pacifico";
+	src: url('"https://fonts.googleapis.com/css2?family=Pacifico&display=swap"') format("embedded-opentype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+.section {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+
+#bike-icon {
+	margin-left: 5px;
+	padding: 8px;
+	padding-top: 28px;
+	margin-bottom: -8px;
+}
+
+.map-route {
+	background-color: white;
+	color: white;
+	text-align: center;
+	z-index: 1;
+	position: absolute;
+	top: 8px;
+	right: 16px;
+	border-radius: 50%;
+	padding: 15px;
+	width: 100px;
+	height: 100px;
+	font-size: 22px;
+	font-family: "Pacifico";
+	opacity: 0.6;
+	box-shadow: 0 1px 2px;
+	margin-top: 70px;
+}
+
+.map-route a:hover {
+	color: rgb(98, 235, 19);
+}
+
+.main-text {
+	font-family: "pacifico";
+	color: white;
+	font-size: 23px;
+}
+
+.section h1 {
+	text-align: center;
+	font-size: 2rem;
+	font-family: "Source Code Pro";
+	background: #50396d;
+	padding: 20px;
+	margin: 15px;
+	z-index: 1;
+	opacity: 1;
+	border-radius: 40px;
+	border: 1px;
+	padding: 50px;
+	box-shadow: 0 10px 20px;
+	font-size: 24;
+	background-image: linear-gradient(#432a61, #5b4876, white);
+}
+
+.logo {
+	border-radius: 80px;
+	padding: 10px;
+	size: 10px;
+	opacity: 0.8;
+	padding: 5px;
+	width: 200px;
+	height: 32%;
+	margin-left: 43px;
+	margin-bottom: 25px;
+}
+
+.password-rec a {
+	color: black;
+	font-size: 15px;
+	font-family: Arial;
+}
+
+.password-rec a:hover {
+	color: red;
+}
+
+/* Login and Register form */
+.section input {
+	border-radius: 10px;
+	padding: 10px;
+	background-color: rgb(214, 212, 216);
+	font-weight: 10;
+	width: 100%;
+	box-sizing: border-box;
+	color: rgb(26, 24, 24) ;
+}
+
+#button:hover {
+	color: red;
+}
+
+.section input:after {
+	content: "";
+	background: #2eeb2e;
+	display: block;
+	position: absolute;
+	padding-top: 300%;
+	padding-left: 350%;
+	margin-left: -20px !important;
+	margin-top: -120%;
+	opacity: 0;
+	transition: all 0.8s;
+}
+
+/* is this in use?? */
+.video-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.color-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: lightgray;
+	width: 100%;
+	height: 100vh;
+	opacity: 0.3;
+}
+
+@font-face {
+	font-family: "Material Icons";
+
+	src: url('"https://fonts.googleapis.com/icon?family=Material+Icons"') format("embedded-opentype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Source Code Pro";
+
+	src: url('"https://fonts.googleapis.com/css?family=Source+Code+Pro"') format("embedded-opentype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* CSS for Sign In page   */
+.terms-conditions strong {
+	font-size: 25px;
+}
+.section-signin label {
+	font-size: small;
+}
+.section-signin h1 {
+	border-radius: 70px;
+	padding: 60px;
+	position: fixed;
+	right: 0;
+	left: 40%;
+	top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+	display: table;
+	text-align: center;
+	box-shadow: 0 10px 20px;
+
+	background-image: linear-gradient(#432a61, #5b4876, white);
+
+	z-index: 1;
+}
+
+.section-signin input {
+	border-radius: 10px;
+	/* font-family: "Play"; */
+	padding: 10px;
+	background-color: rgb(214, 212, 216);
+	outline: 1;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.fixed-nav-bar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	width: 100%;
+	height: 50px;
+	background-color: rgba(41, 0, 59, 0.8);
+}
+
+.list-option {
+	float: right;
+}
+
+.fixed-nav-bar li {
+	display: inline-block;
+	color: white;
+	margin-right: 10px;
+	line-height: 0px;
+	font-family: "Source Code Pro";
+}
+
+.fixed-nav-bar a {
+	color: white;
+}
+
+#nav-bar :hover {
+	color: rgb(99, 236, 99);
+}
+
+.section-signin button {
+	border-radius: 20px;
+	padding: 10px;
+	width: auto;
+	box-shadow: 0 10px 20px;
+}
+
+.section-signin button:hover {
+	color: red;
+}
+
+.footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 9999;
+	width: 100%;
+	height: 50px;
+	background-color: rgba(41, 0, 59, 0.8);
+}
+
+/* Map features */
+/* #mapid { 
+  width:900px; 
+  height:480px;
+
+
+  
+ }
+
+ body {
+  padding: 0;
+  margin: 0;
+} */
+/* html,
+body
+ {
+  height: 100%;
+  width: 100vw;
+} */
+/* after navbar */
+
+.home-button {
+	border-radius: 30px;
+	height: 44px;
+	width: 230px;
+	background-color: rgb(214, 212, 216);
+	font-family: monospace;
+}
+/* .fill {
+  flex: 1 1 auto;
+} */
+
+#mapid {
+	position: absolute;
+	display: block;
+
+	width: 100%;
+	min-width: 100%;
+	height: 100%;
+
+	/* min-width: 100%; 
+ min-height: 100vh; 
+ display:block;
+  position:absolute;
+  height:auto;
+  bottom:0;
+  top:0;
+  height: 90%
+  width: 80%;
+  left:0;
+  right:0;
+  margin-top:40px;
+  margin-right:150px;
+
+ */
+}
+
+#content {
+	width: 100%;
+	min-height: 90vh;
+	transition: all 0.3s;
+	position: relative;
+	top: 0;
+	right: 0;
+
+	flex-grow: 1;
+}
+
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+    https://bootstrapious.com/tutorial/sidebar/index3.html
+----------------------------------------------------- */
+
+/* SideBar container */
+.wrapper {
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+#rackId,
+#newRackId {
+	/* selected rack */
+	display: none;
+}
+
+#sidebar {
+	width: 300px;
+	position: fixed;
+	top: 0;
+	left: -300px;
+	height: 100%;
+	z-index: 999;
+	background: black;
+	color: #fff;
+	transition: all 0.3s;
+	overflow-y: scroll;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+#sidebar.active {
+	left: 0;
+}
+
+#dismiss {
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	background: black;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+#dismiss:hover {
+	background: #fff;
+	color: #7386d5;
+}
+
+/* Overlay layer */
+.overlay {
+	display: none;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 998;
+	opacity: 0;
+	transition: all 0.5s ease-in-out;
+}
+/* Active overlay layer */
+.overlay.active {
+	display: block;
+	opacity: 10;
+}
+
+/* Message on the overlay hidden */
+#clickMap {
+	display: none;
+}
+
+#newRackForm.active {
+	display: block;
+}
+#incidentForm.active {
+	display: block;
+}
+
+#newRackForm {
+	display: none;
+}
+#incidentForm {
+	display: none;
+}
+
+/* Message on the overlay active */
+#clickMap.active {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 50px;
+	color: white;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+}
+
+#sidebar .sidebar-header {
+	padding: 10px;
+	background: #6d7fcc;
+}
+
+#sidebar input {
+	padding: 5px 0px;
+	margin-left: 10px;
+	border-bottom: 1px solid #47748b;
+}
+
+/*
+#sidebar ul p {
+	color: #fff;
+	padding: 5px;
+}
+
+#sidebar ul li a {
+	padding: 10px;
+	font-size: 1.1em;
+	display: block;
+}
+
+#sidebar ul li a:hover {
+	color: #7386d5;
+	background: #fff;
+}
+
+#sidebar ul li.active > a,
+a[aria-expanded="true"] {
+	color: #fff;
+	background: green;
+}
+
+a[data-toggle="collapse"] {
+	position: relative;
+}
+
+.dropdown-toggle::after {
+	display: block;
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: translateY(-50%);
+}
+*/
+
+.form-input input {
+	border-style: none !important;
+	background-color: white !important;
+
+	box-shadow: none !important;
+}
+/* label side bar form */
+.col-form-label {
+	margin-right: 10px;
+	margin-left: 40px;
+}
+/* Input side bar form */
+.col-xs-8 {
+	/* margin-left: auto; */
+}
+#register-btn {
+	margin-top: 0%;
+	width: 60%;
+	height: auto;
+
+	padding-top: 5%;
+	padding-bottom: 8%;
+	border-radius: 20px;
+	text-align: center;
+}
+
+ul ul a {
+	font-size: 0.9em !important;
+	padding-left: 30px !important;
+	background: black;
+}
+
+ul.CTAs {
+	padding: 20px;
+}
+
+ul.CTAs a {
+	text-align: center;
+	font-size: 0.9em !important;
+	display: block;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+
+a.download {
+	background: #fff;
+	color: #7386d5;
+}
+
+.link-password a {
+	color: white;
+}
+
+.link-password a:hover {
+	color: lightgreen;
+	text-shadow: yellow;
+	text-decoration-color: yellowgreen;
+	zoom: 1;
+}
+
+a.article,
+a.article:hover {
+	background: #6d7fcc !important;
+	color: #fff !important;
+}
+/* ---------------------------------------------------
+    FONT AWESOME STYLE FOR MAP
+----------------------------------------------------- */
+.fa-flag {
+	color: purple;
+}
+
+.fa-flag:hover {
+	color: yellow;
+}
+
+/* ---------------------------------------------------
+   BIKE INFO EJS STYLE
+----------------------------------------------------- */
+
+.div-style {
+	margin-top: 4rem;
+	padding: 3rem;
+	background: rgba(255, 255, 255, 0.459);
+	border-radius: 20px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0.5rem 1rem 0px;
+}
+
+#bike-icon {
+	margin-left: 33%;
+	margin-top: -1.7%;
+
+	position: fixed;
+	left: 20%;
+	animation-name: fade;
+	animation-duration: 10s;
+}
+
+form .error {
+	color: #eb3636;
+	font-size: small;
+	font-style: italic;
+}
+
+@keyframes fade {
+	50% {
+		left: 30%;
+	}
+}
+
+@media only screen and (min-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+	#bike-icon {
+		margin-left: 345px;
+		margin-top: -27px;
+	}
+
+	.text-box {
+		border-radius: 1rem;
+		margin-top: 1rem;
+		color: black;
+	}
+	.button-submit {
+		width: 50%;
+		border-radius: 1rem;
+		margin-top: 1rem;
+	}
+
+	.main-label {
+		margin: 1rem;
+	}
+
+	/* ---------------------------------------------------
+   DISPLAY BIKES FROM SEARCH EJS STYLE
+----------------------------------------------------- */
+
+	.row {
+		/* after navbar */
+		margin-top: 20px;
+	}
+	body,
+	html {
+		background: #ae9ef711;
+	}
+
+	.card-block {
+		padding: 10px;
+	}
+
+	/* INSIDE MODAL */
+
+	#bikeTxt {
+		box-sizing: border-box;
+		width: 100%;
+		height: 100%;
+		/* height: 200px; */
+		/* width: 465px; */
+	}
+
+	form .error {
+		color: #ff0000;
+		font-size: small;
+		font-style: italic;
+	}
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+	#bike-icon {
+		margin-left: 35%;
+		margin-top: -2.4%;
+	}
+}
+
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+	#bike-icon {
+		margin-left: 34%;
+		margin-top: -1.7%;
+	}
+}

@@ -1,0 +1,96 @@
+
+<!--ManageBike scripts -->
+<script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Custom scripts for this template -->
+   
+    <script src="js/bikelist.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+
+    <script>
+      var bikelist;
+      $('#exampleModal').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) // Button that triggered the modal
+          var recipient = button.data('whatever') // Extract info from data-* attributes
+          // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+          // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+          var modal = $(this)
+          modal.find('.modal-title').text('New message to ' + recipient)
+          modal.find('.modal-body input').val(recipient)
+        }); 
+      
+        $(function() {
+          // Initialize form validation on the registration form.
+          // It has the name attribute "registration"
+          $("form[name='update']").validate({
+            // Specify validation rules
+            errorClass : 'validationmessage',
+            rules: {
+              // The key name on the left side is the name attribute
+              // of an input field. Validation rules are defined
+              // on the right side
+              serial: "required",
+              color: "required",
+              brand:"required",
+              type:"required",
+              status:"required",
+              locker:"required",
+             
+            },
+            // Specify validation error messages
+            messages:{
+              serial: "It is necessary to enter a Serial Number",
+              color: "Please define a color",
+              brand: "Define your bike Brand",
+              type:"Ex.Road,Montain,Hybrid,Folding,Cyclocross",
+        
+            },
+            // Make sure the form is submitted to the destination defined
+            // in the "action" attribute of the form when valid
+            submitHandler: function(form) {
+              form.submit();
+            }
+          });
+        });
+        
+        
+        
+        $(document).ready(function(){
+            $("#update-bike").click(function(){        
+                $("#updatebike").submit(); // Submit the form
+                $(".form-group").prop('required',true);
+    
+                
+        
+            });
+             });
+
+                $(document).ready(function(){
+                $("#uploadBtn").click(function(){        
+                $("#uploadimage").submit(); // Submit the form
+                $(".form-group").prop('required',true);
+    
+                
+        
+            });
+             });
+  
+  
+            
+     </script>
