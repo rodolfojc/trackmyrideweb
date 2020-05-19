@@ -1,15 +1,17 @@
-// Used por profile and account details
+//const mongoose = require('mongoose');
 const bikeModel = require("../models/Bike.js");
 const userModel = require("../models/User.js");
+//const Profile = mongoose.model('Profile');
 const Profile = require("../models/ProfileImage.js");
-//const path = require('path');
+//const Bike = mongoose.model("Bike");
+const path = require('path');
 
 let userBikeDetails; //Assign bike object
 let accountDetails; //Assign user object
-let bikeCount; //Bikes a user have
-let message; 
+let bikeCount;
+let message;
 let userId ;
-//const axios = require('axios');
+const axios = require('axios');
 
  exports.loadProfile = async (req, res) => {
   
@@ -27,8 +29,8 @@ let userId ;
           ]).then( (result) => {
             accountDetails = result[0];    //Assign user object
              userBikeDetails = result[1]; //Assign bikes object
-             bikeCount = result[2]; //Bikes the user have
-             profilePic = result[3]; //profile picture
+             bikeCount = result[2];
+             profilePic = result[3];
          
             //Display profile page and send both user and bike objects
             console.log(userId);
@@ -43,10 +45,11 @@ let userId ;
    
 }
 
-//Route to update user password
 exports.updatePassword = async (req, res) => {
   
  const userId = req.params.id; //Logged user
+//   const password = "test";
+//const userId = req.session.userId;
  const password = req.body.updatedPass;
    
    console.log("From the update user: " +userId +" pass:" + password);
@@ -61,8 +64,12 @@ exports.updatePassword = async (req, res) => {
 			}
       });
       message = response.data.message;
-        req.flash('GOOD', 'Password updated', '/profile');
-      
+      console.log(response.data.message);
+
+    //  res.redirect(('/profile', {anyVar:true})); 
+         // res.render("profile",  {userBikeDetails: userBikeDetails, accountDetails: accountDetails, userId:userId, message:message})
+         req.flash('GOOD', 'Password updated', '/profile');
+        // return	res.redirect("/profile");
   
 	} catch (err) {
     console.log(err.message);
@@ -71,7 +78,6 @@ exports.updatePassword = async (req, res) => {
   
 }
 
-//Update user profile picture
 exports.updatePicture = async (req, res) => {
 
   let img = new Profile();
@@ -83,6 +89,8 @@ exports.updatePicture = async (req, res) => {
     
   try {
     await img.save();
+    //res.status(201).send({ img });
+
     req.flash('GOOD', 'Profile picture updated', '/profile');
 
   } catch (err) {
@@ -92,3 +100,32 @@ exports.updatePicture = async (req, res) => {
   }
 }
 
+//CODE BELOW IS WORKING
+
+// module.exports = async (req, res) => {
+
+
+//      const id = req.session.userId;
+//     console.log(req.session.userId);
+
+//   try {
+    
+//     const userBikeDetails = await bikeModel.findOne({userId: id}); 
+//     if(!userBikeDetails) {
+
+//       throw new Error('User has no data registered');
+      
+//     }
+//     console.log(userBikeDetails);
+//       res.render("profile",  {userBikeDetails: userBikeDetails});
+//       return userBikeDetails;
+//     } catch (error) {
+//     console.log(`findOne error--> ${error}`);
+  
+//     res.render("profile", {noData : true} ); 
+  
+//     return error;
+    
+// }
+   
+// }

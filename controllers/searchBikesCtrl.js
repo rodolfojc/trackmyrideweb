@@ -1,5 +1,3 @@
-//Return bikes by serial number
-
 const bikeModel = require('../models/Bike.js');
 
 module.exports = async (req, res) => {
@@ -22,4 +20,10 @@ module.exports = async (req, res) => {
 
 		return error;
 	}
+
+	//res.render("bikeResults",  {bikeInfoPage});
+	//console.log(bikeInfoPage);
+	//console.log(typeof bikeInfoPage);
+	//res.render("bikeResults",  {bikeInfoPage});
+	// res.render("bikeResults",  {bikeInfoPage: bikeInfoPage});
 };

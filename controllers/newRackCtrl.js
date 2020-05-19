@@ -1,5 +1,3 @@
-//Add the new reported parking spot to the database
-
 const newRack = require("../models/Racks.js");
 const racksModel = require("../models/Theft.js");
 
@@ -21,12 +19,15 @@ module.exports = async (req,res) =>{
            //add incident to the list
            newRackAdded.save(),   
             // Increment one incident on the  theft field (quantity)
-            rack.save(), 
+            rack.save(), //  Theft.findOneAndUpdate({rackId : rack}, {$inc: { quantity: 1}}, {new: true }) DELETE
           ]).then( () => {
             //TO BE ADDED - RETURN BACK A SUCCESS MESSAGE
             console.log( "This is the rack" +newRackAdded );
+            
+           //  res.render("map",  {userId: userId, rack:newRackAdded})
+        //  res.render("map", {userId: userId});
         req.flash('GOOD', 'Thank you: suggestion under review. Keep riding  <i class="material-icons">', '/consultmap');
-      
+      // res.render("/consultmap");
           });
          
                   

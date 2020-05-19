@@ -52,7 +52,7 @@ const reportFormController = require('./controllers/reportform');
 
 const consultPageController = require('./controllers/consult');
 
-//const newUserController = require('./controllers/newUser');
+const newUserController = require('./controllers/newUser');
 
 const welcomeScreenController = require('./controllers/welcomeScreen');
 
