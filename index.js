@@ -8,7 +8,6 @@ const path = require('path'); //Path is a module to help us to get the directory
 const ejs = require('ejs'); // Constant to receive EJS module ( To install server side)
 const mongoose = require('mongoose'); //communicate with the Mongo Server (Install Server Side)
 const bodyParser = require('body-parser'); //parses incoming request bodies in a middleware and make the form data available under req.body property.
-
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); //parsing the incoming body request 
@@ -16,20 +15,36 @@ app.use(express.static('views')); //serving static files
 
 app.set('view engine', 'ejs'); //Template engine for html files
 
+//Creating a customer middleware
+const validateMiddleWare = (req, res, next) => {
+	if (req.email == null || req.password == null) {
+		return res.redirect('/sigIn2');
+	}
+	next();
+};
+app.use('/index/store', validateMiddleWare);
 
+//Creating an express session
+app.use(expressSession({
+		secret: 'TrackMyRide',
+		resave: true,
+		saveUninitialized: true
+	})
+);
 
-
+//Mongoose connection using environment variables
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
 
 //const GeoJSON = require('geojson'); CHECK FOR DELETION
 
 
-//Importing User model
-const UserCredentials = require('./models/User.js');
+//Importing User models
+//const UserCredentials = require('./models/User.js');
+//const ProfileImage = require('./models/ProfileImage');
 
-//Importing Bike model
-const bikeModel = require('./models/Bike.js');
-const ProfileImage = require('./models/ProfileImage');
-const BikePicture = require('./models/BikeImage');
+//Importing Bike models
+//const bikeModel = require('./models/Bike.js');
+//const BikePicture = require('./models/BikeImage');
 
 //Routing imports##################################################################
 
@@ -83,22 +98,6 @@ const bikeImageController = require('./controllers/bikeImageCtrl');
 
 //###################################################################################
 
-//Creating a customer middleware
-const validateMiddleWare = (req, res, next) => {
-	if (req.email == null || req.password == null) {
-		return res.redirect('/sigIn2');
-	}
-	next();
-};
-
-app.use('/index/store', validateMiddleWare);
-app.use(
-	expressSession({
-		secret: 'TrackMyRide',
-		resave: true,
-		saveUninitialized: true
-	})
-);
 
 //Flash notifications to render server messages to front end, based on :
 //https://github.com/carlosascari/express-flash-notification-example/blob/master/server.js
@@ -133,7 +132,7 @@ const flashNotificationOptions = {
 //Creating a local directory to store the pictures
 var storage = multer.diskStorage({
 	destination: function(req, file, cb) {
-		cb(null, '/home/ec2-user/trackmyrideweb/views/uploads');
+		cb(null, '/home/ec2-user/trackmyrideweb/views/uploads'); //cloud address
 	},
 
 	filename: function(req, file, cb) {
@@ -143,47 +142,42 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
-
-
-
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
-
-
-
-
+//Local port for the application
 app.listen(3005, () => {
 	console.log('App listening on port 3005');
 });
 
 //Routes for all pages #####################################################################
 
-app.get('/sign', signinController);
+app.get('/', homeController); //Main route
 
-app.get('/home', welcomeController);
+app.get('/sign', signinController); //Sign Up Controller
 
-app.get('/managebike', manageBikeController.loadBike);
+//app.get('/home', welcomeController); //CHECK FOR DELETION
+
+app.get('/managebike', manageBikeController.loadBike); //Direct user to manage its bikes
 
 app.get('/consultmap', consultMapController); //Display the map
 
-app.get('/', homeController);
-
 app.get('/bikeinfo', bikeInfoController); //Display form to user input a serial number
 
-app.get('/reportForm', reportFormController); //IS IT IN USE???????
+//app.get('/reportForm', reportFormController); //IS IT IN USE???????
 
 app.get('/consult', consultPageController); //Redirect user to Consult Map or Consult a bike serial
 
-app.get('/welcomescreen', welcomeScreenController);
+app.get('/welcomescreen', welcomeScreenController); //Main menu
+
+app.get('/welcomescreen2', callWelcomeScreen2Controller);//Main menu with no object
 
 app.post('/incident', incidentsController); //New incident to the map
 
-app.post('/addBike', upload.single('myImages'), addbikeController);
+app.post('/addBike', upload.single('myImages'), addbikeController); //Register a new Bike
 
-app.post('/searchBikes', searchBikesController);
+app.post('/searchBikes', searchBikesController); //Find bike by serial number
 
 //app.put('/incrementRack/:id', theftController); //DELETE IF NOT IN USE Testing the route to increment theft on a rack
 
-app.post('/addNewRack', newRackController); //New rack
+app.post('/addNewRack', newRackController); //New rack reported
 
 app.get('/update', updateController); // to call the modal in ManageBike Screen.
 
@@ -193,19 +187,17 @@ app.get('/callmodal', callModalController); //to call Modal in Main Screen to ac
 
 app.get('/registerbike', callRegisterController); // to call Modal to register a bike.
 
-app.get('/welcomescreen2', callWelcomeScreen2Controller);
-
 app.get('/profile', profileController.loadProfile); //Open user profile page
+
+app.post('/updatepassword/:id', profileController.updatePassword); //Update a password
+
+app.post('/addPicture/:id', upload.single('MyImage'), profileController.updatePicture); //Upload a profile picture
 
 app.post('/deleteaccount/:id', accountController); //Delete an account from the user profile page
 
-app.post('/updatepassword/:id', profileController.updatePassword);
+app.post('/addbikepicture/:id', upload.single('MyImage'), manageBikeController.updatePicture); //Upload new bike picture
 
-app.post('/addPicture/:id', upload.single('MyImage'), profileController.updatePicture);
-
-app.post('/addbikepicture/:id', upload.single('MyImage'), manageBikeController.updatePicture);
-
-app.post('/updateBikeInfo/:id', manageBikeController.updateBike);
+app.post('/updateBikeInfo/:id', manageBikeController.updateBike); //Update bike details
 
 // Finish Routes#############################################################################
 
