@@ -11,7 +11,7 @@ const bodyParser = require('body-parser'); //parses incoming request bodies in a
 const app = express(); //create the express application
 const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
-
+const helmet = require('helmet');
 
 
 // Limit requests by users - Prevent DOS Attacks 
@@ -22,6 +22,7 @@ const limit = rateLimit({
 });
 
 // Preventing XSS Attacks
+app.use(helmet());
 app.use(xss());
 
 app.use(bodyParser.json({ limit: '10kb' })); //to use the body portion of request to json
