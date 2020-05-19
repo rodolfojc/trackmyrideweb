@@ -66,13 +66,11 @@
         left: 0;
         text-align: center;
     }
-
     .navbar-nav .btn {
     margin-right: 25px;
     margin-left: 25px;
 }
 }
-
 </style>
 
   <body>
@@ -270,7 +268,6 @@
 
  <!-- <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-0" > -->
   <div id="content"> 
-    
   <nav id="mainNav" class="navbar navbar-dark bg-dark navbar-expand-md py-2 static-top " >
     
     <% if(userId == undefined){ %>
@@ -300,7 +297,7 @@
                 <button class="btn btn-success p-2"  data-toggle="collapse" href="#" data-target=".chat" id="newRack">Add Parking Spot</button>
               </li>
               <li>
-                <button class="btn btn-light p-2" data-target=".chat"  id= "addIncident">Report Incident </button>
+                <button class="btn btn-light p-2" data-target=".chat" href="#" id= "addIncident">Report Incident </button>
               </li>
 
          
@@ -325,15 +322,14 @@
           </div>
         </div>
         </nav>
+
         <div id="flashMessage">
           <%- locals.flash %>
         </div>
-
   
+       
         <!--Map  -->
         <div class="map-responsive">
-       
-          
           <div id="mapid" ></div>
         </div>   
       </div>
@@ -342,7 +338,7 @@
         <div id="clickMap" ><span></span></div>
       </div>    
     </div>
-
+  
 
     <!--Importing the Scripts from Layout-->
 
@@ -361,18 +357,19 @@
   <script type="text/javascript">
              
     $(document).ready(function () {
-
       
-      //Timeout for flash message to disappear (10 seconds)
-      window.setTimeout("document.getElementById('flashMessage').style.display='none';", 10000);
+      //Timeout for flash message to disappear (5 seconds)
+     window.setTimeout("document.getElementById('flashMessage').style.display='none';", 5000);
+    
+ 
+   if(("<%=rack%>").length >0){
+   
 
-   if(("<%=locals.rack%>").length >0){
-     console.log("<%=rack.newRackId%>");
+   //  alert("<%rack%>");
      console.log("<%=locals.rack%>");
    }else{
     console.log("null");
    }
-
   
   
       

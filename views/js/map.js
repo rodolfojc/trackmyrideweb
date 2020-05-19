@@ -65,8 +65,7 @@ function onEachFeature(feature, layer){
 //Add a pop up on each rack marker
 function onEachSpot(feature, layer){
     layer.bindPopup('Name: '+ feature.properties.location_stand +
-    '<br> Incidents: '+feature.properties.theft +
-   '<br><button class="btn btn-danger-info btn-sm" id="chatToggle">Report</button>'
+    '<br> Incidents: '+feature.properties.theft 
     );
         layer.on('click', function (e) {
         lt = e.latlng.lat;
