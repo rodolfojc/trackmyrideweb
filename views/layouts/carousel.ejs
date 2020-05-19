@@ -23,6 +23,7 @@
     <div class="row no-gutters">
       <div class="col-md-4">
         <!--COMECA-->
+       
         <div
           id="carouselExampleIndicators"
           class="carousel slide"
@@ -38,6 +39,8 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
           </ol>
           <div id="inner-image" class="carousel-inner">
+           <!--If image is empty this is the default one-->
+           <%if (bikeImg ==null) {%>
             <div class="carousel-item active">
               <img
               class="img-fluid" 
@@ -47,6 +50,21 @@
                 alt="First slide"
               />
             </div>
+            <!--If there is a bike display here-->
+            <%  } else{ %>
+              <div class="carousel-item active">
+                <img
+                class="img-fluid" 
+                alt="Responsive image"
+                  style="height: 500px;max-width: 18rem;"
+                  src="/uploads/<%= bike._id %>.jpeg"
+                  alt="First slide"
+                />
+              </div>
+              <%   } %>
+
+
+
             <div class="carousel-item">
               <img
               class="img-fluid" 
@@ -142,18 +160,46 @@
          
             <h6><%= bike.lock %></h6>
          
-       
+          </form>
         </div>
       </div>
       <div><%- locals.flash %></div>
-    </div> <button type="button"   class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" data-whatever="">UPLOAD PICTURE</button>
+    
+  <!--End of Form to upload bike photo-->
+
+    </div> 
+
+     
+    
      <button type="button" style="background:linear-gradient(0deg, rgba(22,212,47,1) 0%, rgba(21,161,29,1) 100%);"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="">UPDATE</button>
     <div class="form-group row">
-      
-     
     </div>
     
-  </form>
+  
+
+   <!--Form to upload bike photo-->
+   <div><form name="MyImage" id="uploadimage" action="/addbikepicture/<%=bike._id%>" method="POST" enctype="multipart/form-data">
+      
+    
+    <div class="form-group floating-label-form-group controls">
+     <input type="file" class="form-control" id="image" name="MyImage" accept="image/*" multiple>
+  </div>
+</form>
+<button id="uploadBtn" type="submit" class="btn btn-primary">UPLOAD PHOTO</button>
+</div>
+
+  <div>
+    
+   
+   
+  
+   
+  </div>
+  <div class="modal-footer">
+  
+  
+  </div>
+
 
   
   
@@ -169,6 +215,8 @@
 </div>
 
 <%  }); %>
+
+
 
   
            
