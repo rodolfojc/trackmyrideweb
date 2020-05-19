@@ -12,15 +12,16 @@
           </button>
         </div>
         <div class="modal-body">
-          <% bike.map((bike)=>{%>
-            <form name="MyImage" id="uploadimage" action="/addBikePicture/<%bike._id%>" method="POST" enctype="multipart/form-data">
+          
+                   
+            <form name="MyImage" id="uploadimage" action="/addbikepicture/<%=bike._id%>" method="POST" enctype="multipart/form-data">
               
             
                 <div class="form-group floating-label-form-group controls">
-                 <input type="file" class="form-control" id="image" name="myImages" accept="image/*" multiple>
+                 <input type="file" class="form-control" id="image" name="MyImage" accept="image/*" multiple>
               </div>
-             
-              <%  }); %>
+            </form>
+           
    
            
          </div>
@@ -32,7 +33,7 @@
            <!-- To update user details-->
         
            
-         </form>
+        
         </div>
         <div class="modal-footer">
         

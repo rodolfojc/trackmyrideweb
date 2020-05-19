@@ -8,6 +8,8 @@ exports.loadBike = async (req, res) => {
 
 	registredBefore = true;
 
+	bikeImg= [];
+
 	try {
 		const response = await axios({
 			method: 'GET',
@@ -19,6 +21,8 @@ exports.loadBike = async (req, res) => {
 		console.log(response);
 		bike = response.data;
 		console.log(bike);
+		bikeImg=[]
+		
 		//Check if bike is returned
 		if (bike === undefined || bike.length == 0) {
 			//if bike is not defined
@@ -29,6 +33,7 @@ exports.loadBike = async (req, res) => {
 		res.render('managebike', {
 			userId,
 			bike,
+			bikeImg:bikeImg,
 
 			registredBefore: registredBefore
 		});
@@ -39,13 +44,14 @@ exports.loadBike = async (req, res) => {
 };
 
 exports.updatePicture = async (req, res) => {
-
+	console.log(req.file);
 	let img = new BikePicture();
-	img.userId = req.params.id;
+	img.bikeId = req.params.id;
 	//img.url = req.protocol + '://' + req.get('host') + '/uploads/' + req.params.id + path.extname(req.file.originalname);
 	img.fieldname = `BikePicture-${req.params.id}`
 	img.filename = `BikePicture-${req.params.id}`;
 	img.originalName = req.file.originalname;
+	
 	  
 	try {
 	  await img.save();

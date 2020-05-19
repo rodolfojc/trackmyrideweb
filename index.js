@@ -210,7 +210,7 @@ app.post('/updatepassword/:id', profileController.updatePassword);
 
 app.post('/addPicture/:id', upload.single('MyImage'), profileController.updatePicture);
 
-app.post('/addBikePicture/:id', upload.single('MyImage'), manageBikeController.updatePicture);
+app.post('/addbikepicture/:id', upload.single('MyImage'), manageBikeController.updatePicture);
 
 app.post('/updateBikeInfo/:id', manageBikeController.updateBike);
 
