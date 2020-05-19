@@ -40,7 +40,7 @@ const homeController = require('./controllers/login');
 
 const signinController = require('./controllers/signIn');
 
-const welcomeController = require('./controllers/home');
+ const welcomeController = require('./controllers/home');
 
 const manageBikeController = require('./controllers/managebike');
 
@@ -161,7 +161,7 @@ app.post('/searchBikes', searchBikesController); //Find bike by serial number
 
 app.post('/addNewRack', newRackController); //New rack reported
 
-app.get('/update', updateController); // to call the modal in ManageBike Screen.
+// app.get('/update', updateController); // to call the modal in ManageBike Screen.
 
 app.post('/reportBikeInfo/:id', reportBikeInfoController); //User report suspicious activity  with that bike
 
