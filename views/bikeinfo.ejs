@@ -1,137 +1,88 @@
-<!DOCTYPE html>
-
-<html lang="en">
-
-  <!-- PRESENT A FORM, SO THE USER CAN INPUT THE BIKE DETAILS
+<!-- PRESENT A FORM, SO THE USER CAN INPUT THE BIKE DETAILS
       (SERIAL) AND SUBMIT THE FORM.
       THE FORM BRINGS USER TO A PAGE WITH THE BIKES THAT MATCH
       THE CRITERIA
   -->
+  <!-- Header tags -->
+  <%-include('layouts/Consultbike/consultbike_header'); -%>
 
- <head>
+<!-- When page is reloaded, check for "error" that returns true if no bike was found -->
+<!-- and then display the modal alert -->
+<script>
+  $(document).ready(function () {
+    if ("<%=error%>") {
+      $("#myModal").modal('show');
+    }
 
-  <title> TrackMyRide </title>
+  }); 
+</script>
 
-  <!-- add icon link -->
-  <link rel = "icon" href = "https://user-images.githubusercontent.com/33750251/64987392-f9eead80-d8c0-11e9-84a9-e2a4a7f624db.png"
-      type = "image/x-icon"> 
+<body>
+ <!-- Style tags -->
+<%-include('layouts/Consultbike/consultbike_style'); -%>
 
-  
-  <!-- Font Awesome Script -->
-  <script src="https://kit.fontawesome.com/5c19bf284e.js"></script>
+<!-- Response from server, to be used on top script -->
+  <% var error; %>
 
-  <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="/css/style.css" />
-  <!-- Responsiveness -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> </head>
-  
-  
-</head>
-
- <!-- Scripts -->
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-      
-  
-        <!-- When page is reloaded, check for "error" that returns true if no bike was found -->
-        <!-- and then display the modal alert -->
-        <script>
-          $(document).ready(function(){
-            if("<%=error%>"){
-                $("#myModal").modal('show');
-                }
-             
-              }); 
-      </script>
-      
-    
-      <body>
-
-        <style>
-          body, html {
-              height: 100%;
-                width: 100vw;
-              } 
-           body{
-            background-image: linear-gradient(45deg, #ffa033b4, #f19f40c4);
-           
-          }
-
-          .d-flex h2{
-            color: rgba(10, 114, 79, 0.774);
-
-          }
-        
-        </style>
-   
-    <% var error; %>
-    
-
-
-     <!-- Top Navbar -->
-    <nav id="mainNav" class="navbar navbar-dark bg-transparent navbar-expand-md py-0 static-top " >
-      <div class="d-flex bg-secondary"></div>
-      <div class="p-2 mr-auto">
-        <% if(userId == undefined){ %>
-        <a class=" text-light  p-1"  href="/consult"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
-        
-        <%}else{%>
-          <a class=" text-light  p-1"  href="/welcomescreen"  id="home" ><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
-         
-          <%}%>
+  <!-- Top Navbar -->
+  <nav id="mainNav" class="navbar navbar-dark bg-transparent navbar-expand-md py-0 static-top ">
+    <div class="d-flex bg-secondary"></div>
+    <div class="p-2 mr-auto">
+      <!-- If there is no user session -->
+      <% if(userId == undefined){ %>
+      <a class=" text-light  p-1" href="/consult" id="home"><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+     <!-- If there is user session -->
+      <%}else{%>
+      <a class=" text-light  p-1" href="/welcomescreen" id="home"><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+      <%}%>
       </div>
     </nav>
     
-      <%- locals.flash %>
-   
-  
-  
-   <!-- Bootstrap modal from https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=modal -->
-    <div class="bs-example">
-      <div id="myModal" class="modal fade" tabindex="-1">
+  <!-- For response messages -->
+  <%- locals.flash %>
+
+  <!-- Bootstrap modal from 
+        https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=modal 
+      used to display message to the user-->
+      <div class="bs-example">
+        <div id="myModal" class="modal fade" tabindex="-1">
           <div class="modal-dialog">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title">No data found</h5>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  </div>
-                  <div class="modal-body">
-                      <p>The serial number you inserted is not registered in our database</p>
-                     </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  </div>
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">No data found</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
+              <div class="modal-body">
+                <p>The serial number you inserted is not registered in our database</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
           </div>
+        </div>
       </div>
-  </div>
-    
-    <!-- Insert bike serial form - source https://richwebdeveloper.com/login-and-registration-form-in-html-bootstrap/  -->
-    <div class="container">
-      <div class="row d-flex justify-content-center mx-auto">
+
+      <!-- Insert bike serial form  
+        source https://richwebdeveloper.com/login-and-registration-form-in-html-bootstrap/  -->
+      <div class="container">
+        <div class="row d-flex justify-content-center mx-auto">
           <div class="col-md-6 col-xs-12 div-style">
-          <form action="/searchBikes" method="POST">
-              <div class="d-flex justify-content-center mx-auto main-label" >
-                  <h2>Insert Bike Details</h2>
+            <form action="/searchBikes" method="POST">
+              <div class="d-flex justify-content-center mx-auto main-label">
+                <h2>Insert Bike Details</h2>
               </div>
               <div class="form-group">
-                  <input type="number" required class="form-control text-box" name="serial"  id="serial" aria-describedby="serial" placeholder="Serial Number">
+                <input type="number" required class="form-control text-box" name="serial" id="serial"
+                  aria-describedby="serial" placeholder="Serial Number">
               </div>
               <div class="form-group  justify-content-center d-flex">
-                  <button type="submit" class="btn btn-success button-submit">Search</button>
+                <button type="submit" class="btn btn-success button-submit">Search</button>
               </div>
-          </form>
+            </form>
+          </div>
+        </div>
       </div>
-      </div>
-  </div>
+</body>
 
-
-
-     
-    <!--Importing the Scripts from Layout-->
-   
-    <%-include('layouts/scripts'); -%>
-    
-  </body>
 </html>
