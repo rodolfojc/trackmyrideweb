@@ -42,7 +42,19 @@
 
 <body>
  <!-- Style tags -->
-<%-include('layouts/Consultbike/consultbike_style'); -%>
+ <style>
+  body,
+  html {
+    height: 100%;
+    width: 100vw;
+  }
+  body {
+    background-image: linear-gradient(45deg, #ffa033b4, #f19f40c4);
+  }
+  .d-flex h2 {
+    color: rgba(10, 114, 79, 0.774);
+  }
+</style>
 
 <!-- Response from server, to be used on top script -->
   <% var error; %>
