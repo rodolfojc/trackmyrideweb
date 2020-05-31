@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
 		});
 		console.log(response);
 		bike.push(response.data);
-		res.render('welcomeScreen', {
+		res.render('welcomescreen', {
 			modal: modal,
 			userId,
 			bike,
